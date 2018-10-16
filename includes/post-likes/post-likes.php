@@ -4,13 +4,13 @@
  * Register the stylesheets for the public-facing side of the site.
  * @since    0.5
  */
-add_action( 'wp_enqueue_scripts', 'rype_basics_post_like_enqueue_scripts' );
-function rype_basics_post_like_enqueue_scripts() {
-	wp_enqueue_script( 'rype-basics-post-likes-js', plugins_url('/post-likes.js',  __FILE__), array( 'jquery' ), '0.5', false );
-	wp_localize_script( 'rype-basics-post-likes-js', 'simpleLikes', array(
+add_action( 'wp_enqueue_scripts', 'ns_basics_post_like_enqueue_scripts' );
+function ns_basics_post_like_enqueue_scripts() {
+	wp_enqueue_script( 'ns-basics-post-likes-js', plugins_url('/post-likes.js',  __FILE__), array( 'jquery' ), '0.5', false );
+	wp_localize_script( 'ns-basics-post-likes-js', 'simpleLikes', array(
 		'ajaxurl' => admin_url( 'admin-ajax.php' ),
-		'like' => esc_html__( 'Like', 'rype-basics' ),
-		'unlike' => esc_html__( 'Unlike', 'rype-basics' )
+		'like' => esc_html__( 'Like', 'ns-basics' ),
+		'unlike' => esc_html__( 'Unlike', 'ns-basics' )
 	) ); 
 }
 
@@ -18,13 +18,13 @@ function rype_basics_post_like_enqueue_scripts() {
  * Processes like/unlike
  * @since    0.5
  */
-add_action( 'wp_ajax_nopriv_process_simple_like', 'rype_basics_process_post_like' );
-add_action( 'wp_ajax_process_simple_like', 'rype_basics_process_post_like' );
-function rype_basics_process_post_like() {
+add_action( 'wp_ajax_nopriv_process_simple_like', 'ns_basics_process_post_like' );
+add_action( 'wp_ajax_process_simple_like', 'ns_basics_process_post_like' );
+function ns_basics_process_post_like() {
 	// Security
 	$nonce = isset( $_REQUEST['nonce'] ) ? sanitize_text_field( $_REQUEST['nonce'] ) : 0;
 	if ( !wp_verify_nonce( $nonce, 'simple-likes-nonce' ) ) {
-		exit( esc_html__( 'Not permitted', 'rype-basics' ) );
+		exit( esc_html__( 'Not permitted', 'ns-basics' ) );
 	}
 	// Test if javascript is disabled
 	$disabled = ( isset( $_REQUEST['disabled'] ) && $_REQUEST['disabled'] == true ) ? true : false;
@@ -39,10 +39,10 @@ function rype_basics_process_post_like() {
 	if ( $post_id != '' ) {
 		$count = ( $is_comment == 1 ) ? get_comment_meta( $post_id, "_comment_like_count", true ) : get_post_meta( $post_id, "_post_like_count", true ); // like count
 		$count = ( isset( $count ) && is_numeric( $count ) ) ? $count : 0;
-		if ( !rype_basics_already_liked( $post_id, $is_comment ) ) { // Like the post
+		if ( !ns_basics_already_liked( $post_id, $is_comment ) ) { // Like the post
 			if ( is_user_logged_in() ) { // user is logged in
 				$user_id = get_current_user_id();
-				$post_users = rype_basics_post_user_likes( $user_id, $post_id, $is_comment );
+				$post_users = ns_basics_post_user_likes( $user_id, $post_id, $is_comment );
 				if ( $is_comment == 1 ) {
 					// Update User & Comment
 					$user_like_count = get_user_option( "_comment_like_count", $user_id );
@@ -61,8 +61,8 @@ function rype_basics_process_post_like() {
 					}
 				}
 			} else { // user is anonymous
-				$user_ip = rype_basics_sl_get_ip();
-				$post_users = rype_basics_post_ip_likes( $user_ip, $post_id, $is_comment );
+				$user_ip = ns_basics_sl_get_ip();
+				$post_users = ns_basics_post_ip_likes( $user_ip, $post_id, $is_comment );
 				// Update Post
 				if ( $post_users ) {
 					if ( $is_comment == 1 ) {
@@ -74,11 +74,11 @@ function rype_basics_process_post_like() {
 			}
 			$like_count = ++$count;
 			$response['status'] = "liked";
-			$response['icon'] = rype_basics_get_liked_icon();
+			$response['icon'] = ns_basics_get_liked_icon();
 		} else { // Unlike the post
 			if ( is_user_logged_in() ) { // user is logged in
 				$user_id = get_current_user_id();
-				$post_users = rype_basics_post_user_likes( $user_id, $post_id, $is_comment );
+				$post_users = ns_basics_post_user_likes( $user_id, $post_id, $is_comment );
 				// Update User
 				if ( $is_comment == 1 ) {
 					$user_like_count = get_user_option( "_comment_like_count", $user_id );
@@ -104,8 +104,8 @@ function rype_basics_process_post_like() {
 					}
 				}
 			} else { // user is anonymous
-				$user_ip = rype_basics_sl_get_ip();
-				$post_users = rype_basics_post_ip_likes( $user_ip, $post_id, $is_comment );
+				$user_ip = ns_basics_sl_get_ip();
+				$post_users = ns_basics_post_ip_likes( $user_ip, $post_id, $is_comment );
 				// Update Post
 				if ( $post_users ) {
 					$uip_key = array_search( $user_ip, $post_users );
@@ -119,7 +119,7 @@ function rype_basics_process_post_like() {
 			}
 			$like_count = ( $count > 0 ) ? --$count : 0; // Prevent negative number
 			$response['status'] = "unliked";
-			$response['icon'] = rype_basics_get_unliked_icon();
+			$response['icon'] = ns_basics_get_unliked_icon();
 		}
 		if ( $is_comment == 1 ) {
 			update_comment_meta( $post_id, "_comment_like_count", $like_count );
@@ -128,7 +128,7 @@ function rype_basics_process_post_like() {
 			update_post_meta( $post_id, "_post_like_count", $like_count );
 			update_post_meta( $post_id, "_post_like_modified", date( 'Y-m-d H:i:s' ) );
 		}
-		$response['count'] = rype_basics_get_like_count( $like_count );
+		$response['count'] = ns_basics_get_like_count( $like_count );
 		$response['testing'] = $is_comment;
 		if ( $disabled == true ) {
 			if ( $is_comment == 1 ) {
@@ -148,7 +148,7 @@ function rype_basics_process_post_like() {
  * Utility to test if the post is already liked
  * @since    0.5
  */
-function rype_basics_already_liked( $post_id, $is_comment ) {
+function ns_basics_already_liked( $post_id, $is_comment ) {
 	$post_users = NULL;
 	$user_id = NULL;
 	if ( is_user_logged_in() ) { // user is logged in
@@ -158,7 +158,7 @@ function rype_basics_already_liked( $post_id, $is_comment ) {
 			$post_users = $post_meta_users[0];
 		}
 	} else { // user is anonymous
-		$user_id = rype_basics_sl_get_ip();
+		$user_id = ns_basics_sl_get_ip();
 		$post_meta_users = ( $is_comment == 1 ) ? get_comment_meta( $post_id, "_user_comment_IP" ) : get_post_meta( $post_id, "_user_IP" ); 
 		if ( count( $post_meta_users ) != 0 ) { // meta exists, set up values
 			$post_users = $post_meta_users[0];
@@ -175,7 +175,7 @@ function rype_basics_already_liked( $post_id, $is_comment ) {
  * Output the like button
  * @since    0.5
  */
-function rype_basics_get_post_likes_button( $post_id, $is_comment = NULL, $button = NULL ) {
+function ns_basics_get_post_likes_button( $post_id, $is_comment = NULL, $button = NULL ) {
 	$is_comment = ( NULL == $is_comment ) ? 0 : 1;
 	$output = '';
 	$nonce = wp_create_nonce( 'simple-likes-nonce' ); // Security
@@ -190,33 +190,33 @@ function rype_basics_get_post_likes_button( $post_id, $is_comment = NULL, $butto
 		$like_count = get_post_meta( $post_id, "_post_like_count", true );
 		$like_count = ( isset( $like_count ) && is_numeric( $like_count ) ) ? $like_count : 0;
 	}
-	$count = rype_basics_get_like_count( $like_count );
+	$count = ns_basics_get_like_count( $like_count );
 
     if($button == 'true') {
-	   $icon_empty = rype_basics_get_unliked_icon();
-	   $icon_full = rype_basics_get_liked_icon();
+	   $icon_empty = ns_basics_get_unliked_icon();
+	   $icon_full = ns_basics_get_liked_icon();
     } else {
-        $icon_empty = rype_basics_get_unliked_icon();
-        $icon_full = rype_basics_get_liked_icon();
+        $icon_empty = ns_basics_get_unliked_icon();
+        $icon_full = ns_basics_get_liked_icon();
     }
 
 	// Loader
 	$loader = '<span class="sl-loader"></span>';
 	// Liked/Unliked Variables
-	if ( rype_basics_already_liked( $post_id, $is_comment ) ) {
+	if ( ns_basics_already_liked( $post_id, $is_comment ) ) {
 		$class = esc_attr( ' liked' );
-		$title = esc_html__( 'Unlike', 'rype-basics' );
+		$title = esc_html__( 'Unlike', 'ns-basics' );
 		$icon = $icon_full;
 	} else {
 		$class = '';
-		$title = esc_html__( 'Like', 'rype-basics' );
+		$title = esc_html__( 'Like', 'ns-basics' );
 		$icon = $icon_empty;
 	}
 
     if($button == 'true') {
-        $output = '<div class="sl-wrapper sl-wrapper-button ns-tooltip"><a href="' . admin_url( 'admin-ajax.php?action=rype_basics_process_post_like' . '&post_id=' . $post_id . '&nonce=' . $nonce . '&is_comment=' . $is_comment . '&disabled=true&button=true' ) . '" class="button small outline sl-button' . $post_id_class . $class . $comment_class . '" data-nonce="' . $nonce . '" data-post-id="' . $post_id . '" data-iscomment="' . $is_comment . '" title="' . $title . '">' . $icon . $count .'</a>' .$loader . '</div>';
+        $output = '<div class="sl-wrapper sl-wrapper-button ns-tooltip"><a href="' . admin_url( 'admin-ajax.php?action=ns_basics_process_post_like' . '&post_id=' . $post_id . '&nonce=' . $nonce . '&is_comment=' . $is_comment . '&disabled=true&button=true' ) . '" class="button small outline sl-button' . $post_id_class . $class . $comment_class . '" data-nonce="' . $nonce . '" data-post-id="' . $post_id . '" data-iscomment="' . $is_comment . '" title="' . $title . '">' . $icon . $count .'</a>' .$loader . '</div>';
     } else {
-        $output = '<div class="sl-wrapper ns-tooltip"><a href="'.admin_url( 'admin-ajax.php?action=rype_basics_process_post_like' . '&post_id=' . $post_id . '&nonce=' . $nonce . '&is_comment=' . $is_comment . '&disabled=true' ) . '" class="sl-button ns-tooltip-toggle' . $post_id_class . $class . $comment_class . '" data-nonce="' . $nonce . '" data-post-id="' . $post_id . '" data-iscomment="' . $is_comment . '" title="' . $title . '">' . $icon . $count . '</a>' . $loader . '</div>';
+        $output = '<div class="sl-wrapper ns-tooltip"><a href="'.admin_url( 'admin-ajax.php?action=ns_basics_process_post_like' . '&post_id=' . $post_id . '&nonce=' . $nonce . '&is_comment=' . $is_comment . '&disabled=true' ) . '" class="sl-button ns-tooltip-toggle' . $post_id_class . $class . $comment_class . '" data-nonce="' . $nonce . '" data-post-id="' . $post_id . '" data-iscomment="' . $is_comment . '" title="' . $title . '">' . $icon . $count . '</a>' . $loader . '</div>';
     }
 	return $output;
 }
@@ -231,7 +231,7 @@ function rype_basics_get_post_likes_button( $post_id, $is_comment = NULL, $butto
  * then adds new user id to retrieved array
  * @since    0.5
  */
-function rype_basics_post_user_likes( $user_id, $post_id, $is_comment ) {
+function ns_basics_post_user_likes( $user_id, $post_id, $is_comment ) {
 	$post_users = '';
 	$post_meta_users = ( $is_comment == 1 ) ? get_comment_meta( $post_id, "_user_comment_liked" ) : get_post_meta( $post_id, "_user_liked" );
 	if ( count( $post_meta_users ) != 0 ) {
@@ -251,7 +251,7 @@ function rype_basics_post_user_likes( $user_id, $post_id, $is_comment ) {
  * then adds new ip to retrieved array
  * @since    0.5
  */
-function rype_basics_post_ip_likes( $user_ip, $post_id, $is_comment ) {
+function ns_basics_post_ip_likes( $user_ip, $post_id, $is_comment ) {
 	$post_users = '';
 	$post_meta_users = ( $is_comment == 1 ) ? get_comment_meta( $post_id, "_user_comment_IP" ) : get_post_meta( $post_id, "_user_IP" );
 	// Retrieve post information
@@ -271,7 +271,7 @@ function rype_basics_post_ip_likes( $user_ip, $post_id, $is_comment ) {
  * Utility to retrieve IP address
  * @since    0.5
  */
-function rype_basics_sl_get_ip() {
+function ns_basics_sl_get_ip() {
 	if ( isset( $_SERVER['HTTP_CLIENT_IP'] ) && ! empty( $_SERVER['HTTP_CLIENT_IP'] ) ) {
 		$ip = $_SERVER['HTTP_CLIENT_IP'];
 	} elseif ( isset( $_SERVER['HTTP_X_FORWARDED_FOR'] ) && ! empty( $_SERVER['HTTP_X_FORWARDED_FOR'] ) ) {
@@ -288,9 +288,9 @@ function rype_basics_sl_get_ip() {
  * Utility returns the button icon for "like" action
  * @since    0.5
  */
-function rype_basics_get_liked_icon() {
+function ns_basics_get_liked_icon() {
 	/* If already using Font Awesome with your theme, replace svg with: <i class="fa fa-heart"></i> */
-	$icon = '<span class="fa fa-heart sl-icon icon"></span>'.'<span class="sl-button-text">'.esc_html__( 'Favorite', 'rype-basics' ).'</span>';
+	$icon = '<span class="fa fa-heart sl-icon icon"></span>'.'<span class="sl-button-text">'.esc_html__( 'Favorite', 'ns-basics' ).'</span>';
 	return $icon;
 }
 
@@ -298,9 +298,9 @@ function rype_basics_get_liked_icon() {
  * Utility returns the button icon for "unlike" action
  * @since    0.5
  */
-function rype_basics_get_unliked_icon() {
+function ns_basics_get_unliked_icon() {
 	/* If already using Font Awesome with your theme, replace svg with: <i class="fa fa-heart-o"></i> */
-	$icon = '<span class="fa fa-heart-o sl-icon icon"></span>'.'<span class="sl-button-text">'.esc_html__( 'Favorite', 'rype-basics' ).'</span>';
+	$icon = '<span class="fa fa-heart-o sl-icon icon"></span>'.'<span class="sl-button-text">'.esc_html__( 'Favorite', 'ns-basics' ).'</span>';
 	return $icon;
 }
 
@@ -312,7 +312,7 @@ function rype_basics_get_unliked_icon() {
  * $precision = how many decimal points to display (1.25K)
  * @since    0.5
  */
-function rype_basics_sl_format_count( $number ) {
+function ns_basics_sl_format_count( $number ) {
 	$precision = 2;
 	if ( $number >= 1000 && $number < 1000000 ) {
 		$formatted = number_format( $number/1000, $precision ).'K';
@@ -332,10 +332,10 @@ function rype_basics_sl_format_count( $number ) {
  * returns appropriate format based on options
  * @since    0.5
  */
-function rype_basics_get_like_count( $like_count ) {
-	$like_text = esc_html__( 'Like', 'rype-basics' );
+function ns_basics_get_like_count( $like_count ) {
+	$like_text = esc_html__( 'Like', 'ns-basics' );
 	if ( is_numeric( $like_count ) && $like_count > 0 ) { 
-		$number = rype_basics_sl_format_count( $like_count );
+		$number = ns_basics_sl_format_count( $like_count );
 	} else {
 		$number = $like_text;
 	}
@@ -344,12 +344,12 @@ function rype_basics_get_like_count( $like_count ) {
 }
 
 // User Profile List
-add_action( 'show_user_profile', 'rype_basics_show_user_likes' );
-//add_action( 'edit_user_profile', 'rype_basics_show_user_likes' );
-function rype_basics_show_user_likes( $user ) { ?>        
+add_action( 'show_user_profile', 'ns_basics_show_user_likes' );
+//add_action( 'edit_user_profile', 'ns_basics_show_user_likes' );
+function ns_basics_show_user_likes( $user ) { ?>        
 	<table class="form-table">
 		<tr>
-			<th><label for="user_likes"><?php esc_html_e( 'You Like:', 'rype-basics' ); ?></label></th>
+			<th><label for="user_likes"><?php esc_html_e( 'You Like:', 'ns-basics' ); ?></label></th>
 			<td>
 			<?php
 			$types = get_post_types( array( 'public' => true ) );
@@ -375,7 +375,7 @@ function rype_basics_show_user_likes( $user ) { ?>
 			?>
 			</p>
 			<?php else : ?>
-			<p><?php esc_html_e( 'You do not like anything yet.', 'rype-basics' ); ?></p>
+			<p><?php esc_html_e( 'You do not like anything yet.', 'ns-basics' ); ?></p>
 			<?php 
 			endif; 
 			wp_reset_postdata(); 
@@ -386,7 +386,7 @@ function rype_basics_show_user_likes( $user ) { ?>
 <?php }
 
 // Get User Like Count
-function rype_basics_show_user_likes_count( $user ) {       
+function ns_basics_show_user_likes_count( $user ) {       
     $types = get_post_types( array( 'public' => true ) );
     $args = array(
         'numberposts' => -1,
@@ -407,22 +407,22 @@ function rype_basics_show_user_likes_count( $user ) {
 }
 
 //Template Hooks
-function rype_basics_add_post_like() { ?> 
-    <li><?php echo rype_basics_get_post_likes_button(get_the_ID(), null, true); ?></li>
+function ns_basics_add_post_like() { ?> 
+    <li><?php echo ns_basics_get_post_likes_button(get_the_ID(), null, true); ?></li>
 <?php }
-add_action( 'rype_basics_after_post_meta', 'rype_basics_add_post_like' );
+add_action( 'ns_basics_after_post_meta', 'ns_basics_add_post_like' );
 
-function rype_basics_add_post_like_dashboard_stat() { ?> 
+function ns_basics_add_post_like_dashboard_stat() { ?> 
     <div class="user-dashboard-widget stat">
         <span>
             <?php 
-            if(function_exists('rype_basics_show_user_likes_count')) {
-                $show_user_likes_count = rype_basics_show_user_likes_count($current_user); 
-                echo rype_basics_sl_format_count($show_user_likes_count );
+            if(function_exists('ns_basics_show_user_likes_count')) {
+                $show_user_likes_count = ns_basics_show_user_likes_count($current_user); 
+                echo ns_basics_sl_format_count($show_user_likes_count );
             } else { echo '0'; }
             ?>
         </span> 
-        <?php esc_html_e('Favorites', 'rype-basics'); ?>
+        <?php esc_html_e('Favorites', 'ns-basics'); ?>
     </div>
 <?php }
-add_action( 'rype_basics_dashboard_stats', 'rype_basics_add_post_like_dashboard_stat' );
+add_action( 'ns_basics_dashboard_stats', 'ns_basics_add_post_like_dashboard_stat' );

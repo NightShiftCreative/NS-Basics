@@ -33,9 +33,9 @@ if(isset($template_args)) {
 		?>
 
 		<h4>
-			<?php if(function_exists('rype_basics_show_user_likes_count')) {
-			    $show_user_likes_count = rype_basics_show_user_likes_count($current_user); 
-			    echo rype_basics_sl_format_count($show_user_likes_count );
+			<?php if(function_exists('ns_basics_show_user_likes_count')) {
+			    $show_user_likes_count = ns_basics_show_user_likes_count($current_user); 
+			    echo ns_basics_sl_format_count($show_user_likes_count );
 			} ?>
 			<?php esc_html_e('Favorites', 'rype-basics'); ?>
 		</h4>
@@ -66,7 +66,7 @@ if(isset($template_args)) {
 	        		<td class="favorites-listing-type"><?php echo $post_type; ?></td>
 	        		<td class="user-dashboard-table-actions favorites-listing-actions">
 	        			<a href="<?php the_permalink(); ?>"><?php echo rypecore_get_icon($icon_set, 'eye', 'eye', 'preview'); ?><?php esc_html_e('View', 'rype-basics'); ?></a>
-	        			<?php if(function_exists('rype_basics_get_post_likes_button')) { echo rype_basics_get_post_likes_button(get_the_ID()).' Unlike'; } ?>
+	        			<?php if(function_exists('ns_basics_get_post_likes_button')) { echo ns_basics_get_post_likes_button(get_the_ID()).' Unlike'; } ?>
 	        		</td>
 	        	</tr>
 		    <?php endwhile; ?>

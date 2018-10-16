@@ -6,7 +6,7 @@
 
     	<h3><?php esc_html_e('Welcome back,', 'rype-basics'); ?> <strong><?php echo esc_attr($current_user->user_login); ?>!</strong></h3>
 
-        <?php do_action( 'rype_basics_dashboard_stats'); ?>
+        <?php do_action( 'ns_basics_dashboard_stats'); ?>
         <?php do_action( 'rype_basics_after_dashboard'); ?>
 
 	<?php } else {

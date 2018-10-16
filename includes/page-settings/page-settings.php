@@ -77,7 +77,7 @@
                     </label>
 
                     <!-- hook in for other add-ons -->
-                    <?php do_action( 'rype_basics_before_page_banner_options', $values); ?>
+                    <?php do_action( 'ns_basics_before_page_banner_options', $values); ?>
 
                     <div id="selectable-item-options-image_banner" class="selectable-item-settings <?php if($banner_source == 'image_banner') { echo 'show'; } else { echo 'hide-soft'; } ?>">
                         <h4><?php echo esc_html_e('Banner Settings', 'rypecore'); ?></h4>
@@ -183,7 +183,7 @@
                         </table>
 
                         <!-- hook in for other add-ons -->
-                        <?php do_action( 'rype_basics_after_page_banner_options', $values); ?>
+                        <?php do_action( 'ns_basics_after_page_banner_options', $values); ?>
                     </div>
 
                     <div id="selectable-item-options-slides" class="selectable-item-settings <?php if($banner_source == 'slides') { echo 'show'; } else { echo 'hide-soft'; } ?>">
@@ -254,7 +254,7 @@
                 </div><!-- end admin module -->
 
                 <!-- hook in for other add-ons -->
-                <?php do_action( 'rype_basics_banner_options_end', $values); ?>
+                <?php do_action( 'ns_basics_banner_options_end', $values); ?>
 
             </div><!-- end banner tab -->
             
@@ -505,7 +505,7 @@
             update_post_meta( $post_id, 'rypecore_cta_bg_display', wp_kses( $_POST['rypecore_cta_bg_display'], $allowed ) );
 
         //hook in for other add-ons
-        do_action( 'rype_basics_after_page_settings_save', $post_id); 
+        do_action( 'ns_basics_after_page_settings_save', $post_id); 
     }
 
 ?>
