@@ -15,8 +15,8 @@ if(isset($template_args)) {
 
             <?php if(!empty($members_register_page)) { ?>
             <p class="center">
-                <?php esc_html_e( "Don't have an account yet?", 'rype-basics' ); ?>
-                <a href="<?php echo esc_url($members_register_page); ?>"><?php esc_html_e( 'Register here!', 'rype-basics' ); ?></a>
+                <?php esc_html_e( "Don't have an account yet?", 'ns-basics' ); ?>
+                <a href="<?php echo esc_url($members_register_page); ?>"><?php esc_html_e( 'Register here!', 'ns-basics' ); ?></a>
             </p>
             <?php } ?>
 
@@ -25,7 +25,7 @@ if(isset($template_args)) {
                 <?php
                     if(isset($_GET['login'])) { $result = $_GET['login']; } else { $result = null; }
                     if($result == 'failed') {
-                        echo '<div class="alert-box error">'. esc_html__('The passord or username you entered was incorrect. Please try again.', 'rype-basics') .'</div>';
+                        echo '<div class="alert-box error">'. esc_html__('The passord or username you entered was incorrect. Please try again.', 'ns-basics') .'</div>';
                     }
 
                     if(!empty($redirect)) {

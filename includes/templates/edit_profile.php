@@ -37,7 +37,7 @@ if(isset($template_args)) {
 	            if ( $_POST['pass1'] == $_POST['pass2'] )
 	                wp_update_user( array( 'ID' => $current_user->ID, 'user_pass' => esc_attr( $_POST['pass1'] ) ) );
 	            else
-	                $error[] = esc_html__('The passwords you entered do not match.  Your password was not updated.', 'rype-basics');
+	                $error[] = esc_html__('The passwords you entered do not match.  Your password was not updated.', 'ns-basics');
 	        }
 
 	        /* Update user information. */
@@ -45,9 +45,9 @@ if(isset($template_args)) {
 	            wp_update_user( array( 'ID' => $current_user->ID, 'user_url' => esc_url( $_POST['url'] ) ) );
 	        if ( !empty( $_POST['email'] ) ){
 	            if (!is_email(esc_attr( $_POST['email'] )))
-	                $error[] = esc_html__('The Email you entered is not valid.  please try again.', 'rype-basics');
+	                $error[] = esc_html__('The Email you entered is not valid.  please try again.', 'ns-basics');
 	            elseif(email_exists(esc_attr( $_POST['email'] )) && email_exists(esc_attr( $_POST['email'] )) != $current_user->ID)
-	                $error[] = esc_html__('This email is already used by another user.  try a different one.', 'rype-basics');
+	                $error[] = esc_html__('This email is already used by another user.  try a different one.', 'ns-basics');
 	            else{
 	                wp_update_user( array ('ID' => $current_user->ID, 'user_email' => esc_attr( $_POST['email'] )));
 	            }
@@ -78,33 +78,33 @@ if(isset($template_args)) {
                     echo '<div class="alert-box error">'.$value.'</div>';
                 }
             } else if(isset($_GET['updated']) && $_GET['updated'] == 'true') {
-                echo '<div class="alert-box success">'. esc_html__('Your profile was updated!', 'rype-basics') .'</div>';
+                echo '<div class="alert-box success">'. esc_html__('Your profile was updated!', 'ns-basics') .'</div>';
             }
             ?>
             <form method="post" id="adduser" action="<?php the_permalink(); ?>" enctype="multipart/form-data">
 
                 <div class="module-header module-header-left">
-                    <h4><strong><?php esc_html_e('General Info', 'rype-basics'); ?></strong></h4>
+                    <h4><strong><?php esc_html_e('General Info', 'ns-basics'); ?></strong></h4>
                 </div>
 
                 <div class="row">
 
                     <div class="col-lg-5 col-md-5">
                         <div class="avatar-upload">
-                            <label><?php esc_html_e('Change Avatar', 'rype-basics'); ?></label>
+                            <label><?php esc_html_e('Change Avatar', 'ns-basics'); ?></label>
                             <div class="avatar-img">
                                 <?php 
                                     $avatar_id = get_user_meta( $current_user->ID, 'avatar', true ); 
                                     if(!empty($avatar_id)) {
                                         echo wp_get_attachment_image($avatar_id, array('96', '96'));
                                     } else {
-                                        echo '<img src="'.plugins_url('/rype-basics/images/avatar-default.png').'" />';
+                                        echo '<img src="'.plugins_url('/ns-basics/images/avatar-default.png').'" />';
                                     }
                                 ?>
                             </div>
                             <div class="avatar-img-controls">
                                 <input name="avatar" type="file" />
-                                <span class="button small avatar-remove"><?php esc_html_e('Remove', 'rype-basics'); ?></span>
+                                <span class="button small avatar-remove"><?php esc_html_e('Remove', 'ns-basics'); ?></span>
                                 <div class="clear"></div>
                             </div>
                         </div>
@@ -114,25 +114,25 @@ if(isset($template_args)) {
                         <div class="row">
                             <div class="col-lg-6 col-md-6">
                                 <p class="form-username">
-                                    <label for="first-name"><?php esc_html_e('First Name', 'rype-basics'); ?></label>
+                                    <label for="first-name"><?php esc_html_e('First Name', 'ns-basics'); ?></label>
                                     <input class="text-input" name="first-name" type="text" id="first-name" value="<?php the_author_meta( 'first_name', $current_user->ID ); ?>" />
                                 </p>
                             </div>
                             <div class="col-lg-6 col-md-6">
                                 <p class="form-username">
-                                    <label for="last-name"><?php esc_html_e('Last Name', 'rype-basics'); ?></label>
+                                    <label for="last-name"><?php esc_html_e('Last Name', 'ns-basics'); ?></label>
                                     <input class="text-input" name="last-name" type="text" id="last-name" value="<?php the_author_meta( 'last_name', $current_user->ID ); ?>" />
                                 </p>
                             </div>
                         </div>
                         
                         <p class="form-email">
-                            <label for="email"><?php esc_html_e('E-mail *', 'rype-basics'); ?></label>
+                            <label for="email"><?php esc_html_e('E-mail *', 'ns-basics'); ?></label>
                             <input class="text-input" name="email" type="text" id="email" value="<?php the_author_meta( 'user_email', $current_user->ID ); ?>" />
                         </p><!-- .form-email -->
 
                         <p class="form-url">
-                            <label for="url"><?php esc_html_e('Website', 'rype-basics'); ?></label>
+                            <label for="url"><?php esc_html_e('Website', 'ns-basics'); ?></label>
                             <input class="text-input" name="url" type="text" id="url" value="<?php the_author_meta( 'user_url', $current_user->ID ); ?>" />
                         </p><!-- .form-url -->
                     </div>
@@ -140,20 +140,20 @@ if(isset($template_args)) {
                 </div><!-- end row -->
 
                 <p class="form-textarea">
-                    <label for="description"><?php esc_html_e('Biographical Information', 'rype-basics') ?></label>
+                    <label for="description"><?php esc_html_e('Biographical Information', 'ns-basics') ?></label>
                     <textarea name="description" id="description" rows="3" cols="50"><?php the_author_meta( 'description', $current_user->ID ); ?></textarea>
                 </p><!-- .form-textarea -->
                 
                 <div class="update-password">
                     <div class="module-header module-header-left">
-                        <h4><strong><?php esc_html_e('Change Password', 'rype-basics'); ?></strong></h4>
+                        <h4><strong><?php esc_html_e('Change Password', 'ns-basics'); ?></strong></h4>
                     </div>
                     <p class="form-password">
-                        <label for="pass1"><?php esc_html_e('Password *', 'rype-basics'); ?> </label>
+                        <label for="pass1"><?php esc_html_e('Password *', 'ns-basics'); ?> </label>
                         <input class="text-input" name="pass1" type="password" id="pass1" />
                     </p><!-- .form-password -->
                     <p class="form-password">
-                        <label for="pass2"><?php esc_html_e('Repeat Password *', 'rype-basics'); ?></label>
+                        <label for="pass2"><?php esc_html_e('Repeat Password *', 'ns-basics'); ?></label>
                         <input class="text-input" name="pass2" type="password" id="pass2" />
                     </p><!-- .form-password -->
                 </div>
@@ -164,7 +164,7 @@ if(isset($template_args)) {
                 ?>
 
                 <p class="form-submit">
-                    <input name="updateuser" type="submit" id="updateuser" class="submit button" value="<?php esc_html_e('Update Profile', 'rype-basics'); ?>" />
+                    <input name="updateuser" type="submit" id="updateuser" class="submit button" value="<?php esc_html_e('Update Profile', 'ns-basics'); ?>" />
                     <?php wp_nonce_field( 'update-user' ) ?>
                     <input name="action" type="hidden" id="action" value="update-user" />
                 </p><!-- .form-submit -->
@@ -172,8 +172,8 @@ if(isset($template_args)) {
         </div><!-- end user profile form -->
 
     	<?php
-		// hook in for Rype Basics
-        do_action( 'rype_basics_after_edit_profile'); 
+		// hook in for NS Basics
+        do_action( 'ns_basics_after_edit_profile'); 
 
 	} else {
 		ns_basics_template_loader('alert_not_logged_in.php');

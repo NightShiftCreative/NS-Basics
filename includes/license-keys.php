@@ -3,7 +3,7 @@
 /*-----------------------------------------------------------------------------------*/
 /* VALIDATE LICENSE KEY
 /*-----------------------------------------------------------------------------------*/
-function rype_basics_is_valid_license_key($license) {
+function ns_basics_is_valid_license_key($license) {
     if(empty($license['key']) || empty($license['email'])) {
         return array('result' => false, 'error' => '');
     } else {
@@ -15,7 +15,7 @@ function rype_basics_is_valid_license_key($license) {
             if($obj->success == true) {
                 return array('result' => true, 'error' => '');
             } else {
-                return array('result' => false, 'error' => esc_html__('Your license key and/or license email is invalid.', 'rype-basics'));
+                return array('result' => false, 'error' => esc_html__('Your license key and/or license email is invalid.', 'ns-basics'));
             }
         } else {
             return array('result' => false, 'error' => $data->get_error_message());
@@ -26,8 +26,8 @@ function rype_basics_is_valid_license_key($license) {
 /*-----------------------------------------------------------------------------------*/
 /*  UPDATE LICENSE KEY STATUS (fires only when settings are saved)
 /*-----------------------------------------------------------------------------------*/
-function rype_real_estate_activate_license_key( $old_value, $new_value, $option ) {
-    $valid_key = rype_basics_is_valid_license_key($new_value);
+function ns_basics_activate_license_key( $old_value, $new_value, $option ) {
+    $valid_key = ns_basics_is_valid_license_key($new_value);
     if($valid_key['result'] == true) {
         $new_value['registered'] = true;
         $new_value['error'] = '';
@@ -41,14 +41,14 @@ function rype_real_estate_activate_license_key( $old_value, $new_value, $option 
 /*-----------------------------------------------------------------------------------*/
 /* GET LICENSE KEY STATUS
 /*-----------------------------------------------------------------------------------*/
-function rype_basics_get_license_status($license, $product_link = null, $register_link = null, $show_errors = null) {
-    if(!rype_basics_is_paid_plugin_active($license['slug'])) { ?>
-        <?php if(!empty($product_link)) { ?><a href="<?php echo $product_link; ?>" target="_blank" class="button button-purchase button-green"><?php esc_html_e('Purchase', 'rype-basics'); ?></a><?php } ?>
+function ns_basics_get_license_status($license, $product_link = null, $register_link = null, $show_errors = null) {
+    if(!ns_basics_is_paid_plugin_active($license['slug'])) { ?>
+        <?php if(!empty($product_link)) { ?><a href="<?php echo $product_link; ?>" target="_blank" class="button button-purchase button-green"><?php esc_html_e('Purchase', 'ns-basics'); ?></a><?php } ?>
     <?php } else {
         if($license['registered'] == true) {
-            echo '<a href="'.$register_link.'" class="button button-activated button-green"><i class="fa fa-check"></i> '.esc_html__('Registered', 'rype-basics').'</a>';
+            echo '<a href="'.$register_link.'" class="button button-activated button-green"><i class="fa fa-check"></i> '.esc_html__('Registered', 'ns-basics').'</a>';
         } else {
-            echo '<a href="'.$register_link.'" class="button button-activated button-red">'.esc_html__('Unregistered', 'rype-basics').'</a>';
+            echo '<a href="'.$register_link.'" class="button button-activated button-red">'.esc_html__('Unregistered', 'ns-basics').'</a>';
             if($show_errors == 'true' && !empty($license['error'])) { echo '<span class="admin-module-note license-error">'.$license['error'].'</span>'; }
         }
     }
@@ -57,7 +57,7 @@ function rype_basics_get_license_status($license, $product_link = null, $registe
 /*-----------------------------------------------------------------------------------*/
 /* CHECK IF PAID ADD-ON PLUGIN IS ACTIVE
 /*-----------------------------------------------------------------------------------*/
-function rype_basics_is_paid_plugin_active($add_on_slug) {
+function ns_basics_is_paid_plugin_active($add_on_slug) {
     include_once( ABSPATH . 'wp-admin/includes/plugin.php' );
     if(is_plugin_active($add_on_slug.'/'.$add_on_slug.'.php')) { 
         return true; 

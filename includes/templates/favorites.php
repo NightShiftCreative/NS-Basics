@@ -37,15 +37,15 @@ if(isset($template_args)) {
 			    $show_user_likes_count = ns_basics_show_user_likes_count($current_user); 
 			    echo ns_basics_sl_format_count($show_user_likes_count );
 			} ?>
-			<?php esc_html_e('Favorites', 'rype-basics'); ?>
+			<?php esc_html_e('Favorites', 'ns-basics'); ?>
 		</h4>
 
 		<table class="user-dashboard-table favorites-listing">
 			<tr class="user-dashboard-table-header favorites-listing-header">
-	            <td class="user-dashboard-table-img favorites-listing-img"><?php esc_html_e('Image', 'rype-basics'); ?></td>
-	            <td class="favorites-listing-title"><?php esc_html_e('Title', 'rype-basics'); ?></td>
-	            <td class="favorites-listing-type"><?php esc_html_e('Post Type', 'rype-basics'); ?></td>
-	            <td class="user-dashboard-table-actions favorites-listing-actions"><?php esc_html_e('Actions', 'rype-basics'); ?></td>
+	            <td class="user-dashboard-table-img favorites-listing-img"><?php esc_html_e('Image', 'ns-basics'); ?></td>
+	            <td class="favorites-listing-title"><?php esc_html_e('Title', 'ns-basics'); ?></td>
+	            <td class="favorites-listing-type"><?php esc_html_e('Post Type', 'ns-basics'); ?></td>
+	            <td class="user-dashboard-table-actions favorites-listing-actions"><?php esc_html_e('Actions', 'ns-basics'); ?></td>
 	        </tr>
 
 	        <?php if ( $post_favorites_query->have_posts() ) : while ( $post_favorites_query->have_posts() ) : $post_favorites_query->the_post(); ?>
@@ -65,7 +65,7 @@ if(isset($template_args)) {
 	        		<td class="favorites-listing-title"><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></td>
 	        		<td class="favorites-listing-type"><?php echo $post_type; ?></td>
 	        		<td class="user-dashboard-table-actions favorites-listing-actions">
-	        			<a href="<?php the_permalink(); ?>"><?php echo rypecore_get_icon($icon_set, 'eye', 'eye', 'preview'); ?><?php esc_html_e('View', 'rype-basics'); ?></a>
+	        			<a href="<?php the_permalink(); ?>"><?php echo rypecore_get_icon($icon_set, 'eye', 'eye', 'preview'); ?><?php esc_html_e('View', 'ns-basics'); ?></a>
 	        			<?php if(function_exists('ns_basics_get_post_likes_button')) { echo ns_basics_get_post_likes_button(get_the_ID()).' Unlike'; } ?>
 	        		</td>
 	        	</tr>
@@ -83,8 +83,8 @@ if(isset($template_args)) {
 		            'end_size'     => 1,
 		            'mid_size'     => 2,
 		            'prev_next'    => True,
-		            'prev_text'    => esc_html__('&raquo; Previous', 'rype-basics'),
-		            'next_text'    => esc_html__('Next &raquo;', 'rype-basics'),
+		            'prev_text'    => esc_html__('&raquo; Previous', 'ns-basics'),
+		            'next_text'    => esc_html__('Next &raquo;', 'ns-basics'),
 		            'type'         => 'plain',
 		            'add_args'     => False,
 		            'add_fragment' => '',
@@ -95,12 +95,12 @@ if(isset($template_args)) {
 		        <div class="page-list"><?php echo paginate_links( $args ); ?> </div>
 		    <?php else: ?>
 		        </table>
-		        <p><?php esc_html_e('You have not liked any posts yet.', 'rype-basics'); ?></p>
+		        <p><?php esc_html_e('You have not liked any posts yet.', 'ns-basics'); ?></p>
 		        <?php wp_reset_postdata(); ?>
 		    <?php endif; ?>
 
-		<!-- hook in for Rype Basics -->
-        <?php do_action( 'rype_basics_after_favorites'); ?>
+		<!-- hook in for NS Basics -->
+        <?php do_action( 'ns_basics_after_favorites'); ?>
 
 	<?php } else {
 		ns_basics_template_loader('alert_not_logged_in.php');

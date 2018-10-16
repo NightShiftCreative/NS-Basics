@@ -25,21 +25,21 @@ if(isset($template_args)) {
     if (!empty($_POST)) {
 
         if($_POST['register_username'] == '') {
-            $usernameError = esc_html__('Please enter a username', 'rype-basics');
+            $usernameError = esc_html__('Please enter a username', 'ns-basics');
             $hasError = true;
         } else {
             $username = $_POST['register_username'];
         }
 
         if($_POST['register_pass'] == '') {
-            $passError = esc_html__('Please enter a password', 'rype-basics');
+            $passError = esc_html__('Please enter a password', 'ns-basics');
             $hasError = true;
         } else {
             $password = $_POST['register_pass'];
         }
 
         if($_POST['register_email'] == '') {
-            $emailError = esc_html__('Please enter an email', 'rype-basics');
+            $emailError = esc_html__('Please enter an email', 'ns-basics');
             $hasError = true;
         } else {
             $email = $_POST['register_email'];
@@ -58,7 +58,7 @@ if(isset($template_args)) {
 
             //If no errors, log the user in
             if( !is_wp_error($user_id) ) {
-                $success = esc_html__('Your account has been created.', 'rype-basics') .' <a href="'. $members_login_page .'">'. esc_html__('Login here.', 'rype-basics') .'</a>';
+                $success = esc_html__('Your account has been created.', 'ns-basics') .' <a href="'. $members_login_page .'">'. esc_html__('Login here.', 'ns-basics') .'</a>';
             } else {
                 $insertUserError = $user_id->get_error_message();
             }
@@ -77,8 +77,8 @@ if(isset($template_args)) {
 
             <?php if(!empty($members_login_page)) { ?>
             <p class="center">
-                <?php esc_html_e( "Already have an account?", 'rype-basics' ); ?>
-                <a href="<?php echo esc_url($members_login_page); ?>"><?php esc_html_e( 'Login here!', 'rype-basics' ); ?></a>
+                <?php esc_html_e( "Already have an account?", 'ns-basics' ); ?>
+                <a href="<?php echo esc_url($members_login_page); ?>"><?php esc_html_e( 'Login here!', 'ns-basics' ); ?></a>
             </p>
             <?php } ?>
 
@@ -101,18 +101,18 @@ if(isset($template_args)) {
                 <?php } ?>
                 <form method="post" action="<?php the_permalink(); ?>">
                     <div class="form-block">
-                        <label for="register_username"><?php esc_html_e( 'Username', 'rype-basics' ); ?></label>
+                        <label for="register_username"><?php esc_html_e( 'Username', 'ns-basics' ); ?></label>
                         <input type="text" name="register_username" id="register_username" value="<?php if(isset($_POST['register_username'])) { echo esc_attr($username); } ?>" />
                     </div>
                     <div class="form-block">
-                        <label for="register_pass"><?php esc_html_e( 'Password', 'rype-basics' ); ?></label>
+                        <label for="register_pass"><?php esc_html_e( 'Password', 'ns-basics' ); ?></label>
                         <input type="password" name="register_pass" id="register_pass" value="<?php if(isset($_POST['register_pass'])) { echo esc_attr($password); } ?>" />
                     </div>
                     <div class="form-block">
-                        <label for="register_email"><?php esc_html_e( 'Email', 'rype-basics' ); ?></label>
+                        <label for="register_email"><?php esc_html_e( 'Email', 'ns-basics' ); ?></label>
                         <input type="email" name="register_email" id="register_email" value="<?php if(isset($_POST['register_email'])) { echo esc_attr($email); } ?>" />
                     </div>
-                    <input type="submit" class="button" value="<?php esc_html_e( 'Create Account', 'rype-basics' ); ?>" />
+                    <input type="submit" class="button" value="<?php esc_html_e( 'Create Account', 'ns-basics' ); ?>" />
                 </form>
             </div>
             <!-- end register form -->
