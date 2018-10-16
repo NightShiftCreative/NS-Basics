@@ -288,7 +288,7 @@ function ns_basics_admin_page($page_name = null, $settings_group = null, $pages 
 
             <div class="ns-settings-content <?php if(!empty($content_class)) { echo $content_class; } ?>">
 
-                <?php echo rype_basics_admin_alert('success', esc_html__('Settings Saved Successfully', 'ns-basics'), null, null, true, 'settings-saved'); ?>
+                <?php echo ns_basics_admin_alert('success', esc_html__('Settings Saved Successfully', 'ns-basics'), null, null, true, 'settings-saved'); ?>
 
                 <?php if(!empty($alerts)) {
                     foreach($alerts as $alert) { echo $alert; }
@@ -313,7 +313,7 @@ function ns_basics_admin_page($page_name = null, $settings_group = null, $pages 
                 </div>
 
                 <div class="clear"></div>
-                <?php echo rype_basics_admin_alert('success', esc_html__('Settings Saved Successfully', 'ns-basics'), null, null, true, 'settings-saved'); ?>
+                <?php echo ns_basics_admin_alert('success', esc_html__('Settings Saved Successfully', 'ns-basics'), null, null, true, 'settings-saved'); ?>
             </div>
 
             <div class="ns-settings-menu-bar ns-settings-footer">
@@ -351,7 +351,7 @@ function ns_basics_settings_page() {
     $alerts = array();
     if(!current_theme_supports('ns-basics')) {
         $current_theme = wp_get_theme();
-        $incompatible_theme_alert = rype_basics_admin_alert('info', esc_html__('The active theme ('.$current_theme->name.') does not support NightShift Basics.', 'ns-basics'), $action = '#', $action_text = esc_html__('Get a compatible theme', 'ns-basics'), true); 
+        $incompatible_theme_alert = ns_basics_admin_alert('info', esc_html__('The active theme ('.$current_theme->name.') does not support NightShift Basics.', 'ns-basics'), $action = '#', $action_text = esc_html__('Get a compatible theme', 'ns-basics'), true); 
         $alerts[] = $incompatible_theme_alert; 
     }
 

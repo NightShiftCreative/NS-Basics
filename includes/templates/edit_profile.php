@@ -21,7 +21,7 @@ if(isset($template_args)) {
 	        if( !empty( $_FILES ) ) {
 	            foreach( $_FILES as $file ) {
 	                if($_FILES['avatar']['tmp_name']) {
-	                    $attachment_id_avatar_img = rype_basics_upload_user_file( $_FILES['avatar'] );
+	                    $attachment_id_avatar_img = ns_basics_upload_user_file( $_FILES['avatar'] );
 	                    update_user_meta( $current_user->ID, 'avatar', $attachment_id_avatar_img );
 	                }
 	            }

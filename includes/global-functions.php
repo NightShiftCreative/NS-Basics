@@ -62,7 +62,7 @@ if( !function_exists('rypecore_get_icon') ){
 /*-----------------------------------------------------------------------------------*/
 /*  Image Upload (used for front end avatar upload)
 /*-----------------------------------------------------------------------------------*/
-function rype_basics_upload_user_file( $file = array() ) {
+function ns_basics_upload_user_file( $file = array() ) {
         
     require_once( ABSPATH . 'wp-admin/includes/admin.php' );
                             
@@ -100,7 +100,7 @@ function rype_basics_upload_user_file( $file = array() ) {
 /*-----------------------------------------------------------------------------------*/
 /*  Generate admin gallery upload
 /*-----------------------------------------------------------------------------------*/
-function rype_basics_generate_gallery($additional_images) { ?>
+function ns_basics_generate_gallery($additional_images) { ?>
     <div class="admin-module no-border gallery-container">
         <?php
         if(!empty($additional_images) && !empty($additional_images[0])) { ?>
@@ -109,7 +109,7 @@ function rype_basics_generate_gallery($additional_images) { ?>
             $additional_images = explode(",", $additional_images[0]);
             $additional_images = array_filter($additional_images);
 
-            function rype_basics_get_image_id($image_url) {
+            function ns_basics_get_image_id($image_url) {
                 global $wpdb;
                 $attachment = $wpdb->get_col($wpdb->prepare("SELECT ID FROM $wpdb->posts WHERE guid='%s';", $image_url )); 
                 return $attachment[0]; 
@@ -117,7 +117,7 @@ function rype_basics_generate_gallery($additional_images) { ?>
 
             foreach ($additional_images as $additional_image) {
                 if(!empty($additional_image)) {
-                    $image_id = rype_basics_get_image_id($additional_image);
+                    $image_id = ns_basics_get_image_id($additional_image);
 
                     if(!empty($image_id)) {
                         $image_thumb = wp_get_attachment_image_src($image_id, 'thumbnail');
@@ -130,27 +130,27 @@ function rype_basics_generate_gallery($additional_images) { ?>
                         <div class="gallery-img-preview">
                             '.$image_thumb_html.'
                             <input type="hidden" name="rypecore_additional_img[]" value="'. $additional_image .'" />
-                            <span class="action delete-additional-img" title="'. esc_html__('Delete', 'rype-basics'). '"><i class="fa fa-trash"></i></span>
-                            <a href="'.get_admin_url().'upload.php?item='.$image_id.'" class="action edit-additional-img" target="_blank" title="'.esc_html__('Edit', 'rype-basics').'"><i class="fa fa-pencil"></i></a>
+                            <span class="action delete-additional-img" title="'. esc_html__('Delete', 'ns-basics'). '"><i class="fa fa-trash"></i></span>
+                            <a href="'.get_admin_url().'upload.php?item='.$image_id.'" class="action edit-additional-img" target="_blank" title="'.esc_html__('Edit', 'ns-basics').'"><i class="fa fa-pencil"></i></a>
                         </div>
                     ';
                 }
             }
-        } else { echo '<p class="admin-module-note no-gallery-img">'.esc_html__('No gallery images were found.', 'rype-basics').'</p>'; } ?>
+        } else { echo '<p class="admin-module-note no-gallery-img">'.esc_html__('No gallery images were found.', 'ns-basics').'</p>'; } ?>
 
         <div class="clear"></div>
-        <span class="admin-button add-gallery-media"><i class="fa fa-plus"></i> <?php echo esc_html_e('Add Images', 'rype-basics'); ?></span>
+        <span class="admin-button add-gallery-media"><i class="fa fa-plus"></i> <?php echo esc_html_e('Add Images', 'ns-basics'); ?></span>
     </div>
 <?php }
 
 /*-----------------------------------------------------------------------------------*/
 /*  Check if key/value is in array
 /*-----------------------------------------------------------------------------------*/
-function rype_basics_in_array($array, $key, $key_value){
+function ns_basics_in_array($array, $key, $key_value){
     $within_array = false;
     foreach( $array as $k=>$v ){
         if( is_array($v) ){
-            $within_array = rype_basics_in_array($v, $key, $key_value);
+            $within_array = ns_basics_in_array($v, $key, $key_value);
             if( $within_array == true ){
                 break;
             }
@@ -167,7 +167,7 @@ function rype_basics_in_array($array, $key, $key_value){
 /*-----------------------------------------------------------------------------------*/
 /*  Admin Alerts
 /*-----------------------------------------------------------------------------------*/
-function rype_basics_admin_alert($type = 'info', $text = null, $action = null, $action_text = null, $dismissible = false, $class = null) {
+function ns_basics_admin_alert($type = 'info', $text = null, $action = null, $action_text = null, $dismissible = false, $class = null) {
     ob_start(); ?>
 
     <div class="admin-alert-box <?php if(!empty($type)) { ?>admin-<?php echo $type; ?><?php } ?> <?php if(!empty($class)) { echo $class; } ?>">
@@ -188,7 +188,7 @@ function rype_basics_admin_alert($type = 'info', $text = null, $action = null, $
 /*-----------------------------------------------------------------------------------*/
 /*  Main Contact Form
 /*-----------------------------------------------------------------------------------*/
-function rype_basics_main_contact_form() {
+function ns_basics_main_contact_form() {
 
     $default_email = get_option('admin_email');
     $contact_form_email = esc_attr(get_option('rypecore_email', $default_email));
@@ -204,7 +204,7 @@ function rype_basics_main_contact_form() {
       
       // require a name from user
       if(trim($_POST['contact-name']) === '') {
-        $nameError =  esc_html__('Forgot your name!', 'rype-basics'); 
+        $nameError =  esc_html__('Forgot your name!', 'ns-basics'); 
         $hasError = true;
       } else {
         $contact_name = trim($_POST['contact-name']);
@@ -212,10 +212,10 @@ function rype_basics_main_contact_form() {
       
       // need valid email
       if(trim($_POST['contact-email']) === '')  {
-        $emailError = esc_html__('Forgot to enter in your e-mail address.', 'rype-basics');
+        $emailError = esc_html__('Forgot to enter in your e-mail address.', 'ns-basics');
         $hasError = true;
       } else if (!preg_match("/^[[:alnum:]][a-z0-9_.-]*@[a-z0-9.-]+\.[a-z]{2,4}$/i", trim($_POST['contact-email']))) {
-        $emailError = esc_html__('You entered an invalid email address.', 'rype-basics');
+        $emailError = esc_html__('You entered an invalid email address.', 'ns-basics');
         $hasError = true;
       } else {
         $contact_email = trim($_POST['contact-email']);
@@ -237,7 +237,7 @@ function rype_basics_main_contact_form() {
         
       // we need at least some content
       if(trim($_POST['contact-message']) === '') {
-        $commentError = esc_html__('You forgot to enter a message!', 'rype-basics');
+        $commentError = esc_html__('You forgot to enter a message!', 'ns-basics');
         $hasError = true;
       } else {
         if(function_exists('stripslashes')) {
@@ -275,36 +275,36 @@ function rype_basics_main_contact_form() {
         <div class="contact-form-fields">
             <div class="form-block">
                 <?php if($nameError != '') { echo '<div class="alert-box error">'.$nameError.'</div>'; } ?>
-                <label><?php esc_html_e( 'Name', 'rype-basics' ); ?>*</label>
-                <input type="text" name="contact-name" placeholder="<?php esc_html_e( 'Your Name', 'rype-basics' ); ?>" class="requiredField" value="<?php if(isset($contact_name)) { echo $contact_name; } ?>" />
+                <label><?php esc_html_e( 'Name', 'ns-basics' ); ?>*</label>
+                <input type="text" name="contact-name" placeholder="<?php esc_html_e( 'Your Name', 'ns-basics' ); ?>" class="requiredField" value="<?php if(isset($contact_name)) { echo $contact_name; } ?>" />
             </div>
 
             <div class="form-block">
                 <?php if($emailError != '') { echo '<div class="alert-box error">'.$emailError.'</div>'; } ?>
-                <label><?php esc_html_e( 'Email', 'rype-basics' ); ?>*</label>
-                <input type="email" name="contact-email" placeholder="<?php esc_html_e( 'Your Email', 'rype-basics' ); ?>" class="requiredField email" value="<?php if(isset($contact_email)) { echo $contact_email; } ?>" />
+                <label><?php esc_html_e( 'Email', 'ns-basics' ); ?>*</label>
+                <input type="email" name="contact-email" placeholder="<?php esc_html_e( 'Your Email', 'ns-basics' ); ?>" class="requiredField email" value="<?php if(isset($contact_email)) { echo $contact_email; } ?>" />
             </div>
 
             <div class="form-block">
-                <label><?php esc_html_e( 'Phone', 'rype-basics' ); ?></label>
-                <input type="text" name="contact-phone" placeholder="<?php esc_html_e( 'Your Phone', 'rype-basics' ); ?>" value="<?php if(isset($_POST['contact-phone'])) { echo $_POST['contact-phone']; } ?>" />
+                <label><?php esc_html_e( 'Phone', 'ns-basics' ); ?></label>
+                <input type="text" name="contact-phone" placeholder="<?php esc_html_e( 'Your Phone', 'ns-basics' ); ?>" value="<?php if(isset($_POST['contact-phone'])) { echo $_POST['contact-phone']; } ?>" />
             </div>
 
             <div class="form-block">
-                <label><?php esc_html_e( 'Subject', 'rype-basics' ); ?></label>
-                <input type="text" name="contact-subject" placeholder="<?php esc_html_e( 'Subject', 'rype-basics' ); ?>" value="<?php if(isset($_POST['contact-subject'])) { echo $_POST['contact-subject']; } ?>" />
+                <label><?php esc_html_e( 'Subject', 'ns-basics' ); ?></label>
+                <input type="text" name="contact-subject" placeholder="<?php esc_html_e( 'Subject', 'ns-basics' ); ?>" value="<?php if(isset($_POST['contact-subject'])) { echo $_POST['contact-subject']; } ?>" />
             </div>
 
             <div class="form-block">
                 <?php if($commentError != '') { echo '<div class="alert-box error">'.$commentError.'</div>'; } ?>
-                <label><?php esc_html_e( 'Message', 'rype-basics' ); ?>*</label>
-                <textarea name="contact-message" placeholder="<?php esc_html_e( 'Your Message', 'rype-basics' ); ?>" class="requiredField"><?php if(isset($contact_message)) { echo $contact_message; } ?></textarea>
+                <label><?php esc_html_e( 'Message', 'ns-basics' ); ?>*</label>
+                <textarea name="contact-message" placeholder="<?php esc_html_e( 'Your Message', 'ns-basics' ); ?>" class="requiredField"><?php if(isset($contact_message)) { echo $contact_message; } ?></textarea>
             </div>
 
             <div class="form-block">
                 <input type="hidden" name="submitted" id="submitted" value="true" />
-                <input type="submit" value="<?php esc_html_e( 'Submit', 'rype-basics' ); ?>" />
-                <div class="form-loader"><img src="<?php echo esc_url(home_url('/')); ?>wp-admin/images/spinner.gif" alt="" /> <?php esc_html_e( 'Loading...', 'rype-basics' ); ?></div>
+                <input type="submit" value="<?php esc_html_e( 'Submit', 'ns-basics' ); ?>" />
+                <div class="form-loader"><img src="<?php echo esc_url(home_url('/')); ?>wp-admin/images/spinner.gif" alt="" /> <?php esc_html_e( 'Loading...', 'ns-basics' ); ?></div>
             </div>
         </div>
 
