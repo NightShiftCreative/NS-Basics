@@ -1,0 +1,1088 @@
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Rype Basics\n"
+"POT-Creation-Date: 2018-09-13 22:09-0400\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: \n"
+"Language-Team: Rype Creative\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 2.0.8\n"
+"X-Poedit-Basepath: ..\n"
+"Plural-Forms: nplurals=INTEGER; plural=EXPRESSION\n"
+"X-Poedit-KeywordsList: __;_e;_n;_x;_ex;_nx;esc_attr__;esc_attr_e;esc_attr_x;"
+"esc_html__;esc_html_e;esc_html_x;_n_noop;_nx_noop\n"
+"X-Poedit-SearchPath-0: .\n"
+
+#: add-ons/basic-shortcodes/shortcodes.php:4
+msgid "Add Basic Shortcode"
+msgstr ""
+
+#: add-ons/basic-shortcodes/shortcodes.php:5
+msgid "Basic Shortcode"
+msgstr ""
+
+#: add-ons/basic-shortcodes/shortcodes.php:9
+msgid "Insert a Shortcode"
+msgstr ""
+
+#: add-ons/basic-shortcodes/shortcodes.php:12
+msgid "Choose a shortcode to insert from the list below:"
+msgstr ""
+
+#: add-ons/basic-shortcodes/shortcodes.php:13
+msgid "Row"
+msgstr ""
+
+#: add-ons/basic-shortcodes/shortcodes.php:14
+msgid "Column"
+msgstr ""
+
+#: add-ons/basic-shortcodes/shortcodes.php:15
+msgid "Module"
+msgstr ""
+
+#: add-ons/basic-shortcodes/shortcodes.php:16
+msgid "Module Header"
+msgstr ""
+
+#: add-ons/basic-shortcodes/shortcodes.php:17
+msgid "Button"
+msgstr ""
+
+#: add-ons/basic-shortcodes/shortcodes.php:18
+msgid "Video"
+msgstr ""
+
+#: add-ons/basic-shortcodes/shortcodes.php:19
+msgid "Alert Box"
+msgstr ""
+
+#: add-ons/basic-shortcodes/shortcodes.php:20
+msgid "Service"
+msgstr ""
+
+#: add-ons/basic-shortcodes/shortcodes.php:21
+msgid "Team Member"
+msgstr ""
+
+#: add-ons/basic-shortcodes/shortcodes.php:22
+msgid "Tabs"
+msgstr ""
+
+#: add-ons/basic-shortcodes/shortcodes.php:23
+msgid "Accordion"
+msgstr ""
+
+#: add-ons/basic-shortcodes/shortcodes.php:24
+msgid "Testimonials"
+msgstr ""
+
+#: add-ons/basic-shortcodes/shortcodes.php:27
+msgid "Go Back"
+msgstr ""
+
+#: add-ons/basic-shortcodes/shortcodes.php:30
+msgid "Insert Column"
+msgstr ""
+
+#: add-ons/basic-shortcodes/shortcodes.php:32
+msgid "Width"
+msgstr ""
+
+#: add-ons/basic-shortcodes/shortcodes.php:34
+msgid "Sixth"
+msgstr ""
+
+#: add-ons/basic-shortcodes/shortcodes.php:35
+msgid "Quarter"
+msgstr ""
+
+#: add-ons/basic-shortcodes/shortcodes.php:36
+msgid "Third"
+msgstr ""
+
+#: add-ons/basic-shortcodes/shortcodes.php:37
+msgid "Half"
+msgstr ""
+
+#: add-ons/basic-shortcodes/shortcodes.php:38
+msgid "Full"
+msgstr ""
+
+#: add-ons/basic-shortcodes/shortcodes.php:41
+#: add-ons/basic-shortcodes/shortcodes.php:78
+#: add-ons/basic-shortcodes/shortcodes.php:99
+#: add-ons/basic-shortcodes/shortcodes.php:117
+#: add-ons/basic-shortcodes/shortcodes.php:136
+#: add-ons/basic-shortcodes/shortcodes.php:193
+#: add-ons/basic-shortcodes/shortcodes.php:214
+#: add-ons/basic-shortcodes/shortcodes.php:231
+#: add-ons/basic-shortcodes/shortcodes.php:239
+#: add-ons/basic-shortcodes/shortcodes.php:247
+#: add-ons/basic-shortcodes/shortcodes.php:255
+msgid "Insert"
+msgstr ""
+
+#: add-ons/basic-shortcodes/shortcodes.php:45
+msgid "Insert Module"
+msgstr ""
+
+#: add-ons/basic-shortcodes/shortcodes.php:48
+msgid "Container"
+msgstr ""
+
+#: add-ons/basic-shortcodes/shortcodes.php:51
+msgid "CSS Class Name"
+msgstr ""
+
+#: add-ons/basic-shortcodes/shortcodes.php:55
+msgid "Padding Top"
+msgstr ""
+
+#: add-ons/basic-shortcodes/shortcodes.php:59
+msgid "Padding Bottom"
+msgstr ""
+
+#: add-ons/basic-shortcodes/shortcodes.php:63
+msgid "Margin Top"
+msgstr ""
+
+#: add-ons/basic-shortcodes/shortcodes.php:67
+msgid "Margin Bottom"
+msgstr ""
+
+#: add-ons/basic-shortcodes/shortcodes.php:71
+msgid "Background Color"
+msgstr ""
+
+#: add-ons/basic-shortcodes/shortcodes.php:75
+msgid "Background Image"
+msgstr ""
+
+#: add-ons/basic-shortcodes/shortcodes.php:82
+msgid "Insert Module Header"
+msgstr ""
+
+#: add-ons/basic-shortcodes/shortcodes.php:84
+#: add-ons/basic-shortcodes/shortcodes.php:105
+#: add-ons/basic-shortcodes/shortcodes.php:129
+#: add-ons/basic-shortcodes/shortcodes.php:220
+msgid "Title"
+msgstr ""
+
+#: add-ons/basic-shortcodes/shortcodes.php:88
+#: add-ons/basic-shortcodes/shortcodes.php:133
+msgid "Text"
+msgstr ""
+
+#: add-ons/basic-shortcodes/shortcodes.php:92 rype-basics.php:62
+msgid "Position"
+msgstr ""
+
+#: add-ons/basic-shortcodes/shortcodes.php:94
+#: add-ons/page-settings/page-settings.php:157 add-ons/slides/slides.php:47
+msgid "Left"
+msgstr ""
+
+#: add-ons/basic-shortcodes/shortcodes.php:95
+#: add-ons/page-settings/page-settings.php:158 add-ons/slides/slides.php:48
+msgid "Center"
+msgstr ""
+
+#: add-ons/basic-shortcodes/shortcodes.php:96
+#: add-ons/page-settings/page-settings.php:159 add-ons/slides/slides.php:49
+msgid "Right"
+msgstr ""
+
+#: add-ons/basic-shortcodes/shortcodes.php:103
+msgid "Insert Alert Box"
+msgstr ""
+
+#: add-ons/basic-shortcodes/shortcodes.php:109
+msgid "Type"
+msgstr ""
+
+#: add-ons/basic-shortcodes/shortcodes.php:111
+msgid "Success"
+msgstr ""
+
+#: add-ons/basic-shortcodes/shortcodes.php:112
+msgid "Error"
+msgstr ""
+
+#: add-ons/basic-shortcodes/shortcodes.php:113
+msgid "Warning"
+msgstr ""
+
+#: add-ons/basic-shortcodes/shortcodes.php:114
+msgid "Info"
+msgstr ""
+
+#: add-ons/basic-shortcodes/shortcodes.php:121
+msgid "Insert Service"
+msgstr ""
+
+#: add-ons/basic-shortcodes/shortcodes.php:123
+msgid "Icon"
+msgstr ""
+
+#: add-ons/basic-shortcodes/shortcodes.php:140
+msgid "Insert Team Member"
+msgstr ""
+
+#: add-ons/basic-shortcodes/shortcodes.php:142
+msgid "Image"
+msgstr ""
+
+#: add-ons/basic-shortcodes/shortcodes.php:146 add-ons/misc.php:206
+#: rype-basics.php:64
+msgid "Name"
+msgstr ""
+
+#: add-ons/basic-shortcodes/shortcodes.php:150
+msgid "Title/Position"
+msgstr ""
+
+#: add-ons/basic-shortcodes/shortcodes.php:154
+msgid "Bio"
+msgstr ""
+
+#: add-ons/basic-shortcodes/shortcodes.php:158
+msgid "Facebook"
+msgstr ""
+
+#: add-ons/basic-shortcodes/shortcodes.php:162
+msgid "Twitter"
+msgstr ""
+
+#: add-ons/basic-shortcodes/shortcodes.php:166
+msgid "Google Plus"
+msgstr ""
+
+#: add-ons/basic-shortcodes/shortcodes.php:170
+msgid "Instagram"
+msgstr ""
+
+#: add-ons/basic-shortcodes/shortcodes.php:174
+msgid "Linkedin"
+msgstr ""
+
+#: add-ons/basic-shortcodes/shortcodes.php:178
+msgid "Youtube"
+msgstr ""
+
+#: add-ons/basic-shortcodes/shortcodes.php:182
+msgid "Vimeo"
+msgstr ""
+
+#: add-ons/basic-shortcodes/shortcodes.php:186
+msgid "Flickr"
+msgstr ""
+
+#: add-ons/basic-shortcodes/shortcodes.php:190
+msgid "Dribbble"
+msgstr ""
+
+#: add-ons/basic-shortcodes/shortcodes.php:197
+msgid "Insert Button"
+msgstr ""
+
+#: add-ons/basic-shortcodes/shortcodes.php:199 add-ons/slides/slides.php:70
+msgid "Button Text"
+msgstr ""
+
+#: add-ons/basic-shortcodes/shortcodes.php:203
+msgid "Button URL"
+msgstr ""
+
+#: add-ons/basic-shortcodes/shortcodes.php:207
+msgid "Button Type"
+msgstr ""
+
+#: add-ons/basic-shortcodes/shortcodes.php:211
+msgid "Button Position"
+msgstr ""
+
+#: add-ons/basic-shortcodes/shortcodes.php:218
+msgid "Insert Video"
+msgstr ""
+
+#: add-ons/basic-shortcodes/shortcodes.php:224
+msgid "Video URL"
+msgstr ""
+
+#: add-ons/basic-shortcodes/shortcodes.php:228
+msgid "Cover Image"
+msgstr ""
+
+#: add-ons/basic-shortcodes/shortcodes.php:235
+msgid "Insert Tabs"
+msgstr ""
+
+#: add-ons/basic-shortcodes/shortcodes.php:237
+msgid "Create Tab"
+msgstr ""
+
+#: add-ons/basic-shortcodes/shortcodes.php:243
+msgid "Insert Accordion"
+msgstr ""
+
+#: add-ons/basic-shortcodes/shortcodes.php:245
+msgid "Create Accordion"
+msgstr ""
+
+#: add-ons/basic-shortcodes/shortcodes.php:251
+msgid "Insert Testimonials"
+msgstr ""
+
+#: add-ons/basic-shortcodes/shortcodes.php:253
+msgid "Create Testimonial"
+msgstr ""
+
+#: add-ons/basic-widgets/contact_info_widget.php:12
+msgid "Display your contact info."
+msgstr ""
+
+#: add-ons/basic-widgets/contact_info_widget.php:15
+msgid "(Rype) Contact Info"
+msgstr ""
+
+#: add-ons/basic-widgets/contact_info_widget.php:82
+#: add-ons/basic-widgets/list_posts_widget.php:113
+#: add-ons/basic-widgets/social_links_widget.php:120
+#: add-ons/basic-widgets/testimonials_widget.php:95
+msgid "Title:"
+msgstr ""
+
+#: add-ons/basic-widgets/contact_info_widget.php:87
+#: add-ons/basic-widgets/social_links_widget.php:147
+msgid "Text Before:"
+msgstr ""
+
+#: add-ons/basic-widgets/contact_info_widget.php:92
+msgid "Address:"
+msgstr ""
+
+#: add-ons/basic-widgets/contact_info_widget.php:97
+msgid "Phone:"
+msgstr ""
+
+#: add-ons/basic-widgets/contact_info_widget.php:102
+msgid "Email:"
+msgstr ""
+
+#: add-ons/basic-widgets/list_posts_widget.php:12
+msgid "Display a list of blog posts."
+msgstr ""
+
+#: add-ons/basic-widgets/list_posts_widget.php:15
+msgid "(Rype) List Posts"
+msgstr ""
+
+#: add-ons/basic-widgets/list_posts_widget.php:118
+msgid "Number of Posts:"
+msgstr ""
+
+#: add-ons/basic-widgets/list_posts_widget.php:123
+msgid "Show Thumbnail:"
+msgstr ""
+
+#: add-ons/basic-widgets/list_posts_widget.php:125
+msgid "Yes"
+msgstr ""
+
+#: add-ons/basic-widgets/list_posts_widget.php:126
+msgid "No"
+msgstr ""
+
+#: add-ons/basic-widgets/list_posts_widget.php:131
+msgid "Filter By Category:"
+msgstr ""
+
+#: add-ons/basic-widgets/list_posts_widget.php:142
+msgid "Show Date:"
+msgstr ""
+
+#: add-ons/basic-widgets/list_posts_widget.php:147
+msgid "Show Excerpt:"
+msgstr ""
+
+#: add-ons/basic-widgets/list_posts_widget.php:152
+msgid "Excerpt Size:"
+msgstr ""
+
+#: add-ons/basic-widgets/social_links_widget.php:12
+msgid "Display your social media links."
+msgstr ""
+
+#: add-ons/basic-widgets/social_links_widget.php:15
+msgid "(Rype) Social Links"
+msgstr ""
+
+#: add-ons/basic-widgets/social_links_widget.php:125
+msgid "Source:"
+msgstr ""
+
+#: add-ons/basic-widgets/social_links_widget.php:127
+msgid "Theme Options"
+msgstr ""
+
+#: add-ons/basic-widgets/social_links_widget.php:128
+msgid "Custom"
+msgstr ""
+
+#: add-ons/basic-widgets/social_links_widget.php:144
+msgid "Only compatible with themes by Rype Creative."
+msgstr ""
+
+#: add-ons/basic-widgets/social_links_widget.php:152
+msgid "Text After:"
+msgstr ""
+
+#: add-ons/basic-widgets/testimonials_widget.php:12
+msgid "Display a testimonials slider."
+msgstr ""
+
+#: add-ons/basic-widgets/testimonials_widget.php:15
+msgid "(Rype) Testimonials"
+msgstr ""
+
+#: add-ons/basic-widgets/testimonials_widget.php:108
+#: add-ons/members/members.php:119 rype-basics.php:56
+msgid "Remove"
+msgstr ""
+
+#: add-ons/basic-widgets/testimonials_widget.php:113
+msgid "Name:"
+msgstr ""
+
+#: add-ons/basic-widgets/testimonials_widget.php:117
+msgid "Position:"
+msgstr ""
+
+#: add-ons/basic-widgets/testimonials_widget.php:121
+msgid "Image URL:"
+msgstr ""
+
+#: add-ons/basic-widgets/testimonials_widget.php:125
+msgid "Testimonial:"
+msgstr ""
+
+#: add-ons/basic-widgets/testimonials_widget.php:134
+msgid "Add Testimonial"
+msgstr ""
+
+#: add-ons/license-keys.php:18
+msgid "Your license key and/or license email is invalid."
+msgstr ""
+
+#: add-ons/license-keys.php:46
+msgid "Purchase"
+msgstr ""
+
+#: add-ons/license-keys.php:49
+msgid "Registered"
+msgstr ""
+
+#: add-ons/license-keys.php:51
+msgid "Unregistered"
+msgstr ""
+
+#: add-ons/members/members.php:7
+msgid "Dashboard Sidebar"
+msgstr ""
+
+#: add-ons/members/members.php:48
+msgid "The passwords you entered do not match.  Your password was not updated."
+msgstr ""
+
+#: add-ons/members/members.php:56
+msgid "The Email you entered is not valid.  please try again."
+msgstr ""
+
+#: add-ons/members/members.php:58
+msgid "This email is already used by another user.  try a different one."
+msgstr ""
+
+#: add-ons/members/members.php:92
+msgid "Your profile was updated!"
+msgstr ""
+
+#: add-ons/members/members.php:98
+msgid "General Info"
+msgstr ""
+
+#: add-ons/members/members.php:106
+msgid "Change Avatar"
+msgstr ""
+
+#: add-ons/members/members.php:129
+msgid "First Name"
+msgstr ""
+
+#: add-ons/members/members.php:135
+msgid "Last Name"
+msgstr ""
+
+#: add-ons/members/members.php:142
+msgid "E-mail *"
+msgstr ""
+
+#: add-ons/members/members.php:147
+msgid "Website"
+msgstr ""
+
+#: add-ons/members/members.php:155
+msgid "Biographical Information"
+msgstr ""
+
+#: add-ons/members/members.php:161
+msgid "Change Password"
+msgstr ""
+
+#: add-ons/members/members.php:165
+msgid "Password *"
+msgstr ""
+
+#: add-ons/members/members.php:169
+msgid "Repeat Password *"
+msgstr ""
+
+#: add-ons/members/members.php:180
+msgid "Update Profile"
+msgstr ""
+
+#: add-ons/members/members.php:189
+msgid "You must be logged in to view this page."
+msgstr ""
+
+#: add-ons/members/members.php:190
+msgid "Login here."
+msgstr ""
+
+#: add-ons/misc.php:82 rype-basics.php:55
+msgid "Delete"
+msgstr ""
+
+#: add-ons/misc.php:83 rype-basics.php:58
+msgid "Edit"
+msgstr ""
+
+#: add-ons/misc.php:88
+msgid "No gallery images were found."
+msgstr ""
+
+#: add-ons/misc.php:91
+msgid "Add Images"
+msgstr ""
+
+#: add-ons/misc.php:123
+msgid "Thanks! Your email has been delivered!"
+msgstr ""
+
+#: add-ons/misc.php:135
+msgid "Forgot your name!"
+msgstr ""
+
+#: add-ons/misc.php:143
+msgid "Forgot to enter in your e-mail address."
+msgstr ""
+
+#: add-ons/misc.php:146
+msgid "You entered an invalid email address."
+msgstr ""
+
+#: add-ons/misc.php:168
+msgid "You forgot to enter a message!"
+msgstr ""
+
+#: add-ons/misc.php:207
+msgid "Your Name"
+msgstr ""
+
+#: add-ons/misc.php:212
+msgid "Email"
+msgstr ""
+
+#: add-ons/misc.php:213
+msgid "Your Email"
+msgstr ""
+
+#: add-ons/misc.php:217
+msgid "Phone"
+msgstr ""
+
+#: add-ons/misc.php:218
+msgid "Your Phone"
+msgstr ""
+
+#: add-ons/misc.php:222 add-ons/misc.php:223
+msgid "Subject"
+msgstr ""
+
+#: add-ons/misc.php:228
+msgid "Message"
+msgstr ""
+
+#: add-ons/misc.php:229
+msgid "Your Message"
+msgstr ""
+
+#: add-ons/misc.php:234
+msgid "Submit"
+msgstr ""
+
+#: add-ons/misc.php:235
+msgid "Loading..."
+msgstr ""
+
+#: add-ons/page-settings/page-settings.php:56
+msgid "Banner"
+msgstr ""
+
+#: add-ons/page-settings/page-settings.php:60
+msgid "Display Banner"
+msgstr ""
+
+#: add-ons/page-settings/page-settings.php:68
+msgid "Default Banner"
+msgstr ""
+
+#: add-ons/page-settings/page-settings.php:72
+msgid "Slider from <b><i>slides</i></b> custom post type"
+msgstr ""
+
+#: add-ons/page-settings/page-settings.php:76
+#: add-ons/page-settings/page-settings.php:247
+msgid "Shortcode"
+msgstr ""
+
+#: add-ons/page-settings/page-settings.php:83
+msgid "Banner Settings"
+msgstr ""
+
+#: add-ons/page-settings/page-settings.php:87
+msgid "Banner Title"
+msgstr ""
+
+#: add-ons/page-settings/page-settings.php:94
+msgid "Banner Text"
+msgstr ""
+
+#: add-ons/page-settings/page-settings.php:101
+msgid "Banner Background Image"
+msgstr ""
+
+#: add-ons/page-settings/page-settings.php:104
+#: add-ons/page-settings/page-settings.php:371 rype-basics.php:59
+msgid "Upload Image"
+msgstr ""
+
+#: add-ons/page-settings/page-settings.php:111
+msgid "Banner Background Display"
+msgstr ""
+
+#: add-ons/page-settings/page-settings.php:114
+#: add-ons/page-settings/page-settings.php:381
+msgid "Cover"
+msgstr ""
+
+#: add-ons/page-settings/page-settings.php:115
+#: add-ons/page-settings/page-settings.php:382
+msgid "Fixed"
+msgstr ""
+
+#: add-ons/page-settings/page-settings.php:116
+#: add-ons/page-settings/page-settings.php:383
+msgid "Tiled"
+msgstr ""
+
+#: add-ons/page-settings/page-settings.php:124
+msgid "Display Banner Overlay"
+msgstr ""
+
+#: add-ons/page-settings/page-settings.php:134
+msgid "Banner Overlay Opacity"
+msgstr ""
+
+#: add-ons/page-settings/page-settings.php:135 add-ons/slides/slides.php:90
+msgid "Choose an opacity ranging from 0 to 1 (0 is fully transparent)."
+msgstr ""
+
+#: add-ons/page-settings/page-settings.php:145
+msgid "Banner Overlay Color"
+msgstr ""
+
+#: add-ons/page-settings/page-settings.php:154
+msgid "Text Alignment"
+msgstr ""
+
+#: add-ons/page-settings/page-settings.php:167
+msgid "Banner Padding Top"
+msgstr ""
+
+#: add-ons/page-settings/page-settings.php:170
+#: add-ons/page-settings/page-settings.php:180
+msgid "Pixels"
+msgstr ""
+
+#: add-ons/page-settings/page-settings.php:177
+msgid "Banner Padding Bottom"
+msgstr ""
+
+#: add-ons/page-settings/page-settings.php:190
+msgid "Slider Settings"
+msgstr ""
+
+#: add-ons/page-settings/page-settings.php:195
+msgid "Display Slides from Category"
+msgstr ""
+
+#: add-ons/page-settings/page-settings.php:198
+msgid "All Categories"
+msgstr ""
+
+#: add-ons/page-settings/page-settings.php:224
+msgid "Slider Layout"
+msgstr ""
+
+#: add-ons/page-settings/page-settings.php:227
+msgid "Minimal"
+msgstr ""
+
+#: add-ons/page-settings/page-settings.php:228
+msgid "Detailed"
+msgstr ""
+
+#: add-ons/page-settings/page-settings.php:236
+msgid "Number of Slides"
+msgstr ""
+
+#: add-ons/page-settings/page-settings.php:243
+msgid "Shortcode Settings"
+msgstr ""
+
+#: add-ons/page-settings/page-settings.php:248
+msgid ""
+"Copy and paste your shortcode to display content from other sources, such as "
+"a slider revolution."
+msgstr ""
+
+#: add-ons/page-settings/page-settings.php:261
+#: add-ons/page-settings/page-settings.php:266
+msgid "Page Layout"
+msgstr ""
+
+#: add-ons/page-settings/page-settings.php:275
+msgid "Full Width"
+msgstr ""
+
+#: add-ons/page-settings/page-settings.php:286
+msgid "Right Sidebar"
+msgstr ""
+
+#: add-ons/page-settings/page-settings.php:297
+msgid "Left Sidebar"
+msgstr ""
+
+#: add-ons/page-settings/page-settings.php:307
+msgid "Use Page Container"
+msgstr ""
+
+#: add-ons/page-settings/page-settings.php:314
+msgid "Sidebar Widget Area"
+msgstr ""
+
+#: add-ons/page-settings/page-settings.php:328
+msgid "Call to Action"
+msgstr ""
+
+#: add-ons/page-settings/page-settings.php:333
+msgid "Display Call to Action"
+msgstr ""
+
+#: add-ons/page-settings/page-settings.php:340
+msgid "Call to Action Title"
+msgstr ""
+
+#: add-ons/page-settings/page-settings.php:347
+msgid "Call to Action Text"
+msgstr ""
+
+#: add-ons/page-settings/page-settings.php:354
+msgid "Call to Action Button Text"
+msgstr ""
+
+#: add-ons/page-settings/page-settings.php:361
+msgid "Call to Action Button Url"
+msgstr ""
+
+#: add-ons/page-settings/page-settings.php:368
+msgid "Call to Action Background Image"
+msgstr ""
+
+#: add-ons/page-settings/page-settings.php:378
+msgid "Call to Action Background Display"
+msgstr ""
+
+#: add-ons/post-likes/post-likes.php:12 add-ons/post-likes/post-likes.php:212
+#: add-ons/post-likes/post-likes.php:336
+msgid "Like"
+msgstr ""
+
+#: add-ons/post-likes/post-likes.php:13 add-ons/post-likes/post-likes.php:208
+msgid "Unlike"
+msgstr ""
+
+#: add-ons/post-likes/post-likes.php:27
+msgid "Not permitted"
+msgstr ""
+
+#: add-ons/post-likes/post-likes.php:293 add-ons/post-likes/post-likes.php:303
+msgid "Favorite"
+msgstr ""
+
+#: add-ons/post-likes/post-likes.php:352
+msgid "You Like:"
+msgstr ""
+
+#: add-ons/post-likes/post-likes.php:378
+msgid "You do not like anything yet."
+msgstr ""
+
+#: add-ons/post-sharing/post-sharing.php:18
+msgid "Share"
+msgstr ""
+
+#: add-ons/slides/slides.php:8
+msgid "Slides"
+msgstr ""
+
+#: add-ons/slides/slides.php:9
+msgid "Slide"
+msgstr ""
+
+#: add-ons/slides/slides.php:10
+msgid "Add New Slide"
+msgstr ""
+
+#: add-ons/slides/slides.php:11
+msgid "Search Slides"
+msgstr ""
+
+#: add-ons/slides/slides.php:12
+msgid "Edit Slide"
+msgstr ""
+
+#: add-ons/slides/slides.php:32
+msgid "Contact Us"
+msgstr ""
+
+#: add-ons/slides/slides.php:44
+msgid "Text Align"
+msgstr ""
+
+#: add-ons/slides/slides.php:58
+msgid "Button Link"
+msgstr ""
+
+#: add-ons/slides/slides.php:59
+msgid "Provide a url for the slide button"
+msgstr ""
+
+#: add-ons/slides/slides.php:71
+msgid "Provide the text for the slide button (If empty, button will be hidden)"
+msgstr ""
+
+#: add-ons/slides/slides.php:81
+msgid "Display Slide Overlay"
+msgstr ""
+
+#: add-ons/slides/slides.php:89
+msgid "Overlay Opacity"
+msgstr ""
+
+#: add-ons/slides/slides.php:100
+msgid "Overlay Color"
+msgstr ""
+
+#: add-ons/slides/slides.php:162 add-ons/slides/slides.php:163
+#: add-ons/slides/slides.php:181
+msgid "Slide Category"
+msgstr ""
+
+#: add-ons/slides/slides.php:164
+msgid "Search Slide Categories"
+msgstr ""
+
+#: add-ons/slides/slides.php:165
+msgid "Popular Slide Categories"
+msgstr ""
+
+#: add-ons/slides/slides.php:166
+msgid "All Slide Categories"
+msgstr ""
+
+#: add-ons/slides/slides.php:167
+msgid "Parent Slide Category"
+msgstr ""
+
+#: add-ons/slides/slides.php:168
+msgid "Edit Slide Category"
+msgstr ""
+
+#: add-ons/slides/slides.php:169
+msgid "Update Slide Category"
+msgstr ""
+
+#: add-ons/slides/slides.php:170
+msgid "Add New Slide Category"
+msgstr ""
+
+#: add-ons/slides/slides.php:171
+msgid "New Slide Category"
+msgstr ""
+
+#: add-ons/slides/slides.php:172
+msgid "Separate categories with commas"
+msgstr ""
+
+#: add-ons/slides/slides.php:173
+msgid "Add or remove categories"
+msgstr ""
+
+#: add-ons/slides/slides.php:174
+msgid "Choose from most used categories"
+msgstr ""
+
+#: plugin-update-checker/Puc/v4p4/Plugin/UpdateChecker.php:395
+msgid "Check for updates"
+msgstr ""
+
+#: plugin-update-checker/Puc/v4p4/Plugin/UpdateChecker.php:432
+msgid "View details"
+msgstr ""
+
+#: plugin-update-checker/Puc/v4p4/Plugin/UpdateChecker.php:455
+#, php-format
+msgid "More information about %s"
+msgstr ""
+
+#: plugin-update-checker/Puc/v4p4/Plugin/UpdateChecker.php:548
+#, php-format
+msgid "The %s plugin is up to date."
+msgstr ""
+
+#: plugin-update-checker/Puc/v4p4/Plugin/UpdateChecker.php:550
+#, php-format
+msgid "A new version of the %s plugin is available."
+msgstr ""
+
+#: plugin-update-checker/Puc/v4p4/Plugin/UpdateChecker.php:552
+#, php-format
+msgid "Could not determine if updates are available for %s."
+msgstr ""
+
+#: plugin-update-checker/Puc/v4p4/Plugin/UpdateChecker.php:558
+#, php-format
+msgid "Unknown update checker status \"%s\""
+msgstr ""
+
+#: plugin-update-checker/Puc/v4p4/Vcs/PluginUpdateChecker.php:98
+msgid "There is no changelog available."
+msgstr ""
+
+#: rype-basics.php:57
+msgid "Save"
+msgstr ""
+
+#: rype-basics.php:60
+msgid "New Testimonial"
+msgstr ""
+
+#: rype-basics.php:61
+msgid "Testimonial"
+msgstr ""
+
+#: rype-basics.php:63
+msgid "Image URL"
+msgstr ""
+
+#: rype-basics.php:65 rype-basics.php:192
+msgid "Off"
+msgstr ""
+
+#: rype-basics.php:66 rype-basics.php:192
+msgid "On"
+msgstr ""
+
+#: rype-basics.php:85
+msgid "Add ability to share blog posts on social media"
+msgstr ""
+
+#: rype-basics.php:95
+msgid "Allow users to \"like\" posts"
+msgstr ""
+
+#: rype-basics.php:105
+msgid "Add flexible options to pages & posts"
+msgstr ""
+
+#: rype-basics.php:115
+msgid "Add slides custom post type"
+msgstr ""
+
+#: rype-basics.php:125
+msgid "Add some helpful shortcodes"
+msgstr ""
+
+#: rype-basics.php:135
+msgid "Add some helpful widgets"
+msgstr ""
+
+#: rype-basics.php:168
+msgid "The active theme ("
+msgstr ""
+
+#: rype-basics.php:169 rype-basics.php:187
+msgid "Get a Compatible Theme"
+msgstr ""
+
+#: rype-basics.php:186
+msgid "Incompatible theme."
+msgstr ""
+
+#: rype-basics.php:190
+msgid "Active"
+msgstr ""
+
+#: rype-basics.php:190
+msgid "Disabled"
+msgstr ""
+
+#: rype-basics.php:199
+msgid "Premium"
+msgstr ""
+
+#: rype-basics.php:200
+msgid "View Details"
+msgstr ""
+
+#: rype-basics.php:268 rype-basics.php:282
+msgid "Save Changes"
+msgstr ""
+
+#: rype-basics.php:281
+msgid "Version"
+msgstr ""
+
+#: rype-basics.php:281
+msgid "Made by"
+msgstr ""
+
+#: rype-basics.php:281
+msgid "Get Support"
+msgstr ""
