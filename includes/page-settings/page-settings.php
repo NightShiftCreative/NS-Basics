@@ -52,7 +52,7 @@
         wp_nonce_field( 'rypecore_page_layout_meta_box_nonce', 'rypecore_page_layout_meta_box_nonce' );
         ?>
         
-        <div id="accordion" class="accordion rc-accordion hide">
+        <div id="accordion" class="accordion ns-accordion hide">
             <h3 class="accordion-tab"><i class="fa fa-chevron-right icon"></i> <?php echo esc_html_e('Banner', 'rype-basics'); ?></h3>
             <div>
                 <table class="admin-module">

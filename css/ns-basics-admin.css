@@ -1,6 +1,6 @@
 /****************************************************/
 /** GLOBAL **/
-/** Shared styles between rypecore and rype basics **/
+/** Shared styles between NightLight and NS basics **/
 /****************************************************/
 
 .left { float:left; }
@@ -142,8 +142,8 @@
 .admin-alert-box.settings-saved { display:none; }
 
 /** ACCORDIONS **/
-.rc-accordion.ui-accordion { margin-bottom:20px; }
-.rc-accordion .accordion-tab .fa.fa-chevron-right, .rc-accordion .accordion-tab .fa.fa-chevron-down { 
+.ns-accordion.ui-accordion { margin-bottom:20px; }
+.ns-accordion .accordion-tab .fa.fa-chevron-right, .ns-accordion .accordion-tab .fa.fa-chevron-down { 
     background:#d1dce2; 
     border-radius:5px 0px 0px 5px;
     width:55px;
@@ -155,7 +155,7 @@
     margin-right:10px;
     transition:all 0.4s;
 }
-.rc-accordion.ui-accordion .ui-accordion-header {
+.ns-accordion.ui-accordion .ui-accordion-header {
     background: #e7eff4;
     border-radius:5px;
     border:none;
@@ -166,12 +166,12 @@
     padding:0;
     transition:all 0.4s;
 }
-.rc-accordion.ui-accordion .ui-accordion-header-active { background:#48429b; color:white; border-radius:5px 5px 0px 0px; }
-.rc-accordion.ui-accordion .ui-accordion-header-active .fa.fa-chevron-right,
-.rc-accordion.ui-accordion .ui-accordion-header-active .fa.fa-chevron-down { background:#36317d; color:white; border-radius:5px 0px 0px 0px; }
-.rc-accordion.ui-accordion .ui-accordion-header .ui-icon { display:none; }
+.ns-accordion.ui-accordion .ui-accordion-header-active { background:#48429b; color:white; border-radius:5px 5px 0px 0px; }
+.ns-accordion.ui-accordion .ui-accordion-header-active .fa.fa-chevron-right,
+.ns-accordion.ui-accordion .ui-accordion-header-active .fa.fa-chevron-down { background:#36317d; color:white; border-radius:5px 0px 0px 0px; }
+.ns-accordion.ui-accordion .ui-accordion-header .ui-icon { display:none; }
 
-.rc-accordion.ui-accordion .ui-accordion-content {
+.ns-accordion.ui-accordion .ui-accordion-content {
     border: 1px solid #d6d6d6;
     padding:25px;
     margin:0;
@@ -378,10 +378,10 @@ input[type=checkbox].toggle-switch-checkbox { display: none; }
 /** REPEATERS **/
 /**********************************************/
 .admin-module-repeater .delete { padding:17px 17px 0px 0px; }
-.admin-module-repeater .rc-accordion.accordion { margin-bottom:0; }
-.admin-module-repeater .rc-accordion.accordion h3 { margin-bottom:10px; }
-.admin-module-repeater .rc-accordion.accordion h3.ui-accordion-header-active { margin-bottom:0; }
-.admin-module-repeater .rc-accordion.ui-accordion .ui-accordion-content { margin-bottom:10px; }
+.admin-module-repeater .ns-accordion.accordion { margin-bottom:0; }
+.admin-module-repeater .ns-accordion.accordion h3 { margin-bottom:10px; }
+.admin-module-repeater .ns-accordion.accordion h3.ui-accordion-header-active { margin-bottom:0; }
+.admin-module-repeater .ns-accordion.ui-accordion .ui-accordion-content { margin-bottom:10px; }
 
 
 /**********************************************/
@@ -571,8 +571,8 @@ input[type=checkbox].toggle-switch-checkbox { display: none; }
 /**********************************************/
 /** LICENSE KEYS **/
 /**********************************************/
-.rype-license-tab .admin-module-note.license-error { display:inline-block; color:#bd5a5a; margin-left:6px; }
-.rype-license-tab .button { margin-top:15px; margin-left:8px; }
+.ns-license-tab .admin-module-note.license-error { display:inline-block; color:#bd5a5a; margin-left:6px; }
+.ns-license-tab .button { margin-top:15px; margin-left:8px; }
 
 /**********************************************/
 /** METABOXES **/
@@ -775,10 +775,10 @@ input[type=checkbox].toggle-switch-checkbox { display: none; }
 
 @media only screen and (max-width: 550px) {
 
-    .rype-settings-nav { float:none; width:100%; }
-    .rype-settings-actions { float:none; width:100%; margin:10px 0px; }
-    .rype-settings-actions input { width:100% !important; }
-    .rype-settings-footer .rype-settings-version { float:none; text-align:center; }
+    .ns-settings-nav { float:none; width:100%; }
+    .ns-settings-actions { float:none; width:100%; margin:10px 0px; }
+    .ns-settings-actions input { width:100% !important; }
+    .ns-settings-footer .ns-settings-version { float:none; text-align:center; }
 
     .ns-modules .ns-module-group > .admin-module { width:100%; }
 
