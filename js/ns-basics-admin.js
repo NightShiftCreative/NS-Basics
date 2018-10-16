@@ -4,7 +4,7 @@ jQuery(document).ready(function($) {
     /* AJAX SAVE SETTINGS */
     /********************************************/
     $(document).ready(function() {
-        $('.rype-settings-ajax').submit(function() { 
+        $('.ns-settings-ajax').submit(function() { 
             $(this).ajaxSubmit({
                 onLoading: $('.loader').show(),
                 success: function(){

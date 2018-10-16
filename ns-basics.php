@@ -194,7 +194,7 @@ function ns_basics_display_add_ons($group = null) {
                         <?php if(!empty($add_on['required_theme_support']) && !current_theme_supports($add_on['required_theme_support'])) { ?>    
                             <div class="admin-alert-box admin-info theme-message">
                                 <?php esc_html_e('Incompatible theme.', 'ns-basics'); ?>
-                                <a href="http://rypecreative.com/project-types/themes/" target="_blank"><?php esc_html_e('Get a Compatible Theme', 'ns-basics'); ?></a>
+                                <a href="http://nightshiftcreative.co/project-types/themes/" target="_blank"><?php esc_html_e('Get a Compatible Theme', 'ns-basics'); ?></a>
                             </div>
                         <?php } else { ?>
                             <div class="toggle-switch" title="<?php if($active == 'true') { esc_html_e('Active', 'ns-basics'); } else { esc_html_e('Disabled', 'ns-basics'); } ?>">
@@ -259,16 +259,16 @@ function ns_basics_admin_page($page_name = null, $settings_group = null, $pages 
     <div class="wrap">
         <?php if(!empty($page_name)) { ?><h1><?php echo $page_name; ?></h1><?php } ?>
 
-        <form method="post" action="options.php" class="rype-settings <?php if($ajax == true) { echo 'rype-settings-ajax'; } ?>">
+        <form method="post" action="options.php" class="ns-settings <?php if($ajax == true) { echo 'ns-settings-ajax'; } ?>">
             <?php if(!empty($settings_group)) { 
                 settings_errors();
                 settings_fields($settings_group);
                 do_settings_sections($settings_group); 
             } ?>
 
-            <div class="rype-settings-menu-bar rype-settings-header">
+            <div class="ns-settings-menu-bar ns-settings-header">
                 <?php if(!empty($pages)) { ?>
-                <div class="rype-settings-nav">
+                <div class="ns-settings-nav">
                     <ul>
                         <?php $current_page = $_GET['page']; ?>
                         <?php foreach($pages as $page) { ?>
@@ -278,7 +278,7 @@ function ns_basics_admin_page($page_name = null, $settings_group = null, $pages 
                 </div>
                 <?php } ?>
                 <?php if($display_actions != 'false') { ?>
-                    <div class="rype-settings-actions">
+                    <div class="ns-settings-actions">
                         <div class="loader"><img src="<?php echo esc_url(home_url('/')); ?>wp-admin/images/spinner.gif" alt="" /></div> 
                         <?php submit_button(esc_html__('Save Changes', 'ns-basics'), 'admin-button', 'submit', false); ?>
                     </div>
@@ -286,7 +286,7 @@ function ns_basics_admin_page($page_name = null, $settings_group = null, $pages 
                 <div class="clear"></div>
             </div>
 
-            <div class="rype-settings-content <?php if(!empty($content_class)) { echo $content_class; } ?>">
+            <div class="ns-settings-content <?php if(!empty($content_class)) { echo $content_class; } ?>">
 
                 <?php echo rype_basics_admin_alert('success', esc_html__('Settings Saved Successfully', 'ns-basics'), null, null, true, 'settings-saved'); ?>
 
@@ -296,8 +296,8 @@ function ns_basics_admin_page($page_name = null, $settings_group = null, $pages 
 
                 <div id="tabs" class="ui-tabs">
                     <?php if(!empty($content_nav)) { ?>
-                    <div class="rype-settings-content-nav">
-                        <div class="rype-settings-content-nav-filler"></div>
+                    <div class="ns-settings-content-nav">
+                        <div class="ns-settings-content-nav-filler"></div>
                         <ul class="ui-tabs-nav">
                             <?php foreach($content_nav as $nav_item) { ?>
                                 <li><a href="<?php echo $nav_item['link']; ?>"><?php if(!empty($nav_item['icon'])) { echo '<i class="fa '.$nav_item['icon'].'"></i>'; } ?><?php echo $nav_item['name']; ?></a></li>
@@ -316,14 +316,14 @@ function ns_basics_admin_page($page_name = null, $settings_group = null, $pages 
                 <?php echo rype_basics_admin_alert('success', esc_html__('Settings Saved Successfully', 'ns-basics'), null, null, true, 'settings-saved'); ?>
             </div>
 
-            <div class="rype-settings-menu-bar rype-settings-footer">
+            <div class="ns-settings-menu-bar ns-settings-footer">
                 <?php
                 $plugin_data = get_plugin_data( __FILE__ );
                 $plugin_version = $plugin_data['Version']; 
                 ?>
-                <div class="rype-settings-version left"><?php esc_html_e('Version', 'ns-basics'); ?> <?php echo $plugin_version; ?> | <?php esc_html_e('Made by', 'ns-basics'); ?> <a href="http://nightshiftcreative.co/" target="_blank">NightShift Creative</a> | <a href="http://nightshiftcreative.co/contact/#theme-support" target="_blank"><?php esc_html_e('Get Support', 'ns-basics'); ?></a></div>
+                <div class="ns-settings-version left"><?php esc_html_e('Version', 'ns-basics'); ?> <?php echo $plugin_version; ?> | <?php esc_html_e('Made by', 'ns-basics'); ?> <a href="http://nightshiftcreative.co/" target="_blank">NightShift Creative</a> | <a href="http://nightshiftcreative.co/contact/#theme-support" target="_blank"><?php esc_html_e('Get Support', 'ns-basics'); ?></a></div>
                 <?php if($display_actions != 'false') { ?>
-                    <div class="rype-settings-actions">
+                    <div class="ns-settings-actions">
                         <div class="loader"><img src="<?php echo esc_url(home_url('/')); ?>wp-admin/images/spinner.gif" alt="" /></div> 
                         <?php submit_button(esc_html__('Save Changes', 'ns-basics'), 'admin-button', 'submit', false); ?>      
                     </div>
@@ -346,7 +346,7 @@ function ns_basics_settings_page() {
     $pages[] = array('slug' => 'ns-basics-help', 'name' => 'Help');
     $display_actions = 'true';
     $content = ns_basics_settings_page_content();
-    $content_class = 'rype-modules';
+    $content_class = 'ns-modules';
     $content_nav = null;
     $alerts = array();
     if(!current_theme_supports('ns-basics')) {
