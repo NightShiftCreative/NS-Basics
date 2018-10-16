@@ -1,11 +1,11 @@
 <?php
-    function rype_basics_add_page_layout_meta_box() {
+    function ns_basics_add_page_layout_meta_box() {
         $post_types = array('page');
-        add_meta_box( 'page-layout-meta-box', 'Page Settings', 'rype_basics_page_layout_meta_box', $post_types, 'normal', 'low' );
+        add_meta_box( 'page-layout-meta-box', 'Page Settings', 'ns_basics_page_layout_meta_box', $post_types, 'normal', 'low' );
     }
-    add_action( 'add_meta_boxes', 'rype_basics_add_page_layout_meta_box' );
+    add_action( 'add_meta_boxes', 'ns_basics_add_page_layout_meta_box' );
 
-    function rype_basics_page_layout_meta_box($post) {
+    function ns_basics_page_layout_meta_box($post) {
 
         //banner values
         $values = get_post_custom( $post->ID );
@@ -53,26 +53,26 @@
         ?>
         
         <div id="accordion" class="accordion ns-accordion hide">
-            <h3 class="accordion-tab"><i class="fa fa-chevron-right icon"></i> <?php echo esc_html_e('Banner', 'rype-basics'); ?></h3>
+            <h3 class="accordion-tab"><i class="fa fa-chevron-right icon"></i> <?php echo esc_html_e('Banner', 'ns-basics'); ?></h3>
             <div>
                 <table class="admin-module">
                     <tr>
-                        <td class="admin-module-label"><label><?php echo esc_html_e('Display Banner', 'rype-basics'); ?></label></td>
+                        <td class="admin-module-label"><label><?php echo esc_html_e('Display Banner', 'ns-basics'); ?></label></td>
                         <td class="admin-module-field"><input id="banner_display" type="checkbox" name="rypecore_banner_display" value="true" <?php if($banner_display == 'true') { echo 'checked'; } ?> /></td>
                      </tr>
                 </table>
 
                 <div class="admin-module no-border">
                     <label class="selectable-item <?php if($banner_source == 'image_banner') { echo 'active'; } ?>" for="banner_source_image_banner">
-                        <img src="<?php echo plugins_url('/rype-basics/images/default-banner-icon.png'); ?>" alt="" /><br/>
+                        <img src="<?php echo plugins_url('/ns-basics/images/default-banner-icon.png'); ?>" alt="" /><br/>
                         <input type="radio" id="banner_source_image_banner" name="rypecore_banner_source" value="image_banner" <?php checked('image_banner', $banner_source, true) ?> /><?php esc_html_e('Default Banner', 'rypecore'); ?><br/>   
                     </label>
                     <label class="selectable-item <?php if($banner_source == 'slides') { echo 'active'; } ?>" for="banner_source_slides">
-                        <img src="<?php echo plugins_url('/rype-basics/images/slider-icon.png'); ?>" alt="" /><br/>
+                        <img src="<?php echo plugins_url('/ns-basics/images/slider-icon.png'); ?>" alt="" /><br/>
                         <input type="radio" id="banner_source_slides" name="rypecore_banner_source" value="slides" <?php checked('slides', $banner_source, true) ?> /> <?php echo wp_kses_post(__('Slider from <b><i>slides</i></b> custom post type', 'rypecore')); ?><br/>
                     </label>
                     <label class="selectable-item <?php if($banner_source == 'shortcode') { echo 'active'; } ?>" for="banner_source_shortcode">
-                        <img src="<?php echo plugins_url('/rype-basics/images/slider-revolution-icon.png'); ?>" alt="" /><br/>
+                        <img src="<?php echo plugins_url('/ns-basics/images/slider-revolution-icon.png'); ?>" alt="" /><br/>
                         <input type="radio" id="banner_source_shortcode" name="rypecore_banner_source" value="shortcode" <?php checked('shortcode', $banner_source, true) ?> /> <?php esc_html_e('Shortcode', 'rypecore'); ?><br/>
                     </label>
 
@@ -84,36 +84,36 @@
 
                         <table class="admin-module">
                             <tr>
-                                <td class="admin-module-label"><label><?php echo esc_html_e('Banner Title', 'rype-basics'); ?></label></td>
+                                <td class="admin-module-label"><label><?php echo esc_html_e('Banner Title', 'ns-basics'); ?></label></td>
                                 <td class="admin-module-field"><input type="text" name="rypecore_banner_title" value="<?php echo esc_attr($banner_title); ?>" /></td>
                              </tr>
                         </table>    
 
                         <table class="admin-module">
                             <tr>
-                                <td class="admin-module-label"><label><?php echo esc_html_e('Banner Text', 'rype-basics'); ?></label></td>
+                                <td class="admin-module-label"><label><?php echo esc_html_e('Banner Text', 'ns-basics'); ?></label></td>
                                 <td class="admin-module-field"><input type="text" name="rypecore_banner_text" value="<?php echo esc_attr($banner_text); ?>" /></td>
                              </tr>
                         </table> 
 
                         <table class="admin-module">
                             <tr>
-                                <td class="admin-module-label"><label><?php echo esc_html_e('Banner Background Image', 'rype-basics'); ?></label></td>
+                                <td class="admin-module-label"><label><?php echo esc_html_e('Banner Background Image', 'ns-basics'); ?></label></td>
                                 <td class="admin-module-field">
                                     <input type="text" id="banner_bg_img" name="rypecore_banner_bg_img" value="<?php echo esc_attr($banner_bg_img); ?>" />
-                                    <input id="_btn" class="rype_upload_image_button" type="button" value="<?php esc_html_e('Upload Image', 'rype-basics'); ?>" />
+                                    <input id="_btn" class="ns_upload_image_button" type="button" value="<?php esc_html_e('Upload Image', 'ns-basics'); ?>" />
                                 </td>
                              </tr>
                         </table>
 
                         <table class="admin-module">
                             <tr>
-                                <td class="admin-module-label"><label><?php echo esc_html_e('Banner Background Display', 'rype-basics'); ?></label></td>
+                                <td class="admin-module-label"><label><?php echo esc_html_e('Banner Background Display', 'ns-basics'); ?></label></td>
                                 <td class="admin-module-field">
                                     <select name="rypecore_banner_bg_display">
-                                        <option value="cover" <?php if($banner_bg_display == 'cover') { echo 'selected'; } ?>><?php echo esc_html_e('Cover', 'rype-basics'); ?></option>
-                                        <option value="fixed" <?php if($banner_bg_display == 'fixed') { echo 'selected'; } ?>><?php echo esc_html_e('Fixed', 'rype-basics'); ?></option>
-                                        <option value="repeat" <?php if($banner_bg_display == 'repeat') { echo 'selected'; } ?>><?php echo esc_html_e('Tiled', 'rype-basics'); ?></option>
+                                        <option value="cover" <?php if($banner_bg_display == 'cover') { echo 'selected'; } ?>><?php echo esc_html_e('Cover', 'ns-basics'); ?></option>
+                                        <option value="fixed" <?php if($banner_bg_display == 'fixed') { echo 'selected'; } ?>><?php echo esc_html_e('Fixed', 'ns-basics'); ?></option>
+                                        <option value="repeat" <?php if($banner_bg_display == 'repeat') { echo 'selected'; } ?>><?php echo esc_html_e('Tiled', 'ns-basics'); ?></option>
                                     </select>
                                 </td>
                              </tr>
@@ -121,7 +121,7 @@
 
                         <table class="admin-module">
                             <tr>
-                                <td class="admin-module-label"><label><?php echo esc_html_e('Display Banner Overlay', 'rype-basics'); ?></label></td>
+                                <td class="admin-module-label"><label><?php echo esc_html_e('Display Banner Overlay', 'ns-basics'); ?></label></td>
                                 <td class="admin-module-field">
                                     <input id="banner_overlay" type="checkbox" name="rypecore_banner_overlay" value="true" <?php if($banner_overlay == 'true') { echo 'checked'; } ?> />
                                 </td>
@@ -131,8 +131,8 @@
                         <table class="admin-module">
                             <tr>
                                 <td class="admin-module-label">
-                                    <label><?php esc_html_e('Banner Overlay Opacity', 'rype-basics'); ?></label>
-                                    <span class="admin-module-note"><?php echo esc_html_e('Choose an opacity ranging from 0 to 1 (0 is fully transparent).', 'rype-basics'); ?></span>
+                                    <label><?php esc_html_e('Banner Overlay Opacity', 'ns-basics'); ?></label>
+                                    <span class="admin-module-note"><?php echo esc_html_e('Choose an opacity ranging from 0 to 1 (0 is fully transparent).', 'ns-basics'); ?></span>
                                 </td>
                                 <td class="admin-module-field">
                                     <input type="number" step="0.01" min="0.00" max="1.00" name="rypecore_banner_overlay_opacity" id="banner_overlay_opacity" value="<?php echo $banner_overlay_opacity; ?>" />
@@ -142,7 +142,7 @@
 
                         <table class="admin-module">
                             <tr>
-                                <td class="admin-module-label"><label><?php echo esc_html_e('Banner Overlay Color', 'rype-basics'); ?></label></td>
+                                <td class="admin-module-label"><label><?php echo esc_html_e('Banner Overlay Color', 'ns-basics'); ?></label></td>
                                 <td class="admin-module-field">
                                     <input type="text" name="rypecore_banner_overlay_color" id="banner_overlay_color" class="color-field" data-default-color="#000000" value="<?php echo $banner_overlay_color; ?>" />
                                 </td>
@@ -151,12 +151,12 @@
 
                         <table class="admin-module">
                             <tr>
-                                <td class="admin-module-label"><label><?php echo esc_html_e('Text Alignment', 'rype-basics'); ?></label></td>
+                                <td class="admin-module-label"><label><?php echo esc_html_e('Text Alignment', 'ns-basics'); ?></label></td>
                                 <td class="admin-module-field">
                                     <select name="rypecore_banner_text_align">
-                                        <option value="left" <?php if($banner_text_align == 'left') { echo 'selected'; } ?>><?php echo esc_html_e('Left', 'rype-basics'); ?></option>
-                                        <option value="center" <?php if($banner_text_align == 'center') { echo 'selected'; } ?>><?php echo esc_html_e('Center', 'rype-basics'); ?></option>
-                                        <option value="right" <?php if($banner_text_align == 'right') { echo 'selected'; } ?>><?php echo esc_html_e('Right', 'rype-basics'); ?></option>
+                                        <option value="left" <?php if($banner_text_align == 'left') { echo 'selected'; } ?>><?php echo esc_html_e('Left', 'ns-basics'); ?></option>
+                                        <option value="center" <?php if($banner_text_align == 'center') { echo 'selected'; } ?>><?php echo esc_html_e('Center', 'ns-basics'); ?></option>
+                                        <option value="right" <?php if($banner_text_align == 'right') { echo 'selected'; } ?>><?php echo esc_html_e('Right', 'ns-basics'); ?></option>
                                     </select>
                                 </td>
                              </tr>
@@ -164,20 +164,20 @@
 
                         <table class="admin-module">
                             <tr>
-                                <td class="admin-module-label"><label><?php echo esc_html_e('Banner Padding Top', 'rype-basics'); ?></label></td>
+                                <td class="admin-module-label"><label><?php echo esc_html_e('Banner Padding Top', 'ns-basics'); ?></label></td>
                                 <td class="admin-module-field">
                                     <input type="number" name="rypecore_banner_padding_top" id="banner_padding_top" value="<?php echo $banner_padding_top; ?>" />
-                                    <?php echo esc_html_e('Pixels', 'rype-basics'); ?>
+                                    <?php echo esc_html_e('Pixels', 'ns-basics'); ?>
                                 </td>
                              </tr>
                         </table>
 
                         <table class="admin-module">
                             <tr>
-                                <td class="admin-module-label"><label><?php echo esc_html_e('Banner Padding Bottom', 'rype-basics'); ?></label></td>
+                                <td class="admin-module-label"><label><?php echo esc_html_e('Banner Padding Bottom', 'ns-basics'); ?></label></td>
                                 <td class="admin-module-field">
                                     <input type="number" name="rypecore_banner_padding_bottom" id="banner_padding_bottom" value="<?php echo $banner_padding_bottom; ?>" />
-                                    <?php echo esc_html_e('Pixels', 'rype-basics'); ?>
+                                    <?php echo esc_html_e('Pixels', 'ns-basics'); ?>
                                 </td>
                              </tr>
                         </table>
@@ -187,15 +187,15 @@
                     </div>
 
                     <div id="selectable-item-options-slides" class="selectable-item-settings <?php if($banner_source == 'slides') { echo 'show'; } else { echo 'hide-soft'; } ?>">
-                        <h4><?php echo esc_html_e('Slider Settings', 'rype-basics'); ?></h4>
+                        <h4><?php echo esc_html_e('Slider Settings', 'ns-basics'); ?></h4>
                         <p class="admin-module-note">Use the <a href="<?php echo admin_url(); ?>/edit.php?post_type=slides" target="_blank">slides</a> post type add, edit, or delete slides.</p>
 
                         <table class="admin-module">
                             <tr>
-                                <td class="admin-module-label"><label><?php echo esc_html_e('Display Slides from Category', 'rype-basics'); ?></label></td>
+                                <td class="admin-module-label"><label><?php echo esc_html_e('Display Slides from Category', 'ns-basics'); ?></label></td>
                                 <td class="admin-module-field">
                                     <select name="rypecore_banner_slider_cat">
-                                        <option value=""><?php _e( 'All Categories', 'rype-basics' ); ?></option>
+                                        <option value=""><?php _e( 'All Categories', 'ns-basics' ); ?></option>
                                         <?php
                                         $slide_cats = get_terms('slide_category', array( 'hide_empty' => false, 'parent' => 0 )); 
                                         if (!empty( $slide_cats ) && !is_wp_error($slide_cats)) { ?>
@@ -221,11 +221,11 @@
 
                         <table class="admin-module">
                             <tr>
-                                <td class="admin-module-label"><label><?php echo esc_html_e('Slider Layout', 'rype-basics'); ?></label></td>
+                                <td class="admin-module-label"><label><?php echo esc_html_e('Slider Layout', 'ns-basics'); ?></label></td>
                                 <td class="admin-module-field">
                                     <select name="rypecore_banner_slider_layout">
-                                        <option value="minimal" <?php if(esc_attr($banner_slider_layout) == 'minimal') { echo 'selected'; } ?>><?php echo esc_html_e('Minimal', 'rype-basics'); ?></option>
-                                        <option value="detailed" <?php if(esc_attr($banner_slider_layout) == 'detailed') { echo 'selected'; } ?>><?php echo esc_html_e('Detailed', 'rype-basics'); ?></option>
+                                        <option value="minimal" <?php if(esc_attr($banner_slider_layout) == 'minimal') { echo 'selected'; } ?>><?php echo esc_html_e('Minimal', 'ns-basics'); ?></option>
+                                        <option value="detailed" <?php if(esc_attr($banner_slider_layout) == 'detailed') { echo 'selected'; } ?>><?php echo esc_html_e('Detailed', 'ns-basics'); ?></option>
                                     </select>
                                 </td>
                              </tr>
@@ -233,19 +233,19 @@
 
                         <table class="admin-module">
                             <tr>
-                                <td class="admin-module-label"><label><?php echo esc_html_e('Number of Slides', 'rype-basics'); ?></label></td>
+                                <td class="admin-module-label"><label><?php echo esc_html_e('Number of Slides', 'ns-basics'); ?></label></td>
                                 <td class="admin-module-field"><input type="number" id="banner_slider_num" name="rypecore_banner_slider_num" value="<?php echo $banner_slider_num; ?>" /></td>
                              </tr>
                         </table>
                     </div>
 
                     <div id="selectable-item-options-shortcode" class="selectable-item-settings <?php if($banner_source == 'shortcode') { echo 'show'; } else { echo 'hide-soft'; } ?>">
-                        <h4><?php echo esc_html_e('Shortcode Settings', 'rype-basics'); ?></h4>
+                        <h4><?php echo esc_html_e('Shortcode Settings', 'ns-basics'); ?></h4>
                         <table class="admin-module">
                             <tr>
                                 <td class="admin-module-label">
-                                    <label><?php echo esc_html_e('Shortcode', 'rype-basics'); ?></label>
-                                    <span class="admin-module-note"><?php echo esc_html_e('Copy and paste your shortcode to display content from other sources, such as a slider revolution.', 'rype-basics'); ?></span>
+                                    <label><?php echo esc_html_e('Shortcode', 'ns-basics'); ?></label>
+                                    <span class="admin-module-note"><?php echo esc_html_e('Copy and paste your shortcode to display content from other sources, such as a slider revolution.', 'ns-basics'); ?></span>
                                 </td>
                                 <td class="admin-module-field"><input type="text" id="banner_shortcode" name="rypecore_banner_shortcode" value="<?php echo $banner_shortcode; ?>" /></td>
                              </tr>
@@ -258,12 +258,12 @@
 
             </div><!-- end banner tab -->
             
-            <h3 class="accordion-tab"><i class="fa fa-chevron-right icon"></i> <?php echo esc_html_e('Page Layout', 'rype-basics'); ?></h3>
+            <h3 class="accordion-tab"><i class="fa fa-chevron-right icon"></i> <?php echo esc_html_e('Page Layout', 'ns-basics'); ?></h3>
             <div>
 
                 <table class="admin-module">
                     <tr>
-                        <td class="admin-module-label"><label><?php echo esc_html_e('Page Layout', 'rype-basics'); ?></label></td>
+                        <td class="admin-module-label"><label><?php echo esc_html_e('Page Layout', 'ns-basics'); ?></label></td>
                         <td class="admin-module-field">
                             <table class="left right-bump">
                             <tr>
@@ -272,7 +272,7 @@
                             </tr>
                             <tr>
                             <td></td>
-                            <td><?php echo esc_html_e('Full Width', 'rype-basics'); ?></td>
+                            <td><?php echo esc_html_e('Full Width', 'ns-basics'); ?></td>
                             </tr>
                             </table>
 
@@ -283,7 +283,7 @@
                             </tr>
                             <tr>
                             <td></td>
-                            <td><?php echo esc_html_e('Right Sidebar', 'rype-basics'); ?></td>
+                            <td><?php echo esc_html_e('Right Sidebar', 'ns-basics'); ?></td>
                             </tr>
                             </table>
 
@@ -294,7 +294,7 @@
                             </tr>
                             <tr>
                             <td></td>
-                            <td><?php echo esc_html_e('Left Sidebar', 'rype-basics'); ?></td>
+                            <td><?php echo esc_html_e('Left Sidebar', 'ns-basics'); ?></td>
                             </tr>
                             </table>
                             <div class="clear"></div>
@@ -304,14 +304,14 @@
 
                 <table class="admin-module">
                     <tr>
-                        <td class="admin-module-label"><label><?php echo esc_html_e('Use Page Container', 'rype-basics'); ?></label></td>
+                        <td class="admin-module-label"><label><?php echo esc_html_e('Use Page Container', 'ns-basics'); ?></label></td>
                         <td class="admin-module-field"><input id="page_layout_container" type="checkbox" name="rypecore_page_layout_container" value="true" <?php if($page_layout_container == 'true') { echo 'checked'; } ?> /></td>
                     </tr>
                 </table>
 
                 <table class="admin-module no-border">
                     <tr>
-                        <td class="admin-module-label"><label><?php echo esc_html_e('Sidebar Widget Area', 'rype-basics'); ?></label></td>
+                        <td class="admin-module-label"><label><?php echo esc_html_e('Sidebar Widget Area', 'ns-basics'); ?></label></td>
                         <td class="admin-module-field">
                             <select name="rypecore_page_layout_widget_area" id="page_layout_widget_area">
                                 <?php foreach ( $GLOBALS['wp_registered_sidebars'] as $sidebar ) { ?>
@@ -325,62 +325,62 @@
                 </table>
             </div><!-- page layout tab -->
 
-            <h3 class="accordion-tab"><i class="fa fa-chevron-right icon"></i> <?php echo esc_html_e('Call to Action', 'rype-basics'); ?></h3>
+            <h3 class="accordion-tab"><i class="fa fa-chevron-right icon"></i> <?php echo esc_html_e('Call to Action', 'ns-basics'); ?></h3>
             <div>
 
                 <table class="admin-module">
                     <tr>
-                        <td class="admin-module-label"><label><?php echo esc_html_e('Display Call to Action', 'rype-basics'); ?></label></td>
+                        <td class="admin-module-label"><label><?php echo esc_html_e('Display Call to Action', 'ns-basics'); ?></label></td>
                         <td class="admin-module-field"><input id="cta_display" type="checkbox" name="rypecore_cta_display" value="true" <?php if($cta_display == 'true') { echo 'checked'; } ?> /></td>
                     </tr>
                 </table>
 
                 <table class="admin-module">
                     <tr>
-                        <td class="admin-module-label"><label><?php echo esc_html_e('Call to Action Title', 'rype-basics'); ?></label></td>
+                        <td class="admin-module-label"><label><?php echo esc_html_e('Call to Action Title', 'ns-basics'); ?></label></td>
                         <td class="admin-module-field"><input type="text" name="rypecore_cta_title" value="<?php echo esc_attr($cta_title); ?>" /></td>
                     </tr>
                 </table>
 
                 <table class="admin-module">
                     <tr>
-                        <td class="admin-module-label"><label><?php echo esc_html_e('Call to Action Text', 'rype-basics'); ?></label></td>
+                        <td class="admin-module-label"><label><?php echo esc_html_e('Call to Action Text', 'ns-basics'); ?></label></td>
                         <td class="admin-module-field"><input type="text" name="rypecore_cta_text" value="<?php echo esc_attr($cta_text); ?>" /></td>
                     </tr>
                 </table>
 
                 <table class="admin-module">
                     <tr>
-                        <td class="admin-module-label"><label><?php echo esc_html_e('Call to Action Button Text', 'rype-basics'); ?></label></td>
+                        <td class="admin-module-label"><label><?php echo esc_html_e('Call to Action Button Text', 'ns-basics'); ?></label></td>
                         <td class="admin-module-field"><input type="text" name="rypecore_cta_button_text" value="<?php echo esc_attr($cta_button_text); ?>" /></td>
                     </tr>
                 </table>
 
                 <table class="admin-module">
                     <tr>
-                        <td class="admin-module-label"><label><?php echo esc_html_e('Call to Action Button Url', 'rype-basics'); ?></label></td>
+                        <td class="admin-module-label"><label><?php echo esc_html_e('Call to Action Button Url', 'ns-basics'); ?></label></td>
                         <td class="admin-module-field"><input type="text" name="rypecore_cta_button_url" value="<?php echo esc_url($cta_button_url); ?>" /></td>
                     </tr>
                 </table>
 
                 <table class="admin-module">
                     <tr>
-                        <td class="admin-module-label"><label><?php echo esc_html_e('Call to Action Background Image', 'rype-basics'); ?></label></td>
+                        <td class="admin-module-label"><label><?php echo esc_html_e('Call to Action Background Image', 'ns-basics'); ?></label></td>
                         <td class="admin-module-field">
                             <input type="text" id="cta_bg_img" name="rypecore_cta_bg_img" value="<?php echo esc_attr($cta_bg_img); ?>" />
-                            <input id="_btn" class="rype_upload_image_button" type="button" value="<?php esc_html_e('Upload Image', 'rype-basics'); ?>" />
+                            <input id="_btn" class="ns_upload_image_button" type="button" value="<?php esc_html_e('Upload Image', 'ns-basics'); ?>" />
                         </td>
                     </tr>
                 </table>
 
                 <table class="admin-module no-border">
                     <tr>
-                        <td class="admin-module-label"><label><?php echo esc_html_e('Call to Action Background Display', 'rype-basics'); ?></label></td>
+                        <td class="admin-module-label"><label><?php echo esc_html_e('Call to Action Background Display', 'ns-basics'); ?></label></td>
                         <td class="admin-module-field">
                             <select name="rypecore_cta_bg_display">
-                                <option value="cover" <?php if($cta_bg_display == 'cover') { echo 'selected'; } ?>><?php echo esc_html_e('Cover', 'rype-basics'); ?></option>
-                                <option value="fixed" <?php if($cta_bg_display == 'fixed') { echo 'selected'; } ?>><?php echo esc_html_e('Fixed', 'rype-basics'); ?></option>
-                                <option value="repeat" <?php if($cta_bg_display == 'repeat') { echo 'selected'; } ?>><?php echo esc_html_e('Tiled', 'rype-basics'); ?></option>
+                                <option value="cover" <?php if($cta_bg_display == 'cover') { echo 'selected'; } ?>><?php echo esc_html_e('Cover', 'ns-basics'); ?></option>
+                                <option value="fixed" <?php if($cta_bg_display == 'fixed') { echo 'selected'; } ?>><?php echo esc_html_e('Fixed', 'ns-basics'); ?></option>
+                                <option value="repeat" <?php if($cta_bg_display == 'repeat') { echo 'selected'; } ?>><?php echo esc_html_e('Tiled', 'ns-basics'); ?></option>
                             </select>
                         </td>
                     </tr>
@@ -391,8 +391,8 @@
     <?php } 
 
     /* Save banner form */
-    add_action( 'save_post', 'rype_basics_save_page_layout_meta_box' );
-    function rype_basics_save_page_layout_meta_box( $post_id )
+    add_action( 'save_post', 'ns_basics_save_page_layout_meta_box' );
+    function ns_basics_save_page_layout_meta_box( $post_id )
     {
         // Bail if we're doing an auto save
         if( defined( 'DOING_AUTOSAVE' ) && DOING_AUTOSAVE ) return;

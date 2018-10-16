@@ -121,5 +121,5 @@ if(isset($template_args)) {
     </div><!-- end row -->
 
 <?php } else { 
-    rype_basics_template_loader('alert_logged_in.php', null, false);
+    ns_basics_template_loader('alert_logged_in.php', null, false);
 } ?>

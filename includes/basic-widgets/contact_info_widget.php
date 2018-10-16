@@ -2,17 +2,17 @@
 /**
  * Contact Info Widget Class
  */
-class rype_basics_contact_info_widget extends WP_Widget {
+class ns_basics_contact_info_widget extends WP_Widget {
 
     /** constructor */
     function __construct() {
 
         $widget_options = array(
           'classname'=>'contact-info',
-          'description'=> esc_html__('Display your contact info.', 'rype-basics'),
-          'panels_groups' => array('rype-basics')
+          'description'=> esc_html__('Display your contact info.', 'ns-basics'),
+          'panels_groups' => array('ns-basics')
         );
-		parent::__construct('rype_basics_contact_info_widget', esc_html__('(Rype) Contact Info', 'rype-basics'), $widget_options);
+		parent::__construct('ns_basics_contact_info_widget', esc_html__('(NightShift) Contact Info', 'ns-basics'), $widget_options);
     }
 
     /** @see WP_Widget::widget */
@@ -79,27 +79,27 @@ class rype_basics_contact_info_widget extends WP_Widget {
         ?>
 
         <p>
-	       <label for="<?php echo esc_attr($this->get_field_id('title')); ?>"><?php esc_html_e('Title:', 'rype-basics'); ?></label>
+	       <label for="<?php echo esc_attr($this->get_field_id('title')); ?>"><?php esc_html_e('Title:', 'ns-basics'); ?></label>
 	       <input class="widefat" id="<?php echo esc_attr($this->get_field_id('title')); ?>" name="<?php echo esc_attr($this->get_field_name('title')); ?>" type="text" value="<?php echo esc_attr($title); ?>" />
 	      </p>
 
         <p>
-          <label for="<?php echo esc_attr($this->get_field_id('before_text')); ?>"><?php esc_html_e('Text Before:', 'rype-basics'); ?></label>
+          <label for="<?php echo esc_attr($this->get_field_id('before_text')); ?>"><?php esc_html_e('Text Before:', 'ns-basics'); ?></label>
           <textarea class="widefat" id="<?php echo esc_attr($this->get_field_id('before_text')); ?>" name="<?php echo esc_attr($this->get_field_name('before_text')); ?>"><?php echo esc_attr($before_text); ?></textarea>
         </p>
 
         <p>
-		      <label for="<?php echo esc_attr($this->get_field_id('address')); ?>"><?php esc_html_e('Address:', 'rype-basics'); ?></label>
+		      <label for="<?php echo esc_attr($this->get_field_id('address')); ?>"><?php esc_html_e('Address:', 'ns-basics'); ?></label>
           <input class="widefat" id="<?php echo esc_attr($this->get_field_id('address')); ?>" name="<?php echo esc_attr($this->get_field_name('address')); ?>" type="text" value="<?php echo esc_attr($address); ?>" />
         </p>
 
 		    <p>
-		      <label for="<?php echo esc_attr($this->get_field_id('phone')); ?>"><?php esc_html_e('Phone:', 'rype-basics'); ?></label>
+		      <label for="<?php echo esc_attr($this->get_field_id('phone')); ?>"><?php esc_html_e('Phone:', 'ns-basics'); ?></label>
           <input class="widefat" id="<?php echo esc_attr($this->get_field_id('phone')); ?>" name="<?php echo esc_attr($this->get_field_name('phone')); ?>" type="text" value="<?php echo esc_attr($phone); ?>" />
         </p>
 
         <p>
-		      <label for="<?php echo esc_attr($this->get_field_id('email')); ?>"><?php esc_html_e('Email:', 'rype-basics'); ?></label>
+		      <label for="<?php echo esc_attr($this->get_field_id('email')); ?>"><?php esc_html_e('Email:', 'ns-basics'); ?></label>
           <input class="widefat" id="<?php echo esc_attr($this->get_field_id('email')); ?>" name="<?php echo esc_attr($this->get_field_name('email')); ?>" type="text" value="<?php echo esc_attr($email); ?>" />
         </p>
 
@@ -107,6 +107,6 @@ class rype_basics_contact_info_widget extends WP_Widget {
     }
 
 } // class utopian_recent_posts
-add_action('widgets_init', create_function('', 'return register_widget("rype_basics_contact_info_widget");'));
+add_action('widgets_init', create_function('', 'return register_widget("ns_basics_contact_info_widget");'));
 
 ?>

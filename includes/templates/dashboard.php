@@ -10,7 +10,7 @@
         <?php do_action( 'rype_basics_after_dashboard'); ?>
 
 	<?php } else {
-        rype_basics_template_loader('alert_not_logged_in.php');
+        ns_basics_template_loader('alert_not_logged_in.php');
     } ?>
 
     <div class="clear"></div>

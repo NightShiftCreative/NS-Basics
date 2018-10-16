@@ -2,17 +2,17 @@
 /**
  * Testimonials Widget Class
  */
-class rype_basics_testimonials_widget extends WP_Widget {
+class ns_basics_testimonials_widget extends WP_Widget {
 
     /** constructor */
     function __construct() {
 
         $widget_options = array(
           'classname'=>'testimonials-widget',
-          'description'=> esc_html__('Display a testimonials slider.', 'rype-basics'),
-          'panels_groups' => array('rype-basics')
+          'description'=> esc_html__('Display a testimonials slider.', 'ns-basics'),
+          'panels_groups' => array('ns-basics')
         );
-        parent::__construct('rype_basics_testimonials_widget', esc_html__('(Rype) Testimonials', 'rype-basics'), $widget_options);
+        parent::__construct('ns_basics_testimonials_widget', esc_html__('(NightShift) Testimonials', 'ns-basics'), $widget_options);
     }
 
     /** @see WP_Widget::widget */
@@ -23,7 +23,7 @@ class rype_basics_testimonials_widget extends WP_Widget {
         $icon_set = get_option('rypecore_icon_set', 'fa');
 
         $slides_default = array(
-            array('name'=> 'John Doe', 'position'=> 'CEO at Google', 'image'=> '', 'text' => 'Rype Creative provided fast and beautiful web design!'),
+            array('name'=> 'John Doe', 'position'=> 'CEO at Google', 'image'=> '', 'text' => 'NightShift Creative provided fast and beautiful web design!'),
         );
 
         $title = isset( $instance['title'] ) ? apply_filters('widget_title', $instance['title']) : '';
@@ -85,14 +85,14 @@ class rype_basics_testimonials_widget extends WP_Widget {
         if (isset($instance['title'])) { $title = esc_attr($instance['title']); } else { $title = ''; }
 
         $slides_default = array(
-            array('name'=> 'John Doe', 'position'=> 'CEO at Google', 'image'=> '', 'text' => 'Rype Creative provided fast and beautiful web design!'),
+            array('name'=> 'John Doe', 'position'=> 'CEO at Google', 'image'=> '', 'text' => 'NightShift Creative provided fast and beautiful web design!'),
         );
         $slides = isset ( $instance['slides'] ) ? $instance['slides'] : $slides_default;
 
         ?>
 
         <p>
-            <label for="<?php echo esc_attr($this->get_field_id('title')); ?>"><?php esc_html_e('Title:', 'rype-basics'); ?></label>
+            <label for="<?php echo esc_attr($this->get_field_id('title')); ?>"><?php esc_html_e('Title:', 'ns-basics'); ?></label>
             <input class="widefat" id="<?php echo esc_attr($this->get_field_id('title')); ?>" name="<?php echo esc_attr($this->get_field_name('title')); ?>" type="text" value="<?php echo esc_attr($title); ?>" />
         </p>
 
@@ -105,24 +105,24 @@ class rype_basics_testimonials_widget extends WP_Widget {
                     <div class="testimonial-item">
                         <div class="testimonial-header">
                             <i class="icon fa fa-cog"></i> <strong><?php echo $slide['name']; ?></strong>
-                            <span class="right testimonial-delete"><i class="icon fa fa-close"></i> <?php esc_html_e('Remove', 'rype-basics'); ?></span>
+                            <span class="right testimonial-delete"><i class="icon fa fa-close"></i> <?php esc_html_e('Remove', 'ns-basics'); ?></span>
                         </div>
                         <div class="testimonial-content">
                             <table>
                                 <tr>
-                                    <td valign="top"><label><?php esc_html_e('Name:', 'rype-basics'); ?></label></td>
+                                    <td valign="top"><label><?php esc_html_e('Name:', 'ns-basics'); ?></label></td>
                                     <td valign="top"><input class="widefat" type="text" name="<?php echo esc_attr($this->get_field_name('slides')); ?>[<?php echo $slide_count; ?>][name]" value="<?php echo $slide['name']; ?>" /></td>
                                 </tr>
                                 <tr>
-                                    <td valign="top"><label><?php esc_html_e('Position:', 'rype-basics'); ?></label></td>
+                                    <td valign="top"><label><?php esc_html_e('Position:', 'ns-basics'); ?></label></td>
                                     <td valign="top"><input class="widefat" type="text" name="<?php echo esc_attr($this->get_field_name('slides')); ?>[<?php echo $slide_count; ?>][position]" value="<?php echo $slide['position']; ?>" /></td>
                                 </tr>
                                 <tr>
-                                    <td valign="top"><label><?php esc_html_e('Image URL:', 'rype-basics'); ?></label></td>
+                                    <td valign="top"><label><?php esc_html_e('Image URL:', 'ns-basics'); ?></label></td>
                                     <td valign="top"><input class="widefat" type="text" name="<?php echo esc_attr($this->get_field_name('slides')); ?>[<?php echo $slide_count; ?>][image]" value="<?php echo $slide['image']; ?>" /></td>
                                 </tr>
                                 <tr>
-                                    <td valign="top"><label><?php esc_html_e('Testimonial:', 'rype-basics'); ?></label></td>
+                                    <td valign="top"><label><?php esc_html_e('Testimonial:', 'ns-basics'); ?></label></td>
                                     <td valign="top"><textarea class="widefat" name="<?php echo esc_attr($this->get_field_name('slides')); ?>[<?php echo $slide_count; ?>][text]"><?php echo $slide['text']; ?></textarea></td>
                                 </tr>
                             </table>
@@ -131,7 +131,7 @@ class rype_basics_testimonials_widget extends WP_Widget {
                     <?php $slide_count++; ?>
                     <?php } ?>
                 <?php } ?>
-                <span class="button button-add-testimonial"><?php esc_html_e('Add Testimonial', 'rype-basics'); ?></span>
+                <span class="button button-add-testimonial"><?php esc_html_e('Add Testimonial', 'ns-basics'); ?></span>
             </div>
         </p>
 
@@ -139,6 +139,6 @@ class rype_basics_testimonials_widget extends WP_Widget {
     }
 
 } // class utopian_recent_posts
-add_action('widgets_init', create_function('', 'return register_widget("rype_basics_testimonials_widget");'));
+add_action('widgets_init', create_function('', 'return register_widget("ns_basics_testimonials_widget");'));
 
 ?>

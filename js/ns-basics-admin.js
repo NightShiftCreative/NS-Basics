@@ -23,17 +23,17 @@ jQuery(document).ready(function($) {
     /********************************************/
     /* SHORTCODE SELECTOR */
     /********************************************/
-    function rypeBasicsInsertShortcode(shortcode) {
+    function nsBasicsInsertShortcode(shortcode) {
         var shortcodeOutput = '';
         var visualEditor = (typeof tinyMCE != "undefined") && tinyMCE.activeEditor && !tinyMCE.activeEditor.isHidden();
 
         //set row shortcode
-        if(shortcode == 'basic-row') { shortcodeOutput = "[rype_row][/rype_row]"; }
+        if(shortcode == 'basic-row') { shortcodeOutput = "[ns_row][/ns_row]"; }
 
         //set column shortcode
         if(shortcode == 'basic-col') {
             var colWidth = $('.shortcode-selector-options .basic-col-width').val();
-            shortcodeOutput = "[rype_col span='"+colWidth+"'][/rype_col]";
+            shortcodeOutput = "[ns_col span='"+colWidth+"'][/ns_col]";
         }
 
         //set module shortcode
@@ -46,7 +46,7 @@ jQuery(document).ready(function($) {
             var moduleMarginBottom = $('.shortcode-selector-options .basic-module-margin-bottom').val();
             var moduleBgColor = $('.shortcode-selector-options .basic-module-bg-color').val();
             var moduleBgImg = $('.shortcode-selector-options .basic-module-bg-img').val();
-            shortcodeOutput = "[rype_module class='"+moduleClass+"' container='"+moduleContainer+"' padding_top='"+modulePaddingTop+"' padding_bottom='"+modulePaddingBottom+"' margin_bottom='"+moduleMarginBottom+"' margin_top='"+moduleMarginTop+"' bg_color='"+moduleBgColor+"' bg_img='"+moduleBgImg+"'][/rype_module]";
+            shortcodeOutput = "[ns_module class='"+moduleClass+"' container='"+moduleContainer+"' padding_top='"+modulePaddingTop+"' padding_bottom='"+modulePaddingBottom+"' margin_bottom='"+moduleMarginBottom+"' margin_top='"+moduleMarginTop+"' bg_color='"+moduleBgColor+"' bg_img='"+moduleBgImg+"'][/ns_module]";
         }
 
         //set module header shortcode
@@ -54,7 +54,7 @@ jQuery(document).ready(function($) {
             var moduleHeaderTitle = $('.shortcode-selector-options .basic-module-header-title').val();
             var moduleHeaderText = $('.shortcode-selector-options .basic-module-header-text').val();
             var moduleHeaderPosition = $('.shortcode-selector-options .basic-module-header-position').val();
-            shortcodeOutput = "[rype_module_header title='"+moduleHeaderTitle+"' text='"+moduleHeaderText+"' position='"+moduleHeaderPosition+"'][/rype_module_header]";
+            shortcodeOutput = "[ns_module_header title='"+moduleHeaderTitle+"' text='"+moduleHeaderText+"' position='"+moduleHeaderPosition+"'][/ns_module_header]";
         }
 
         //set button shortcode
@@ -63,7 +63,7 @@ jQuery(document).ready(function($) {
             var buttonUrl = $('.shortcode-selector-options .basic-button-url').val();
             var buttonType = $('.shortcode-selector-options .basic-button-type').val();
             var buttonPosition = $('.shortcode-selector-options .basic-button-position').val();
-            shortcodeOutput = "[rype_button url='"+buttonUrl+"' type='"+buttonType+"' position='"+buttonPosition+"']" +  buttonText + "[/rype_button]";
+            shortcodeOutput = "[ns_button url='"+buttonUrl+"' type='"+buttonType+"' position='"+buttonPosition+"']" +  buttonText + "[/ns_button]";
         }
 
         //set video shortcode
@@ -71,14 +71,14 @@ jQuery(document).ready(function($) {
             var videoTitle = $('.shortcode-selector-options .basic-video-title').val();
             var videoUrl = $('.shortcode-selector-options .basic-video-url').val();
             var videoCover = $('.shortcode-selector-options .basic-video-cover').val();
-            shortcodeOutput = "[rype_video title='"+videoTitle+"' url='"+videoUrl+"' cover_img='"+videoCover+"'][/rype_video]";
+            shortcodeOutput = "[ns_video title='"+videoTitle+"' url='"+videoUrl+"' cover_img='"+videoCover+"'][/ns_video]";
         }
 
         //set alert box shortcode
         if(shortcode == 'basic-alert') {
             var alertTitle = $('.shortcode-selector-options .basic-alert-title').val();
             var alertType = $('.shortcode-selector-options .basic-alert-type').val();
-            shortcodeOutput = "[rype_alert_box type='"+alertType+"']"+alertTitle+"[/rype_alert_box]";
+            shortcodeOutput = "[ns_alert_box type='"+alertType+"']"+alertTitle+"[/ns_alert_box]";
         }
 
         //set service shortcode
@@ -88,7 +88,7 @@ jQuery(document).ready(function($) {
             var serviceIconDripicon = $('.shortcode-selector-options .basic-service-icon-dripicon').val();
             var serviceTitle = $('.shortcode-selector-options .basic-service-title').val();
             var serviceText = $('.shortcode-selector-options .basic-service-text').val();
-            shortcodeOutput = "[rype_service icon='"+serviceIcon+"' icon_line='"+serviceIconLine+"' dripicon='"+serviceIconDripicon+"' title='"+serviceTitle+"' text='"+serviceText+"'][/rype_service]";
+            shortcodeOutput = "[ns_service icon='"+serviceIcon+"' icon_line='"+serviceIconLine+"' dripicon='"+serviceIconDripicon+"' title='"+serviceTitle+"' text='"+serviceText+"'][/ns_service]";
         }
 
         //set team member shortcode
@@ -106,73 +106,73 @@ jQuery(document).ready(function($) {
             var teamVimeo = $('.shortcode-selector-options .basic-team-member-vimeo').val();
             var teamFlickr = $('.shortcode-selector-options .basic-team-member-flickr').val();
             var teamDribbble = $('.shortcode-selector-options .basic-team-member-dribbble').val();
-            shortcodeOutput = "[rype_team_member img='"+teamImg+"' name='"+teamName+"' title='"+teamTitle+"' bio='"+teamBio+"' facebook='"+teamFacebook+"' twitter='"+teamTwitter+"' google='"+teamGoogle+"' instagram='"+teamInstagram+"' linkedin='"+teamLinkedin+"' youtube='"+teamYoutube+"' vimeo='"+teamVimeo+"' flickr='"+teamFlickr+"' dribbble='"+teamDribbble+"'][/rype_team_member]";
+            shortcodeOutput = "[ns_team_member img='"+teamImg+"' name='"+teamName+"' title='"+teamTitle+"' bio='"+teamBio+"' facebook='"+teamFacebook+"' twitter='"+teamTwitter+"' google='"+teamGoogle+"' instagram='"+teamInstagram+"' linkedin='"+teamLinkedin+"' youtube='"+teamYoutube+"' vimeo='"+teamVimeo+"' flickr='"+teamFlickr+"' dribbble='"+teamDribbble+"'][/ns_team_member]";
         }
 
         //set tab shortcode
         if(shortcode == 'basic-tabs') {
             var count = 1;
-            shortcodeOutput += '[rype_tabs]';
+            shortcodeOutput += '[ns_tabs]';
             $('.shortcode-selector-options .tab-item').each(function(i, obj) {
                 var tabTitle = $(this).find('.tab-title').val();
                 var tabIcon = $(this).find('.tab-icon').val();
                 var tabIconLine = $(this).find('.tab-icon-line').val();
                 var tabIconDripicon = $(this).find('.tab-icon-dripicon').val();
                 var tabText = $(this).find('.tab-text').val();
-                shortcodeOutput += '[rype_tab id="'+count+'" title="'+tabTitle+'" icon="'+tabIcon+'" icon_line="'+tabIconLine+'" dripicon="'+tabIconDripicon+'"]'+tabText+'[/rype_tab]';
+                shortcodeOutput += '[ns_tab id="'+count+'" title="'+tabTitle+'" icon="'+tabIcon+'" icon_line="'+tabIconLine+'" dripicon="'+tabIconDripicon+'"]'+tabText+'[/ns_tab]';
                 count++;
             });
-            shortcodeOutput += "[/rype_tabs]";
+            shortcodeOutput += "[/ns_tabs]";
         }
 
         //set accordion shortcode
         if(shortcode == 'basic-accordion') {
-            shortcodeOutput += '[rype_accordions]';
+            shortcodeOutput += '[ns_accordions]';
             $('.shortcode-selector-options .accordion-item').each(function(i, obj) {
                 var accordionTitle = $(this).find('.accordion-title').val();
                 var accordionText = $(this).find('.accordion-text').val();
-                shortcodeOutput += '[rype_accordion title="'+accordionTitle+'"]'+accordionText+'[/rype_accordion]';
+                shortcodeOutput += '[ns_accordion title="'+accordionTitle+'"]'+accordionText+'[/ns_accordion]';
             });
-            shortcodeOutput += "[/rype_accordions]";
+            shortcodeOutput += "[/ns_accordions]";
         }
 
         //set testimonial shortcode
         if(shortcode == 'basic-testimonials') {
-            shortcodeOutput += '[rype_testimonials]';
+            shortcodeOutput += '[ns_testimonials]';
             $('.shortcode-selector-options .testimonial-item').each(function(i, obj) {
                 var testimonialImg = $(this).find('.testimonial-img').val();
                 var testimonialName = $(this).find('.testimonial-name').val();
                 var testimonialTitle = $(this).find('.testimonial-title').val();
                 var testimonialText = $(this).find('.testimonial-text').val();
-                shortcodeOutput += '[rype_testimonial img="'+testimonialImg+'" name="'+testimonialName+'" title="'+testimonialTitle+'"]'+testimonialText+'[/rype_testimonial]';
+                shortcodeOutput += '[ns_testimonial img="'+testimonialImg+'" name="'+testimonialName+'" title="'+testimonialTitle+'"]'+testimonialText+'[/ns_testimonial]';
             });
-            shortcodeOutput += "[/rype_testimonials]";
+            shortcodeOutput += "[/ns_testimonials]";
         }
 
         //set login form shortcode
         if(shortcode == 'basic-login-form') {
             var loginRedirectUrl = $('.shortcode-selector-options .basic-login-form-redirect').val();
-            shortcodeOutput += '[rype_login_form redirect="'+loginRedirectUrl+'"]';
+            shortcodeOutput += '[ns_login_form redirect="'+loginRedirectUrl+'"]';
         }
 
         //set register form shortcode
         if(shortcode == 'basic-register-form') {
-            shortcodeOutput += '[rype_register_form]';
+            shortcodeOutput += '[ns_register_form]';
         }
 
         //set dashboard shortcode
         if(shortcode == 'basic-user-dashboard') {
-            shortcodeOutput += '[rype_dashboard]';
+            shortcodeOutput += '[ns_dashboard]';
         }
 
         //set favorites shortcode
         if(shortcode == 'basic-user-favorites') {
-            shortcodeOutput += '[rype_favorites]';
+            shortcodeOutput += '[ns_favorites]';
         }
 
         //set edit profile shortcode
         if(shortcode == 'basic-user-edit-profile') {
-            shortcodeOutput += '[rype_edit_profile]';
+            shortcodeOutput += '[ns_edit_profile]';
         }
 
         //insert shortcode and close lightbox
@@ -202,13 +202,13 @@ jQuery(document).ready(function($) {
             $('.shortcode-selector-options').show(); 
         } else {
             shortcode = shortcode.substring(1, shortcode.length);
-            rypeBasicsInsertShortcode(shortcode);
+            nsBasicsInsertShortcode(shortcode);
         }
     });
 
     $('.shortcode-selector-options').on('click', '.insert-shortcode', function() { 
         var shortcode = $('.shortcode-selector-options .admin-module.active').attr('id');
-        rypeBasicsInsertShortcode(shortcode);
+        nsBasicsInsertShortcode(shortcode);
     });
 
     $('.shortcode-selector-options').on('click', '.cancel-shortcode', function() {
@@ -261,7 +261,7 @@ jQuery(document).ready(function($) {
 	/********************************************/
 	var mediaUploader;
 
-	$('.admin-module').on('click', '.rype_upload_image_button', function(e) {
+	$('.admin-module').on('click', '.ns_upload_image_button', function(e) {
 	    e.preventDefault();
 	    formfield = jQuery(this).prev('input');
 

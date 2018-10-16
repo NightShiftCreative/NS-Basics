@@ -2,17 +2,17 @@
 /**
  * List Posts Widget Class
  */
-class rype_basics_list_posts_widget extends WP_Widget {
+class ns_basics_list_posts_widget extends WP_Widget {
 
     /** constructor */
     function __construct() {
 
         $widget_options = array(
           'classname'=>'list-posts-widget',
-          'description'=> esc_html__('Display a list of blog posts.', 'rype-basics'),
-          'panels_groups' => array('rype-basics')
+          'description'=> esc_html__('Display a list of blog posts.', 'ns-basics'),
+          'panels_groups' => array('ns-basics')
         );
-		parent::__construct('rype_basics_list_posts_widget', esc_html__('(Rype) List Posts', 'rype-basics'), $widget_options);
+		parent::__construct('ns_basics_list_posts_widget', esc_html__('(NightShift) List Posts', 'ns-basics'), $widget_options);
     }
 
     /** @see WP_Widget::widget */
@@ -110,25 +110,25 @@ class rype_basics_list_posts_widget extends WP_Widget {
         ?>
 
         <p>
-           <label for="<?php echo esc_attr($this->get_field_id('title')); ?>"><?php esc_html_e('Title:', 'rype-basics'); ?></label>
+           <label for="<?php echo esc_attr($this->get_field_id('title')); ?>"><?php esc_html_e('Title:', 'ns-basics'); ?></label>
            <input class="widefat" id="<?php echo esc_attr($this->get_field_id('title')); ?>" name="<?php echo esc_attr($this->get_field_name('title')); ?>" type="text" value="<?php echo esc_attr($title); ?>" />
         </p>
 
         <p>
-          <label for="<?php echo esc_attr($this->get_field_id('num')); ?>"><?php esc_html_e('Number of Posts:', 'rype-basics'); ?></label>
+          <label for="<?php echo esc_attr($this->get_field_id('num')); ?>"><?php esc_html_e('Number of Posts:', 'ns-basics'); ?></label>
           <input class="widefat" id="<?php echo esc_attr($this->get_field_id('num')); ?>" name="<?php echo esc_attr($this->get_field_name('num')); ?>" type="number" value="<?php echo esc_attr($num); ?>" />
         </p>
 
         <p>
-            <label for="<?php echo esc_attr($this->get_field_id('show_thumb')); ?>"><?php esc_html_e('Show Thumbnail:', 'rype-basics'); ?></label>
+            <label for="<?php echo esc_attr($this->get_field_id('show_thumb')); ?>"><?php esc_html_e('Show Thumbnail:', 'ns-basics'); ?></label>
             <select class="widefat" id="<?php echo esc_attr($this->get_field_id('show_thumb')); ?>" name="<?php echo esc_attr($this->get_field_name('show_thumb')); ?>">
-                <option value="yes" <?php if($show_thumb == 'yes') { echo 'selected'; } ?>><?php esc_html_e('Yes', 'rype-basics'); ?></option>
-                <option value="no" <?php if($show_thumb == 'no') { echo 'selected'; } ?>><?php esc_html_e('No', 'rype-basics'); ?></option>
+                <option value="yes" <?php if($show_thumb == 'yes') { echo 'selected'; } ?>><?php esc_html_e('Yes', 'ns-basics'); ?></option>
+                <option value="no" <?php if($show_thumb == 'no') { echo 'selected'; } ?>><?php esc_html_e('No', 'ns-basics'); ?></option>
             </select>
         </p>
 
         <p>
-            <label for="<?php echo esc_attr($this->get_field_id('filter')); ?>"><?php esc_html_e('Filter By Category:', 'rype-basics'); ?></label>
+            <label for="<?php echo esc_attr($this->get_field_id('filter')); ?>"><?php esc_html_e('Filter By Category:', 'ns-basics'); ?></label>
             <select class="widefat" id="<?php echo esc_attr($this->get_field_id('filter')); ?>" name="<?php echo esc_attr($this->get_field_name('filter')); ?>">
                 <option value="">All Categories</option>
                 <?php $categories = get_categories(); ?>
@@ -139,17 +139,17 @@ class rype_basics_list_posts_widget extends WP_Widget {
         </p>
 
         <p>
-            <label for="<?php echo esc_attr($this->get_field_id('show_date')); ?>"><?php esc_html_e('Show Date:', 'rype-basics'); ?></label>
+            <label for="<?php echo esc_attr($this->get_field_id('show_date')); ?>"><?php esc_html_e('Show Date:', 'ns-basics'); ?></label>
             <input class="widefat" id="<?php echo esc_attr($this->get_field_id('show_date')); ?>" name="<?php echo esc_attr($this->get_field_name('show_date')); ?>" type="checkbox" value="true" <?php if($show_date) { echo 'checked'; } ?> />
         </p>
 
         <p>
-            <label for="<?php echo esc_attr($this->get_field_id('show_excerpt')); ?>"><?php esc_html_e('Show Excerpt:', 'rype-basics'); ?></label>
+            <label for="<?php echo esc_attr($this->get_field_id('show_excerpt')); ?>"><?php esc_html_e('Show Excerpt:', 'ns-basics'); ?></label>
             <input class="widefat" id="<?php echo esc_attr($this->get_field_id('show_excerpt')); ?>" name="<?php echo esc_attr($this->get_field_name('show_excerpt')); ?>" type="checkbox" value="true" <?php if($show_excerpt) { echo 'checked'; } ?> />
         </p>
 
         <p>
-            <label for="<?php echo esc_attr($this->get_field_id('excerpt_size')); ?>"><?php esc_html_e('Excerpt Size:', 'rype-basics'); ?></label>
+            <label for="<?php echo esc_attr($this->get_field_id('excerpt_size')); ?>"><?php esc_html_e('Excerpt Size:', 'ns-basics'); ?></label>
             <input id="<?php echo esc_attr($this->get_field_id('excerpt_size')); ?>" name="<?php echo esc_attr($this->get_field_name('excerpt_size')); ?>" type="number" value="<?php echo esc_attr($excerpt_size); ?>" />
         </p>
 
@@ -157,6 +157,6 @@ class rype_basics_list_posts_widget extends WP_Widget {
     }
 
 } // class utopian_recent_posts
-add_action('widgets_init', create_function('', 'return register_widget("rype_basics_list_posts_widget");'));
+add_action('widgets_init', create_function('', 'return register_widget("ns_basics_list_posts_widget");'));
 
 ?>

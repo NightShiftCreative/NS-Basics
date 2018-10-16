@@ -4,7 +4,7 @@
 /*  Register Member Sidebar
 /*-----------------------------------------------------------------------------------*/
 register_sidebar( array(
-    'name' => esc_html__( 'Dashboard Sidebar', 'rype-basics' ),
+    'name' => esc_html__( 'Dashboard Sidebar', 'ns-basics' ),
     'id' => 'dashboard_sidebar',
     'before_widget' => '<div class="widget widget-sidebar %2$s">',
     'after_widget' => '</div>',

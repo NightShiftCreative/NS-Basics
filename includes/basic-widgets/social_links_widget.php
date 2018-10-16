@@ -2,17 +2,17 @@
 /**
  * Social Links Widget Class
  */
-class rype_basics_social_links_widget extends WP_Widget {
+class ns_basics_social_links_widget extends WP_Widget {
 
     /** constructor */
     function __construct() {
 
         $widget_options = array(
           'classname'=>'social-links',
-          'description'=> esc_html__('Display your social media links.', 'rype-basics'),
-          'panels_groups' => array('rype-basics')
+          'description'=> esc_html__('Display your social media links.', 'ns-basics'),
+          'panels_groups' => array('ns-basics')
         );
-		parent::__construct('rype_basics_social_links_widget', esc_html__('(Rype) Social Links', 'rype-basics'), $widget_options);
+		parent::__construct('ns_basics_social_links_widget', esc_html__('(NightShift) Social Links', 'ns-basics'), $widget_options);
     }
 
     /** @see WP_Widget::widget */
@@ -117,15 +117,15 @@ class rype_basics_social_links_widget extends WP_Widget {
         ?>
 
         <p>
-           <label for="<?php echo esc_attr($this->get_field_id('title')); ?>"><?php esc_html_e('Title:', 'rype-basics'); ?></label>
+           <label for="<?php echo esc_attr($this->get_field_id('title')); ?>"><?php esc_html_e('Title:', 'ns-basics'); ?></label>
            <input class="widefat" id="<?php echo esc_attr($this->get_field_id('title')); ?>" name="<?php echo esc_attr($this->get_field_name('title')); ?>" type="text" value="<?php echo esc_attr($title); ?>" />
         </p>
 
         <p>
-            <label for="<?php echo esc_attr($this->get_field_id('source')); ?>"><?php esc_html_e('Source:', 'rype-basics'); ?></label>
+            <label for="<?php echo esc_attr($this->get_field_id('source')); ?>"><?php esc_html_e('Source:', 'ns-basics'); ?></label>
             <select class="widefat social-links-source" name="<?php echo esc_attr($this->get_field_name('source')); ?>">
-                <option value="theme-options" <?php if($source == 'theme-options') { echo 'selected'; } ?>><?php esc_html_e('Theme Options', 'rype-basics'); ?></option>
-                <option value="custom" <?php if($source == 'custom') { echo 'selected'; } ?>><?php esc_html_e('Custom', 'rype-basics'); ?></option>
+                <option value="theme-options" <?php if($source == 'theme-options') { echo 'selected'; } ?>><?php esc_html_e('Theme Options', 'ns-basics'); ?></option>
+                <option value="custom" <?php if($source == 'custom') { echo 'selected'; } ?>><?php esc_html_e('Custom', 'ns-basics'); ?></option>
             </select>
         </p>
 
@@ -141,15 +141,15 @@ class rype_basics_social_links_widget extends WP_Widget {
             <p><label>Dribbble: </label><input class="widefat" type="text" name="<?php echo esc_attr($this->get_field_name('dribbble')); ?>" value="<?php echo esc_url($dribbble); ?>" /></p>
         </div>
 
-        <div class="admin-module-note theme-note <?php if($source == 'theme-options') { echo 'show'; } else { echo 'hide'; } ?>"><?php esc_html_e('Only compatible with themes by Rype Creative.', 'rype-basics'); ?></div>
+        <div class="admin-module-note theme-note <?php if($source == 'theme-options') { echo 'show'; } else { echo 'hide'; } ?>"><?php esc_html_e('Only compatible with themes by NightShift Creative.', 'ns-basics'); ?></div>
 
         <p>
-          <label for="<?php echo esc_attr($this->get_field_id('text_before')); ?>"><?php esc_html_e('Text Before:', 'rype-basics'); ?></label>
+          <label for="<?php echo esc_attr($this->get_field_id('text_before')); ?>"><?php esc_html_e('Text Before:', 'ns-basics'); ?></label>
           <textarea class="widefat" id="<?php echo esc_attr($this->get_field_id('text_before')); ?>" name="<?php echo esc_attr($this->get_field_name('text_before')); ?>"><?php echo esc_attr($text_before); ?></textarea>
         </p>
 
         <p>
-          <label for="<?php echo esc_attr($this->get_field_id('text_after')); ?>"><?php esc_html_e('Text After:', 'rype-basics'); ?></label>
+          <label for="<?php echo esc_attr($this->get_field_id('text_after')); ?>"><?php esc_html_e('Text After:', 'ns-basics'); ?></label>
           <textarea class="widefat" id="<?php echo esc_attr($this->get_field_id('text_after')); ?>" name="<?php echo esc_attr($this->get_field_name('text_after')); ?>"><?php echo esc_attr($text_after); ?></textarea>
         </p>
 
@@ -157,6 +157,6 @@ class rype_basics_social_links_widget extends WP_Widget {
     }
 
 } // class utopian_recent_posts
-add_action('widgets_init', create_function('', 'return register_widget("rype_basics_social_links_widget");'));
+add_action('widgets_init', create_function('', 'return register_widget("ns_basics_social_links_widget");'));
 
 ?>
