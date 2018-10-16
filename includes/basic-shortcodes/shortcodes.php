@@ -456,7 +456,7 @@ function ns_service($atts, $content = null) {
             'text' => ''
         ), $atts);
 
-    if(!empty($atts['icon'])) { $icon =  rypecore_get_icon($icon_set, $atts['icon'], $atts['icon_line'], $atts['dripicon']); } else { $icon = ''; }
+    if(!empty($atts['icon'])) { $icon =  ns_core_get_icon($icon_set, $atts['icon'], $atts['icon_line'], $atts['dripicon']); } else { $icon = ''; }
     if(!empty($atts['title'])) { $title =  '<h4>'. $atts['title'] .'</h4>'; } else { $title = ''; }
 
     return '
@@ -557,7 +557,7 @@ function ns_tab($atts, $content=null) {
             'dripicon' => '',
         ), $atts);
 
-    if(!empty($atts['icon'])) { $icon = rypecore_get_icon($icon_set, $atts['icon'], $atts['icon_line'], $atts['dripicon']); } else { $icon = ''; }
+    if(!empty($atts['icon'])) { $icon = ns_core_get_icon($icon_set, $atts['icon'], $atts['icon_line'], $atts['dripicon']); } else { $icon = ''; }
 
     $tabs_divs.= '<div id="tab'. $atts['id'] .'">'.$content.'</div>';
 

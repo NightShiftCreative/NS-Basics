@@ -40,15 +40,15 @@ class ns_basics_contact_info_widget extends WP_Widget {
         <ul class="contact-list clean-list">
 							<?php 
 							if ( $address ) { ?>
-								<li><?php echo rypecore_get_icon($icon_set, 'map-marker', '', 'location'); ?> <?php echo esc_attr($address); ?></li>
+								<li><?php echo ns_core_get_icon($icon_set, 'map-marker', '', 'location'); ?> <?php echo esc_attr($address); ?></li>
 							<?php } ?>  
 
 							<?php if ( $phone ) { ?>
-								<li><?php echo rypecore_get_icon($icon_set, 'phone', 'telephone'); ?> <?php echo esc_attr($phone); ?></li>
+								<li><?php echo ns_core_get_icon($icon_set, 'phone', 'telephone'); ?> <?php echo esc_attr($phone); ?></li>
 							<?php } ?>
 
 							<?php if ( $email ) { ?>
-								<li><?php echo rypecore_get_icon($icon_set, 'envelope', '', 'mail'); ?> <?php echo esc_attr($email); ?></li>
+								<li><?php echo ns_core_get_icon($icon_set, 'envelope', '', 'mail'); ?> <?php echo esc_attr($email); ?></li>
 							<?php } ?> 
 				</ul>
 

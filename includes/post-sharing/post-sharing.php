@@ -3,11 +3,11 @@
 function ns_basics_get_social_share($class = null, $toggle_text = null) {
         global $post;
         $icon_set = esc_attr(get_option('rypecore_icon_set', 'fa'));
-        $toggle = rypecore_get_icon($icon_set, 'share-alt', 'share2', 'forward');
+        $toggle = ns_core_get_icon($icon_set, 'share-alt', 'share2', 'forward');
         $content = '';
 
         //email details
-        $mail_icon = rypecore_get_icon($icon_set, 'envelope', '', 'mail');
+        $mail_icon = ns_core_get_icon($icon_set, 'envelope', '', 'mail');
         $subject = get_the_title().' on '.get_bloginfo('name');
         $body = '';
         $body .= get_the_permalink();

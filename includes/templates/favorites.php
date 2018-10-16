@@ -65,7 +65,7 @@ if(isset($template_args)) {
 	        		<td class="favorites-listing-title"><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></td>
 	        		<td class="favorites-listing-type"><?php echo $post_type; ?></td>
 	        		<td class="user-dashboard-table-actions favorites-listing-actions">
-	        			<a href="<?php the_permalink(); ?>"><?php echo rypecore_get_icon($icon_set, 'eye', 'eye', 'preview'); ?><?php esc_html_e('View', 'ns-basics'); ?></a>
+	        			<a href="<?php the_permalink(); ?>"><?php echo ns_core_get_icon($icon_set, 'eye', 'eye', 'preview'); ?><?php esc_html_e('View', 'ns-basics'); ?></a>
 	        			<?php if(function_exists('ns_basics_get_post_likes_button')) { echo ns_basics_get_post_likes_button(get_the_ID()).' Unlike'; } ?>
 	        		</td>
 	        	</tr>

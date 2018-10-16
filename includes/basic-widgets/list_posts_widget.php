@@ -58,13 +58,13 @@ class ns_basics_list_posts_widget extends WP_Widget {
                                         <div class="col-lg-8 col-md-8 col-sm-8">
                                             <h5 title="<?php the_title(); ?>"><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h5>
                                             <?php if($show_date) { echo '<p><i class="fa fa-calendar-o icon"></i>'.get_the_date().'</p>'; } ?>
-                                            <?php if($show_excerpt && function_exists('rypecore_excerpt')) { echo '<p>'.rypecore_excerpt($excerpt_size).'</p>'; } ?>
+                                            <?php if($show_excerpt && function_exists('ns_core_excerpt')) { echo '<p>'.ns_core_excerpt($excerpt_size).'</p>'; } ?>
                                         </div>
                                     <?php } else { ?>
                                         <div class="col-lg-12">
                                             <h5 title="<?php the_title(); ?>"><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h5>
                                             <?php if($show_date) { echo '<p><i class="fa fa-calendar-o icon"></i>'.get_the_date().'</p>'; } ?>
-                                            <?php if($show_excerpt && function_exists('rypecore_excerpt')) { echo '<p>'.rypecore_excerpt($excerpt_size).'</p>'; } ?>
+                                            <?php if($show_excerpt && function_exists('ns_core_excerpt')) { echo '<p>'.ns_core_excerpt($excerpt_size).'</p>'; } ?>
                                         </div>
                                     <?php } ?>
 
