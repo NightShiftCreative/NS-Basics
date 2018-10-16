@@ -328,7 +328,7 @@ jQuery(document).ready(function($) {
            var i;
            for (i = 0; i < attachments.length; ++i) {
                 $('.gallery-container').prepend(
-                    '<div class="gallery-img-preview"><img src="' + attachments[i].attributes.sizes.thumbnail.url + '" ><input type="hidden" name="rypecore_additional_img[]" value="'+ attachments[i].attributes.url +'" /><span class="action delete-additional-img" title="'+ rype_basics_local_script.delete_text +'"><i class="fa fa-trash"></i></span><a href="'+rype_basics_local_script.admin_url+'upload.php?item='+attachments[i].attributes.id+'" class="action edit-additional-img" target="_blank" title="'+rype_basics_local_script.edit_text+'"><i class="fa fa-pencil"></i></a></div>'
+                    '<div class="gallery-img-preview"><img src="' + attachments[i].attributes.sizes.thumbnail.url + '" ><input type="hidden" name="rypecore_additional_img[]" value="'+ attachments[i].attributes.url +'" /><span class="action delete-additional-img" title="'+ ns_basics_local_script.delete_text +'"><i class="fa fa-trash"></i></span><a href="'+ns_basics_local_script.admin_url+'upload.php?item='+attachments[i].attributes.id+'" class="action edit-additional-img" target="_blank" title="'+ns_basics_local_script.edit_text+'"><i class="fa fa-pencil"></i></a></div>'
                 );
             }
 
@@ -437,7 +437,7 @@ jQuery(document).ready(function($) {
             distance: 10,
             update: function(event, ui) {
                 $(this).closest('.widget-inside').find('.widget-control-save').removeAttr('disabled');
-                $(this).closest('.widget-inside').find('.widget-control-save').val(rype_basics_local_script.save_text);
+                $(this).closest('.widget-inside').find('.widget-control-save').val(ns_basics_local_script.save_text);
             }
         });
     });
@@ -449,7 +449,7 @@ jQuery(document).ready(function($) {
             distance: 10,
             update: function(event, ui) {
                 $(this).closest('.widget-inside').find('.widget-control-save').removeAttr('disabled');
-                $(this).closest('.widget-inside').find('.widget-control-save').val(rype_basics_local_script.save_text);
+                $(this).closest('.widget-inside').find('.widget-control-save').val(ns_basics_local_script.save_text);
             }
         });
     });
@@ -479,12 +479,12 @@ jQuery(document).ready(function($) {
         if($(this).parent().find('.toggle-switch-checkbox').is(':checked')) {
             $(this).parent().attr('title', 'Disabled');
             $(this).closest('.admin-module').removeClass('active-add-on');
-            $(this).find('span').text(rype_basics_local_script.off);
+            $(this).find('span').text(ns_basics_local_script.off);
             $(this).find('span').removeClass('on');
         } else {
             $(this).parent().attr('title', 'Active');
             $(this).closest('.admin-module').addClass('active-add-on');
-            $(this).find('span').text(rype_basics_local_script.on);
+            $(this).find('span').text(ns_basics_local_script.on);
             $(this).find('span').addClass('on');
         }
     }); 
@@ -521,25 +521,25 @@ jQuery(document).ready(function($) {
         var testimonial = '\
             <div class="testimonial-item"> \
                 <div class="testimonial-header"> \
-                    <i class="icon fa fa-cog"></i> <strong>'+rype_basics_local_script.new_testimonial+'</strong> \
-                    <span class="right testimonial-delete"><i class="icon fa fa-close"></i> '+rype_basics_local_script.remove_text+'</span> \
+                    <i class="icon fa fa-cog"></i> <strong>'+ns_basics_local_script.new_testimonial+'</strong> \
+                    <span class="right testimonial-delete"><i class="icon fa fa-close"></i> '+ns_basics_local_script.remove_text+'</span> \
                 </div> \
                 <div class="testimonial-content"> \
                     <table> \
                         <tr> \
-                            <td valign="top"><label>'+rype_basics_local_script.name_text+':</label></td> \
+                            <td valign="top"><label>'+ns_basics_local_script.name_text+':</label></td> \
                             <td valign="top"><input class="widefat" type="text" name="'+testimonialFieldName+'['+count+'][name]" value="" /></td> \
                         </tr> \
                         <tr> \
-                            <td valign="top"><label>'+rype_basics_local_script.position+':</label></td> \
+                            <td valign="top"><label>'+ns_basics_local_script.position+':</label></td> \
                             <td valign="top"><input class="widefat" type="text" name="'+testimonialFieldName+'['+count+'][position]" value="" /></td> \
                         </tr> \
                         <tr> \
-                            <td valign="top"><label>'+rype_basics_local_script.image_url+':</td> \
+                            <td valign="top"><label>'+ns_basics_local_script.image_url+':</td> \
                             <td valign="top"><input class="widefat" type="text" name="'+testimonialFieldName+'['+count+'][image]" value="" /></td> \
                         </tr> \
                         <tr> \
-                            <td valign="top"><label>'+rype_basics_local_script.testimonial+':</label></td> \
+                            <td valign="top"><label>'+ns_basics_local_script.testimonial+':</label></td> \
                             <td valign="top"><textarea class="widefat" name="'+testimonialFieldName+'['+count+'][text]"></textarea></td> \
                         </tr> \
                     </table> \

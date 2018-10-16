@@ -31,12 +31,12 @@ function ns_basics_load_stylesheets() {
     if (is_admin()) {
 
         //include scripts
-        wp_enqueue_script('rype-basics-admin-js', plugins_url('/js/rype-basics-admin.js', __FILE__), array('jquery','media-upload','thickbox', 'wp-color-picker'), '', true);
+        wp_enqueue_script('ns-basics-admin-js', plugins_url('/js/ns-basics-admin.js', __FILE__), array('jquery','media-upload','thickbox', 'wp-color-picker'), '', true);
         wp_enqueue_script('featherlight', plugins_url('/assets/featherlight/featherlight.js', __FILE__), array('jquery'), '', true);
 
         //include styles
         wp_enqueue_style('featherlight',  plugins_url('/assets/featherlight/featherlight.css',  __FILE__), array(), '1.0', 'all');
-        wp_enqueue_style('rype-basics-admin-css',  plugins_url('/css/rype-basics-admin.css',  __FILE__), array(), '1.0', 'all');
+        wp_enqueue_style('ns-basics-admin-css',  plugins_url('/css/ns-basics-admin.css',  __FILE__), array(), '1.0', 'all');
         wp_enqueue_style('font-awesome',  plugins_url('/css/font-awesome/css/font-awesome.min.css', __FILE__), array(), '', 'all');
 
         //wordpress pre-loaded scripts
@@ -66,7 +66,7 @@ function ns_basics_load_stylesheets() {
             'off' => __( 'Off', 'ns-basics' ),
             'on' => __( 'On', 'ns-basics' ),
         );
-        wp_localize_script( 'rype-basics-admin-js', 'rype_basics_local_script', $translation_array );
+        wp_localize_script( 'ns-basics-admin-js', 'ns_basics_local_script', $translation_array );
 
     }
 }
@@ -78,7 +78,7 @@ add_action('admin_enqueue_scripts', 'ns_basics_load_stylesheets');
 function ns_basics_front_end_scripts() {
     if (!is_admin()) {
         wp_enqueue_style('font-awesome',  plugins_url('/css/font-awesome/css/font-awesome.min.css', __FILE__), array(), '', 'all');
-        wp_enqueue_script('rype-basics', plugins_url('/js/rype-basics.js', __FILE__), array('jquery', 'jquery-ui-core'), '', true);
+        wp_enqueue_script('ns-basics', plugins_url('/js/ns-basics.js', __FILE__), array('jquery', 'jquery-ui-core'), '', true);
 
         //wordpress pre-loaded scripts
         wp_enqueue_script('jquery-ui-core');
@@ -339,11 +339,11 @@ function rype_basics_admin_page($page_name = null, $settings_group = null, $page
 /*  OUTPUT SETTINGS PAGE
 /*-----------------------------------------------------------------------------------*/
 function ns_basics_settings_page() { 
-    $page_name = 'Rype Basics';
+    $page_name = 'NightShift Basics';
     $settings_group = 'rype-basics-settings-group';
     $pages = array();
-    $pages[] = array('slug' => 'rype-basics-settings', 'name' => 'Settings');
-    $pages[] = array('slug' => 'rype-basics-help', 'name' => 'Help');
+    $pages[] = array('slug' => 'ns-basics-settings', 'name' => 'Settings');
+    $pages[] = array('slug' => 'ns-basics-help', 'name' => 'Help');
     $display_actions = 'true';
     $content = ns_basics_settings_page_content();
     $content_class = 'rype-modules';
@@ -351,7 +351,7 @@ function ns_basics_settings_page() {
     $alerts = array();
     if(!current_theme_supports('rype-basics')) {
         $current_theme = wp_get_theme();
-        $incompatible_theme_alert = rype_basics_admin_alert('info', esc_html__('The active theme ('.$current_theme->name.') does not support Rype Basics.', 'rype-basics'), $action = '#', $action_text = esc_html__('Get a compatible theme', 'rype-basics'), true); 
+        $incompatible_theme_alert = rype_basics_admin_alert('info', esc_html__('The active theme ('.$current_theme->name.') does not support Rype Basics.', 'ns-basics'), $action = '#', $action_text = esc_html__('Get a compatible theme', 'ns-basics'), true); 
         $alerts[] = $incompatible_theme_alert; 
     }
 
@@ -369,11 +369,11 @@ function ns_basics_settings_page_content() {
 /*  OUTPUT HELP PAGE
 /*-----------------------------------------------------------------------------------*/
 function ns_basics_help_page() { 
-    $page_name = 'Rype Basics';
+    $page_name = 'NightShift Basics';
     $settings_group = null;
     $pages = array();
-    $pages[] = array('slug' => 'rype-basics-settings', 'name' => 'Settings');
-    $pages[] = array('slug' => 'rype-basics-help', 'name' => 'Help');
+    $pages[] = array('slug' => 'ns-basics-settings', 'name' => 'Settings');
+    $pages[] = array('slug' => 'ns-basics-help', 'name' => 'Help');
     $display_actions = 'false';
     $content = ns_basics_help_page_content();
     $content_class = null;
