@@ -1,18 +1,18 @@
 <?php
 /**
 * Plugin Name: NightShift Basics
-* Plugin URI: http://rypecreative.com/
-* Description: The framework essential for all themes and plugins built by Rype Creative.
+* Plugin URI: http://nightshiftcreative.co/
+* Description: The framework essential for all themes and plugins built by NightShift Creative.
 * Version: 1.0.0
-* Author: Rype Creative
-* Author URI: http://rypecreative.com/
-* Text Domain: rype-basics
+* Author: NightShift Creative
+* Author URI: http://nightshiftcreative.co/
+* Text Domain: ns-basics
 **/
 
 /*-----------------------------------------------------------------------------------*/
 /*  Load Text Domain
 /*-----------------------------------------------------------------------------------*/
-load_plugin_textdomain( 'rype-basics', false, dirname( plugin_basename( __FILE__ ) ) . '/languages' );
+load_plugin_textdomain( 'ns-basics', false, dirname( plugin_basename( __FILE__ ) ) . '/languages' );
 
 /*-----------------------------------------------------------------------------------*/
 /*  Automatic Update Checker (checks for new releases on github)
