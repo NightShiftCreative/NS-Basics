@@ -34,9 +34,9 @@ function ns_basics_login_fail( $username ) {
 /*-----------------------------------------------------------------------------------*/
 function ns_basics_tooltip($toggle, $content, $class = null) {
     $output = '';
-    $output .= '<div class="rype-tooltip '.$class.'">';
-    $output .= '<div class="rype-tooltip-toggle">'.$toggle.'</div>';
-    $output .= '<div class="rype-tooltip-content"><div class="rype-tooltip-content-inner">'.$content.'</div></div>';
+    $output .= '<div class="ns-tooltip '.$class.'">';
+    $output .= '<div class="ns-tooltip-toggle">'.$toggle.'</div>';
+    $output .= '<div class="ns-tooltip-content"><div class="ns-tooltip-content-inner">'.$content.'</div></div>';
     $output .= '</div>';
     return $output;
 }

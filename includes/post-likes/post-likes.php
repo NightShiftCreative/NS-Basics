@@ -214,9 +214,9 @@ function rype_basics_get_post_likes_button( $post_id, $is_comment = NULL, $butto
 	}
 
     if($button == 'true') {
-        $output = '<div class="sl-wrapper sl-wrapper-button rype-tooltip"><a href="' . admin_url( 'admin-ajax.php?action=rype_basics_process_post_like' . '&post_id=' . $post_id . '&nonce=' . $nonce . '&is_comment=' . $is_comment . '&disabled=true&button=true' ) . '" class="button small outline sl-button' . $post_id_class . $class . $comment_class . '" data-nonce="' . $nonce . '" data-post-id="' . $post_id . '" data-iscomment="' . $is_comment . '" title="' . $title . '">' . $icon . $count .'</a>' .$loader . '</div>';
+        $output = '<div class="sl-wrapper sl-wrapper-button ns-tooltip"><a href="' . admin_url( 'admin-ajax.php?action=rype_basics_process_post_like' . '&post_id=' . $post_id . '&nonce=' . $nonce . '&is_comment=' . $is_comment . '&disabled=true&button=true' ) . '" class="button small outline sl-button' . $post_id_class . $class . $comment_class . '" data-nonce="' . $nonce . '" data-post-id="' . $post_id . '" data-iscomment="' . $is_comment . '" title="' . $title . '">' . $icon . $count .'</a>' .$loader . '</div>';
     } else {
-        $output = '<div class="sl-wrapper rype-tooltip"><a href="'.admin_url( 'admin-ajax.php?action=rype_basics_process_post_like' . '&post_id=' . $post_id . '&nonce=' . $nonce . '&is_comment=' . $is_comment . '&disabled=true' ) . '" class="sl-button rype-tooltip-toggle' . $post_id_class . $class . $comment_class . '" data-nonce="' . $nonce . '" data-post-id="' . $post_id . '" data-iscomment="' . $is_comment . '" title="' . $title . '">' . $icon . $count . '</a>' . $loader . '</div>';
+        $output = '<div class="sl-wrapper ns-tooltip"><a href="'.admin_url( 'admin-ajax.php?action=rype_basics_process_post_like' . '&post_id=' . $post_id . '&nonce=' . $nonce . '&is_comment=' . $is_comment . '&disabled=true' ) . '" class="sl-button ns-tooltip-toggle' . $post_id_class . $class . $comment_class . '" data-nonce="' . $nonce . '" data-post-id="' . $post_id . '" data-iscomment="' . $is_comment . '" title="' . $title . '">' . $icon . $count . '</a>' . $loader . '</div>';
     }
 	return $output;
 }
@@ -339,7 +339,7 @@ function rype_basics_get_like_count( $like_count ) {
 	} else {
 		$number = $like_text;
 	}
-	$count = '<div class="sl-count rype-tooltip-content"><div class="rype-tooltip-content-inner">' . $number . '</div></div>';
+	$count = '<div class="sl-count ns-tooltip-content"><div class="ns-tooltip-content-inner">' . $number . '</div></div>';
 	return $count;
 }
 
