@@ -1,6 +1,6 @@
 <?php
 
-function rype_basics_get_social_share($class = null, $toggle_text = null) {
+function ns_basics_get_social_share($class = null, $toggle_text = null) {
         global $post;
         $icon_set = esc_attr(get_option('rypecore_icon_set', 'fa'));
         $toggle = rypecore_get_icon($icon_set, 'share-alt', 'share2', 'forward');
@@ -15,7 +15,7 @@ function rype_basics_get_social_share($class = null, $toggle_text = null) {
 
         ob_start();
 
-        if($toggle_text === true) { $toggle = $toggle.esc_html__('Share', 'rype-basics'); } 
+        if($toggle_text === true) { $toggle = $toggle.esc_html__('Share', 'ns-basics'); } 
 
         $content .= '<ul class="clean-list">';
         $content .= '<li><a href="http://www.facebook.com/sharer/sharer.php?u='.get_the_permalink().'&t='.rawurlencode(get_the_title()).' target="_blank"><i class="fa fa-facebook"></i></a></li>';
@@ -31,9 +31,9 @@ function rype_basics_get_social_share($class = null, $toggle_text = null) {
         return $output;
 }
 
-function rype_basics_add_post_share() { ?> 
-    <li><?php echo rype_basics_get_social_share('blog-share', true); ?></li>
+function ns_basics_add_post_share() { ?> 
+    <li><?php echo ns_basics_get_social_share('blog-share', true); ?></li>
 <?php }
-add_action( 'ns_basics_after_post_meta', 'rype_basics_add_post_share' );
+add_action( 'ns_basics_after_post_meta', 'ns_basics_add_post_share' );
 
 ?>
