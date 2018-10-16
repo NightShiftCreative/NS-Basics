@@ -92,73 +92,73 @@ add_action('wp_enqueue_scripts', 'ns_basics_front_end_scripts');
 /*  GLOBAL FUNCTIONS
 /*-----------------------------------------------------------------------------------*/
 /* set add-ons data */
-function rype_basics_get_add_ons() {
+function ns_basics_get_add_ons() {
 
     $add_ons = array(
         1 => array(
             'name' => 'Post Sharing',
-            'slug' => 'rype_basics_post_share',
+            'slug' => 'ns_basics_post_share',
             'icon' => plugins_url('/ns-basics/images/icon-post-sharing.svg'),
             'note' => esc_html__('Add ability to share blog posts on social media', 'ns-basics'),
             'group' => 'basic',
             'required_theme_support' => '',
-            'link' => 'http://rypecreative.com/',
+            'link' => 'http://nightshiftcreative.co/',
             'active' => 'true',
         ),
         2 => array(
             'name' => 'Post Likes',
-            'slug' => 'rype_basics_post_likes',
+            'slug' => 'ns_basics_post_likes',
             'icon' => plugins_url('/ns-basics/images/icon-post-sharing.svg'),
             'note' => esc_html__('Allow users to "like" posts', 'ns-basics'),
             'group' => 'basic',
             'required_theme_support' => '',
-            'link' => 'http://rypecreative.com/',
+            'link' => 'http://nightshiftcreative.co/',
             'active' => 'true',
         ),
         3 => array(
             'name' => 'Page Settings',
-            'slug' => 'rype_basics_page_settings',
+            'slug' => 'ns_basics_page_settings',
             'icon' => plugins_url('/ns-basics/images/icon-post-sharing.svg'),
             'note' => esc_html__('Add flexible options to pages & posts', 'ns-basics'),
             'group' => 'basic',
             'required_theme_support' => '',
-            'link' => 'http://rypecreative.com/',
+            'link' => 'http://nightshiftcreative.co/',
             'active' => 'true',
         ),
         4 => array(
             'name' => 'Slides',
-            'slug' => 'rype_basics_slides',
+            'slug' => 'ns_basics_slides',
             'icon' => plugins_url('/ns-basics/images/icon-post-sharing.svg'),
             'note' => esc_html__('Add slides custom post type', 'ns-basics'),
             'group' => 'basic',
             'required_theme_support' => '',
-            'link' => 'http://rypecreative.com/',
+            'link' => 'http://nightshiftcreative.co/',
             'active' => 'true',
         ),
         5 => array(
             'name' => 'Basic Shortcodes',
-            'slug' => 'rype_basics_shortcodes',
+            'slug' => 'ns_basics_shortcodes',
             'icon' => plugins_url('/ns-basics/images/icon-post-sharing.svg'),
             'note' => esc_html__('Add some helpful shortcodes', 'ns-basics'),
             'group' => 'basic',
             'required_theme_support' => '',
-            'link' => 'http://rypecreative.com/',
+            'link' => 'http://nightshiftcreative.co/',
             'active' => 'true',
         ),
         6 => array(
             'name' => 'Basic Widgets',
-            'slug' => 'rype_basics_widgets',
+            'slug' => 'ns_basics_widgets',
             'icon' => plugins_url('/ns-basics/images/icon-post-sharing.svg'),
             'note' => esc_html__('Add some helpful widgets', 'ns-basics'),
             'group' => 'basic',
             'required_theme_support' => '',
-            'link' => 'http://rypecreative.com/',
+            'link' => 'http://nightshiftcreative.co/',
             'active' => 'true',
         ),
     );
 
     //update active add-ons
-    $active_add_ons = get_option('rype_basics_active_add_ons');
+    $active_add_ons = get_option('ns_basics_active_add_ons');
     if(!empty($active_add_ons)) {
         foreach($add_ons as $key => $value) {
             if (in_array($add_ons[$key]['slug'], $active_add_ons)) {
@@ -173,8 +173,8 @@ function rype_basics_get_add_ons() {
 }
 
 /** loop through add-ons **/
-function rype_basics_display_add_ons($group = null) {
-    $add_ons = rype_basics_get_add_ons();
+function ns_basics_display_add_ons($group = null) {
+    $add_ons = ns_basics_get_add_ons();
     $current_theme = wp_get_theme();
     $output = '';
 
@@ -198,7 +198,7 @@ function rype_basics_display_add_ons($group = null) {
                             </div>
                         <?php } else { ?>
                             <div class="toggle-switch" title="<?php if($active == 'true') { esc_html_e('Active', 'ns-basics'); } else { esc_html_e('Disabled', 'ns-basics'); } ?>">
-                                <input type="checkbox" id="<?php echo $add_on['slug']; ?>" name="rype_basics_active_add_ons[]" value="<?php echo $add_on['slug']; ?>" class="toggle-switch-checkbox" <?php checked('true', $active, true) ?> />
+                                <input type="checkbox" id="<?php echo $add_on['slug']; ?>" name="ns_basics_active_add_ons[]" value="<?php echo $add_on['slug']; ?>" class="toggle-switch-checkbox" <?php checked('true', $active, true) ?> />
                                 <label class="toggle-switch-label" for="<?php echo $add_on['slug']; ?>"><?php if($active == 'true') { echo '<span class="on">'.esc_html__('On', 'ns-basics').'</span>'; } else { echo '<span>'.esc_html__('Off', 'ns-basics').'</span>'; } ?></label>
                             </div>
                         <?php } ?>
@@ -221,8 +221,8 @@ function rype_basics_display_add_ons($group = null) {
 }
 
 /* check if add-on is active */
-function rype_basics_is_active($add_on_slug) {
-    $add_ons = rype_basics_get_add_ons();
+function ns_basics_is_active($add_on_slug) {
+    $add_ons = ns_basics_get_add_ons();
     $is_active = false;
 
     foreach($add_ons as $add_on) {
@@ -236,8 +236,8 @@ function rype_basics_is_active($add_on_slug) {
 /*-----------------------------------------------------------------------------------*/
 /*  ADD ADMIN MENU ITEMS
 /*-----------------------------------------------------------------------------------*/
-add_action('admin_menu', 'rype_basics_plugin_menu');
-function rype_basics_plugin_menu() {
+add_action('admin_menu', 'ns_basics_plugin_menu');
+function ns_basics_plugin_menu() {
     add_menu_page('NS Basics', 'NS Basics', 'administrator', 'ns-basics-settings', 'ns_basics_settings_page', 'dashicons-admin-generic');
     add_submenu_page('ns-basics-settings', 'Settings', 'Settings', 'administrator', 'ns-basics-settings');
     add_submenu_page('ns-basics-settings', 'Help', 'Help', 'administrator', 'ns-basics-help', 'ns_basics_help_page');
@@ -248,14 +248,14 @@ function rype_basics_plugin_menu() {
 /*  REGISTER SETTINGS
 /*-----------------------------------------------------------------------------------*/
 function ns_basics_register_options() {
-    register_setting( 'rype-basics-settings-group', 'rype_basics_active_add_ons');
+    register_setting( 'ns-basics-settings-group', 'ns_basics_active_add_ons');
 }
 
 /*-----------------------------------------------------------------------------------*/
 /*  BUILD ADMIN PAGE TEMPLATE
 /*  Note: this template is used for all plugins that require NS Basics
 /*-----------------------------------------------------------------------------------*/
-function rype_basics_admin_page($page_name = null, $settings_group = null, $pages = null, $display_actions = null, $content = null, $content_class = null, $content_nav = null, $alerts = null, $ajax = true) { ?>
+function ns_basics_admin_page($page_name = null, $settings_group = null, $pages = null, $display_actions = null, $content = null, $content_class = null, $content_nav = null, $alerts = null, $ajax = true) { ?>
     <div class="wrap">
         <?php if(!empty($page_name)) { ?><h1><?php echo $page_name; ?></h1><?php } ?>
 
@@ -313,7 +313,7 @@ function rype_basics_admin_page($page_name = null, $settings_group = null, $page
                 </div>
 
                 <div class="clear"></div>
-                <?php echo rype_basics_admin_alert('success', esc_html__('Settings Saved Successfully', 'rype-basics'), null, null, true, 'settings-saved'); ?>
+                <?php echo rype_basics_admin_alert('success', esc_html__('Settings Saved Successfully', 'ns-basics'), null, null, true, 'settings-saved'); ?>
             </div>
 
             <div class="rype-settings-menu-bar rype-settings-footer">
@@ -321,11 +321,11 @@ function rype_basics_admin_page($page_name = null, $settings_group = null, $page
                 $plugin_data = get_plugin_data( __FILE__ );
                 $plugin_version = $plugin_data['Version']; 
                 ?>
-                <div class="rype-settings-version left"><?php esc_html_e('Version', 'rype-basics'); ?> <?php echo $plugin_version; ?> | <?php esc_html_e('Made by', 'rype-basics'); ?> <a href="http://rypecreative.com/" target="_blank">Rype Creative</a> | <a href="http://rypecreative.com/contact/#theme-support" target="_blank"><?php esc_html_e('Get Support', 'rype-basics'); ?></a></div>
+                <div class="rype-settings-version left"><?php esc_html_e('Version', 'ns-basics'); ?> <?php echo $plugin_version; ?> | <?php esc_html_e('Made by', 'ns-basics'); ?> <a href="http://nightshiftcreative.co/" target="_blank">NightShift Creative</a> | <a href="http://nightshiftcreative.co/contact/#theme-support" target="_blank"><?php esc_html_e('Get Support', 'ns-basics'); ?></a></div>
                 <?php if($display_actions != 'false') { ?>
                     <div class="rype-settings-actions">
                         <div class="loader"><img src="<?php echo esc_url(home_url('/')); ?>wp-admin/images/spinner.gif" alt="" /></div> 
-                        <?php submit_button(esc_html__('Save Changes', 'rype-basics'), 'admin-button', 'submit', false); ?>      
+                        <?php submit_button(esc_html__('Save Changes', 'ns-basics'), 'admin-button', 'submit', false); ?>      
                     </div>
                 <?php } ?>
                 <div class="clear"></div>
@@ -340,7 +340,7 @@ function rype_basics_admin_page($page_name = null, $settings_group = null, $page
 /*-----------------------------------------------------------------------------------*/
 function ns_basics_settings_page() { 
     $page_name = 'NightShift Basics';
-    $settings_group = 'rype-basics-settings-group';
+    $settings_group = 'ns-basics-settings-group';
     $pages = array();
     $pages[] = array('slug' => 'ns-basics-settings', 'name' => 'Settings');
     $pages[] = array('slug' => 'ns-basics-help', 'name' => 'Help');
@@ -349,18 +349,18 @@ function ns_basics_settings_page() {
     $content_class = 'rype-modules';
     $content_nav = null;
     $alerts = array();
-    if(!current_theme_supports('rype-basics')) {
+    if(!current_theme_supports('ns-basics')) {
         $current_theme = wp_get_theme();
-        $incompatible_theme_alert = rype_basics_admin_alert('info', esc_html__('The active theme ('.$current_theme->name.') does not support Rype Basics.', 'ns-basics'), $action = '#', $action_text = esc_html__('Get a compatible theme', 'ns-basics'), true); 
+        $incompatible_theme_alert = rype_basics_admin_alert('info', esc_html__('The active theme ('.$current_theme->name.') does not support NightShift Basics.', 'ns-basics'), $action = '#', $action_text = esc_html__('Get a compatible theme', 'ns-basics'), true); 
         $alerts[] = $incompatible_theme_alert; 
     }
 
-    echo rype_basics_admin_page($page_name, $settings_group, $pages, $display_actions, $content, $content_class, $content_nav, $alerts);
+    echo ns_basics_admin_page($page_name, $settings_group, $pages, $display_actions, $content, $content_class, $content_nav, $alerts);
 }
 
 function ns_basics_settings_page_content() {
     ob_start(); 
-    echo rype_basics_display_add_ons('basic');
+    echo ns_basics_display_add_ons('basic');
     $output = ob_get_clean();
     return $output;
 }
@@ -377,7 +377,7 @@ function ns_basics_help_page() {
     $display_actions = 'false';
     $content = ns_basics_help_page_content();
     $content_class = null;
-    echo rype_basics_admin_page($page_name, $settings_group, $pages, $display_actions, $content, $content_class);
+    echo ns_basics_admin_page($page_name, $settings_group, $pages, $display_actions, $content, $content_class);
 }
 
 function ns_basics_help_page_content() {
@@ -404,32 +404,32 @@ include( plugin_dir_path( __FILE__ ) . 'includes/license-keys.php');
 /*--------------------------------------------*/
 /*  Post Sharing */
 /*--------------------------------------------*/
-if(rype_basics_is_active('rype_basics_post_share')) { include( plugin_dir_path( __FILE__ ) . 'includes/post-sharing/post-sharing.php'); }
+if(ns_basics_is_active('ns_basics_post_share')) { include( plugin_dir_path( __FILE__ ) . 'includes/post-sharing/post-sharing.php'); }
 
 /*--------------------------------------------*/
 /*  Post Likes */
 /*--------------------------------------------*/
-if(rype_basics_is_active('rype_basics_post_likes')) { include( plugin_dir_path( __FILE__ ) . 'includes/post-likes/post-likes.php'); }
+if(ns_basics_is_active('ns_basics_post_likes')) { include( plugin_dir_path( __FILE__ ) . 'includes/post-likes/post-likes.php'); }
 
 /*--------------------------------------------*/
 /* Page Settings */
 /*--------------------------------------------*/
-if(rype_basics_is_active('rype_basics_page_settings')) { include( plugin_dir_path( __FILE__ ) . 'includes/page-settings/page-settings.php'); }
+if(ns_basics_is_active('ns_basics_page_settings')) { include( plugin_dir_path( __FILE__ ) . 'includes/page-settings/page-settings.php'); }
 
 /*--------------------------------------------*/
 /*  Slides */
 /*--------------------------------------------*/
-if(rype_basics_is_active('rype_basics_slides')) { include( plugin_dir_path( __FILE__ ) . 'includes/slides/slides.php'); }
+if(ns_basics_is_active('ns_basics_slides')) { include( plugin_dir_path( __FILE__ ) . 'includes/slides/slides.php'); }
 
 /*--------------------------------------------*/
 /*  Basic Shortcodes */
 /*--------------------------------------------*/
-if(rype_basics_is_active('rype_basics_shortcodes')) { include( plugin_dir_path( __FILE__ ) . 'includes/basic-shortcodes/shortcodes.php'); }
+if(ns_basics_is_active('ns_basics_shortcodes')) { include( plugin_dir_path( __FILE__ ) . 'includes/basic-shortcodes/shortcodes.php'); }
 
 /*--------------------------------------------*/
 /*  Basic Widgets */
 /*--------------------------------------------*/
-if(rype_basics_is_active('rype_basics_widgets')) {
+if(ns_basics_is_active('ns_basics_widgets')) {
     include('includes/basic-widgets/contact_info_widget.php');
     include('includes//basic-widgets/social_links_widget.php');
     include('includes/basic-widgets/list_posts_widget.php');
