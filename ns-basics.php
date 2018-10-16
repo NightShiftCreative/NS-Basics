@@ -180,15 +180,15 @@ function ns_basics_display_add_ons($group = null) {
 
     ob_start(); ?>
 
-    <div class="rype-module-group rype-module-group-basic">
+    <div class="ns-module-group ns-module-group-basic">
         <?php $count = 1;
         foreach($add_ons as $add_on) { 
             if(!empty($group) && $add_on['group'] == $group) { 
                 if(isset($add_on['active']) && $add_on['active'] == 'true') { $active = 'true'; } else { $active = 'false'; } ?>
                 <div class="admin-module <?php if($active == 'true') { echo 'active-add-on'; } ?>">
                     
-                    <div class="rype-module-header">
-                        <?php if(!empty($add_on['icon'])) { ?><div class="rype-module-icon"><img src="<?php echo $add_on['icon']; ?>" alt="" /></div><?php } ?>
+                    <div class="ns-module-header">
+                        <?php if(!empty($add_on['icon'])) { ?><div class="ns-module-icon"><img src="<?php echo $add_on['icon']; ?>" alt="" /></div><?php } ?>
                         <?php if(!empty($add_on['name'])) { ?><h4><?php echo $add_on['name']; ?></h4><?php } ?>
                         
                         <?php if(!empty($add_on['required_theme_support']) && !current_theme_supports($add_on['required_theme_support'])) { ?>    
@@ -204,10 +204,10 @@ function ns_basics_display_add_ons($group = null) {
                         <?php } ?>
                     </div>    
 
-                    <div class="rype-module-content">
+                    <div class="ns-module-content">
                         <?php if(!empty($add_on['note'])) { ?><span class="admin-module-note"><?php echo $add_on['note']; ?></span><?php } ?>
-                        <?php if(!empty($add_on['paid'])) { ?><a href="<?php echo $add_on['paid']['link']; ?>" target="_blank" class="rype-meta-item"><?php esc_html_e('Premium', 'ns-basics'); ?> </a><?php } ?>
-                        <?php if(!empty($add_on['link'])) { ?><a href="<?php echo $add_on['link']; ?>" target="_blank" class="view-details rype-meta-item"><?php esc_html_e('View Details', 'ns-basics'); ?> </a><?php } ?>
+                        <?php if(!empty($add_on['paid'])) { ?><a href="<?php echo $add_on['paid']['link']; ?>" target="_blank" class="ns-meta-item"><?php esc_html_e('Premium', 'ns-basics'); ?> </a><?php } ?>
+                        <?php if(!empty($add_on['link'])) { ?><a href="<?php echo $add_on['link']; ?>" target="_blank" class="view-details ns-meta-item"><?php esc_html_e('View Details', 'ns-basics'); ?> </a><?php } ?>
                     </div>
                 </div>
                 <?php $count++; 
