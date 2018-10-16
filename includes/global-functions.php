@@ -32,7 +32,7 @@ function ns_basics_login_fail( $username ) {
 /*-----------------------------------------------------------------------------------*/
 /*  Tooltips
 /*-----------------------------------------------------------------------------------*/
-function rype_basics_tooltip($toggle, $content, $class = null) {
+function ns_basics_tooltip($toggle, $content, $class = null) {
     $output = '';
     $output .= '<div class="rype-tooltip '.$class.'">';
     $output .= '<div class="rype-tooltip-toggle">'.$toggle.'</div>';

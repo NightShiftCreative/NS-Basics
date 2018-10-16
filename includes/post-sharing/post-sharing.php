@@ -26,7 +26,7 @@ function rype_basics_get_social_share($class = null, $toggle_text = null) {
         $content .= '<li><a href="mailto:?subject='.$subject.'&body='.$body.'">'.$mail_icon.'</a></li>';
         $content .= '</ul>';
 
-        echo rype_basics_tooltip($toggle, $content, 'post-share');
+        echo ns_basics_tooltip($toggle, $content, 'post-share');
         $output = ob_get_clean();
         return $output;
 }
