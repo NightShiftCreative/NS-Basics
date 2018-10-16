@@ -307,7 +307,7 @@ function ns_basics_admin_page($page_name = null, $settings_group = null, $pages 
                     <?php } ?>
 
                     <div class="content-wrap <?php if(!empty($content_nav)) { echo 'content-has-nav'; } ?>">
-                        <?php if(!empty($content_nav)) { ?><div class="tab-loader"><img src="<?php echo esc_url(home_url('/')); ?>wp-admin/images/spinner.gif" alt="" /> <?php esc_html_e('Loading...', 'rypecore'); ?></div><?php } ?>
+                        <?php if(!empty($content_nav)) { ?><div class="tab-loader"><img src="<?php echo esc_url(home_url('/')); ?>wp-admin/images/spinner.gif" alt="" /> <?php esc_html_e('Loading...', 'ns-basics'); ?></div><?php } ?>
                         <?php if(!empty($content)) { echo $content; } ?>
                     </div>
                 </div>

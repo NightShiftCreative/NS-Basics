@@ -3,7 +3,7 @@
 /*-----------------------------------------------------------------------------------*/
 /*  Add Meta Tags to Head
 /*-----------------------------------------------------------------------------------*/
-function rype_basics_add_meta_tags() { 
+function ns_basics_add_meta_tags() { 
     $output = '';
     if(is_single()) {
         global $post;
@@ -15,13 +15,13 @@ function rype_basics_add_meta_tags() {
     } 
     echo $output;
 }
-add_action('wp_head', 'rype_basics_add_meta_tags');
+add_action('wp_head', 'ns_basics_add_meta_tags');
 
 /*-----------------------------------------------------------------------------------*/
 /*  Login Form Failed
 /*-----------------------------------------------------------------------------------*/
-add_action( 'wp_login_failed', 'rype_basics_login_fail' );  // hook failed login
-function rype_basics_login_fail( $username ) {
+add_action( 'wp_login_failed', 'ns_basics_login_fail' );  // hook failed login
+function ns_basics_login_fail( $username ) {
    $referrer = $_SERVER['HTTP_REFERER'];
    if ( !empty($referrer) && !strstr($referrer,'wp-login') && !strstr($referrer,'wp-admin') ) {
       wp_redirect( add_query_arg('login', 'failed', $referrer) );
