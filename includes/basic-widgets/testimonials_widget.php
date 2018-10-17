@@ -20,7 +20,7 @@ class ns_basics_testimonials_widget extends WP_Widget {
         extract( $args );
         global $wpdb;
 
-        $icon_set = get_option('rypecore_icon_set', 'fa');
+        $icon_set = get_option('ns_core_icon_set', 'fa');
 
         $slides_default = array(
             array('name'=> 'John Doe', 'position'=> 'CEO at Google', 'image'=> '', 'text' => 'NightShift Creative provided fast and beautiful web design!'),

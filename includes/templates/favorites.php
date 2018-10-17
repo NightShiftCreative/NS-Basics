@@ -1,7 +1,7 @@
 <?php 
 //Get global settings
 global $current_user, $wp_roles;
-$icon_set = esc_attr(get_option('rypecore_icon_set', 'fa'));
+$icon_set = esc_attr(get_option('ns_core_icon_set', 'fa'));
 $paged = (get_query_var('paged')) ? get_query_var('paged') : 1; 
 
 //Get template args

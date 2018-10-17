@@ -445,7 +445,7 @@ function ns_alert_box($atts, $content = null) {
 /** SERVICES **/
 add_shortcode('ns_service', 'ns_service');
 function ns_service($atts, $content = null) {
-    $icon_set = get_option('rypecore_icon_set', 'fa');
+    $icon_set = get_option('ns_core_icon_set', 'fa');
 
     $atts = shortcode_atts(
         array (
@@ -546,7 +546,7 @@ function ns_tabs($atts, $content=null) {
 add_shortcode('ns_tab', 'ns_tab');
 function ns_tab($atts, $content=null) {
     global $tabs_divs;
-    $icon_set = get_option('rypecore_icon_set', 'fa');
+    $icon_set = get_option('ns_core_icon_set', 'fa');
 
     $atts = shortcode_atts(
         array (
