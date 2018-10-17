@@ -46,15 +46,15 @@ class ns_basics_social_links_widget extends WP_Widget {
                                 $flickr = $instance['flickr'];
                                 $dribbble = $instance['dribbble'];
                             } else {
-                                $fb = esc_attr(get_option('rypecore_fb'));
-                                $twitter = esc_attr(get_option('rypecore_twitter'));
-                                $google = esc_attr(get_option('rypecore_google'));
-                                $linkedin = esc_attr(get_option('rypecore_linkedin'));
-                                $youtube = esc_attr(get_option('rypecore_youtube'));
-                                $vimeo = esc_attr(get_option('rypecore_vimeo'));
-                                $instagram = esc_attr(get_option('rypecore_instagram'));
-                                $flickr = esc_attr(get_option('rypecore_flickr'));
-                                $dribbble = esc_attr(get_option('rypecore_dribbble'));
+                                $fb = esc_attr(get_option('ns_core_fb'));
+                                $twitter = esc_attr(get_option('ns_core_twitter'));
+                                $google = esc_attr(get_option('ns_core_google'));
+                                $linkedin = esc_attr(get_option('ns_core_linkedin'));
+                                $youtube = esc_attr(get_option('ns_core_youtube'));
+                                $vimeo = esc_attr(get_option('ns_core_vimeo'));
+                                $instagram = esc_attr(get_option('ns_core_instagram'));
+                                $flickr = esc_attr(get_option('ns_core_flickr'));
+                                $dribbble = esc_attr(get_option('ns_core_dribbble'));
                             }
                             ?>
 

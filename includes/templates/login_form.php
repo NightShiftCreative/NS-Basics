@@ -1,6 +1,6 @@
 <?php 
 //Get global settings
-$members_register_page = esc_attr(get_option('rypecore_members_register_page'));
+$members_register_page = esc_attr(get_option('ns_core_members_register_page'));
 
 //Get template args
 if(isset($template_args)) {

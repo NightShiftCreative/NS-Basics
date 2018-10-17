@@ -191,8 +191,8 @@ function ns_basics_admin_alert($type = 'info', $text = null, $action = null, $ac
 function ns_basics_main_contact_form() {
 
     $default_email = get_option('admin_email');
-    $contact_form_email = esc_attr(get_option('rypecore_email', $default_email));
-    $contact_form_success = esc_attr(get_option(' rypecore_contact_form_success', esc_html__('Thanks! Your email has been delivered!', 'rypecore')));
+    $contact_form_email = esc_attr(get_option('ns_core_email', $default_email));
+    $contact_form_success = esc_attr(get_option('ns_core_contact_form_success', esc_html__('Thanks! Your email has been delivered!', 'rypecore')));
     
     $nameError = '';
     $emailError= '';

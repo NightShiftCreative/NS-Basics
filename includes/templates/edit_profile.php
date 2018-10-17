@@ -1,7 +1,7 @@
 <?php 
 //Get global settings
 global $current_user, $wp_roles; 
-$members_login_page = esc_attr(get_option('rypecore_members_login_page'));
+$members_login_page = esc_attr(get_option('ns_core_members_login_page'));
 
 //Get template args
 if(isset($template_args)) {
