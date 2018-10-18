@@ -1,6 +1,6 @@
 /****************************************************/
 /** GLOBAL **/
-/** Shared styles between NightLight and NS basics **/
+/** Shared styles between NightLight and NS Basics **/
 /****************************************************/
 
 .left { float:left; }
@@ -61,7 +61,7 @@
 .admin-module .chosen-container-single .chosen-single div { margin-top:10px; }
 .admin-module .chosen-container-active.chosen-with-drop .chosen-single { background:white; }
 .admin-module .chosen-container-active.chosen-with-drop .chosen-single div b { background-position:-16px 2px; }
-.admin-module .chosen-container .chosen-results li.highlighted { background:#48429b; border-radius:2px; }
+.admin-module .chosen-container .chosen-results li.highlighted { background:#5c59ed; border-radius:2px; }
 
 .admin-module textarea { height:120px; }
 
@@ -80,7 +80,7 @@
     border:none;
     box-shadow:none;
     background:none;
-    background:#5355ca;
+    background:#5c59ed;
     color:white;
     border-radius:4px;
     padding: 11px 10px;
@@ -97,7 +97,7 @@
 }
 .admin-module input[type="button"]:hover, 
 .admin-button:hover {
-    background:#6d6ee1;
+    background:#817ff0;
 }
 
 .admin-module .button-secondary { padding:10px; height:auto; line-height:normal; font-size:13px; }
@@ -114,6 +114,7 @@
     color:#709058;
     border-left:3px solid #709058;
     padding:13px 20px;
+    border-radius:0px 4px 4px 0px;
     margin-top:-1px;
     position:relative;
     z-index:1;
@@ -166,9 +167,9 @@
     padding:0;
     transition:all 0.4s;
 }
-.ns-accordion.ui-accordion .ui-accordion-header-active { background:#48429b; color:white; border-radius:5px 5px 0px 0px; }
+.ns-accordion.ui-accordion .ui-accordion-header-active { background:#5c59ed; color:white; border-radius:5px 5px 0px 0px; }
 .ns-accordion.ui-accordion .ui-accordion-header-active .fa.fa-chevron-right,
-.ns-accordion.ui-accordion .ui-accordion-header-active .fa.fa-chevron-down { background:#36317d; color:white; border-radius:5px 0px 0px 0px; }
+.ns-accordion.ui-accordion .ui-accordion-header-active .fa.fa-chevron-down { background:rgba(0, 0, 0, 0.2); color:white; border-radius:5px 0px 0px 0px; }
 .ns-accordion.ui-accordion .ui-accordion-header .ui-icon { display:none; }
 
 .ns-accordion.ui-accordion .ui-accordion-content {
@@ -205,8 +206,8 @@ input[type=checkbox].toggle-switch-checkbox { display: none; }
     border: 2px solid #E3E3E3; border-radius: 13px;
     transition: all 0.3s ease-in 0s; 
 }
-.toggle-switch-checkbox:checked + .toggle-switch-label { background-color: #58BF56; }
-.toggle-switch-checkbox:checked + .toggle-switch-label, .toggle-switch-checkbox:checked + .toggle-switch-label:before { border-color: #58BF56; }
+.toggle-switch-checkbox:checked + .toggle-switch-label { background-color: #27d7a3; }
+.toggle-switch-checkbox:checked + .toggle-switch-label, .toggle-switch-checkbox:checked + .toggle-switch-label:before { border-color: #27d7a3; }
 .toggle-switch-checkbox:checked + .toggle-switch-label:before { right: 0px; }
 
 .toggle-switch-label span {
@@ -256,7 +257,7 @@ input[type=checkbox].toggle-switch-checkbox { display: none; }
 .admin-module-company-location .admin-module { float:left; width:40%; padding-top:0; }
 .admin-module-company-location .admin-module:first-child { margin-right:2%; }
 .admin-module-company-location .admin-module td { vertical-align:middle; }
-.admin-module-company-location .admin-module input { width:100%; }
+.admin-module-company-location .admin-module input { width:100%; min-width:auto; }
 .admin-module-company-location .remove-pin { margin-top:0; }
 
 #side-sortables .remove-pin { margin:5px 0px; display:block; width:100%; }
@@ -396,7 +397,7 @@ input[type=checkbox].toggle-switch-checkbox { display: none; }
 .ns-settings-menu-bar .ns-settings-nav ul { margin:0; padding:0; }
 .ns-settings-menu-bar .ns-settings-nav ul li { display:inline-block; margin:0px 20px 0px 0px; }
 .ns-settings-menu-bar .ns-settings-nav ul li a { color:#4c5a67; box-shadow:none !important; display:inline-block; text-decoration:none; padding:25px 0px; font-size:15px; }
-.ns-settings-menu-bar .ns-settings-nav ul li.active a { color:#3c3782; font-weight:700; border-bottom:2px solid #3c3782; }
+.ns-settings-menu-bar .ns-settings-nav ul li.active a { color:#5c59ed; font-weight:700; border-bottom:2px solid #5c59ed; }
 
 .ns-settings-actions { float:right; margin-top:15px; min-width:150px; }
 .ns-settings-actions input { width:100% !important; }
@@ -437,7 +438,7 @@ input[type=checkbox].toggle-switch-checkbox { display: none; }
 }
 .ns-settings-content .ui-tabs .ui-tabs-nav .ui-state-active a:focus, .ns-settings-content .ui-tabs-nav .ui-state-active a:active { outline-color:none; box-shadow:none !important; }
 .ns-settings-content .ns-settings-content-nav li.ui-state-active { margin-right:-2px; }
-.ns-settings-content .ns-settings-content-nav li.ui-state-active a { background:white; font-weight:700; color:#3c3782; }
+.ns-settings-content .ns-settings-content-nav li.ui-state-active a { background:white; font-weight:700; color:#5c59ed; }
 
 .ns-settings-content .ns-settings-content-nav li a .fa { margin-right:7px; }
 
@@ -476,7 +477,7 @@ input[type=checkbox].toggle-switch-checkbox { display: none; }
 }
 
 .ns-modules .ns-module-group > .admin-module .button-green, .wp-core-ui .button.button-green {
-    background:#58BF56;
+    background:#27d7a3;
     color:white;
     border:none;
     box-shadow:none;
@@ -608,8 +609,8 @@ input[type=checkbox].toggle-switch-checkbox { display: none; }
     margin-right:7px;
 }
 
-.meta-box-form.ui-tabs .ui-tabs-nav li.ui-state-active a { border:1px solid rgba(0, 0, 0, 0.1); border-right:none;  position:relative; z-index:100; color:#48429b; font-weight:bold; background:white; }
-.meta-box-form.ui-tabs .ui-tabs-nav li.ui-state-active .fa { background:#48429b; }
+.meta-box-form.ui-tabs .ui-tabs-nav li.ui-state-active a { border:1px solid rgba(0, 0, 0, 0.1); border-right:none;  position:relative; z-index:100; color:#5c59ed; font-weight:bold; background:white; }
+.meta-box-form.ui-tabs .ui-tabs-nav li.ui-state-active .fa { background:#5c59ed; }
 
 .meta-box-form.ui-tabs .tab-content { display:none; }
 .meta-box-form.ui-tabs .ui-tabs-panel, .meta-box-form .tab-loader { 
@@ -658,7 +659,7 @@ input[type=checkbox].toggle-switch-checkbox { display: none; }
 
 .sortable-item .sortable-item-header { /*padding:14px;*/ min-height:57px; line-height:57px; padding-left:55px; border-radius:4px; position:relative; transition:all 0.4s; }
 .sortable-item.expanded .sortable-item-header {
-    background:#48429b;
+    background:#5c59ed;
     color:white;
     border-radius:4px 4px 0px 0px;
 }
