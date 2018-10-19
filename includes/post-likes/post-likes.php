@@ -300,7 +300,7 @@ function ns_basics_get_liked_icon() {
  */
 function ns_basics_get_unliked_icon() {
 	/* If already using Font Awesome with your theme, replace svg with: <i class="fa fa-heart-o"></i> */
-	$icon = '<span class="fa fa-heart-o sl-icon icon"></span>'.'<span class="sl-button-text">'.esc_html__( 'Favorite', 'ns-basics' ).'</span>';
+	$icon = '<span class="fa fa-heart sl-icon icon"></span>'.'<span class="sl-button-text">'.esc_html__( 'Favorite', 'ns-basics' ).'</span>';
 	return $icon;
 }
 
