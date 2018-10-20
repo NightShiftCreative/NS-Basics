@@ -129,7 +129,7 @@ function ns_basics_generate_gallery($additional_images) { ?>
                     echo '
                         <div class="gallery-img-preview">
                             '.$image_thumb_html.'
-                            <input type="hidden" name="rypecore_additional_img[]" value="'. $additional_image .'" />
+                            <input type="hidden" name="ns_additional_img[]" value="'. $additional_image .'" />
                             <span class="action delete-additional-img" title="'. esc_html__('Delete', 'ns-basics'). '"><i class="fa fa-trash"></i></span>
                             <a href="'.get_admin_url().'upload.php?item='.$image_id.'" class="action edit-additional-img" target="_blank" title="'.esc_html__('Edit', 'ns-basics').'"><i class="fa fa-pencil"></i></a>
                         </div>
