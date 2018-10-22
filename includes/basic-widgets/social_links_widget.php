@@ -59,15 +59,15 @@ class ns_basics_social_links_widget extends WP_Widget {
                             ?>
 
                             <ul class="social-icons circle clean-list">
-                                <?php if(!empty($fb)) { ?><li><a href="<?php echo esc_url($fb); ?>" target="_blank"><i class="fa fa-facebook"></i></a></li><?php } ?>
-                                <?php if(!empty($twitter)) { ?><li><a href="<?php echo esc_url($twitter); ?>" target="_blank"><i class="fa fa-twitter"></i></a></li><?php } ?>
-                                <?php if(!empty($google)) { ?><li><a href="<?php echo esc_url($google); ?>" target="_blank"><i class="fa fa-google-plus"></i></a></li><?php } ?>
-                                <?php if(!empty($linkedin)) { ?><li><a href="<?php echo esc_url($linkedin); ?>" target="_blank"><i class="fa fa-linkedin"></i></a></li><?php } ?>
-                                <?php if(!empty($youtube)) { ?><li><a href="<?php echo esc_url($youtube); ?>" target="_blank"><i class="fa fa-youtube"></i></a></li><?php } ?>
-                                <?php if(!empty($vimeo)) { ?><li><a href="<?php echo esc_url($vimeo); ?>" target="_blank"><i class="fa fa-vimeo"></i></a></li><?php } ?>
-                                <?php if(!empty($instagram)) { ?><li><a href="<?php echo esc_url($instagram); ?>" target="_blank"><i class="fa fa-instagram"></i></a></li><?php } ?>
-                                <?php if(!empty($flickr)) { ?><li><a href="<?php echo esc_url($flickr); ?>" target="_blank"><i class="fa fa-flickr"></i></a></li><?php } ?>
-                                <?php if(!empty($dribbble)) { ?><li><a href="<?php echo esc_url($dribbble); ?>" target="_blank"><i class="fa fa-dribbble"></i></a></li><?php } ?>
+                                <?php if(!empty($fb)) { ?><li><a href="<?php echo esc_url($fb); ?>" target="_blank"><i class="fab fa-facebook-f"></i></a></li><?php } ?>
+                                <?php if(!empty($twitter)) { ?><li><a href="<?php echo esc_url($twitter); ?>" target="_blank"><i class="fab fa-twitter"></i></a></li><?php } ?>
+                                <?php if(!empty($google)) { ?><li><a href="<?php echo esc_url($google); ?>" target="_blank"><i class="fab fa-google-plus"></i></a></li><?php } ?>
+                                <?php if(!empty($linkedin)) { ?><li><a href="<?php echo esc_url($linkedin); ?>" target="_blank"><i class="fab fa-linkedin-in"></i></a></li><?php } ?>
+                                <?php if(!empty($youtube)) { ?><li><a href="<?php echo esc_url($youtube); ?>" target="_blank"><i class="fab fa-youtube"></i></a></li><?php } ?>
+                                <?php if(!empty($vimeo)) { ?><li><a href="<?php echo esc_url($vimeo); ?>" target="_blank"><i class="fab fa-vimeo"></i></a></li><?php } ?>
+                                <?php if(!empty($instagram)) { ?><li><a href="<?php echo esc_url($instagram); ?>" target="_blank"><i class="fab fa-instagram"></i></a></li><?php } ?>
+                                <?php if(!empty($flickr)) { ?><li><a href="<?php echo esc_url($flickr); ?>" target="_blank"><i class="fab fa-flickr"></i></a></li><?php } ?>
+                                <?php if(!empty($dribbble)) { ?><li><a href="<?php echo esc_url($dribbble); ?>" target="_blank"><i class="fab fa-dribbble"></i></a></li><?php } ?>
                             </ul>
 
                             <?php if($text_after) { echo '<div class="divider"></div><div class="social-links-after-text">'. wp_kses_post($text_after) .'</div>'; } ?>
