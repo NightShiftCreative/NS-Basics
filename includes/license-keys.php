@@ -8,7 +8,7 @@ function ns_basics_is_valid_license_key($license) {
         return array('result' => false, 'error' => '');
     } else {
         $data_args = array('timeout' => 15, 'sslverify' => false);
-        $data = wp_remote_get('http://rypecreative.com/rype-test/woocommerce/?wc-api=software-api&request=check&email='.$license['email'].'&license_key='.$license['key'].'&product_id='.$license['slug'], $data_args);
+        $data = wp_remote_get('http://products.nightshiftcreative.co/woocommerce/?wc-api=software-api&request=check&email='.$license['email'].'&license_key='.$license['key'].'&product_id='.$license['slug'], $data_args);
         if(!is_wp_error($data)) {
             $data = $data['body'];
             $obj = json_decode($data);
