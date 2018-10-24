@@ -240,7 +240,7 @@ add_action('admin_menu', 'ns_basics_plugin_menu');
 function ns_basics_plugin_menu() {
     add_menu_page('NS Basics', 'NS Basics', 'administrator', 'ns-basics-settings', 'ns_basics_settings_page');
     add_submenu_page('ns-basics-settings', 'Settings', 'Settings', 'administrator', 'ns-basics-settings');
-    add_submenu_page('ns-basics-settings', 'Help', 'Help', 'administrator', 'ns-basics-help', 'ns_basics_help_page');
+    add_submenu_page('ns-basics-settings', 'Resources', 'Resources', 'administrator', 'ns-basics-resources', 'ns_basics_resources_page');
     add_action( 'admin_init', 'ns_basics_register_options' );
 }
 
@@ -343,7 +343,7 @@ function ns_basics_settings_page() {
     $settings_group = 'ns-basics-settings-group';
     $pages = array();
     $pages[] = array('slug' => 'ns-basics-settings', 'name' => 'Settings');
-    $pages[] = array('slug' => 'ns-basics-help', 'name' => 'Help');
+    $pages[] = array('slug' => 'ns-basics-resources', 'name' => 'Resources');
     $display_actions = 'true';
     $content = ns_basics_settings_page_content();
     $content_class = 'ns-modules';
@@ -368,22 +368,27 @@ function ns_basics_settings_page_content() {
 /*-----------------------------------------------------------------------------------*/
 /*  OUTPUT HELP PAGE
 /*-----------------------------------------------------------------------------------*/
-function ns_basics_help_page() { 
+function ns_basics_resources_page() { 
     $page_name = 'NightShift Basics';
     $settings_group = null;
     $pages = array();
     $pages[] = array('slug' => 'ns-basics-settings', 'name' => 'Settings');
-    $pages[] = array('slug' => 'ns-basics-help', 'name' => 'Help');
+    $pages[] = array('slug' => 'ns-basics-resources', 'name' => 'Resources');
     $display_actions = 'false';
-    $content = ns_basics_help_page_content();
+    $content = ns_basics_resources_page_content();
     $content_class = null;
     echo ns_basics_admin_page($page_name, $settings_group, $pages, $display_actions, $content, $content_class);
 }
 
-function ns_basics_help_page_content() {
-    ob_start(); 
-    //content goes here
-    $output = ob_get_clean();
+function ns_basics_resources_page_content() {
+    ob_start(); ?>
+    
+    <p><?php esc_html_e('NightShift Basics provides the framework essential for all themes and plugins built by NightShift Creative.', 'ns-basics'); ?></p>
+    <p><?php esc_html_e('For questions and/or support, you can email us directly at support@nightshiftcreative.co.', 'ns-basics'); ?></p>
+    <a href="#" target="_blank" class="button admin-button"><?php esc_html_e('Contact Us', 'ns-basics'); ?></a>
+    <a href="#" target="_blank" class="button admin-button"><?php esc_html_e('View Documentation', 'ns-basics'); ?></a>
+
+    <?php $output = ob_get_clean();
     return $output;
 }
 
