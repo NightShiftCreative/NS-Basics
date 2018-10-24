@@ -385,8 +385,13 @@ function ns_basics_resources_page_content() {
     
     <p><?php esc_html_e('NightShift Basics provides the framework essential for all themes and plugins built by NightShift Creative.', 'ns-basics'); ?></p>
     <p><?php esc_html_e('For questions and/or support, you can email us directly at support@nightshiftcreative.co.', 'ns-basics'); ?></p>
-    <a href="#" target="_blank" class="button admin-button"><?php esc_html_e('Contact Us', 'ns-basics'); ?></a>
-    <a href="#" target="_blank" class="button admin-button"><?php esc_html_e('View Documentation', 'ns-basics'); ?></a>
+    <a href="#" target="_blank" class="resource-item"><i class="fa fa-envelope icon"></i><?php esc_html_e('Contact Us', 'ns-basics'); ?></a>
+    <a href="#" target="_blank" class="resource-item"><i class="fa fa-book icon"></i><?php esc_html_e('View Documentation', 'ns-basics'); ?></a>
+    <a href="#" target="_blank" class="resource-item"><i class="fa fa-tint icon"></i><?php esc_html_e('Our Themes', 'ns-basics'); ?></a>
+    <a href="#" target="_blank" class="resource-item"><i class="fa fa-plug icon"></i><?php esc_html_e('Our Plugins', 'ns-basics'); ?></a>
+    <a href="#" target="_blank" class="resource-item"><i class="fa fa-share-alt icon"></i><?php esc_html_e('Follow Us', 'ns-basics'); ?></a>
+    <a href="#" target="_blank" class="resource-item"><i class="fa fa-pencil-alt icon"></i><?php esc_html_e('Our Blog', 'ns-basics'); ?></a>
+    <div class="clear"></div>
 
     <?php $output = ob_get_clean();
     return $output;
