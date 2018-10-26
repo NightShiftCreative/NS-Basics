@@ -18,11 +18,11 @@ function ns_basics_get_social_share($class = null, $toggle_text = null) {
         if($toggle_text === true) { $toggle = $toggle.esc_html__('Share', 'ns-basics'); } 
 
         $content .= '<ul class="clean-list">';
-        $content .= '<li><a href="http://www.facebook.com/sharer/sharer.php?u='.get_the_permalink().'&t='.rawurlencode(get_the_title()).' target="_blank"><i class="fa fa-facebook"></i></a></li>';
-        $content .= '<li><a href="https://twitter.com/share?url='.get_the_permalink().'" target="_blank"><i class="fa fa-twitter"></i></a></li>';
-        $content .= '<li><a href="https://plus.google.com/share?url='.get_the_permalink().'" target="_blank"><i class="fa fa-google-plus"></i></a></li>';
-        $content .= '<li><a href="https://www.linkedin.com/shareArticle?mini=true&url='.get_the_permalink().'&title='.rawurlencode(get_the_title()).'&summary=&source=" target="_blank"><i class="fa fa-linkedin"></i></a></li>';
-        $content .= '<li><a href="https://pinterest.com/pin/create/button/?url=&media='.get_the_permalink().'&description=" target="_blank"><i class="fa fa-pinterest"></i></a></li>';
+        $content .= '<li><a href="http://www.facebook.com/sharer/sharer.php?u='.get_the_permalink().'&t='.rawurlencode(get_the_title()).' target="_blank"><i class="fab fa-facebook-f"></i></a></li>';
+        $content .= '<li><a href="https://twitter.com/share?url='.get_the_permalink().'" target="_blank"><i class="fab fa-twitter"></i></a></li>';
+        $content .= '<li><a href="https://plus.google.com/share?url='.get_the_permalink().'" target="_blank"><i class="fab fa-google-plus-g"></i></a></li>';
+        $content .= '<li><a href="https://www.linkedin.com/shareArticle?mini=true&url='.get_the_permalink().'&title='.rawurlencode(get_the_title()).'&summary=&source=" target="_blank"><i class="fab fa-linkedin"></i></a></li>';
+        $content .= '<li><a href="https://pinterest.com/pin/create/button/?url=&media='.get_the_permalink().'&description=" target="_blank"><i class="fab fa-pinterest"></i></a></li>';
         $content .= '<li><a href="mailto:?subject='.$subject.'&body='.$body.'">'.$mail_icon.'</a></li>';
         $content .= '</ul>';
 
