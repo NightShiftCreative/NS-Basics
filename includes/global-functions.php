@@ -45,7 +45,7 @@ function ns_basics_tooltip($toggle, $content, $class = null) {
 /*-----------------------------------------------------------------------------------*/
 /*  Generate Icon
 /*-----------------------------------------------------------------------------------*/
-if( !function_exists('ns_core_get_icon') ){
+if(!function_exists('ns_core_get_icon')) {
     function ns_core_get_icon($type, $fa_name, $line_name = null, $dripicon_name = null, $class = null) {
         if($type == 'line' && $line_name != 'n/a') {
             if(empty($line_name)) { $line_name = $fa_name; }
