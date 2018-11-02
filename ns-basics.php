@@ -98,7 +98,7 @@ function ns_basics_get_add_ons() {
         1 => array(
             'name' => 'Post Sharing',
             'slug' => 'ns_basics_post_share',
-            'icon' => plugins_url('/ns-basics/images/icon-post-sharing.svg'),
+            'icon' => plugins_url('/ns-basics/images/icon-post-sharing2.svg'),
             'note' => esc_html__('Add ability to share blog posts on social media', 'ns-basics'),
             'group' => 'basic',
             'required_theme_support' => '',
