@@ -1,75 +1,32 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- Generator: Adobe Illustrator 22.1.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
 <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-	 viewBox="0 0 360 360" style="enable-background:new 0 0 360 360;" xml:space="preserve">
+	 viewBox="0 0 104.7 98.7" style="enable-background:new 0 0 104.7 98.7;" xml:space="preserve">
 <style type="text/css">
-	.st0{fill:#59D8FF;}
-	.st1{fill:#B4E9FC;}
-	.st2{fill:#3E98FC;}
+	.st0{fill:#CFD9FD;stroke:#CFD9FD;stroke-width:4;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;}
+	.st1{fill:none;stroke:#27D7A3;stroke-width:4.5;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;}
+	.st2{fill:#27D7A3;}
+	.st3{fill:none;stroke:#5C59ED;stroke-width:4.5;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;}
+	.st4{fill:#5C59ED;stroke:#5C59ED;stroke-width:1.6534;stroke-miterlimit:10;}
 </style>
-<image style="display:none;overflow:visible;" width="45" height="45" xlink:href="data:image/gif;base64,R0lGODlhLQAtAOYAAFLN+FLN+VPO/lPO+VTQ+lbT/FTO/1TO/vT5/z+b/Kjr/0ac/EGg+3Gz/fH4
-/7zv/+fy//D7/1qn/Ov0/1yo/FjW/lHK+G3d//7//13Z/1jX//3+/+T5/7bY/kid/Em2+j+a/EGh
-+1/Z/+b5/3/h/8ry/1DI+M/0/6nR/vb6/2bb/3K0/dP1/0Wo+0Wc/ESf/K/U/tf2/7Ds/97u/mXb
-/6zi+IDh/77x/57L/e37/7Tp/Lfu/53K/VnX/6rS/j6Z/Eme/Hy5/fn8/33g/2Da/7TX/ozk/3O0
-/USp+4Xi/0Wp+4Li/0ed/KzT/kSb/GzV+lXS/KvS/ovk/6/U/ZzO/ni3/VCi/F+p/VWk/FrY/2Pa
-/1Sk/LHl+qjR/kOm+1PP+k/G+UOb/PX6/0q5+t73/9b1/47D/VHJ+HW1/V7Z/0Ga/IPi/1Oj/Eiy
-+pjm/2vc/9nr/kSo+5nn/0yg/FnY/z6Y/P///wAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACH/
-C1hNUCBEYXRhWE1QPD94cGFja2V0IGJlZ2luPSLvu78iIGlkPSJXNU0wTXBDZWhpSHpyZVN6TlRj
-emtjOWQiPz4gPHg6eG1wbWV0YSB4bWxuczp4PSJhZG9iZTpuczptZXRhLyIgeDp4bXB0az0iQWRv
-YmUgWE1QIENvcmUgNS42LWMxNDIgNzkuMTYwOTI0LCAyMDE3LzA3LzEzLTAxOjA2OjM5ICAgICAg
-ICAiPiA8cmRmOlJERiB4bWxuczpyZGY9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkvMDIvMjItcmRm
-LXN5bnRheC1ucyMiPiA8cmRmOkRlc2NyaXB0aW9uIHJkZjphYm91dD0iIiB4bWxuczp4bXA9Imh0
-dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtbG5zOnhtcE1NPSJodHRwOi8vbnMuYWRvYmUu
-Y29tL3hhcC8xLjAvbW0vIiB4bWxuczpzdFJlZj0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4w
-L3NUeXBlL1Jlc291cmNlUmVmIyIgeG1wOkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgQ0Mg
-MjAxOCAoV2luZG93cykiIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6NDgwMzVDNjY4QjlEMTFF
-OEIwMTdBNzAwRDM5QzM0NjEiIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6NDgwMzVDNjc4QjlE
-MTFFOEIwMTdBNzAwRDM5QzM0NjEiPiA8eG1wTU06RGVyaXZlZEZyb20gc3RSZWY6aW5zdGFuY2VJ
-RD0ieG1wLmlpZDo0ODAwRkE3NzhCOUQxMUU4QjAxN0E3MDBEMzlDMzQ2MSIgc3RSZWY6ZG9jdW1l
-bnRJRD0ieG1wLmRpZDo0ODAwRkE3ODhCOUQxMUU4QjAxN0E3MDBEMzlDMzQ2MSIvPiA8L3JkZjpE
-ZXNjcmlwdGlvbj4gPC9yZGY6UkRGPiA8L3g6eG1wbWV0YT4gPD94cGFja2V0IGVuZD0iciI/PgH/
-/v38+/r5+Pf29fTz8vHw7+7t7Ovq6ejn5uXk4+Lh4N/e3dzb2tnY19bV1NPS0dDPzs3My8rJyMfG
-xcTDwsHAv769vLu6ubi3trW0s7KxsK+urayrqqmop6alpKOioaCfnp2cm5qZmJeWlZSTkpGQj46N
-jIuKiYiHhoWEg4KBgH9+fXx7enl4d3Z1dHNycXBvbm1sa2ppaGdmZWRjYmFgX15dXFtaWVhXVlVU
-U1JRUE9OTUxLSklIR0ZFRENCQUA/Pj08Ozo5ODc2NTQzMjEwLy4tLCsqKSgnJiUkIyIhIB8eHRwb
-GhkYFxYVFBMSERAPDg0MCwoJCAcGBQQDAgEAACH5BAAAAAAALAAAAAAtAC0AAAf/gHaCg4SFhoeI
-iYqLjI2Oj5CRkpOUlZaXkGUKSxcZF2sKMZiKHCR0p6ioJByjhiUiqbGnIiWtgyeyuacsthFaurkq
-Ea1uBQQDAQEDBAUaunKYEFRKISAJIUgfYAABULlZI5UbUU515ufmIB8AAF8VsjKUDg3o9edeZwAD
-76k2kxNY7Ams88IEAC43Ur2RlILCwIEMLNTQkSqDJBwPH7bh5uwUjUgIFmQcmMACgAKohkTqMPLh
-GAAEUCmIVKXlwDj6UIWDJMGmQAbcThmRpAbdAQPnjiZFeu5HUDpJJIVBJ0DAuapXrZ5LkJNOGgyR
-2Pi0BzTmKTKR0Iyt1+JJD1Q7WyLBWItuip0cD6QQeQASCN06TBBgMvOXx6gjdCmIwbTBw9otE0bB
-WdvAQasm6KzMGegCBdhWRRas6DLDjpAODSQs8HAliA8ItmLLnk27tu3buHPr3s27t+9CgQAAOw==" transform="matrix(3.2 0 0 3.2 96.3947 116.2368)">
-</image>
+<path class="st0" d="M68.3,64.5L54.7,78.3l-16.6,2.2l-18.5,3.9l-0.5,6.9l16-4.6c2.4,0.6,4.9,1,7.6,1c15,0,27.2-11.1,27.2-24.8
+	c0-1.2-0.1-2.4-0.3-3.5L68.3,64.5z"/>
+<path class="st1" d="M75.8,65.1l8.4,2.6L83,52c3-4.3,4.7-9.5,4.7-15.2C87.8,22,75.6,9.9,60.6,9.9C51.8,9.9,44,14,39,20.4"/>
 <g>
-	<g>
-		<ellipse class="st0" cx="219.4" cy="133.8" rx="130.8" ry="119.1"/>
-		<polygon class="st0" points="326.6,190.3 255.4,248.1 332.5,270.3 		"/>
-	</g>
-	<g>
-		<circle class="st1" cx="177" cy="125.1" r="15.7"/>
-		<circle class="st1" cx="227.8" cy="125.1" r="15.7"/>
-		<circle class="st1" cx="278.3" cy="125.1" r="15.7"/>
-	</g>
-	<g>
-		<ellipse class="st2" cx="138.8" cy="209.4" rx="130.8" ry="119.1"/>
-		<polygon class="st2" points="31.6,266 102.8,323.8 25.7,346 		"/>
-	</g>
-	<g>
-		<circle class="st0" cx="89.1" cy="211.9" r="15.7"/>
-		<circle class="st0" cx="139.9" cy="211.9" r="15.7"/>
-		<circle class="st0" cx="190.3" cy="211.9" r="15.7"/>
-	</g>
+	<circle class="st2" cx="61.4" cy="35.2" r="3.1"/>
+	<path class="st2" d="M61.4,39.6c-2.4,0-4.4-2-4.4-4.4s2-4.4,4.4-4.4s4.4,2,4.4,4.4S63.8,39.6,61.4,39.6z M61.4,33.5
+		c-0.9,0-1.7,0.8-1.7,1.7s0.8,1.7,1.7,1.7s1.7-0.8,1.7-1.7S62.3,33.5,61.4,33.5z"/>
 </g>
 <g>
+	<circle class="st2" cx="72.6" cy="35.2" r="3.1"/>
+	<path class="st2" d="M72.6,39.1c-2.1,0-3.9-1.7-3.9-3.9c0-2.1,1.7-3.9,3.9-3.9s3.9,1.7,3.9,3.9C76.5,37.4,74.7,39.1,72.6,39.1z
+		 M72.6,33c-1.2,0-2.2,1-2.2,2.2s1,2.2,2.2,2.2s2.2-1,2.2-2.2C74.8,34,73.8,33,72.6,33z"/>
 </g>
+<path class="st3" d="M41.7,30.2c-15,0-27.2,11.1-27.2,24.8c0,5.2,1.8,10,4.7,14l-1.1,14.4l16-4.6c2.4,0.6,4.9,1,7.6,1
+	c15,0,27.2-11.1,27.2-24.8S56.7,30.2,41.7,30.2z"/>
 <g>
-</g>
-<g>
-</g>
-<g>
-</g>
-<g>
-</g>
-<g>
+	<circle class="st4" cx="30.2" cy="55.6" r="3.1"/>
+	<circle class="st4" cx="41.5" cy="55.6" r="3.1"/>
+	<circle class="st4" cx="52.7" cy="55.6" r="3.1"/>
 </g>
 </svg>

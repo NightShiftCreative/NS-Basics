@@ -98,8 +98,8 @@ function ns_basics_get_add_ons() {
         1 => array(
             'name' => 'Post Sharing',
             'slug' => 'ns_basics_post_share',
-            'icon' => plugins_url('/ns-basics/images/icon-post-sharing2.svg'),
-            'note' => esc_html__('Add ability to share blog posts on social media', 'ns-basics'),
+            'icon' => plugins_url('/ns-basics/images/icon-post-sharing.svg'),
+            'note' => esc_html__('Allow your users to share your posts on popular social media sites.', 'ns-basics'),
             'group' => 'basic',
             'required_theme_support' => '',
             'link' => 'http://nightshiftcreative.co/',
@@ -108,8 +108,8 @@ function ns_basics_get_add_ons() {
         2 => array(
             'name' => 'Post Likes',
             'slug' => 'ns_basics_post_likes',
-            'icon' => plugins_url('/ns-basics/images/icon-post-sharing.svg'),
-            'note' => esc_html__('Allow users to "like" posts', 'ns-basics'),
+            'icon' => plugins_url('/ns-basics/images/icon-post-likes.svg'),
+            'note' => esc_html__('Allow your users to like your posts and save them for later viewing.', 'ns-basics'),
             'group' => 'basic',
             'required_theme_support' => '',
             'link' => 'http://nightshiftcreative.co/',
@@ -118,8 +118,8 @@ function ns_basics_get_add_ons() {
         3 => array(
             'name' => 'Page Settings',
             'slug' => 'ns_basics_page_settings',
-            'icon' => plugins_url('/ns-basics/images/icon-post-sharing.svg'),
-            'note' => esc_html__('Add flexible options to pages & posts', 'ns-basics'),
+            'icon' => plugins_url('/ns-basics/images/icon-page-settings.svg'),
+            'note' => esc_html__('Add advanced options to pages & posts, allowing further control over banners, page layout and more.', 'ns-basics'),
             'group' => 'basic',
             'required_theme_support' => '',
             'link' => 'http://nightshiftcreative.co/',
@@ -128,7 +128,7 @@ function ns_basics_get_add_ons() {
         4 => array(
             'name' => 'Slides',
             'slug' => 'ns_basics_slides',
-            'icon' => plugins_url('/ns-basics/images/icon-post-sharing.svg'),
+            'icon' => plugins_url('/ns-basics/images/icon-slides.svg'),
             'note' => esc_html__('Add slides custom post type', 'ns-basics'),
             'group' => 'basic',
             'required_theme_support' => '',
@@ -138,8 +138,8 @@ function ns_basics_get_add_ons() {
         5 => array(
             'name' => 'Basic Shortcodes',
             'slug' => 'ns_basics_shortcodes',
-            'icon' => plugins_url('/ns-basics/images/icon-post-sharing.svg'),
-            'note' => esc_html__('Add some helpful shortcodes', 'ns-basics'),
+            'icon' => plugins_url('/ns-basics/images/icon-basic-shortcodes.svg'),
+            'note' => esc_html__('Add helpful shortcodes, including buttons, videos, testimonials, accordions, and more.', 'ns-basics'),
             'group' => 'basic',
             'required_theme_support' => '',
             'link' => 'http://nightshiftcreative.co/',
@@ -148,8 +148,8 @@ function ns_basics_get_add_ons() {
         6 => array(
             'name' => 'Basic Widgets',
             'slug' => 'ns_basics_widgets',
-            'icon' => plugins_url('/ns-basics/images/icon-post-sharing.svg'),
-            'note' => esc_html__('Add some helpful widgets', 'ns-basics'),
+            'icon' => plugins_url('/ns-basics/images/icon-basic-widgets.svg'),
+            'note' => esc_html__('Add helpful widgets, including social sharing, testimonials, contact info, and more.', 'ns-basics'),
             'group' => 'basic',
             'required_theme_support' => '',
             'link' => 'http://nightshiftcreative.co/',
@@ -207,7 +207,7 @@ function ns_basics_display_add_ons($group = null) {
                     <div class="ns-module-content">
                         <?php if(!empty($add_on['note'])) { ?><span class="admin-module-note"><?php echo $add_on['note']; ?></span><?php } ?>
                         <?php if(!empty($add_on['paid'])) { ?><a href="<?php echo $add_on['paid']['link']; ?>" target="_blank" class="ns-meta-item"><?php esc_html_e('Premium', 'ns-basics'); ?> </a><?php } ?>
-                        <?php if(!empty($add_on['link'])) { ?><a href="<?php echo $add_on['link']; ?>" target="_blank" class="view-details ns-meta-item"><?php esc_html_e('View Details', 'ns-basics'); ?> </a><?php } ?>
+                        <?php if(!empty($add_on['link'])) { ?><a href="<?php echo $add_on['link']; ?>" target="_blank" class="view-details ns-meta-item"><i class="fa fa-arrow-right icon"></i> <?php esc_html_e('View Details', 'ns-basics'); ?> </a><?php } ?>
                     </div>
                 </div>
                 <?php $count++; 

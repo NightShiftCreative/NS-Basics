@@ -460,7 +460,7 @@ input[type=checkbox].toggle-switch-checkbox { display: none; }
 .ns-modules .ns-module-group > .admin-module:nth-child(3n) { margin-right:0; }
 
 .ns-modules .ns-module-group > .admin-module .ns-module-header {
-    background: #364662;
+    background:#67739d;
     color:white;
     padding:15px 13px 15px 15px;
     height:25px;
@@ -498,7 +498,7 @@ input[type=checkbox].toggle-switch-checkbox { display: none; }
     box-shadow:0px 0px 40px rgba(0, 0, 0, 0.3);
     color:#9a9bac;
 }
-.ns-modules .ns-module-group > .admin-module .ns-module-icon img { margin-top:18%; max-width:62%; }
+.ns-modules .ns-module-group > .admin-module .ns-module-icon img { margin-top:15%; max-width:70%; }
 
 .ns-modules .ns-module-group > .admin-module h4 { 
     width: 52%;
@@ -541,6 +541,7 @@ input[type=checkbox].toggle-switch-checkbox { display: none; }
     background:rgba(255, 255, 255, 0.5);
     margin-right:5px;
 }
+.ns-meta-item .icon { font-size:10px; }
 
 .ns-settings-footer {
     border:none;
