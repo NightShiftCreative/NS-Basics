@@ -35,6 +35,7 @@ class ns_basics_list_posts_widget extends WP_Widget {
 
                         $post_listing_args = array(
                             'post_type' => 'post',
+                            'post_status' => 'publish',
                             'showposts' => $num,
                             'category_name' => $filter,
                         );
