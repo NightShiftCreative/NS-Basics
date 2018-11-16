@@ -9,7 +9,7 @@ function ns_basics_template_loader($template, $template_args = array(), $wrapper
 	if(empty($theme_file)) {
 		include( plugin_dir_path( __FILE__ ) . $template);
 	} else {
-		include(get_parent_theme_file_path('/ns-basics/'.$template));
+		include(get_theme_file_path('/ns-basics/'.$template));
 	}
 	if($wrapper == true) { echo '</div>'; }
 }
