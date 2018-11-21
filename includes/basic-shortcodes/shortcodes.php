@@ -26,7 +26,7 @@ add_action( 'media_buttons', function($editor_id) { ?>
                 <a href="#basic-register-form" class="button has-options"><i class="fa fa-user-plus"></i><?php esc_html_e('Register Form', 'ns-basics'); ?></a>
                 <a href="#basic-user-dashboard" class="button has-options"><i class="fa fa-th-large"></i><?php esc_html_e('User Dashboard', 'ns-basics'); ?></a>
                 <a href="#basic-user-favorites" class="button has-options"><i class="fa fa-heart"></i><?php esc_html_e('User Favorites', 'ns-basics'); ?></a>
-                <a href="#basic-user-edit-profile" class="button has-options"><i class="fa fa-gear"></i><?php esc_html_e('User Edit Profile', 'ns-basics'); ?></a>
+                <a href="#basic-user-edit-profile" class="button has-options"><i class="fa fa-cog"></i><?php esc_html_e('User Edit Profile', 'ns-basics'); ?></a>
             </div>
             <div class="shortcode-selector-options">
                 <div class="button cancel-shortcode"><i class="fa fa-reply"></i> <?php esc_html_e('Go Back', 'ns-basics'); ?></div>
