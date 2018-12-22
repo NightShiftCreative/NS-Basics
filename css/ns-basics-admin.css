@@ -393,6 +393,8 @@ input[type=checkbox].toggle-switch-checkbox { display: none; }
 .ns-settings-header { border-bottom:1px solid rgba(0, 0, 0, 0.1); }
 .ns-settings-menu-bar { margin-top:20px; padding:0 2% !important; width:96%; min-height:70px; }
 
+.ns-settings-icon { width:66px; float:left; padding-right:15px; margin-top:1px; margin-left:-10px; }
+
 .ns-settings-nav { float:left; }
 .ns-settings-menu-bar .ns-settings-nav ul { margin:0; padding:0; }
 .ns-settings-menu-bar .ns-settings-nav ul li { display:inline-block; margin:0px 20px 0px 0px; }

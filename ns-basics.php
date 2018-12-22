@@ -255,7 +255,7 @@ function ns_basics_register_options() {
 /*  BUILD ADMIN PAGE TEMPLATE
 /*  Note: this template is used for all plugins that require NS Basics
 /*-----------------------------------------------------------------------------------*/
-function ns_basics_admin_page($page_name = null, $settings_group = null, $pages = null, $display_actions = null, $content = null, $content_class = null, $content_nav = null, $alerts = null, $ajax = true) { ?>
+function ns_basics_admin_page($page_name = null, $settings_group = null, $pages = null, $display_actions = null, $content = null, $content_class = null, $content_nav = null, $alerts = null, $ajax = true, $icon = null) { ?>
     <div class="wrap">
         <?php if(!empty($page_name)) { ?><h1><?php echo $page_name; ?></h1><?php } ?>
 
@@ -267,6 +267,7 @@ function ns_basics_admin_page($page_name = null, $settings_group = null, $pages 
             } ?>
 
             <div class="ns-settings-menu-bar ns-settings-header">
+                <?php if(!empty($icon)) { ?><img class="ns-settings-icon" src="<?php echo $icon; ?>" alt="" /><?php } ?>
                 <?php if(!empty($pages)) { ?>
                 <div class="ns-settings-nav">
                     <ul>
@@ -349,13 +350,15 @@ function ns_basics_settings_page() {
     $content_class = 'ns-modules';
     $content_nav = null;
     $alerts = array();
+    $ajax = true;
+    $icon = plugins_url('/ns-basics/images/icon-settings.svg');
     if(!current_theme_supports('ns-basics')) {
         $current_theme = wp_get_theme();
         $incompatible_theme_alert = ns_basics_admin_alert('info', esc_html__('The active theme ('.$current_theme->name.') does not support NightShift Basics.', 'ns-basics'), $action = '#', $action_text = esc_html__('Get a compatible theme', 'ns-basics'), true); 
         $alerts[] = $incompatible_theme_alert; 
     }
 
-    echo ns_basics_admin_page($page_name, $settings_group, $pages, $display_actions, $content, $content_class, $content_nav, $alerts);
+    echo ns_basics_admin_page($page_name, $settings_group, $pages, $display_actions, $content, $content_class, $content_nav, $alerts, $ajax, $icon);
 }
 
 function ns_basics_settings_page_content() {
@@ -366,7 +369,7 @@ function ns_basics_settings_page_content() {
 }
 
 /*-----------------------------------------------------------------------------------*/
-/*  OUTPUT HELP PAGE
+/*  OUTPUT RESOURCES PAGE
 /*-----------------------------------------------------------------------------------*/
 function ns_basics_resources_page() { 
     $page_name = 'NightShift Basics';
@@ -377,7 +380,11 @@ function ns_basics_resources_page() {
     $display_actions = 'false';
     $content = ns_basics_resources_page_content();
     $content_class = null;
-    echo ns_basics_admin_page($page_name, $settings_group, $pages, $display_actions, $content, $content_class);
+    $content_nav = null;
+    $alerts = null;
+    $ajax = true;
+    $icon = plugins_url('/ns-basics/images/icon-settings.svg');
+    echo ns_basics_admin_page($page_name, $settings_group, $pages, $display_actions, $content, $content_class, $content_nav, $alerts, $ajax, $icon);
 }
 
 function ns_basics_resources_page_content() {
