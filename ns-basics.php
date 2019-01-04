@@ -238,7 +238,7 @@ function ns_basics_is_active($add_on_slug) {
 /*-----------------------------------------------------------------------------------*/
 add_action('admin_menu', 'ns_basics_plugin_menu');
 function ns_basics_plugin_menu() {
-    add_menu_page('NS Basics', 'NS Basics', 'administrator', 'ns-basics-settings', 'ns_basics_settings_page');
+    add_menu_page('NS Basics', 'NS Basics', 'administrator', 'ns-basics-settings', 'ns_basics_settings_page', plugins_url('/images/icon.png', __FILE__));
     add_submenu_page('ns-basics-settings', 'Settings', 'Settings', 'administrator', 'ns-basics-settings');
     add_submenu_page('ns-basics-settings', 'Resources', 'Resources', 'administrator', 'ns-basics-resources', 'ns_basics_resources_page');
     add_action( 'admin_init', 'ns_basics_register_options' );
