@@ -499,15 +499,15 @@ function ns_team_member($atts, $content = null) {
     }
     $output .= '<div class="team-member-content"><img class="hex" src="'.get_template_directory_uri() .'/images/hexagon.png" alt="" /><h4>'.$atts['name'].'</h4><p>'.$atts['title'].'</p>';
     $output .= '<ul class="social-icons circle">';
-    if(!empty($atts['facebook'])) { $output .= '<li><a target="_blank" href="'.$atts['facebook'].'"><i class="fa fa-facebook"></i></a></li>'; }
-    if(!empty($atts['twitter'])) { $output .= '<li><a target="_blank" href="'.$atts['twitter'].'"><i class="fa fa-twitter"></i></a></li>'; }
-    if(!empty($atts['google'])) { $output .= '<li><a target="_blank" href="'.$atts['google'].'"><i class="fa fa-google-plus"></i></a></li>'; }
-    if(!empty($atts['instagram'])) { $output .= '<li><a target="_blank" href="'.$atts['instagram'].'"><i class="fa fa-instagram"></i></a></li>'; }
-    if(!empty($atts['linkedin'])) { $output .= '<li><a target="_blank" href="'.$atts['linkedin'].'"><i class="fa fa-linkedin"></i></a></li>'; }
-    if(!empty($atts['youtube'])) { $output .= '<li><a target="_blank" href="'.$atts['youtube'].'"><i class="fa fa-youtube"></i></a></li>'; }
-    if(!empty($atts['vimeo'])) { $output .= '<li><a target="_blank" href="'.$atts['vimeo'].'"><i class="fa fa-vimeo"></i></a></li>'; }
-    if(!empty($atts['flickr'])) { $output .= '<li><a target="_blank" href="'.$atts['flickr'].'"><i class="fa fa-flickr"></i></a></li>'; }
-    if(!empty($atts['dribbble'])) { $output .= '<li><a target="_blank" href="'.$atts['dribbble'].'"><i class="fa fa-dribbble"></i></a></li>'; }
+    if(!empty($atts['facebook'])) { $output .= '<li><a target="_blank" href="'.$atts['facebook'].'"><i class="fab fa-facebook-f"></i></a></li>'; }
+    if(!empty($atts['twitter'])) { $output .= '<li><a target="_blank" href="'.$atts['twitter'].'"><i class="fab fa-twitter"></i></a></li>'; }
+    if(!empty($atts['google'])) { $output .= '<li><a target="_blank" href="'.$atts['google'].'"><i class="fab fa-google-plus"></i></a></li>'; }
+    if(!empty($atts['instagram'])) { $output .= '<li><a target="_blank" href="'.$atts['instagram'].'"><i class="fab fa-instagram"></i></a></li>'; }
+    if(!empty($atts['linkedin'])) { $output .= '<li><a target="_blank" href="'.$atts['linkedin'].'"><i class="fab fa-linkedin"></i></a></li>'; }
+    if(!empty($atts['youtube'])) { $output .= '<li><a target="_blank" href="'.$atts['youtube'].'"><i class="fab fa-youtube"></i></a></li>'; }
+    if(!empty($atts['vimeo'])) { $output .= '<li><a target="_blank" href="'.$atts['vimeo'].'"><i class="fab fa-vimeo"></i></a></li>'; }
+    if(!empty($atts['flickr'])) { $output .= '<li><a target="_blank" href="'.$atts['flickr'].'"><i class="fab fa-flickr"></i></a></li>'; }
+    if(!empty($atts['dribbble'])) { $output .= '<li><a target="_blank" href="'.$atts['dribbble'].'"><i class="fab fa-dribbble"></i></a></li>'; }
     $output .= '</ul>';
     $output .= '</div>';
     $output .= '</div>';
