@@ -493,11 +493,9 @@ function ns_team_member($atts, $content = null) {
     $output = '';
     $output .= '<div class="team-member shadow-hover">';
     if(!empty($atts['img'])) { 
-        $output .= '<div class="team-member-img"><p>'.$atts['bio'].'</p><div class="img-overlay"></div><div class="img-fade"></div><img src="'.$atts['img'].'" alt="" /></div>'; 
-    } else {
-        $output .= '<div class="team-member-img"><p>'.$atts['bio'].'</p><div class="img-overlay"></div><div class="img-fade"></div><img src="'.get_template_directory_uri().'/images/agent-img-default.gif" alt="" /></div>'; 
+        $output .= '<div class="team-member-img" style="background-image:url('.$atts['img'].');"><p>'.$atts['bio'].'</p><div class="img-overlay"></div><div class="img-fade"></div></div>'; 
     }
-    $output .= '<div class="team-member-content"><img class="hex" src="'.get_template_directory_uri() .'/images/hexagon.png" alt="" /><h4>'.$atts['name'].'</h4><p>'.$atts['title'].'</p>';
+    $output .= '<div class="team-member-content"><h4>'.$atts['name'].'</h4><p>'.$atts['title'].'</p>';
     $output .= '<ul class="social-icons circle">';
     if(!empty($atts['facebook'])) { $output .= '<li><a target="_blank" href="'.$atts['facebook'].'"><i class="fab fa-facebook-f"></i></a></li>'; }
     if(!empty($atts['twitter'])) { $output .= '<li><a target="_blank" href="'.$atts['twitter'].'"><i class="fab fa-twitter"></i></a></li>'; }
