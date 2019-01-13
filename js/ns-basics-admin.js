@@ -476,16 +476,19 @@ jQuery(document).ready(function($) {
     /* TOGGLE SWITCH */
     /********************************************/
     $('.toggle-switch-label').on('click', function() {
+        var settingsClass = $(this).data('settings');
         if($(this).parent().find('.toggle-switch-checkbox').is(':checked')) {
             $(this).parent().attr('title', 'Disabled');
             $(this).closest('.admin-module').removeClass('active-add-on');
             $(this).find('span').text(ns_basics_local_script.off);
             $(this).find('span').removeClass('on');
+            if(settingsClass) { $('.'+settingsClass).slideUp(); }
         } else {
             $(this).parent().attr('title', 'Active');
             $(this).closest('.admin-module').addClass('active-add-on');
             $(this).find('span').text(ns_basics_local_script.on);
             $(this).find('span').addClass('on');
+            if(settingsClass) { $('.'+settingsClass).slideDown(); }
         }
     }); 
 
