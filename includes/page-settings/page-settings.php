@@ -13,6 +13,7 @@
         $banner_source = isset( $values['ns_basics_banner_source'] ) ? esc_attr( $values['ns_basics_banner_source'][0] ) : 'image_banner';
         $banner_title = isset( $values['ns_basics_banner_title'] ) ? esc_attr( $values['ns_basics_banner_title'][0] ) : '';
         $banner_text = isset( $values['ns_basics_banner_text'] ) ? esc_attr( $values['ns_basics_banner_text'][0] ) : '';
+        $banner_custom_settings = isset( $values['ns_basics_banner_custom_settings'] ) ? esc_attr( $values['ns_basics_banner_custom_settings'][0] ) : '';
         $banner_bg_img = isset( $values['ns_basics_banner_bg_img'] ) ? esc_attr( $values['ns_basics_banner_bg_img'][0] ) : '';
         $banner_bg_display = isset( $values['ns_basics_banner_bg_display'] ) ? esc_attr( $values['ns_basics_banner_bg_display'][0] ) : '';
         $banner_overlay = isset( $values['ns_basics_banner_overlay'] ) ? esc_attr( $values['ns_basics_banner_overlay'][0] ) : '';
@@ -22,6 +23,8 @@
         $banner_text_align = isset( $values['ns_basics_banner_text_align'] ) ? esc_attr( $values['ns_basics_banner_text_align'][0] ) : $banner_text_align_default;
         $banner_padding_top = isset( $values['ns_basics_banner_padding_top'] ) ? esc_attr( $values['ns_basics_banner_padding_top'][0] ) : '';
         $banner_padding_bottom = isset( $values['ns_basics_banner_padding_bottom'] ) ? esc_attr( $values['ns_basics_banner_padding_bottom'][0] ) : '';
+        $banner_breadcrumbs = isset( $values['ns_basics_banner_breadcrumbs'] ) ? esc_attr( $values['ns_basics_banner_breadcrumbs'][0] ) : '';
+        $banner_search = isset( $values['ns_basics_banner_search'] ) ? esc_attr( $values['ns_basics_banner_search'][0] ) : '';
 
         //banner slider values
         $banner_slider_cat = isset( $values['ns_basics_banner_slider_cat'] ) ? esc_attr( $values['ns_basics_banner_slider_cat'][0] ) : '';
@@ -93,89 +96,135 @@
 
                         <table class="admin-module">
                             <tr>
-                                <td class="admin-module-label"><label><?php echo esc_html_e('Banner Background Image', 'ns-basics'); ?></label></td>
-                                <td class="admin-module-field">
-                                    <input type="text" id="banner_bg_img" name="ns_basics_banner_bg_img" value="<?php echo esc_attr($banner_bg_img); ?>" />
-                                    <input id="_btn" class="ns_upload_image_button" type="button" value="<?php esc_html_e('Upload Image', 'ns-basics'); ?>" />
-                                </td>
-                             </tr>
-                        </table>
-
-                        <table class="admin-module">
-                            <tr>
-                                <td class="admin-module-label"><label><?php echo esc_html_e('Banner Background Display', 'ns-basics'); ?></label></td>
-                                <td class="admin-module-field">
-                                    <select name="ns_basics_banner_bg_display">
-                                        <option value="cover" <?php if($banner_bg_display == 'cover') { echo 'selected'; } ?>><?php echo esc_html_e('Cover', 'ns-basics'); ?></option>
-                                        <option value="fixed" <?php if($banner_bg_display == 'fixed') { echo 'selected'; } ?>><?php echo esc_html_e('Fixed', 'ns-basics'); ?></option>
-                                        <option value="repeat" <?php if($banner_bg_display == 'repeat') { echo 'selected'; } ?>><?php echo esc_html_e('Tiled', 'ns-basics'); ?></option>
-                                    </select>
-                                </td>
-                             </tr>
-                        </table> 
-
-                        <table class="admin-module">
-                            <tr>
-                                <td class="admin-module-label"><label><?php echo esc_html_e('Display Banner Overlay', 'ns-basics'); ?></label></td>
-                                <td class="admin-module-field">
-                                    <input id="banner_overlay" type="checkbox" name="ns_basics_banner_overlay" value="true" <?php if($banner_overlay == 'true') { echo 'checked'; } ?> />
-                                </td>
-                             </tr>
-                        </table>
-
-                        <table class="admin-module">
-                            <tr>
                                 <td class="admin-module-label">
-                                    <label><?php esc_html_e('Banner Overlay Opacity', 'ns-basics'); ?></label>
-                                    <span class="admin-module-note"><?php echo esc_html_e('Choose an opacity ranging from 0 to 1 (0 is fully transparent).', 'ns-basics'); ?></span>
+                                    <label><?php echo esc_html_e('Use Custom Banner Settings', 'ns-basics'); ?></label>
+                                    <span class="admin-module-note"><?php echo esc_html_e('The banner global settings are configured in the theme options (Appearance > Theme Options)', 'ns-basics'); ?></span>
                                 </td>
                                 <td class="admin-module-field">
-                                    <input type="number" step="0.01" min="0.00" max="1.00" name="ns_basics_banner_overlay_opacity" id="banner_overlay_opacity" value="<?php echo $banner_overlay_opacity; ?>" />
+                                    <div class="toggle-switch" title="<?php if($banner_custom_settings == 'true') { esc_html_e('Active', 'ns-basics'); } else { esc_html_e('Disabled', 'ns-basics'); } ?>">
+                                        <input type="checkbox" name="ns_basics_banner_custom_settings" value="true" class="toggle-switch-checkbox" id="page_banner_custom_settings" <?php checked('true', $banner_custom_settings, true) ?>>
+                                        <label class="toggle-switch-label" data-settings="banner-custom-settings" for="page_banner_custom_settings"><?php if($banner_custom_settings == 'true') { echo '<span class="on">'.esc_html__('On', 'ns-basics').'</span>'; } else { echo '<span>'.esc_html__('Off', 'ns-basics').'</span>'; } ?></label>
+                                    </div>
                                 </td>
                              </tr>
                         </table>
 
-                        <table class="admin-module">
-                            <tr>
-                                <td class="admin-module-label"><label><?php echo esc_html_e('Banner Overlay Color', 'ns-basics'); ?></label></td>
-                                <td class="admin-module-field">
-                                    <input type="text" name="ns_basics_banner_overlay_color" id="banner_overlay_color" class="color-field" data-default-color="#000000" value="<?php echo $banner_overlay_color; ?>" />
-                                </td>
-                             </tr>
-                        </table>
+                        <div class="admin-module no-padding banner-custom-settings <?php if($banner_custom_settings) { echo 'show'; } else { echo 'hide-soft'; } ?>">
+                            <table class="admin-module">
+                                <tr>
+                                    <td class="admin-module-label"><label><?php echo esc_html_e('Banner Background Image', 'ns-basics'); ?></label></td>
+                                    <td class="admin-module-field">
+                                        <input type="text" id="banner_bg_img" name="ns_basics_banner_bg_img" value="<?php echo esc_attr($banner_bg_img); ?>" />
+                                        <input id="_btn" class="ns_upload_image_button" type="button" value="<?php esc_html_e('Upload Image', 'ns-basics'); ?>" />
+                                    </td>
+                                 </tr>
+                            </table>
 
-                        <table class="admin-module">
-                            <tr>
-                                <td class="admin-module-label"><label><?php echo esc_html_e('Text Alignment', 'ns-basics'); ?></label></td>
-                                <td class="admin-module-field">
-                                    <select name="ns_basics_banner_text_align">
-                                        <option value="left" <?php if($banner_text_align == 'left') { echo 'selected'; } ?>><?php echo esc_html_e('Left', 'ns-basics'); ?></option>
-                                        <option value="center" <?php if($banner_text_align == 'center') { echo 'selected'; } ?>><?php echo esc_html_e('Center', 'ns-basics'); ?></option>
-                                        <option value="right" <?php if($banner_text_align == 'right') { echo 'selected'; } ?>><?php echo esc_html_e('Right', 'ns-basics'); ?></option>
-                                    </select>
-                                </td>
-                             </tr>
-                        </table>
+                            <table class="admin-module">
+                                <tr>
+                                    <td class="admin-module-label"><label><?php echo esc_html_e('Banner Background Display', 'ns-basics'); ?></label></td>
+                                    <td class="admin-module-field">
+                                        <select name="ns_basics_banner_bg_display">
+                                            <option value="cover" <?php if($banner_bg_display == 'cover') { echo 'selected'; } ?>><?php echo esc_html_e('Cover', 'ns-basics'); ?></option>
+                                            <option value="fixed" <?php if($banner_bg_display == 'fixed') { echo 'selected'; } ?>><?php echo esc_html_e('Fixed', 'ns-basics'); ?></option>
+                                            <option value="repeat" <?php if($banner_bg_display == 'repeat') { echo 'selected'; } ?>><?php echo esc_html_e('Tiled', 'ns-basics'); ?></option>
+                                        </select>
+                                    </td>
+                                 </tr>
+                            </table> 
 
-                        <table class="admin-module">
-                            <tr>
-                                <td class="admin-module-label"><label><?php echo esc_html_e('Banner Padding Top', 'ns-basics'); ?></label></td>
-                                <td class="admin-module-field">
-                                    <input type="number" name="ns_basics_banner_padding_top" id="banner_padding_top" value="<?php echo $banner_padding_top; ?>" />
-                                    <?php echo esc_html_e('Pixels', 'ns-basics'); ?>
-                                </td>
-                             </tr>
-                        </table>
+                            <table class="admin-module">
+                                <tr>
+                                    <td class="admin-module-label"><label><?php echo esc_html_e('Text Alignment', 'ns-basics'); ?></label></td>
+                                    <td class="admin-module-field">
+                                        <select name="ns_basics_banner_text_align">
+                                            <option value="left" <?php if($banner_text_align == 'left') { echo 'selected'; } ?>><?php echo esc_html_e('Left', 'ns-basics'); ?></option>
+                                            <option value="center" <?php if($banner_text_align == 'center') { echo 'selected'; } ?>><?php echo esc_html_e('Center', 'ns-basics'); ?></option>
+                                            <option value="right" <?php if($banner_text_align == 'right') { echo 'selected'; } ?>><?php echo esc_html_e('Right', 'ns-basics'); ?></option>
+                                        </select>
+                                    </td>
+                                 </tr>
+                            </table>
 
-                        <table class="admin-module">
-                            <tr>
-                                <td class="admin-module-label"><label><?php echo esc_html_e('Banner Padding Bottom', 'ns-basics'); ?></label></td>
-                                <td class="admin-module-field">
-                                    <input type="number" name="ns_basics_banner_padding_bottom" id="banner_padding_bottom" value="<?php echo $banner_padding_bottom; ?>" />
-                                    <?php echo esc_html_e('Pixels', 'ns-basics'); ?>
-                                </td>
-                             </tr>
-                        </table>
+                            <table class="admin-module">
+                                <tr>
+                                    <td class="admin-module-label"><label><?php echo esc_html_e('Banner Padding Top', 'ns-basics'); ?></label></td>
+                                    <td class="admin-module-field">
+                                        <input type="number" name="ns_basics_banner_padding_top" id="banner_padding_top" value="<?php echo $banner_padding_top; ?>" />
+                                        <?php echo esc_html_e('Pixels', 'ns-basics'); ?>
+                                    </td>
+                                 </tr>
+                            </table>
+
+                            <table class="admin-module">
+                                <tr>
+                                    <td class="admin-module-label"><label><?php echo esc_html_e('Banner Padding Bottom', 'ns-basics'); ?></label></td>
+                                    <td class="admin-module-field">
+                                        <input type="number" name="ns_basics_banner_padding_bottom" id="banner_padding_bottom" value="<?php echo $banner_padding_bottom; ?>" />
+                                        <?php echo esc_html_e('Pixels', 'ns-basics'); ?>
+                                    </td>
+                                 </tr>
+                            </table>
+
+                            <table class="admin-module">
+                                <tr>
+                                    <td class="admin-module-label"><label><?php echo esc_html_e('Display Banner Overlay', 'ns-basics'); ?></label></td>
+                                    <td class="admin-module-field">
+                                        <div class="toggle-switch" title="<?php if($banner_overlay == 'true') { esc_html_e('Active', 'ns-basics'); } else { esc_html_e('Disabled', 'ns-basics'); } ?>">
+                                            <input type="checkbox" name="ns_basics_banner_overlay" value="true" class="toggle-switch-checkbox" id="page_banner_overlay_display" <?php checked('true', $banner_overlay, true) ?>>
+                                            <label class="toggle-switch-label" data-settings="banner-overlay-settings" for="page_banner_overlay_display"><?php if($banner_overlay == 'true') { echo '<span class="on">'.esc_html__('On', 'ns-basics').'</span>'; } else { echo '<span>'.esc_html__('Off', 'ns-basics').'</span>'; } ?></label>
+                                        </div>
+                                    </td>
+                                 </tr>
+                            </table>
+
+                            <div class="admin-module no-padding banner-overlay-settings <?php if($banner_overlay == 'true') { echo 'show'; } else { echo 'hide-soft'; } ?>">
+                                <table class="admin-module">
+                                    <tr>
+                                        <td class="admin-module-label">
+                                            <label><?php esc_html_e('Banner Overlay Opacity', 'ns-basics'); ?></label>
+                                            <span class="admin-module-note"><?php echo esc_html_e('Choose an opacity ranging from 0 to 1 (0 is fully transparent).', 'ns-basics'); ?></span>
+                                        </td>
+                                        <td class="admin-module-field">
+                                            <input type="number" step="0.01" min="0.00" max="1.00" name="ns_basics_banner_overlay_opacity" id="banner_overlay_opacity" value="<?php echo $banner_overlay_opacity; ?>" />
+                                        </td>
+                                     </tr>
+                                </table>
+
+                                <table class="admin-module">
+                                    <tr>
+                                        <td class="admin-module-label"><label><?php echo esc_html_e('Banner Overlay Color', 'ns-basics'); ?></label></td>
+                                        <td class="admin-module-field">
+                                            <input type="text" name="ns_basics_banner_overlay_color" id="banner_overlay_color" class="color-field" data-default-color="#000000" value="<?php echo $banner_overlay_color; ?>" />
+                                        </td>
+                                     </tr>
+                                </table>
+                            </div>
+
+                            <table class="admin-module">
+                                <tr>
+                                    <td class="admin-module-label"><label><?php echo esc_html_e('Display Breadcrumbs', 'ns-basics'); ?></label></td>
+                                    <td class="admin-module-field">
+                                        <div class="toggle-switch" title="<?php if($banner_breadcrumbs == 'true') { esc_html_e('Active', 'ns-basics'); } else { esc_html_e('Disabled', 'ns-basics'); } ?>">
+                                            <input type="checkbox" name="ns_basics_banner_breadcrumbs" value="true" class="toggle-switch-checkbox" id="page_banner_breadcrumbs" <?php checked('true', $banner_breadcrumbs, true) ?>>
+                                            <label class="toggle-switch-label" for="page_banner_breadcrumbs"><?php if($banner_breadcrumbs == 'true') { echo '<span class="on">'.esc_html__('On', 'ns-basics').'</span>'; } else { echo '<span>'.esc_html__('Off', 'ns-basics').'</span>'; } ?></label>
+                                        </div>
+                                    </td>
+                                 </tr>
+                            </table>
+
+                            <table class="admin-module">
+                                <tr>
+                                    <td class="admin-module-label"><label><?php echo esc_html_e('Display Search Form', 'ns-basics'); ?></label></td>
+                                    <td class="admin-module-field">
+                                        <div class="toggle-switch" title="<?php if($banner_search == 'true') { esc_html_e('Active', 'ns-basics'); } else { esc_html_e('Disabled', 'ns-basics'); } ?>">
+                                            <input type="checkbox" name="ns_basics_banner_search" value="true" class="toggle-switch-checkbox" id="page_banner_search" <?php checked('true', $banner_search, true) ?>>
+                                            <label class="toggle-switch-label" for="page_banner_search"><?php if($banner_search == 'true') { echo '<span class="on">'.esc_html__('On', 'ns-basics').'</span>'; } else { echo '<span>'.esc_html__('Off', 'ns-basics').'</span>'; } ?></label>
+                                        </div>
+                                    </td>
+                                 </tr>
+                            </table>
+                        </div><!-- end custom settings -->
 
                         <!-- hook in for other add-ons -->
                         <?php do_action( 'ns_basics_after_page_banner_options', $values); ?>
@@ -424,6 +473,12 @@
         if( isset( $_POST['ns_basics_banner_text'] ) )
             update_post_meta( $post_id, 'ns_basics_banner_text', wp_kses( $_POST['ns_basics_banner_text'], $allowed ) );
             
+        if( isset( $_POST['ns_basics_banner_custom_settings'] ) ) {
+            update_post_meta( $post_id, 'ns_basics_banner_custom_settings', wp_kses( $_POST['ns_basics_banner_custom_settings'], $allowed ) );
+        } else {
+            update_post_meta( $post_id, 'ns_basics_banner_custom_settings', wp_kses( '', $allowed ) );
+        }
+
         if( isset( $_POST['ns_basics_banner_bg_img'] ) )
             update_post_meta( $post_id, 'ns_basics_banner_bg_img', wp_kses( $_POST['ns_basics_banner_bg_img'], $allowed ) );
             
@@ -450,6 +505,18 @@
 
         if( isset( $_POST['ns_basics_banner_padding_bottom'] ) )
             update_post_meta( $post_id, 'ns_basics_banner_padding_bottom', wp_kses( $_POST['ns_basics_banner_padding_bottom'], $allowed ) );
+
+        if( isset( $_POST['ns_basics_banner_breadcrumbs'] ) ) {
+            update_post_meta( $post_id, 'ns_basics_banner_breadcrumbs', wp_kses( $_POST['ns_basics_banner_breadcrumbs'], $allowed ) );
+        } else {
+            update_post_meta( $post_id, 'ns_basics_banner_breadcrumbs', wp_kses( '', $allowed ) );
+        }
+
+        if( isset( $_POST['ns_basics_banner_search'] ) ) {
+            update_post_meta( $post_id, 'ns_basics_banner_search', wp_kses( $_POST['ns_basics_banner_search'], $allowed ) );
+        } else {
+            update_post_meta( $post_id, 'ns_basics_banner_search', wp_kses( '', $allowed ) );
+        }
 
         if( isset( $_POST['ns_basics_banner_slider_cat'] ) )
             update_post_meta( $post_id, 'ns_basics_banner_slider_cat', wp_kses( $_POST['ns_basics_banner_slider_cat'], $allowed ) );
