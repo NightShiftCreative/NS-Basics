@@ -7,6 +7,18 @@
 
     function ns_basics_page_layout_meta_box($post) {
 
+        //global banner values
+        $page_banner_bg = esc_attr(get_option('ns_core_page_banner_bg'));
+        $page_banner_bg_display = esc_attr(get_option('ns_core_page_banner_bg_display'));
+        $page_banner_title_align = esc_attr(get_option('ns_core_page_banner_title_align'));
+        $page_banner_padding_top = esc_attr(get_option('ns_core_page_banner_padding_top'));
+        $page_banner_padding_bottom = esc_attr(get_option('ns_core_page_banner_padding_bottom'));
+        $page_banner_overlay = esc_attr(get_option('ns_core_page_banner_overlay_display'));
+        $page_banner_overlay_opacity = esc_attr(get_option('ns_core_page_banner_overlay_opacity', '0.25'));
+        $page_banner_overlay_color = esc_attr(get_option('ns_core_page_banner_overlay_color', '#000000'));
+        $page_banner_display_breadcrumb = esc_attr(get_option('ns_core_page_banner_display_breadcrumb'));
+        $page_banner_display_search = esc_attr(get_option('ns_core_page_banner_display_search'));
+
         //banner values
         $values = get_post_custom( $post->ID );
         $banner_display = isset( $values['ns_basics_banner_display'] ) ? esc_attr( $values['ns_basics_banner_display'][0] ) : 'true';
@@ -14,17 +26,16 @@
         $banner_title = isset( $values['ns_basics_banner_title'] ) ? esc_attr( $values['ns_basics_banner_title'][0] ) : '';
         $banner_text = isset( $values['ns_basics_banner_text'] ) ? esc_attr( $values['ns_basics_banner_text'][0] ) : '';
         $banner_custom_settings = isset( $values['ns_basics_banner_custom_settings'] ) ? esc_attr( $values['ns_basics_banner_custom_settings'][0] ) : '';
-        $banner_bg_img = isset( $values['ns_basics_banner_bg_img'] ) ? esc_attr( $values['ns_basics_banner_bg_img'][0] ) : '';
-        $banner_bg_display = isset( $values['ns_basics_banner_bg_display'] ) ? esc_attr( $values['ns_basics_banner_bg_display'][0] ) : '';
-        $banner_overlay = isset( $values['ns_basics_banner_overlay'] ) ? esc_attr( $values['ns_basics_banner_overlay'][0] ) : '';
-        $banner_overlay_opacity = isset( $values['ns_basics_banner_overlay_opacity'] ) ? esc_attr( $values['ns_basics_banner_overlay_opacity'][0] ) : '0.25';
-        $banner_overlay_color = isset( $values['ns_basics_banner_overlay_color'] ) ? esc_attr( $values['ns_basics_banner_overlay_color'][0] ) : '#000000';
-        $banner_text_align_default = get_option('ns_core_page_banner_title_align');
-        $banner_text_align = isset( $values['ns_basics_banner_text_align'] ) ? esc_attr( $values['ns_basics_banner_text_align'][0] ) : $banner_text_align_default;
-        $banner_padding_top = isset( $values['ns_basics_banner_padding_top'] ) ? esc_attr( $values['ns_basics_banner_padding_top'][0] ) : '';
-        $banner_padding_bottom = isset( $values['ns_basics_banner_padding_bottom'] ) ? esc_attr( $values['ns_basics_banner_padding_bottom'][0] ) : '';
-        $banner_breadcrumbs = isset( $values['ns_basics_banner_breadcrumbs'] ) ? esc_attr( $values['ns_basics_banner_breadcrumbs'][0] ) : '';
-        $banner_search = isset( $values['ns_basics_banner_search'] ) ? esc_attr( $values['ns_basics_banner_search'][0] ) : '';
+        $banner_bg_img = isset( $values['ns_basics_banner_bg_img'] ) ? esc_attr( $values['ns_basics_banner_bg_img'][0] ) : $page_banner_bg;
+        $banner_bg_display = isset( $values['ns_basics_banner_bg_display'] ) ? esc_attr( $values['ns_basics_banner_bg_display'][0] ) : $page_banner_bg_display;
+        $banner_text_align = isset( $values['ns_basics_banner_text_align'] ) ? esc_attr( $values['ns_basics_banner_text_align'][0] ) : $page_banner_title_align;
+        $banner_padding_top = isset( $values['ns_basics_banner_padding_top'] ) ? esc_attr( $values['ns_basics_banner_padding_top'][0] ) : $page_banner_padding_top;
+        $banner_padding_bottom = isset( $values['ns_basics_banner_padding_bottom'] ) ? esc_attr( $values['ns_basics_banner_padding_bottom'][0] ) : $page_banner_padding_bottom;
+        $banner_overlay = isset( $values['ns_basics_banner_overlay'] ) ? esc_attr( $values['ns_basics_banner_overlay'][0] ) : $page_banner_overlay;
+        $banner_overlay_opacity = isset( $values['ns_basics_banner_overlay_opacity'] ) ? esc_attr( $values['ns_basics_banner_overlay_opacity'][0] ) : $page_banner_overlay_opacity;
+        $banner_overlay_color = isset( $values['ns_basics_banner_overlay_color'] ) ? esc_attr( $values['ns_basics_banner_overlay_color'][0] ) : $page_banner_overlay_color;
+        $banner_breadcrumbs = isset( $values['ns_basics_banner_breadcrumbs'] ) ? esc_attr( $values['ns_basics_banner_breadcrumbs'][0] ) : $page_banner_display_breadcrumb;
+        $banner_search = isset( $values['ns_basics_banner_search'] ) ? esc_attr( $values['ns_basics_banner_search'][0] ) : $page_banner_display_search;
 
         //banner slider values
         $banner_slider_cat = isset( $values['ns_basics_banner_slider_cat'] ) ? esc_attr( $values['ns_basics_banner_slider_cat'][0] ) : '';
