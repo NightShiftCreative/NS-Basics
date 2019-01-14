@@ -1,11 +1,12 @@
 <?php global $current_user, $wp_roles; ?>    
 
-<!-- start user dashboard -->
 <div class="user-dashboard">
     <?php if(is_user_logged_in()) { ?>
 
-    	<h3><?php esc_html_e('Welcome back,', 'ns-basics'); ?> <strong><?php echo esc_attr($current_user->user_login); ?>!</strong></h3>
+    	<?php do_action( 'ns_basics_before_dashboard'); ?>
 
+    	<h3><?php esc_html_e('Welcome back,', 'ns-basics'); ?> <strong><?php echo esc_attr($current_user->user_login); ?>!</strong></h3>
+        
         <?php do_action( 'ns_basics_dashboard_stats'); ?>
         <?php do_action( 'ns_basics_after_dashboard'); ?>
 
@@ -14,4 +15,4 @@
     } ?>
 
     <div class="clear"></div>
-</div><!-- end user dashboard -->
+</div>

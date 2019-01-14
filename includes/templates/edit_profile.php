@@ -9,9 +9,10 @@ if(isset($template_args)) {
 } 
 ?>    
 
-<!-- start user dashboard -->
 <div class="user-dashboard">
 	<?php if(is_user_logged_in()) { 
+
+        do_action( 'ns_basics_before_edit_profile'); 
 
 		$error = array();
 
@@ -62,7 +63,6 @@ if(isset($template_args)) {
 
 	        /* Redirect so the page will show updated info.*/
 	        if ( count($error) == 0 ) {
-	            //action hook for plugins and extra fields saving
 	            do_action('edit_user_profile_update', $current_user->ID);
 	            //wp_redirect( get_permalink().'?updated=true' );
 	            //exit;
@@ -171,11 +171,9 @@ if(isset($template_args)) {
             </form>
         </div><!-- end user profile form -->
 
-    	<?php
-		// hook in for NS Basics
-        do_action( 'ns_basics_after_edit_profile'); 
+    	<?php do_action( 'ns_basics_after_edit_profile'); 
 
 	} else {
 		ns_basics_template_loader('alert_not_logged_in.php');
     } ?>
-</div><!-- end user dashboard -->
+</div><!-- end user profile -->
