@@ -10,11 +10,11 @@ if(isset($template_args)) {
 } 
 ?>    
 
-<!-- start user dashboard -->
 <div class="user-dashboard">
-	<?php if(is_user_logged_in()) { ?>
+	<?php if(is_user_logged_in()) { 
 		
-		<?php
+		do_action( 'ns_basics_before_favorites');
+
 		$all_types = get_post_types( array( 'public' => true ) );
 
 		$post_favorites_args = array(
@@ -99,10 +99,9 @@ if(isset($template_args)) {
 		        <?php wp_reset_postdata(); ?>
 		    <?php endif; ?>
 
-		<!-- hook in for NS Basics -->
         <?php do_action( 'ns_basics_after_favorites'); ?>
 
 	<?php } else {
 		ns_basics_template_loader('alert_not_logged_in.php');
     } ?>
-</div><!-- end user dashboard -->
+</div><!-- end favorites -->

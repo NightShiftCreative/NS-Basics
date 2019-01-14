@@ -10,6 +10,8 @@ if(isset($template_args)) {
 
 <?php if(!is_user_logged_in()) { ?>
 
+    <?php do_action( 'ns_basics_before_login_form'); ?>
+
     <div class="row">
         <div class="col-lg-4 col-lg-offset-4">
 
@@ -44,6 +46,8 @@ if(isset($template_args)) {
 
         </div><!-- end col -->
     </div><!-- end row -->
+
+    <?php do_action( 'ns_basics_after_login_form'); ?>
 
 <?php } else { 
     ns_basics_template_loader('alert_logged_in.php', null, false);
