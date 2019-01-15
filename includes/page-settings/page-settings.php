@@ -316,6 +316,8 @@
             <h3 class="accordion-tab"><i class="fa fa-chevron-right icon"></i> <?php echo esc_html_e('Page Layout', 'ns-basics'); ?></h3>
             <div>
 
+                <?php do_action( 'ns_basics_before_page_layout_options', $values); ?>
+
                 <table class="admin-module">
                     <tr>
                         <td class="admin-module-label"><label><?php echo esc_html_e('Page Layout', 'ns-basics'); ?></label></td>
@@ -378,10 +380,15 @@
                         </td>
                     </tr>
                 </table>
+
+                <?php do_action( 'ns_basics_after_page_layout_options', $values); ?>
+
             </div><!-- page layout tab -->
 
             <h3 class="accordion-tab"><i class="fa fa-chevron-right icon"></i> <?php echo esc_html_e('Call to Action', 'ns-basics'); ?></h3>
             <div>
+
+                <?php do_action( 'ns_basics_before_page_cta_options', $values); ?>
 
                 <table class="admin-module">
                     <tr>
@@ -440,6 +447,9 @@
                         </td>
                     </tr>
                 </table>
+
+                <?php do_action( 'ns_basics_after_page_cta_options', $values); ?>
+
             </div><!-- end cta tab -->
         </div><!-- end accordion -->
 
@@ -578,7 +588,7 @@
             update_post_meta( $post_id, 'ns_basics_cta_bg_display', wp_kses( $_POST['ns_basics_cta_bg_display'], $allowed ) );
 
         //hook in for other add-ons
-        do_action( 'ns_basics_after_page_settings_save', $post_id); 
+        do_action( 'ns_basics_save_page_settings', $post_id); 
     }
 
 ?>
