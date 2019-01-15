@@ -39,6 +39,8 @@
         
         <div class="meta-box-form meta-box-form-slides">
 
+            <?php do_action( 'ns_basics_before_slide_settings', $slide_values); ?>
+
             <table class="admin-module">
                 <tr>
                     <td class="admin-module-label"><label><?php echo esc_html_e('Text Align', 'ns-basics'); ?></label></td>
@@ -101,6 +103,8 @@
                     <td class="admin-module-field"><input type="text" name="ns_slide_overlay_color" id="slide_overlay_color" class="color-field" data-default-color="#000000" value="<?php echo $slide_overlay_color; ?>" /></td>
                  </tr>
             </table>
+
+            <?php do_action( 'ns_basics_after_slide_settings', $slide_values); ?>
 
         </div>
 

@@ -60,6 +60,8 @@
         $page_layout_container = isset( $values['ns_basics_page_layout_container'] ) ? esc_attr( $values['ns_basics_page_layout_container'][0] ) : 'true';
         wp_nonce_field( 'ns_basics_page_layout_meta_box_nonce', 'ns_basics_page_layout_meta_box_nonce' );
         ?>
+
+        <?php do_action( 'ns_basics_before_page_settings', $values); ?>
         
         <div id="accordion" class="accordion ns-accordion hide">
             <h3 class="accordion-tab"><i class="fa fa-chevron-right icon"></i> <?php echo esc_html_e('Banner', 'ns-basics'); ?></h3>
@@ -452,6 +454,8 @@
 
             </div><!-- end cta tab -->
         </div><!-- end accordion -->
+
+        <?php do_action( 'ns_basics_after_page_settings', $values); ?>
 
     <?php } 
 
