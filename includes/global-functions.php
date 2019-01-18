@@ -41,16 +41,15 @@ function ns_basics_tooltip($toggle, $content, $class = null) {
     return $output;
 }
 
-
 /*-----------------------------------------------------------------------------------*/
 /*  Generate Icon
 /*-----------------------------------------------------------------------------------*/
 if(!function_exists('ns_core_get_icon')) {
     function ns_core_get_icon($type, $fa_name, $line_name = null, $dripicon_name = null, $class = null) {
-        if($type == 'line' && $line_name != 'n/a') {
+        if($type == 'line' && $line_name != 'n/a' && wp_script_is('linear-icons')) {
             if(empty($line_name)) { $line_name = $fa_name; }
             return '<i class="fa icon-'.$line_name.' icon icon-line '.$class.'"></i>';
-        } else if($type == 'dripicon' && $dripicon_name != 'n/a') {
+        } else if($type == 'dripicon' && $dripicon_name != 'n/a' && wp_script_is('dripicons')) {
             if(empty($dripicon_name)) { $dripicon_name = $fa_name; }
             return '<i class="fa dripicons-'.$dripicon_name.' icon icon-dripicon'.$class.'"></i>';
         } else {
