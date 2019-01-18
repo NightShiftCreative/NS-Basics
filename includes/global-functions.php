@@ -101,7 +101,7 @@ function ns_basics_upload_user_file( $file = array() ) {
 /*  Generate admin gallery upload
 /*-----------------------------------------------------------------------------------*/
 function ns_basics_generate_gallery($additional_images) { ?>
-    <div class="admin-module no-border gallery-container">
+    <div class="admin-module no-border no-padding gallery-container">
         <?php
         if(!empty($additional_images) && !empty($additional_images[0])) { ?>
 
