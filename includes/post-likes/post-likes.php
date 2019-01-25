@@ -410,7 +410,7 @@ function ns_basics_show_user_likes_count( $user ) {
 function ns_basics_add_post_like() { ?> 
     <li><?php echo ns_basics_get_post_likes_button(get_the_ID(), null, true); ?></li>
 <?php }
-add_action( 'ns_basics_after_post_meta', 'ns_basics_add_post_like' );
+add_action( 'ns_core_after_post_meta', 'ns_basics_add_post_like' );
 
 function ns_basics_add_post_like_dashboard_stat() { ?> 
     <div class="user-dashboard-widget stat">

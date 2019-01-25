@@ -34,6 +34,6 @@ function ns_basics_get_social_share($class = null, $toggle_text = null) {
 function ns_basics_add_post_share() { ?> 
     <li><?php echo ns_basics_get_social_share('blog-share', true); ?></li>
 <?php }
-add_action( 'ns_basics_after_post_meta', 'ns_basics_add_post_share' );
+add_action( 'ns_core_after_post_meta', 'ns_basics_add_post_share' );
 
 ?>
