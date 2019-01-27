@@ -175,7 +175,7 @@ function ns_basics_already_liked( $post_id, $is_comment ) {
  * Output the like button
  * @since    0.5
  */
-function ns_basics_get_post_likes_button( $post_id, $is_comment = NULL, $button = NULL ) {
+function ns_basics_get_post_likes_button( $post_id, $is_comment = NULL, $button = NULL, $button_text = NULL) {
 	$is_comment = ( NULL == $is_comment ) ? 0 : 1;
 	$output = '';
 	$nonce = wp_create_nonce( 'simple-likes-nonce' ); // Security
@@ -192,13 +192,8 @@ function ns_basics_get_post_likes_button( $post_id, $is_comment = NULL, $button 
 	}
 	$count = ns_basics_get_like_count( $like_count );
 
-    if($button == 'true') {
-	   $icon_empty = ns_basics_get_unliked_icon();
-	   $icon_full = ns_basics_get_liked_icon();
-    } else {
-        $icon_empty = ns_basics_get_unliked_icon();
-        $icon_full = ns_basics_get_liked_icon();
-    }
+    $icon_empty = ns_basics_get_unliked_icon($button_text);
+    $icon_full = ns_basics_get_liked_icon($button_text);
 
 	// Loader
 	$loader = '<span class="sl-loader"></span>';
@@ -288,9 +283,9 @@ function ns_basics_sl_get_ip() {
  * Utility returns the button icon for "like" action
  * @since    0.5
  */
-function ns_basics_get_liked_icon() {
-	/* If already using Font Awesome with your theme, replace svg with: <i class="fa fa-heart"></i> */
-	$icon = '<span class="fa fa-heart sl-icon icon"></span>'.'<span class="sl-button-text">'.esc_html__( 'Favorite', 'ns-basics' ).'</span>';
+function ns_basics_get_liked_icon($button_text = null) {
+	if(empty($button_text)) { $button_text = esc_html__( 'Unlike', 'ns-basics' ); }
+	$icon = '<span class="fa fa-heart sl-icon icon"></span>'.'<span class="sl-button-text">'.$button_text.'</span>';
 	return $icon;
 }
 
@@ -298,9 +293,9 @@ function ns_basics_get_liked_icon() {
  * Utility returns the button icon for "unlike" action
  * @since    0.5
  */
-function ns_basics_get_unliked_icon() {
-	/* If already using Font Awesome with your theme, replace svg with: <i class="fa fa-heart-o"></i> */
-	$icon = '<span class="fa fa-heart sl-icon icon"></span>'.'<span class="sl-button-text">'.esc_html__( 'Favorite', 'ns-basics' ).'</span>';
+function ns_basics_get_unliked_icon($button_text = null) {
+	if(empty($button_text)) { $button_text = esc_html__( 'Like', 'ns-basics' ); }
+	$icon = '<span class="fa fa-heart sl-icon icon"></span>'.'<span class="sl-button-text">'.$button_text.'</span>';
 	return $icon;
 }
 
