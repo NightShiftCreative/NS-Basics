@@ -190,6 +190,8 @@
     margin:0px;
     transition:all 0.4s;
 }
+.ns-accordion-header .action { float:right; padding:0px 15px; }
+.ns-accordion-header .action:hover { background:rgba(0, 0, 0, 0.1); transition:all 0.4s; }
 .ns-accordion.active .ns-accordion-header { background:#5c59ed; color:white; border-radius:5px 5px 0px 0px; }
 .ns-accordion.active .ns-accordion-header > .fa { background:rgba(0, 0, 0, 0.15); }
 .ns-accordion-content { 
