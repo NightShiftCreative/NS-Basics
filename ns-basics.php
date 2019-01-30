@@ -46,7 +46,6 @@ function ns_basics_load_stylesheets() {
         wp_enqueue_script( 'jquery-form', array( 'jquery' ) );
         wp_enqueue_script('jquery-ui-core');
         wp_enqueue_script('jquery-ui-accordion');
-        wp_enqueue_script('jquery-ui-tabs');
         wp_enqueue_script( 'jquery-ui-datepicker' );
         wp_enqueue_style( 'wp-color-picker' );
 
@@ -295,11 +294,11 @@ function ns_basics_admin_page($page_name = null, $settings_group = null, $pages 
                     foreach($alerts as $alert) { echo $alert; }
                 } ?>
 
-                <div id="tabs" class="ns-tabs ui-tabs">
+                <div class="ns-tabs">
                     <?php if(!empty($content_nav)) { ?>
                     <div class="ns-settings-content-nav">
                         <div class="ns-settings-content-nav-filler"></div>
-                        <ul class="ui-tabs-nav">
+                        <ul class="ns-tabs-nav">
                             <?php foreach($content_nav as $nav_item) { ?>
                                 <li><a href="<?php echo $nav_item['link']; ?>"><?php if(!empty($nav_item['icon'])) { echo '<i class="fa '.$nav_item['icon'].'"></i>'; } ?><?php echo $nav_item['name']; ?></a></li>
                             <?php } ?>
@@ -307,7 +306,7 @@ function ns_basics_admin_page($page_name = null, $settings_group = null, $pages 
                     </div>
                     <?php } ?>
 
-                    <div class="content-wrap <?php if(!empty($content_nav)) { echo 'content-has-nav'; } ?>">
+                    <div class="ns-tabs-content content-wrap <?php if(!empty($content_nav)) { echo 'content-has-nav'; } ?>">
                         <?php if(!empty($content_nav)) { ?><div class="tab-loader"><img src="<?php echo esc_url(home_url('/')); ?>wp-admin/images/spinner.gif" alt="" /> <?php esc_html_e('Loading...', 'ns-basics'); ?></div><?php } ?>
                         <?php if(!empty($content)) { echo $content; } ?>
                     </div>
