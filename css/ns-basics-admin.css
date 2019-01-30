@@ -173,6 +173,7 @@
     font-weight:600;
     color:#51636c;
     padding:0px 0px 0px 70px;
+    margin:0;
     transition:all 0.4s;
 }
 .ns-accordion-header > .fa {
@@ -768,8 +769,8 @@ input[type=checkbox].toggle-switch-checkbox { display: none; }
 
 
 @media only screen and (max-width: 1200px) {    
-    .meta-box-form .ui-tabs-nav { width:20%; }
-    .meta-box-form .ui-tabs-panel { width:75%; }
+    .meta-box-form .ns-tabs-nav { width:20%; }
+    .meta-box-form .ns-tabs-content { width:75%; }
 }
 
 @media only screen and (max-width: 1170px) {
@@ -780,13 +781,12 @@ input[type=checkbox].toggle-switch-checkbox { display: none; }
 
 @media only screen and (max-width: 750px) {
 
-    .meta-box-form.ui-tabs { padding:0px; }
-    .meta-box-form.ui-tabs .ui-tabs-nav { width:13%; }
-    .meta-box-form .ui-tabs-nav .tab-text { display:none; }
-    .meta-box-form.ui-tabs .ui-tabs-nav .fa { width:100%; padding:0; height:45px; line-height:45px; font-size:18px; }
-    .meta-box-form.ui-tabs .ui-tabs-nav li.ui-state-active a { border:none; }
-
-    .meta-box-form.ui-tabs .ui-tabs-panel, .meta-box-form .tab-loader { width:82%; }
+    .meta-box-form.ns-tabs { padding:0px; }
+    .meta-box-form.ns-tabs .ns-tabs-nav { width:13%; }
+    .meta-box-form.ns-tabs .ns-tabs-nav .tab-text { display:none; }
+    .meta-box-form.ns-tabs .ns-tabs-nav .fa { width:100%; padding:0; height:45px; line-height:45px; font-size:18px; }
+    .meta-box-form.ns-tabs .ns-tabs-nav li.active a { border:none; }
+    .meta-box-form.ns-tabs .ns-tabs-content { width:82%; }
 
     .meta-box-form .admin-module-label { width:100%; display:block; }
     .meta-box-form .admin-module-field { width:100%; display:block; }
