@@ -599,11 +599,9 @@ input[type=checkbox].toggle-switch-checkbox { display: none; }
 /**********************************************/
 /** METABOXES **/
 /**********************************************/
-.meta-box-form.ui-tabs { border:none; background:none; padding:10px; font-family:inherit; font-size:inherit; }
-.meta-box-form.ui-tabs .ui-tabs-nav { width:18%; float:left; margin:0; padding:0; position:static; border:none; background:none; }
-.meta-box-form.ui-tabs .ui-tabs-nav .ui-state-focus a { outline:none !important; box-shadow:none; }
-.meta-box-form.ui-tabs .ui-tabs-nav li { float:none; position:static; border:none; background:none; margin:0px 0px 6px 0px; }
-.meta-box-form.ui-tabs .ui-tabs-nav li a { 
+.meta-box-form.ns-tabs .ns-tabs-nav { width:18.5%; float:left; margin:0; padding:0; position:static; border:none; background:none; }
+.meta-box-form.ns-tabs .ns-tabs-nav li { margin-bottom:6px; }
+.meta-box-form.ns-tabs .ns-tabs-nav li a { 
     background: #d9e3ea; 
     width:100%;
     border-right:none; 
@@ -618,7 +616,7 @@ input[type=checkbox].toggle-switch-checkbox { display: none; }
     text-overflow: ellipsis;
 }
 
-.meta-box-form.ui-tabs .ui-tabs-nav .fa { 
+.meta-box-form.ns-tabs .ns-tabs-nav .fa { 
     background:#4c5a67; 
     color:white;
     display:inline-block;
@@ -630,10 +628,10 @@ input[type=checkbox].toggle-switch-checkbox { display: none; }
     margin-right:7px;
 }
 
-.meta-box-form.ui-tabs .ui-tabs-nav li.ui-state-active a { border:1px solid rgba(0, 0, 0, 0.1); border-right:none;  position:relative; z-index:100; color:#5c59ed; font-weight:bold; background:white; }
-.meta-box-form.ui-tabs .ui-tabs-nav li.ui-state-active .fa { background:#5c59ed; }
+.meta-box-form.ns-tabs .ns-tabs-nav li.active a { border:1px solid rgba(0, 0, 0, 0.1); border-right:none;  position:relative; z-index:100; color:#5c59ed; font-weight:bold; background:white; }
+.meta-box-form.ns-tabs .ns-tabs-nav li.active .fa { background:#5c59ed; }
 
-.meta-box-form.ui-tabs .ui-tabs-panel, .meta-box-form .tab-loader { 
+.meta-box-form.ns-tabs .ns-tabs-content { 
     width:77%; 
     margin-left:-1px;
     float:left; 
@@ -644,10 +642,10 @@ input[type=checkbox].toggle-switch-checkbox { display: none; }
     box-shadow:0px 2px 5px rgba(0, 0, 0, 0.1); 
 }
 
-.meta-box-form.ui-tabs .ui-tabs-panel > h3 { margin-top:0px; margin-bottom:15px; }
+.meta-box-form.ns-tabs .ns-tabs-content > h3 { margin-top:0px; margin-bottom:15px; }
 
 /* metabox form */
-.meta-box-form { padding:10px; }
+.meta-box-form { margin-top:7px; padding:10px; }
 
 .meta-box-form .admin-module-label { width:35%; }
 .meta-box-form .admin-module-field { width:65%; }
