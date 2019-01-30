@@ -527,6 +527,8 @@ input[type=checkbox].toggle-switch-checkbox { display: none; }
     font-size:12px;
 }
 
+.ns-modules .ns-module-group > .admin-module .license-error { display:none; }
+
 .ns-modules .ns-module-group > .admin-module .ns-module-content .admin-module-note {
     margin-bottom:15px;
 }
