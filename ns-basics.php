@@ -46,7 +46,6 @@ function ns_basics_load_stylesheets() {
         wp_enqueue_style('thickbox');
         wp_enqueue_script( 'jquery-form', array( 'jquery' ) );
         wp_enqueue_script('jquery-ui-core');
-        wp_enqueue_script('jquery-ui-accordion');
         wp_enqueue_script( 'jquery-ui-datepicker' );
         wp_enqueue_style( 'wp-color-picker' );
 
