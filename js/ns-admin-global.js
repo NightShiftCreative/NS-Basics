@@ -46,7 +46,7 @@ jQuery(document).ready(function($) {
 
     /** ACCORDIONS **/
     $(function() {
-        $('.ns-accordion').on('click', '.ns-accordion-header', function(e) {
+        $(document.body).on('click', '.ns-accordion .ns-accordion-header', function(e) {
             e.preventDefault();
             var parent = $(this).closest('.ns-accordion');
             parent.find('.ns-accordion-content').slideToggle();
