@@ -143,8 +143,20 @@
 
 .admin-alert-box.settings-saved { display:none; }
 
+/** JQUERY UI RESET **/
+.ns-accordion.ui-accordion,
+.ns-tabs.ui-tabs { font-family:inherit; border:none; background:transparent; padding:0; }
+
+.ns-accordion.ui-accordion .ui-widget-header,
+.ns-tabs.ui-tabs .ui-widget-header { border:none; background:transparent; }
+
+/** TABS **/
+.ns-tabs.ui-tabs .ui-tabs-nav { padding:0; margin:0; }
+.ns-tabs.ui-tabs .ui-tabs-nav li,
+.ns-tabs.ui-tabs .ui-tabs-nav li a { float:none; padding:0; margin:0; display:block; width:100%; background:none; border:none;  }
+
 /** ACCORDIONS **/
-.ns-accordion.ui-accordion { margin:20px 0px 20px 0px; font-family:inherit; }
+.ns-accordion.ui-accordion { margin:20px 0px 20px 0px; }
 
 .ns-accordion.ui-accordion .ui-accordion-header {
     position:relative;

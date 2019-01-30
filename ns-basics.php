@@ -295,7 +295,7 @@ function ns_basics_admin_page($page_name = null, $settings_group = null, $pages 
                     foreach($alerts as $alert) { echo $alert; }
                 } ?>
 
-                <div id="tabs" class="ui-tabs">
+                <div id="tabs" class="ns-tabs ui-tabs">
                     <?php if(!empty($content_nav)) { ?>
                     <div class="ns-settings-content-nav">
                         <div class="ns-settings-content-nav-filler"></div>

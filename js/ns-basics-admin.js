@@ -1,7 +1,102 @@
 jQuery(document).ready(function($) {
 
+    /******************************************************/
+    /** GLOBAL **/
+    /** Shared scripts between NightLight and NS Basics  **/
+    /******************************************************/
+
+    /** COLOR PICKER **/
+    $(function() {
+        $('.color-field').wpColorPicker();
+    });
+
+    /** SINGLE MEDIA UPLOAD  **/
+    var mediaUploader;
+
+    $('.admin-module').on('click', '.ns_upload_image_button', function(e) {
+        e.preventDefault();
+        formfield = jQuery(this).prev('input');
+
+        // If the uploader object has already been created, reopen the dialog
+        if (mediaUploader) {
+          mediaUploader.open();
+          return;
+        }
+        // Extend the wp.media object
+        mediaUploader = wp.media.frames.file_frame = wp.media({
+          title: 'Choose Image',
+          button: {
+          text: 'Choose Image'
+        }, multiple: false });
+
+        // When a file is selected, grab the URL and set it as the text field's value
+        mediaUploader.on('select', function() {
+          attachment = mediaUploader.state().get('selection').first().toJSON();
+          $(formfield).val(attachment.url);
+        });
+        // Open the uploader dialog
+        mediaUploader.open();
+    });
+
+    /** SINGLE MEDIA REMOVE **/
+    $('.admin-module').on('click', '.remove', function() {
+        $(this).parent().find('input[type="text"]').removeAttr('value');
+        $(this).parent().find('.option-preview').hide();
+    });
+
+    /** ACCORDIONS **/
+    $(function() {
+        $( "#accordion" ).removeClass('hide');
+        $( ".accordion" ).accordion({
+            collapsible: true,
+            active: false,
+            autoHeight: true,
+            heightStyle: "content"
+        });
+        $('.accordion-tab').click(function() {
+            var icon = $(this).find('.icon');
+            if (icon.hasClass('fa-chevron-right')) {
+                $(this).find('.icon').removeClass('fa-chevron-right');
+                $(this).find('.icon').addClass('fa-chevron-down');
+            } else {
+                $(this).find('.icon').removeClass('fa-chevron-down');
+                $(this).find('.icon').addClass('fa-chevron-right');
+            }
+        });
+    });
+
+    /** TABS **/
+    $(function() {
+        $('#tabs').tabs();
+        $(".tab-loader").hide();
+    });
+
+    /** SELECTABLE ITEMS **/
+    $('.selectable-item').click(function() {
+        $( ".selectable-item" ).each(function( index ) {
+          $(this).removeClass('active');
+        });
+        $(this).addClass('active');
+
+        var input  = $(this).find('input').val();
+        input = 'selectable-item-options-' + input;
+        
+        $(".selectable-item-settings").each(function( index ) {
+            if($(this).attr('id') == input) {
+                $(".selectable-item-settings").hide();
+                $(this).show();
+            } else if($(this).attr('id') != input) {
+                $(this).hide();
+            }
+        });
+    });
+    /****************************************************/
+    /** END GLOBAL **/
+    /****************************************************/
+
+
     /********************************************/
-    /* AJAX SAVE SETTINGS */
+    /* SAVE SETTINGS */
     /********************************************/
     $(document).ready(function() {
         $('.ns-settings-ajax').submit(function() { 
@@ -242,57 +337,12 @@ jQuery(document).ready(function($) {
     });
 
     /********************************************/
-    /* COLOR PICKER */
-    /********************************************/
-    $(function() {
-        $('.color-field').wpColorPicker();
-    });
-
-    /********************************************/
     /* DISMISS ADMIN ALERT */
     /********************************************/
     $('.admin-alert-box').on('click', '.admin-alert-close', function(e) {
         e.preventDefault();
         $(this).closest('.admin-alert-box').slideUp('fast');
     });
-
-	/********************************************/
-	/* SINGLE MEDIA UPLOAD */
-	/********************************************/
-	var mediaUploader;
-
-	$('.admin-module').on('click', '.ns_upload_image_button', function(e) {
-	    e.preventDefault();
-	    formfield = jQuery(this).prev('input');
-
-	    // If the uploader object has already been created, reopen the dialog
-	    if (mediaUploader) {
-	      mediaUploader.open();
-	      return;
-	    }
-	    // Extend the wp.media object
-	    mediaUploader = wp.media.frames.file_frame = wp.media({
-	      title: 'Choose Image',
-	      button: {
-	      text: 'Choose Image'
-	    }, multiple: false });
-
-	    // When a file is selected, grab the URL and set it as the text field's value
-	    mediaUploader.on('select', function() {
-	      attachment = mediaUploader.state().get('selection').first().toJSON();
-	      $(formfield).val(attachment.url);
-	    });
-	    // Open the uploader dialog
-	    mediaUploader.open();
-	});
-
-	/********************************************/
-	/* SINGLE MEDIA REMOVE */
-	/********************************************/
-	$('.admin-module').on('click', '.remove', function() {
-		$(this).parent().find('input[type="text"]').removeAttr('value');
-		$(this).parent().find('.option-preview').hide();
-	});
 
     /********************************************/
     /* GALLERY MULTIPLE UPLOAD */
@@ -352,37 +402,6 @@ jQuery(document).ready(function($) {
     $('.gallery-container').on("click", ".gallery-img-preview .delete-additional-img", function() {
         $(this).parent().remove();
     });
-	
-	/********************************************/
-	/* ACCORDIONS */
-	/********************************************/
-	$(function() {
-		$( "#accordion" ).removeClass('hide');
-		$( ".accordion" ).accordion({
-			collapsible: true,
-			active: false,
-			autoHeight: true,
-			heightStyle: "content"
-		});
-		$('.accordion-tab').click(function() {
-			var icon = $(this).find('.icon');
-			if (icon.hasClass('fa-chevron-right')) {
-				$(this).find('.icon').removeClass('fa-chevron-right');
-				$(this).find('.icon').addClass('fa-chevron-down');
-			} else {
-				$(this).find('.icon').removeClass('fa-chevron-down');
-				$(this).find('.icon').addClass('fa-chevron-right');
-			}
-		});
-	});
-
-	/********************************************/
-	/* TABS */
-	/********************************************/
-	$(function() {
-		$( "#tabs" ).tabs();
-		$(".tab-loader").hide();
-	});
 
     /********************************************/
     /* DATEPICKER */
@@ -390,41 +409,6 @@ jQuery(document).ready(function($) {
     var dateToday = new Date(); 
     $(".datepicker").datepicker({
         minDate: dateToday,
-    });
-
-    /********************************************/
-    /* SETTINGS */
-    /********************************************/
-    $('.add-on-details-toggle').on('click', function(e) {
-        e.preventDefault();
-        $(this).closest('.admin-module').find('.add-on-details').fadeIn();
-    }); 
-
-    $('.add-on-details .fa-times').on('click', function(e) {
-        e.preventDefault();
-        $(this).closest('.add-on-details').fadeOut();
-    });
-
-    /********************************************/
-    /* SELECTABLE ITEMS */
-    /********************************************/
-    $('.selectable-item').click(function() {
-        $( ".selectable-item" ).each(function( index ) {
-          $(this).removeClass('active');
-        });
-        $(this).addClass('active');
-
-        var input  = $(this).find('input').val();
-        input = 'selectable-item-options-' + input;
-        
-        $(".selectable-item-settings").each(function( index ) {
-            if($(this).attr('id') == input) {
-                $(".selectable-item-settings").hide();
-                $(this).show();
-            } else if($(this).attr('id') != input) {
-                $(this).hide();
-            }
-        });
     });
 
     /********************************************/
@@ -479,13 +463,11 @@ jQuery(document).ready(function($) {
         var settingsClass = $(this).data('settings');
         if($(this).parent().find('.toggle-switch-checkbox').is(':checked')) {
             $(this).parent().attr('title', 'Disabled');
-            $(this).closest('.admin-module').removeClass('active-add-on');
             $(this).find('span').text(ns_basics_local_script.off);
             $(this).find('span').removeClass('on');
             if(settingsClass) { $('.'+settingsClass).slideUp(); }
         } else {
             $(this).parent().attr('title', 'Active');
-            $(this).closest('.admin-module').addClass('active-add-on');
             $(this).find('span').text(ns_basics_local_script.on);
             $(this).find('span').addClass('on');
             if(settingsClass) { $('.'+settingsClass).slideDown(); }
