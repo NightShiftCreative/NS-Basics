@@ -10,7 +10,7 @@ jQuery(document).ready(function($) {
         $('.color-field').wpColorPicker();
     });
 
-    /** SINGLE MEDIA UPLOAD  **/
+    /** SINGLE MEDIA UPLOAD **/
     var mediaUploader;
 
     $('.admin-module').on('click', '.ns_upload_image_button', function(e) {
