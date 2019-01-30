@@ -45,7 +45,7 @@ jQuery(document).ready(function($) {
     });
 
     /** ACCORDIONS **/
-    $(function() {
+    /*$(function() {
         $( "#accordion" ).removeClass('hide');
         $( ".accordion" ).accordion({
             collapsible: true,
@@ -62,6 +62,16 @@ jQuery(document).ready(function($) {
                 $(this).find('.icon').removeClass('fa-chevron-down');
                 $(this).find('.icon').addClass('fa-chevron-right');
             }
+        });
+    });*/
+
+    $(function() {
+        $('.ns-accordion').on('click', '.ns-accordion-header', function(e) {
+            e.preventDefault();
+            var parent = $(this).closest('.ns-accordion');
+            parent.find('.ns-accordion-content').slideToggle();
+            parent.toggleClass('active');
+            parent.find('.ns-accordion-header > .fa').toggleClass('fa-chevron-right fa-chevron-down');
         });
     });
 

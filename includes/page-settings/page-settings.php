@@ -62,10 +62,10 @@
         ?>
 
         <?php do_action( 'ns_basics_before_page_settings', $values); ?>
-        
-        <div id="accordion" class="accordion ns-accordion hide">
-            <h3 class="accordion-tab"><i class="fa fa-chevron-right icon"></i> <?php echo esc_html_e('Banner', 'ns-basics'); ?></h3>
-            <div>
+
+        <div class="ns-accordion">
+            <div class="ns-accordion-header"><i class="fa fa-chevron-right"></i> <?php echo esc_html_e('Banner', 'ns-basics'); ?></div>
+            <div class="ns-accordion-content">
                 <table class="admin-module">
                     <tr>
                         <td class="admin-module-label"><label><?php echo esc_html_e('Display Banner', 'ns-basics'); ?></label></td>
@@ -313,10 +313,12 @@
                 <!-- hook in for other add-ons -->
                 <?php do_action( 'ns_basics_banner_options_end', $values); ?>
 
-            </div><!-- end banner tab -->
-            
-            <h3 class="accordion-tab"><i class="fa fa-chevron-right icon"></i> <?php echo esc_html_e('Page Layout', 'ns-basics'); ?></h3>
-            <div>
+            </div>
+        </div><!-- end banner tab -->
+
+        <div class="ns-accordion">    
+            <div class="ns-accordion-header"><i class="fa fa-chevron-right icon"></i> <?php echo esc_html_e('Page Layout', 'ns-basics'); ?></div>
+            <div class="ns-accordion-content">
 
                 <?php do_action( 'ns_basics_before_page_layout_options', $values); ?>
 
@@ -385,10 +387,12 @@
 
                 <?php do_action( 'ns_basics_after_page_layout_options', $values); ?>
 
-            </div><!-- page layout tab -->
+            </div>
+        </div><!-- page layout tab -->
 
-            <h3 class="accordion-tab"><i class="fa fa-chevron-right icon"></i> <?php echo esc_html_e('Call to Action', 'ns-basics'); ?></h3>
-            <div>
+        <div class="ns-accordion"> 
+            <div class="ns-accordion-header"><i class="fa fa-chevron-right icon"></i> <?php echo esc_html_e('Call to Action', 'ns-basics'); ?></div>
+            <div class="ns-accordion-content">
 
                 <?php do_action( 'ns_basics_before_page_cta_options', $values); ?>
 
@@ -452,8 +456,8 @@
 
                 <?php do_action( 'ns_basics_after_page_cta_options', $values); ?>
 
-            </div><!-- end cta tab -->
-        </div><!-- end accordion -->
+            </div>
+        </div><!-- end cta tab -->
 
         <?php do_action( 'ns_basics_after_page_settings', $values); ?>
 

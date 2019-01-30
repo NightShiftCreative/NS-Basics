@@ -157,31 +157,25 @@
 .ns-tabs .ns-tabs-nav li.active a { color:#5c59ed; background:white; font-weight:700; margin-right:-2px; }
 .ns-tabs .ns-tabs-nav li a .fa,
 .ns-tabs .ns-tabs-nav li a .fas { margin-right:7px; }
-
 .ns-tabs .tab-content { display:none; }
 .ns-tabs .tab-content.active { display:block; }
 
 /** ACCORDIONS **/
-.ns-accordion.ui-accordion { margin:20px 0px 20px 0px; }
-
-.ns-accordion.ui-accordion .ui-accordion-header {
+.ns-accordion { margin:10px 0px; }
+.ns-accordion-header {
     position:relative;
     background: #e7eff4;
     border-radius:5px;
-    border:none;
     cursor:pointer;
     height:60px;
     line-height:60px;
     font-size:14px;
     font-weight:600;
     color:#51636c;
-    margin:0px 0px 10px 0px;
     padding:0px 0px 0px 70px;
     transition:all 0.4s;
 }
-.ns-accordion.ui-accordion .ui-accordion-header-active { background:#5c59ed; margin-bottom:0; color:white; border-radius:5px 5px 0px 0px; }
-
-.ns-accordion .accordion-tab .fa.fa-chevron-right, .ns-accordion .accordion-tab .fa.fa-chevron-down {
+.ns-accordion-header > .fa {
     position:absolute;
     left:0;
     top:0; 
@@ -196,16 +190,13 @@
     margin:0px;
     transition:all 0.4s;
 }
-.ns-accordion.ui-accordion .ui-accordion-header-active .fa.fa-chevron-right,
-.ns-accordion.ui-accordion .ui-accordion-header-active .fa.fa-chevron-down { background:rgba(0, 0, 0, 0.2); color:white; border-radius:5px 0px 0px 0px; }
-.ns-accordion.ui-accordion .ui-accordion-header .ui-icon { display:none; }
-.ns-accordion.ui-accordion .ui-accordion-header .delete { padding:0px 17px 0px 0px; }
-
-.ns-accordion.ui-accordion .ui-accordion-content {
+.ns-accordion.active .ns-accordion-header { background:#5c59ed; color:white; border-radius:5px 5px 0px 0px; }
+.ns-accordion.active .ns-accordion-header > .fa { background:rgba(0, 0, 0, 0.15); }
+.ns-accordion-content { 
+    display:none; 
     border: 1px solid #d6d6d6;
+    border-top:none;
     padding:25px;
-    margin:0px 0px 10px 0px;
-    height:auto;
     box-shadow:0px 0px 10px rgba(0, 0, 0, 0.1);
 }
 
