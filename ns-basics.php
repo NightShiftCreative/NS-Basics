@@ -63,8 +63,6 @@ function ns_basics_load_stylesheets() {
             'position' => __( 'Position', 'ns-basics' ),
             'image_url' => __( 'Image URL', 'ns-basics' ),
             'name_text' => __( 'Name', 'ns-basics' ),
-            'off' => __( 'Off', 'ns-basics' ),
-            'on' => __( 'On', 'ns-basics' ),
         );
         wp_localize_script( 'ns-basics-admin-js', 'ns_basics_local_script', $translation_array );
 

@@ -98,4 +98,22 @@ jQuery(document).ready(function($) {
         });
     });
 
+    /********************************************/
+    /* TOGGLE SWITCH */
+    /********************************************/
+    $('.toggle-switch-label').on('click', function() {
+        var settingsClass = $(this).data('settings');
+        if($(this).parent().find('.toggle-switch-checkbox').is(':checked')) {
+            $(this).parent().attr('title', 'Disabled');
+            $(this).find('span').text('Off');
+            $(this).find('span').removeClass('on');
+            if(settingsClass) { $('.'+settingsClass).slideUp(); }
+        } else {
+            $(this).parent().attr('title', 'Active');
+            $(this).find('span').text('On');
+            $(this).find('span').addClass('on');
+            if(settingsClass) { $('.'+settingsClass).slideDown(); }
+        }
+    }); 
+
 });
