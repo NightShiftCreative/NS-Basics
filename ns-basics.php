@@ -31,7 +31,8 @@ function ns_basics_load_stylesheets() {
     if (is_admin()) {
 
         //include scripts
-        wp_enqueue_script('ns-basics-admin-js', plugins_url('/js/ns-basics-admin.js', __FILE__), array('jquery','media-upload','thickbox', 'wp-color-picker'), '', true);
+        wp_enqueue_script('ns-admin-global-js', plugins_url('/js/ns-admin-global.js', __FILE__), array('jquery','media-upload','thickbox', 'wp-color-picker'), '', true);
+        wp_enqueue_script('ns-basics-admin-js', plugins_url('/js/ns-basics-admin.js', __FILE__), array('jquery','media-upload','thickbox'), '', true);
         wp_enqueue_script('featherlight', plugins_url('/assets/featherlight/featherlight.js', __FILE__), array('jquery'), '', true);
 
         //include styles
