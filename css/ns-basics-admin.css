@@ -642,7 +642,7 @@ input[type=checkbox].toggle-switch-checkbox { display: none; }
     float:left; 
     background:white; 
     padding:2%; 
-    min-height:285px; 
+    min-height:314px; 
     border:1px solid #dcdcdc;
     box-shadow:0px 2px 5px rgba(0, 0, 0, 0.1); 
 }
@@ -663,6 +663,8 @@ input[type=checkbox].toggle-switch-checkbox { display: none; }
 .meta-box-form .admin-module .admin-module-table { width:100%; }
 .meta-box-form .admin-module .admin-module-table input[type="text"] { width:100%; } 
 .meta-box-form .admin-module .admin-module-table label { margin-bottom:0; }
+
+.meta-box-form .wp-editor-area { height:200px; }
 
 /**********************************************/
 /** SORTABLE ITEMS  **/
