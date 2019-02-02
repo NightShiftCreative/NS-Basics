@@ -545,32 +545,56 @@ input[type=checkbox].toggle-switch-checkbox { display: none; }
 }
 .ns-meta-item .icon { font-size:10px; }
 
+/** ADD-ONS **/
+.ns-modules .ns-module-group > .admin-module.add-on .product-img {
+    display:block;
+    overflow:hidden;
+    width: 100%;
+    min-height: 250px;
+    max-height: 250px;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    text-align: center;
+    border-radius: 5px 5px 0px 0px;
+    position:relative;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+}
+
+.ns-modules .ns-module-group > .admin-module.add-on .overlay {
+    opacity: 0.8;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    transition: all 0.4s;
+    background: #5c59ed;
+}
+
+.ns-modules .ns-module-group > .admin-module.add-on .product-icon {
+    width: 25%;
+    background: white;
+    padding: 8px;
+    border-radius: 25px;
+    margin-bottom: 0;
+    position: relative;
+    z-index: 10;
+    transition: all 0.4s;
+}
+
+.ns-modules .ns-module-group > .admin-module.add-on .product-content {
+    padding:20px;
+}
+
 .ns-settings-footer {
     border:none;
     border-top:1px solid rgba(0, 0, 0, 0.08);
     margin-top:0;
 }
 .ns-settings-footer .ns-settings-version { padding:26px 0px; }
-
-.ns-modules .admin-module.coming-soon {
-    min-height:185px;
-    text-align:center;
-    font-size:17px;
-    border:2px dashed rgba(0, 0, 0, 0.2);
-}
-.ns-modules .admin-module.coming-soon .ns-module-content { min-height:0; }
-.ns-modules .admin-module.coming-soon span { opacity:0.5; }
-.ns-modules .admin-module.coming-soon .fa {
-    font-size:25px;
-    border:1px solid black;
-    display:inline-block;
-    width:40px;
-    height:40px;
-    line-height:40px;
-    text-align:center;
-    opacity:0.2;
-    border-radius:100px;
-}
 
 /**********************************************/
 /** RESOURCES PAGE **/
