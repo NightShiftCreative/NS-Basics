@@ -15,11 +15,18 @@
 load_plugin_textdomain( 'ns-basics', false, dirname( plugin_basename( __FILE__ ) ) . '/languages' );
 
 /*-----------------------------------------------------------------------------------*/
+/*  Define Global Variables
+/*-----------------------------------------------------------------------------------*/
+define('NS_SITE_URL', 'http://nightshiftcreative.co/');
+define('NS_SHOP_URL', 'http://products.nightshiftcreative.co/');
+define('NS_BASICS_GITHUB', '/NightShiftCreative/NS-Basics/archive/1.0.0.zip');
+
+/*-----------------------------------------------------------------------------------*/
 /*  Automatic Update Checker (checks for new releases on github)
 /*-----------------------------------------------------------------------------------*/
 require 'plugin-update-checker/plugin-update-checker.php';
 $myUpdateChecker = Puc_v4_Factory::buildUpdateChecker(
-    'https://github.com/NightShiftCreative/NS-Basics',
+    'https://github.com'.constant('NS_BASICS_GITHUB'),
     __FILE__,
     'ns-basics'
 );
@@ -99,7 +106,7 @@ function ns_basics_get_add_ons() {
             'note' => esc_html__('Allow your users to share your posts on popular social media sites.', 'ns-basics'),
             'group' => 'basic',
             'required_theme_support' => '',
-            'link' => 'http://nightshiftcreative.co/',
+            'link' => constant('NS_SHOP_URL').'docs/ns-basics/post-sharing/',
             'active' => 'true',
         ),
         2 => array(
@@ -109,7 +116,7 @@ function ns_basics_get_add_ons() {
             'note' => esc_html__('Allow your users to like your posts and save them for later viewing.', 'ns-basics'),
             'group' => 'basic',
             'required_theme_support' => '',
-            'link' => 'http://nightshiftcreative.co/',
+            'link' => constant('NS_SHOP_URL').'docs/ns-basics/post-likes/',
             'active' => 'true',
         ),
         3 => array(
@@ -119,7 +126,7 @@ function ns_basics_get_add_ons() {
             'note' => esc_html__('Add advanced options to pages & posts, allowing further control over banners, page layout and more.', 'ns-basics'),
             'group' => 'basic',
             'required_theme_support' => '',
-            'link' => 'http://nightshiftcreative.co/',
+            'link' => constant('NS_SHOP_URL').'docs/ns-basics/page-settings/',
             'active' => 'true',
         ),
         4 => array(
@@ -129,7 +136,7 @@ function ns_basics_get_add_ons() {
             'note' => esc_html__('Add slides custom post type', 'ns-basics'),
             'group' => 'basic',
             'required_theme_support' => '',
-            'link' => 'http://nightshiftcreative.co/',
+            'link' => constant('NS_SHOP_URL').'docs/ns-basics/slides/',
             'active' => 'true',
         ),
         5 => array(
@@ -139,7 +146,7 @@ function ns_basics_get_add_ons() {
             'note' => esc_html__('Add helpful shortcodes, including buttons, videos, testimonials, accordions, and more.', 'ns-basics'),
             'group' => 'basic',
             'required_theme_support' => '',
-            'link' => 'http://nightshiftcreative.co/',
+            'link' => constant('NS_SHOP_URL').'docs/ns-basics/shortcodes/',
             'active' => 'true',
         ),
         6 => array(
@@ -149,7 +156,7 @@ function ns_basics_get_add_ons() {
             'note' => esc_html__('Add helpful widgets, including social sharing, testimonials, contact info, and more.', 'ns-basics'),
             'group' => 'basic',
             'required_theme_support' => '',
-            'link' => 'http://nightshiftcreative.co/',
+            'link' => constant('NS_SHOP_URL').'docs/ns-basics/widgets/',
             'active' => 'true',
         ),
     );
@@ -204,7 +211,7 @@ function ns_basics_display_add_ons($group = null) {
                     <div class="ns-module-content">
                         <?php if(!empty($add_on['note'])) { ?><span class="admin-module-note"><?php echo $add_on['note']; ?></span><?php } ?>
                         <?php if(!empty($add_on['paid'])) { ?><a href="<?php echo $add_on['paid']['link']; ?>" target="_blank" class="ns-meta-item"><?php esc_html_e('Premium', 'ns-basics'); ?> </a><?php } ?>
-                        <?php if(!empty($add_on['link'])) { ?><a href="<?php echo $add_on['link']; ?>" target="_blank" class="view-details ns-meta-item"><i class="fa fa-arrow-right icon"></i> <?php esc_html_e('View Details', 'ns-basics'); ?> </a><?php } ?>
+                        <?php if(!empty($add_on['link'])) { ?><a href="<?php echo $add_on['link']; ?>" target="_blank" class="view-details ns-meta-item"><i class="fa fa-arrow-right icon"></i> <?php esc_html_e('View Docs', 'ns-basics'); ?> </a><?php } ?>
                     </div>
                 </div>
                 <?php $count++; 
@@ -319,7 +326,7 @@ function ns_basics_admin_page($page_name = null, $settings_group = null, $pages 
                 $plugin_data = get_plugin_data( __FILE__ );
                 $plugin_version = $plugin_data['Version']; 
                 ?>
-                <div class="ns-settings-version left"><?php esc_html_e('Version', 'ns-basics'); ?> <?php echo $plugin_version; ?> | <?php esc_html_e('Made by', 'ns-basics'); ?> <a href="http://nightshiftcreative.co/" target="_blank">NightShift Creative</a> | <a href="http://nightshiftcreative.co/contact/#theme-support" target="_blank"><?php esc_html_e('Get Support', 'ns-basics'); ?></a></div>
+                <div class="ns-settings-version left"><?php esc_html_e('Version', 'ns-basics'); ?> <?php echo $plugin_version; ?> | <?php esc_html_e('Made by', 'ns-basics'); ?> <a href="<?php echo constant('NS_SITE_URL'); ?>" target="_blank">NightShift Creative</a> | <a href="<?php echo constant('NS_SHOP_URL').'support/#product-support'; ?>" target="_blank"><?php esc_html_e('Get Support', 'ns-basics'); ?></a></div>
                 <?php if($display_actions != 'false') { ?>
                     <div class="ns-settings-actions">
                         <div class="loader"><img src="<?php echo esc_url(home_url('/')); ?>wp-admin/images/spinner.gif" alt="" /></div> 
@@ -389,10 +396,10 @@ function ns_basics_resources_page_content() {
     
     <p><?php esc_html_e('NightShift Basics provides the framework essential for all themes and plugins built by NightShift Creative.', 'ns-basics'); ?></p>
     <p><?php esc_html_e('For questions and/or support, you can email us directly at support@nightshiftcreative.co.', 'ns-basics'); ?></p>
-    <a href="#" target="_blank" class="resource-item"><i class="fa fa-envelope icon"></i><?php esc_html_e('Contact Us', 'ns-basics'); ?></a>
-    <a href="#" target="_blank" class="resource-item"><i class="fa fa-book icon"></i><?php esc_html_e('View Documentation', 'ns-basics'); ?></a>
-    <a href="#" target="_blank" class="resource-item"><i class="fa fa-tint icon"></i><?php esc_html_e('Our Themes', 'ns-basics'); ?></a>
-    <a href="#" target="_blank" class="resource-item"><i class="fa fa-plug icon"></i><?php esc_html_e('Our Plugins', 'ns-basics'); ?></a>
+    <a href="<?php echo constant('NS_SHOP_URL').'support'; ?>" target="_blank" class="resource-item"><i class="fa fa-envelope icon"></i><?php esc_html_e('Contact Us', 'ns-basics'); ?></a>
+    <a href="<?php echo constant('NS_SHOP_URL').'docs/ns-basics/'; ?>" target="_blank" class="resource-item"><i class="fa fa-book icon"></i><?php esc_html_e('View Documentation', 'ns-basics'); ?></a>
+    <a href="<?php echo constant('NS_SHOP_URL').'themes/'; ?>" target="_blank" class="resource-item"><i class="fa fa-tint icon"></i><?php esc_html_e('Our Themes', 'ns-basics'); ?></a>
+    <a href="<?php echo constant('NS_SHOP_URL').'plugins/'; ?>" target="_blank" class="resource-item"><i class="fa fa-plug icon"></i><?php esc_html_e('Our Plugins', 'ns-basics'); ?></a>
     <a href="#" target="_blank" class="resource-item"><i class="fa fa-share-alt icon"></i><?php esc_html_e('Follow Us', 'ns-basics'); ?></a>
     <a href="#" target="_blank" class="resource-item"><i class="fa fa-pencil-alt icon"></i><?php esc_html_e('Our Blog', 'ns-basics'); ?></a>
     <div class="clear"></div>
