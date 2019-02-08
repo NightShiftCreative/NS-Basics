@@ -116,4 +116,15 @@ jQuery(document).ready(function($) {
         }
     }); 
 
+    /*****************************************************/
+    /* Check for hashtag in url and display setting tab  */
+    /*****************************************************/
+    $(function () {
+        var settingsTabs = $('.ns-settings-content-nav');
+        var hash = $.trim( window.location.hash );
+        if(settingsTabs.length > 0 && hash != '') {
+            settingsTabs.find('.ns-tabs-nav a[href="'+hash+'"]').trigger('click');
+        }
+    });
+
 });
