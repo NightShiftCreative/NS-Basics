@@ -121,9 +121,14 @@ jQuery(document).ready(function($) {
     /*****************************************************/
     $(function () {
         var settingsTabs = $('.ns-settings-content-nav');
+        var settingsContent = $('.ns-settings-content');
         var hash = $.trim( window.location.hash );
         if(settingsTabs.length > 0 && hash != '') {
-            settingsTabs.find('.ns-tabs-nav a[href="'+hash+'"]').trigger('click');
+            var splitHash = hash.split('&');
+            settingsTabs.find('.ns-tabs-nav a[href="'+splitHash[0]+'"]').trigger('click');
+            if(splitHash[1]) {
+                settingsContent.find('.ns-accordion[data-name="'+splitHash[1]+'"]').find('.ns-accordion-header').trigger('click');
+            }
         }
     });
 
