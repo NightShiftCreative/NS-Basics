@@ -38,6 +38,35 @@
 .admin-module.two-col .admin-module { width:48%; float:left; border:none; margin:0; padding:0; }
 .admin-module.two-col .admin-module:first-child { margin-right:2%; }
 
+.two-col-list {
+    -moz-column-count: 2;
+    -moz-column-gap: 20px;
+    -webkit-column-count: 2;
+    -webkit-column-gap: 20px;
+    column-count: 2;
+    column-gap: 20px;
+}
+
+.three-col-list {
+    -moz-column-count: 3;
+    -moz-column-gap: 10px;
+    -webkit-column-count: 3;
+    -webkit-column-gap: 10px;
+    column-count: 3;
+    column-gap: 10px;
+}
+
+@media only screen and (max-width: 750px) {
+    .two-col-list, .three-col-list { 
+        -moz-column-count: 1;
+        -moz-column-gap: 0px;
+        -webkit-column-count: 1;
+        -webkit-column-gap: 0px;
+        column-count: 1;
+        column-gap: 0px;
+    }
+}
+
 .admin-module-label { width:25%; font-size:13px; font-weight:700; padding-right:3%; vertical-align:top; }
 .admin-module-label label { margin-bottom:0; }
 .admin-module-field { width:75%; }
