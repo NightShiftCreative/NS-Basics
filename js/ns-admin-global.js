@@ -120,7 +120,7 @@ jQuery(document).ready(function($) {
     /* Check for hashtag in url and display setting tab  */
     /*****************************************************/
     $(function () {
-        var settingsTabs = $('.ns-settings-content-nav');
+        var settingsTabs = $('.ns-tabs');
         var settingsContent = $('.ns-settings-content');
         var hash = $.trim( window.location.hash );
         if(settingsTabs.length > 0 && hash != '') {
