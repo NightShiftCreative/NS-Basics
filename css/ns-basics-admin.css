@@ -138,6 +138,14 @@
 
 .loader { margin-right:10px; margin-top:38px; float:right; display:none; }
 
+/** TABLES **/
+.admin-table { width:100%; text-align:left; }
+.admin-table th { background:#4c5a67; padding:8px 8px; color:white; }
+.admin-table th:first-child { border-radius:5px 0px 0px 0px; }
+.admin-table th:last-child { border-radius:0px 5px 0px 0px; }
+.admin-table td { padding:5px 8px; }
+.admin-table tr:nth-child(even) { background:#e7eff4; }
+
 /** ALERT BOX **/
 .admin-alert-box {
     background:#d7ecc7;
