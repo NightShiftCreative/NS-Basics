@@ -93,6 +93,20 @@ function ns_basics_front_end_scripts() {
 add_action('wp_enqueue_scripts', 'ns_basics_front_end_scripts');
 
 /*-----------------------------------------------------------------------------------*/
+/* Adds async/defer attributes to non-critical scripts/styles
+/*-----------------------------------------------------------------------------------*/
+add_filter( 'script_loader_tag', 'ns_basics_add_async_to_script', 10, 3 );
+function ns_basics_add_async_to_script( $tag, $handle, $src ) {
+    if (!is_admin()) {
+        $script_array = array('ns-basics-post-likes-js');
+        if (in_array($handle, $script_array)) {
+            $tag = '<script async type="text/javascript" src="' . esc_url( $src ) . '"></script>';
+        }
+    }
+    return $tag;
+}
+
+/*-----------------------------------------------------------------------------------*/
 /*  GLOBAL FUNCTIONS
 /*-----------------------------------------------------------------------------------*/
 /* set add-ons data */
