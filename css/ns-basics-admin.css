@@ -130,6 +130,8 @@
     background:#817ff0;
 }
 
+.admin-button.green, .wp-core-ui .button.admin-button.green { background:#27d7a3; }
+
 .admin-module .button-secondary { padding:10px; height:auto; line-height:normal; font-size:13px; }
 
 .admin-module-note { display:block; font-weight:400; margin-top:5px; font-size:12px; color:#a8a8a8; font-style:italic; }
@@ -230,6 +232,7 @@
 }
 .ns-accordion-header .action { float:right; padding:0px 15px; }
 .ns-accordion-header .action:hover { background:rgba(0, 0, 0, 0.1); transition:all 0.4s; }
+.ns-accordion-header .admin-button.green { margin-left:10px; padding:7px 10px; margin-top:15px; } 
 .ns-accordion.active .ns-accordion-header { background:#5c59ed; color:white; border-radius:5px 5px 0px 0px; }
 .ns-accordion.active .ns-accordion-header > .fa { background:rgba(0, 0, 0, 0.15); }
 .ns-accordion-content { 
@@ -481,6 +484,17 @@ input[type=checkbox].toggle-switch-checkbox { display: none; }
     border-left:1px solid rgba(0, 0, 0, 0.08);
 }
 
+.ns-settings-footer {
+    border:none;
+    border-top:1px solid rgba(0, 0, 0, 0.08);
+    margin-top:0;
+}
+.ns-settings-footer .ns-settings-version { padding:26px 0px; }
+
+
+/**********************************************/
+/** MODULES **/
+/**********************************************/
 .ns-modules { padding-bottom:0; }
 
 .ns-modules .ns-module-group > .admin-module {
@@ -582,7 +596,9 @@ input[type=checkbox].toggle-switch-checkbox { display: none; }
 }
 .ns-meta-item .icon { font-size:10px; }
 
+/**********************************************/
 /** ADD-ONS **/
+/**********************************************/
 .ns-modules .ns-module-group > .admin-module.add-on .product-img {
     display:block;
     overflow:hidden;
@@ -627,13 +643,6 @@ input[type=checkbox].toggle-switch-checkbox { display: none; }
     padding:20px;
 }
 
-.ns-settings-footer {
-    border:none;
-    border-top:1px solid rgba(0, 0, 0, 0.08);
-    margin-top:0;
-}
-.ns-settings-footer .ns-settings-version { padding:26px 0px; }
-
 /**********************************************/
 /** RESOURCES PAGE **/
 /**********************************************/
@@ -656,12 +665,6 @@ input[type=checkbox].toggle-switch-checkbox { display: none; }
     font-size:30px;
     margin-bottom:10px;
 }
-
-/**********************************************/
-/** LICENSE KEYS **/
-/**********************************************/
-.ns-license-tab .admin-module-note.license-error { display:inline-block; color:#bd5a5a; margin-left:6px; }
-.ns-license-tab .button { margin-top:15px; margin-left:8px; }
 
 /**********************************************/
 /** METABOXES **/
