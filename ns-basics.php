@@ -17,8 +17,8 @@ load_plugin_textdomain( 'ns-basics', false, dirname( plugin_basename( __FILE__ )
 /*-----------------------------------------------------------------------------------*/
 /*  Define Global Variables
 /*-----------------------------------------------------------------------------------*/
-define('NS_SITE_URL', 'http://nightshiftcreative.co/');
-define('NS_SHOP_URL', 'http://products.nightshiftcreative.co/');
+define('NS_SITE_URL', 'https://nightshiftcreative.co/');
+define('NS_SHOP_URL', 'https://studio.nightshiftcreative.co/');
 define('NS_BASICS_GITHUB', '/NightShiftCreative/NS-Basics/archive/1.0.0.zip');
 
 /*-----------------------------------------------------------------------------------*/
@@ -430,11 +430,6 @@ function ns_basics_resources_page_content() {
 /*  Global Functions */
 /*--------------------------------------------*/
 include( plugin_dir_path( __FILE__ ) . 'includes/global-functions.php');
-
-/*--------------------------------------------*/
-/*  License Keys */
-/*--------------------------------------------*/
-include( plugin_dir_path( __FILE__ ) . 'includes/license-keys.php');
 
 /*--------------------------------------------*/
 /*  Post Sharing */
