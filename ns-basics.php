@@ -340,7 +340,7 @@ function ns_basics_admin_page($page_name = null, $settings_group = null, $pages 
                 $plugin_data = get_plugin_data( __FILE__ );
                 $plugin_version = $plugin_data['Version']; 
                 ?>
-                <div class="ns-settings-version left"><?php esc_html_e('Version', 'ns-basics'); ?> <?php echo $plugin_version; ?> | <?php esc_html_e('Made by', 'ns-basics'); ?> <a href="<?php echo constant('NS_SITE_URL'); ?>" target="_blank">NightShift Creative</a> | <a href="<?php echo constant('NS_SHOP_URL').'support/#product-support'; ?>" target="_blank"><?php esc_html_e('Get Support', 'ns-basics'); ?></a></div>
+                <div class="ns-settings-version left"><?php esc_html_e('Version', 'ns-basics'); ?> <?php echo $plugin_version; ?> | <?php esc_html_e('Made by', 'ns-basics'); ?> <a href="<?php echo constant('NS_SITE_URL'); ?>" target="_blank">NightShift Creative</a> | <a href="<?php echo constant('NS_SHOP_URL').'support-package/'; ?>" target="_blank"><?php esc_html_e('Get Support', 'ns-basics'); ?></a></div>
                 <?php if($display_actions != 'false') { ?>
                     <div class="ns-settings-actions">
                         <div class="loader"><img src="<?php echo esc_url(home_url('/')); ?>wp-admin/images/spinner.gif" alt="" /></div> 
