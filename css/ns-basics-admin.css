@@ -147,6 +147,7 @@
 .admin-table th:last-child { border-radius:0px 5px 0px 0px; }
 .admin-table td { padding:5px 8px; }
 .admin-table tr:nth-child(even) { background:#e7eff4; }
+.admin-table tr.admin-table-pagination { background:white; }
 
 /** ALERT BOX **/
 .admin-alert-box {
