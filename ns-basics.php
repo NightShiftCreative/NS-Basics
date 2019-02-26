@@ -40,9 +40,11 @@ function ns_basics_load_stylesheets() {
         wp_enqueue_script('ns-admin-global-js', plugins_url('/js/ns-admin-global.js', __FILE__), array('jquery','media-upload','thickbox', 'wp-color-picker'), '', true);
         wp_enqueue_script('ns-basics-admin-js', plugins_url('/js/ns-basics-admin.js', __FILE__), array('jquery','media-upload','thickbox'), '', true);
         wp_enqueue_script('featherlight', plugins_url('/assets/featherlight/featherlight.js', __FILE__), array('jquery'), '', true);
+        wp_enqueue_script('chosen', plugins_url('/assets/chosen_v1.8.7/chosen.jquery.min.js', __FILE__), array('jquery'), '', true);
 
         //include styles
         wp_enqueue_style('featherlight',  plugins_url('/assets/featherlight/featherlight.css',  __FILE__), array(), '1.0', 'all');
+        wp_enqueue_style('chosen',  plugins_url('/assets/chosen_v1.8.7/chosen.min.css', __FILE__), array(), '', 'all');
         wp_enqueue_style('ns-basics-admin-css',  plugins_url('/css/ns-basics-admin.css',  __FILE__), array(), '1.0', 'all');
         wp_enqueue_style('ns-font-awesome',  plugins_url('/css/font-awesome/css/all.min.css', __FILE__), array(), '', 'all');
 
