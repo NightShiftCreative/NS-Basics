@@ -349,16 +349,14 @@ jQuery(document).ready(function($) {
     $(document).on('click','.advanced-options-toggle', function (event) { 
         event.preventDefault();
         var settingsID = $(this).attr('href');
-        var link = $(this);
-        $(settingsID).slideToggle('fast', function() {
-            if ($(this).is(':visible')) {
-                $(this).closest('.sortable-item').addClass('expanded');
-                link.html('<i class="fa fa-gear"></i> Hide Settings');                
-            } else {
-                $(this).closest('.sortable-item').removeClass('expanded');
-                link.html('<i class="fa fa-gear"></i> Additional Settings');                
-            } 
-        });
+        var parent = $(this).closest('.sortable-item');
+        if(parent.hasClass('expanded')) {
+            parent.find(settingsID).slideUp('fast');
+            parent.removeClass('expanded');
+        } else {
+            parent.find(settingsID).slideDown('fast');
+            parent.addClass('expanded');
+        }
     });
 
     /********************************************/
