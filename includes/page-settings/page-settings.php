@@ -25,6 +25,7 @@
         $banner_source = isset( $values['ns_basics_banner_source'] ) ? esc_attr( $values['ns_basics_banner_source'][0] ) : 'image_banner';
         $banner_title = isset( $values['ns_basics_banner_title'] ) ? esc_attr( $values['ns_basics_banner_title'][0] ) : '';
         $banner_text = isset( $values['ns_basics_banner_text'] ) ? esc_attr( $values['ns_basics_banner_text'][0] ) : '';
+        $banner_class = isset( $values['ns_basics_banner_class'] ) ? esc_attr( $values['ns_basics_banner_class'][0] ) : '';
         $banner_custom_settings = isset( $values['ns_basics_banner_custom_settings'] ) ? esc_attr( $values['ns_basics_banner_custom_settings'][0] ) : '';
         $banner_bg_img = isset( $values['ns_basics_banner_bg_img'] ) ? esc_attr( $values['ns_basics_banner_bg_img'][0] ) : $page_banner_bg;
         $banner_bg_display = isset( $values['ns_basics_banner_bg_display'] ) ? esc_attr( $values['ns_basics_banner_bg_display'][0] ) : $page_banner_bg_display;
@@ -104,6 +105,13 @@
                             <tr>
                                 <td class="admin-module-label"><label><?php echo esc_html_e('Banner Text', 'ns-basics'); ?></label></td>
                                 <td class="admin-module-field"><input type="text" name="ns_basics_banner_text" value="<?php echo esc_attr($banner_text); ?>" /></td>
+                             </tr>
+                        </table>
+
+                        <table class="admin-module">
+                            <tr>
+                                <td class="admin-module-label"><label><?php echo esc_html_e('Banner CSS Class', 'ns-basics'); ?></label></td>
+                                <td class="admin-module-field"><input type="text" name="ns_basics_banner_class" value="<?php echo esc_attr($banner_class); ?>" /></td>
                              </tr>
                         </table> 
 
@@ -501,6 +509,9 @@
 
         if( isset( $_POST['ns_basics_banner_text'] ) )
             update_post_meta( $post_id, 'ns_basics_banner_text', wp_kses( $_POST['ns_basics_banner_text'], $allowed ) );
+
+        if( isset( $_POST['ns_basics_banner_class'] ) )
+            update_post_meta( $post_id, 'ns_basics_banner_class', wp_kses( $_POST['ns_basics_banner_class'], $allowed ) );
             
         if( isset( $_POST['ns_basics_banner_custom_settings'] ) ) {
             update_post_meta( $post_id, 'ns_basics_banner_custom_settings', wp_kses( $_POST['ns_basics_banner_custom_settings'], $allowed ) );
