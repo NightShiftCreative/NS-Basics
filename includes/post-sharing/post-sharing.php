@@ -3,6 +3,7 @@
 function ns_basics_get_social_share($class = null, $toggle_text = null) {
         global $post;
         $icon_set = esc_attr(get_option('ns_core_icon_set', 'fa'));
+        if(function_exists('ns_core_load_theme_options')) { $icon_set = ns_core_load_theme_options('ns_core_icon_set'); }
         $toggle = ns_core_get_icon($icon_set, 'share-alt', 'share2', 'forward');
         $content = '';
 
