@@ -21,6 +21,7 @@
 
         //banner values
         $values = get_post_custom( $post->ID );
+        $banner_header_style = isset( $values['ns_basics_banner_header_style'] ) ? esc_attr( $values['ns_basics_banner_header_style'][0] ) : '';
         $banner_display = isset( $values['ns_basics_banner_display'] ) ? esc_attr( $values['ns_basics_banner_display'][0] ) : 'true';
         $banner_source = isset( $values['ns_basics_banner_source'] ) ? esc_attr( $values['ns_basics_banner_source'][0] ) : 'image_banner';
         $banner_title = isset( $values['ns_basics_banner_title'] ) ? esc_attr( $values['ns_basics_banner_title'][0] ) : '';
@@ -67,6 +68,24 @@
         <div class="ns-accordion">
             <div class="ns-accordion-header"><i class="fa fa-chevron-right"></i> <?php echo esc_html_e('Banner', 'ns-basics'); ?></div>
             <div class="ns-accordion-content">
+                
+                <table class="admin-module">
+                    <tr>
+                        <td class="admin-module-label">
+                            <label><?php echo esc_html_e('Header Style', 'ns-basics'); ?></label>
+                            <span class="admin-module-note"><?php esc_html_e('Override the global header style set in the theme options.', 'ns-basics'); ?></span>
+                        </td>
+                        <td class="admin-module-field">
+                            <select name="ns_basics_banner_header_style">
+                                <option value=""><?php esc_html_e('Use Global Header Style', 'ns-basics'); ?></option>
+                                <option value="classic" <?php if($banner_header_style == 'classic') { echo 'selected'; } ?>><?php echo esc_html_e('Classic', 'ns-basics'); ?></option>
+                                <option value="transparent" <?php if($banner_header_style == 'transparent') { echo 'selected'; } ?>><?php echo esc_html_e('Transparent', 'ns-basics'); ?></option>
+                                <option value="menu-bar" <?php if($banner_header_style == 'menu-bar') { echo 'selected'; } ?>><?php echo esc_html_e('Menu Bar', 'ns-basics'); ?></option>
+                            </select>
+                        </td>
+                    </tr>
+                </table> 
+
                 <table class="admin-module">
                     <tr>
                         <td class="admin-module-label"><label><?php echo esc_html_e('Display Banner', 'ns-basics'); ?></label></td>
@@ -495,6 +514,9 @@
         );
          
         // make sure data is set before saving
+        if( isset( $_POST['ns_basics_banner_header_style'] ) )
+            update_post_meta( $post_id, 'ns_basics_banner_header_style', wp_kses( $_POST['ns_basics_banner_header_style'], $allowed ) );
+
         if( isset( $_POST['ns_basics_banner_display'] ) ) {
             update_post_meta( $post_id, 'ns_basics_banner_display', wp_kses( $_POST['ns_basics_banner_display'], $allowed ) );
         } else {
