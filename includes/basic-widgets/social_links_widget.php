@@ -46,15 +46,28 @@ class ns_basics_social_links_widget extends WP_Widget {
                                 $flickr = $instance['flickr'];
                                 $dribbble = $instance['dribbble'];
                             } else {
-                                $fb = esc_attr(get_option('ns_core_fb'));
-                                $twitter = esc_attr(get_option('ns_core_twitter'));
-                                $google = esc_attr(get_option('ns_core_google'));
-                                $linkedin = esc_attr(get_option('ns_core_linkedin'));
-                                $youtube = esc_attr(get_option('ns_core_youtube'));
-                                $vimeo = esc_attr(get_option('ns_core_vimeo'));
-                                $instagram = esc_attr(get_option('ns_core_instagram'));
-                                $flickr = esc_attr(get_option('ns_core_flickr'));
-                                $dribbble = esc_attr(get_option('ns_core_dribbble'));
+
+                                if(function_exists('ns_core_load_theme_options')) {
+                                    $fb = ns_core_load_theme_options('ns_core_fb');
+                                    $twitter = ns_core_load_theme_options('ns_core_twitter');
+                                    $google = ns_core_load_theme_options('ns_core_google');
+                                    $linkedin = ns_core_load_theme_options('ns_core_linkedin');
+                                    $youtube = ns_core_load_theme_options('ns_core_youtube');
+                                    $vimeo = ns_core_load_theme_options('ns_core_vimeo');
+                                    $instagram = ns_core_load_theme_options('ns_core_instagram');
+                                    $flickr = ns_core_load_theme_options('ns_core_flickr');
+                                    $dribbble = ns_core_load_theme_options('ns_core_dribbble');
+                                } else {
+                                    $fb = esc_attr(get_option('ns_core_fb'));
+                                    $twitter = esc_attr(get_option('ns_core_twitter'));
+                                    $google = esc_attr(get_option('ns_core_google'));
+                                    $linkedin = esc_attr(get_option('ns_core_linkedin'));
+                                    $youtube = esc_attr(get_option('ns_core_youtube'));
+                                    $vimeo = esc_attr(get_option('ns_core_vimeo'));
+                                    $instagram = esc_attr(get_option('ns_core_instagram'));
+                                    $flickr = esc_attr(get_option('ns_core_flickr'));
+                                    $dribbble = esc_attr(get_option('ns_core_dribbble'));
+                                }
                             }
                             ?>
 
