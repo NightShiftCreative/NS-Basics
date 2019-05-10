@@ -135,10 +135,10 @@ function ns_basics_generate_gallery($additional_images) { ?>
                     ';
                 }
             }
-        } else { echo '<p class="admin-module-note no-gallery-img">'.esc_html__('No gallery images were found.', 'ns-basics').'</p>'; } ?>
+        } else { echo '<p class="admin-module-note no-gallery-img">'.esc_html__('No gallery media was found.', 'ns-basics').'</p>'; } ?>
 
         <div class="clear"></div>
-        <span class="admin-button add-gallery-media"><i class="fa fa-plus"></i> <?php echo esc_html_e('Add Images', 'ns-basics'); ?></span>
+        <span class="admin-button add-gallery-media"><i class="fa fa-plus"></i> <?php echo esc_html_e('Add Media', 'ns-basics'); ?></span>
     </div>
 <?php }
 
