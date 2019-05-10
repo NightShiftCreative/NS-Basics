@@ -258,6 +258,10 @@ jQuery(document).ready(function($) {
 
         e.preventDefault();
 
+        //get gallery field name
+        var field_name = $(this).find('.gallery-field-name').text();
+        if(field_name == '') { field_name = 'ns_additional_img'; }
+
         // If the uploader object has already been created, reopen the dialog
         if( gallery_media_upload ) {
             gallery_media_upload.open();
@@ -283,7 +287,7 @@ jQuery(document).ready(function($) {
            var i;
            for (i = 0; i < attachments.length; ++i) {
                 $('.gallery-container').prepend(
-                    '<div class="gallery-img-preview"><img src="' + attachments[i].attributes.sizes.thumbnail.url + '" ><input type="hidden" name="ns_additional_img[]" value="'+ attachments[i].attributes.url +'" /><span class="action delete-additional-img" title="'+ ns_basics_local_script.delete_text +'"><i class="fa fa-trash"></i></span><a href="'+ns_basics_local_script.admin_url+'upload.php?item='+attachments[i].attributes.id+'" class="action edit-additional-img" target="_blank" title="'+ns_basics_local_script.edit_text+'"><i class="fa fa-pencil-alt"></i></a></div>'
+                    '<div class="gallery-img-preview"><img src="' + attachments[i].attributes.sizes.thumbnail.url + '" ><input type="hidden" name="'+field_name+'[]" value="'+ attachments[i].attributes.url +'" /><span class="action delete-additional-img" title="'+ ns_basics_local_script.delete_text +'"><i class="fa fa-trash"></i></span><a href="'+ns_basics_local_script.admin_url+'upload.php?item='+attachments[i].attributes.id+'" class="action edit-additional-img" target="_blank" title="'+ns_basics_local_script.edit_text+'"><i class="fa fa-pencil-alt"></i></a></div>'
                 );
             }
 
