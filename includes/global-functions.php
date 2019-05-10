@@ -99,7 +99,7 @@ function ns_basics_upload_user_file( $file = array() ) {
 /*-----------------------------------------------------------------------------------*/
 /*  Generate admin gallery upload
 /*-----------------------------------------------------------------------------------*/
-function ns_basics_generate_gallery($additional_images) { ?>
+function ns_basics_generate_gallery($additional_images, $field_name = 'ns_additional_img') { ?>
     <div class="admin-module no-border no-padding gallery-container">
         <?php
         if(!empty($additional_images) && !empty($additional_images[0])) { ?>
@@ -128,7 +128,7 @@ function ns_basics_generate_gallery($additional_images) { ?>
                     echo '
                         <div class="gallery-img-preview">
                             '.$image_thumb_html.'
-                            <input type="hidden" name="ns_additional_img[]" value="'. $additional_image .'" />
+                            <input type="hidden" name="'.$field_name.'[]" value="'. $additional_image .'" />
                             <span class="action delete-additional-img" title="'. esc_html__('Delete', 'ns-basics'). '"><i class="fa fa-trash"></i></span>
                             <a href="'.get_admin_url().'upload.php?item='.$image_id.'" class="action edit-additional-img" target="_blank" title="'.esc_html__('Edit', 'ns-basics').'"><i class="fa fa-pencil-alt"></i></a>
                         </div>
