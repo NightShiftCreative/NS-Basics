@@ -56,8 +56,9 @@
 
         //page layout values
         $page_layout_default = 'full';
-        $page_layout_default = apply_filters( 'ns_basics_page_layout_filter', $page_layout_default); 
         $page_layout_widget_area_default = 'Page_sidebar';
+        $page_layout_default = apply_filters( 'ns_basics_page_layout_sidebar', $page_layout_default); 
+        $page_layout_widget_area_default = apply_filters( 'ns_basics_page_layout_widget_area', $page_layout_widget_area_default); 
         $page_layout = isset( $values['ns_basics_page_layout'] ) ? esc_attr( $values['ns_basics_page_layout'][0] ) : $page_layout_default;
         $page_layout_widget_area = isset( $values['ns_basics_page_layout_widget_area'] ) ? esc_attr( $values['ns_basics_page_layout_widget_area'][0] ) : $page_layout_widget_area_default;
         $page_layout_container = isset( $values['ns_basics_page_layout_container'] ) ? esc_attr( $values['ns_basics_page_layout_container'][0] ) : 'true';
