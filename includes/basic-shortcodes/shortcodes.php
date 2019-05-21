@@ -365,7 +365,7 @@ function ns_module_header($atts, $content=null) {
         $widget_divider = '<table class="widget-divider"><tr><td><div class="bar"></div></td><td><div class="widget-divider-icon"></div></td></tr></table>';
     } else { 
         $position = ''; 
-        $widget_divider = '<table class="widget-divider"><tr><td><div class="bar"></div></td><td><div class="widget-divider-icon"></div></td><td><div class="bar"></div></td></tr></table>';
+        $widget_divider = '<table class="widget-divider"><tr><td><div class="bar"></div></td><td><div class="widget-divider-icon"></div></td><td><div class="bar bar-second"></div></td></tr></table>';
     } 
 
     return '<div class="module-header '.$position.'">'.$title . $widget_divider . $text.'</div>';
