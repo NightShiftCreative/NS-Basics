@@ -60,6 +60,7 @@ function ns_basics_load_stylesheets() {
         /* localize scripts */
         $translation_array = array(
             'admin_url' => esc_url(get_admin_url()),
+            'plugins_url' => plugins_url('',  __FILE__),
             'delete_text' => __( 'Delete', 'ns-basics' ),
             'remove_text' => __( 'Remove', 'ns-basics' ),
             'save_text' => __( 'Save', 'ns-basics' ),

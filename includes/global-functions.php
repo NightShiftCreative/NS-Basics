@@ -120,7 +120,11 @@ function ns_basics_generate_gallery($additional_images, $field_name = 'ns_additi
 
                     if(!empty($image_id)) {
                         $image_thumb = wp_get_attachment_image_src($image_id, 'thumbnail');
-                        $image_thumb_html = '<img src="'. $image_thumb[0] .'" alt="" />'; 
+                        if(!empty($image_thumb)) { 
+                            $image_thumb_html = '<img src="'. $image_thumb[0] .'" alt="" />'; 
+                        } else {
+                           $image_thumb_html = '<img src="'. plugins_url('images/default-post-image.gif', dirname(__FILE__)) .'" alt="" />';  
+                        }
                     } else {
                         $image_thumb_html = '<img width="150" src="'.$additional_image.'" alt="" />';
                     }

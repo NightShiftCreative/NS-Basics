@@ -409,7 +409,7 @@ input[type=checkbox].toggle-switch-checkbox { display: none; }
     cursor:move;
 }
 
-.gallery-img-preview img { max-width:100%; }
+.gallery-img-preview img { max-width:100%; width:150px; }
 
 .gallery-img-preview .action {
     position:absolute;

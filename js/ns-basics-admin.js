@@ -289,8 +289,18 @@ jQuery(document).ready(function($) {
             //loop through the array and do things with each attachment
            var i;
            for (i = 0; i < attachments.length; ++i) {
+                
+                var attachmentType = attachments[i].attributes.subtype;
+                var attachmentThumb = '';
+
+                if(attachmentType == 'mp4') {
+                    attachmentThumb = ns_basics_local_script.plugins_url+'/images/default-post-image.gif';
+                } else {
+                    attachmentThumb = attachments[i].attributes.sizes.thumbnail.url;
+                }
+
                 parentGallery.prepend(
-                    '<div class="gallery-img-preview"><img src="' + attachments[i].attributes.sizes.thumbnail.url + '" ><input type="hidden" name="'+field_name+'[]" value="'+ attachments[i].attributes.url +'" /><span class="action delete-additional-img" title="'+ ns_basics_local_script.delete_text +'"><i class="fa fa-trash"></i></span><a href="'+ns_basics_local_script.admin_url+'upload.php?item='+attachments[i].attributes.id+'" class="action edit-additional-img" target="_blank" title="'+ns_basics_local_script.edit_text+'"><i class="fa fa-pencil-alt"></i></a></div>'
+                    '<div class="gallery-img-preview"><img src="' + attachmentThumb + '" ><input type="hidden" name="'+field_name+'[]" value="'+ attachments[i].attributes.url +'" /><span class="action delete-additional-img" title="'+ ns_basics_local_script.delete_text +'"><i class="fa fa-trash"></i></span><a href="'+ns_basics_local_script.admin_url+'upload.php?item='+attachments[i].attributes.id+'" class="action edit-additional-img" target="_blank" title="'+ns_basics_local_script.edit_text+'"><i class="fa fa-pencil-alt"></i></a></div>'
                 );
             }
 
