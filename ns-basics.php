@@ -1,10 +1,10 @@
 <?php
 /**
-* Plugin Name: NightShift Basics
+* Plugin Name: Nightshift Basics
 * Plugin URI: http://nightshiftcreative.co/
-* Description: The framework essential for all themes and plugins built by NightShift Creative.
+* Description: The framework essential for all themes and plugins built by Nightshift Creative.
 * Version: 1.0.0
-* Author: NightShift Creative
+* Author: Nightshift Creative
 * Author URI: http://nightshiftcreative.co/
 * Text Domain: ns-basics
 **/
