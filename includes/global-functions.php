@@ -99,6 +99,12 @@ function ns_basics_upload_user_file( $file = array() ) {
 /*-----------------------------------------------------------------------------------*/
 /*  Generate admin gallery upload
 /*-----------------------------------------------------------------------------------*/
+function ns_basics_get_image_id($image_url) {
+    global $wpdb;
+    $attachment = $wpdb->get_col($wpdb->prepare("SELECT ID FROM $wpdb->posts WHERE guid='%s';", $image_url )); 
+    return $attachment[0]; 
+}
+
 function ns_basics_generate_gallery($additional_images, $field_name = 'ns_additional_img') { ?>
     <div class="admin-module no-border no-padding gallery-container">
         <?php
@@ -107,12 +113,6 @@ function ns_basics_generate_gallery($additional_images, $field_name = 'ns_additi
             <?php
             $additional_images = explode(",", $additional_images[0]);
             $additional_images = array_filter($additional_images);
-
-            function ns_basics_get_image_id($image_url) {
-                global $wpdb;
-                $attachment = $wpdb->get_col($wpdb->prepare("SELECT ID FROM $wpdb->posts WHERE guid='%s';", $image_url )); 
-                return $attachment[0]; 
-            }
 
             foreach ($additional_images as $additional_image) {
                 if(!empty($additional_image)) {
