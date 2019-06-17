@@ -621,6 +621,37 @@ function ns_testimonial($atts, $content=null) {
     return $output;
 }
 
+/** LIST POSTS **/
+add_shortcode('ns_list_posts', 'ns_list_posts');
+function ns_list_posts($atts, $content=null) {
+    ob_start();
+
+    echo '<div class="row ns-list-posts">';
+
+    $post_listing_args = array(
+        'post_type' => 'post',
+        'post_status' => 'publish',
+    );
+
+    $post_listing_query = new WP_Query( $post_listing_args );
+    if ( $post_listing_query->have_posts() ) : while ( $post_listing_query->have_posts() ) : $post_listing_query->the_post();
+
+        echo '<div class="col-lg-4">';
+        get_template_part('template_parts/loop_blog_post');
+        echo '</div>';
+
+    endwhile; 
+    wp_reset_postdata();
+    else:
+    endif; 
+
+    echo '</div>';
+
+    $output = ob_get_clean();
+    return $output;
+}
+
+
 /****************************************************************************/
 /* MEMBER SHORTCODES */
 /****************************************************************************/
