@@ -624,6 +624,12 @@ function ns_testimonial($atts, $content=null) {
 /** LIST POSTS **/
 add_shortcode('ns_list_posts', 'ns_list_posts');
 function ns_list_posts($atts, $content=null) {
+
+    $atts = shortcode_atts(
+        array (
+        'num' => 3,
+    ), $atts);
+
     ob_start();
 
     echo '<div class="row ns-list-posts">';
@@ -631,13 +637,26 @@ function ns_list_posts($atts, $content=null) {
     $post_listing_args = array(
         'post_type' => 'post',
         'post_status' => 'publish',
+        'showposts' => $atts['num'],
     );
 
     $post_listing_query = new WP_Query( $post_listing_args );
     if ( $post_listing_query->have_posts() ) : while ( $post_listing_query->have_posts() ) : $post_listing_query->the_post();
 
         echo '<div class="col-lg-4">';
-        get_template_part('template_parts/loop_blog_post');
+        $theme_file = locate_template(array( 'template_parts/loop_blog_post.php'));
+        if(empty($theme_file)) { ?>
+            
+            <article <?php post_class(); ?>>
+                <div class="blog-post shadow-hover">
+                    <h3><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h3>
+                    <?php the_excerpt(); ?>
+                </div>
+            </article>
+
+        <?php } else {
+            include(get_theme_file_path('template_parts/loop_blog_post.php'));
+        }
         echo '</div>';
 
     endwhile; 
