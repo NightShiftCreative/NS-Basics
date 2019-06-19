@@ -442,7 +442,7 @@
                 <table class="admin-module">
                     <tr>
                         <td class="admin-module-label"><label><?php echo esc_html_e('Call to Action Text', 'ns-basics'); ?></label></td>
-                        <td class="admin-module-field"><input type="text" name="ns_basics_cta_text" value="<?php echo esc_attr($cta_text); ?>" /></td>
+                        <td class="admin-module-field"><textarea name="ns_basics_cta_text"><?php echo esc_attr($cta_text); ?></textarea></td>
                     </tr>
                 </table>
 
