@@ -628,6 +628,7 @@ function ns_list_posts($atts, $content=null) {
     $atts = shortcode_atts(
         array (
         'num' => 3,
+        'excerpt' => 20,
     ), $atts);
 
     ob_start();
@@ -645,12 +646,14 @@ function ns_list_posts($atts, $content=null) {
 
         echo '<div class="col-lg-4">';
         $theme_file = locate_template(array( 'template_parts/loop_blog_post.php'));
+        $excerpt_length = $atts['excerpt'];
+
         if(empty($theme_file)) { ?>
             
             <article <?php post_class(); ?>>
                 <div class="blog-post shadow-hover">
                     <h3><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h3>
-                    <?php the_excerpt(); ?>
+                    <?php echo wp_trim_words(get_the_excerpt(), $excerpt_length);?>
                 </div>
             </article>
 
