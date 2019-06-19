@@ -82,7 +82,7 @@
                                 <option value=""><?php esc_html_e('Use Global Header Style', 'ns-basics'); ?></option>
                                 <option value="classic" <?php if($banner_header_style == 'classic') { echo 'selected'; } ?>><?php echo esc_html_e('Classic', 'ns-basics'); ?></option>
                                 <option value="transparent" <?php if($banner_header_style == 'transparent') { echo 'selected'; } ?>><?php echo esc_html_e('Transparent', 'ns-basics'); ?></option>
-                                <option value="menu-bar" <?php if($banner_header_style == 'menu-bar') { echo 'selected'; } ?>><?php echo esc_html_e('Menu Bar', 'ns-basics'); ?></option>
+                                <option value="default" <?php if($banner_header_style == 'default') { echo 'selected'; } ?>><?php echo esc_html_e('Menu Bar', 'ns-basics'); ?></option>
                             </select>
                         </td>
                     </tr>
