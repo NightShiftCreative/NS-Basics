@@ -647,6 +647,7 @@ function ns_list_posts($atts, $content=null) {
         echo '<div class="col-lg-4">';
         $theme_file = locate_template(array( 'template_parts/loop_blog_post.php'));
         $excerpt_length = $atts['excerpt'];
+        $blog_thumb = true;
 
         if(empty($theme_file)) { ?>
             
