@@ -23,7 +23,9 @@
         $values = get_post_custom( $post->ID );
         $banner_header_style = isset( $values['ns_basics_banner_header_style'] ) ? esc_attr( $values['ns_basics_banner_header_style'][0] ) : '';
         $banner_display = isset( $values['ns_basics_banner_display'] ) ? esc_attr( $values['ns_basics_banner_display'][0] ) : 'true';
-        $banner_source = isset( $values['ns_basics_banner_source'] ) ? esc_attr( $values['ns_basics_banner_source'][0] ) : 'image_banner';
+        $banner_source_default = 'image_banner';
+        $banner_source_default = apply_filters( 'ns_basics_banner_source_default_filter', $banner_source_default);
+        $banner_source = isset( $values['ns_basics_banner_source'] ) ? esc_attr( $values['ns_basics_banner_source'][0] ) : $banner_source_default;
         $banner_title = isset( $values['ns_basics_banner_title'] ) ? esc_attr( $values['ns_basics_banner_title'][0] ) : '';
         $banner_text = isset( $values['ns_basics_banner_text'] ) ? esc_attr( $values['ns_basics_banner_text'][0] ) : '';
         $banner_class = isset( $values['ns_basics_banner_class'] ) ? esc_attr( $values['ns_basics_banner_class'][0] ) : '';
