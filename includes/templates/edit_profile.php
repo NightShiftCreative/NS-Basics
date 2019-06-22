@@ -113,49 +113,49 @@ if(isset($template_args)) {
                     <div class="col-lg-7 col-md-7">
                         <div class="row">
                             <div class="col-lg-6 col-md-6">
-                                <p class="form-username">
+                                <div class="form-username">
                                     <label for="first-name"><?php esc_html_e('First Name', 'ns-basics'); ?></label>
                                     <input class="text-input" name="first-name" type="text" id="first-name" value="<?php the_author_meta( 'first_name', $current_user->ID ); ?>" />
-                                </p>
+                                </div>
                             </div>
                             <div class="col-lg-6 col-md-6">
-                                <p class="form-username">
+                                <div class="form-username">
                                     <label for="last-name"><?php esc_html_e('Last Name', 'ns-basics'); ?></label>
                                     <input class="text-input" name="last-name" type="text" id="last-name" value="<?php the_author_meta( 'last_name', $current_user->ID ); ?>" />
-                                </p>
+                                </div>
                             </div>
                         </div>
                         
-                        <p class="form-email">
+                        <div class="form-email">
                             <label for="email"><?php esc_html_e('E-mail *', 'ns-basics'); ?></label>
                             <input class="text-input" name="email" type="text" id="email" value="<?php the_author_meta( 'user_email', $current_user->ID ); ?>" />
-                        </p><!-- .form-email -->
+                        </div><!-- .form-email -->
 
-                        <p class="form-url">
+                        <div class="form-url">
                             <label for="url"><?php esc_html_e('Website', 'ns-basics'); ?></label>
                             <input class="text-input" name="url" type="text" id="url" value="<?php the_author_meta( 'user_url', $current_user->ID ); ?>" />
-                        </p><!-- .form-url -->
+                        </div><!-- .form-url -->
                     </div>
 
                 </div><!-- end row -->
 
-                <p class="form-textarea">
+                <div class="form-textarea">
                     <label for="description"><?php esc_html_e('Biographical Information', 'ns-basics') ?></label>
                     <textarea name="description" id="description" rows="3" cols="50"><?php the_author_meta( 'description', $current_user->ID ); ?></textarea>
-                </p><!-- .form-textarea -->
+                </div><!-- .form-textarea -->
                 
                 <div class="update-password">
                     <div class="module-header module-header-left">
                         <h4><strong><?php esc_html_e('Change Password', 'ns-basics'); ?></strong></h4>
                     </div>
-                    <p class="form-password">
+                    <div class="form-password">
                         <label for="pass1"><?php esc_html_e('Password *', 'ns-basics'); ?> </label>
                         <input class="text-input" name="pass1" type="password" id="pass1" />
-                    </p><!-- .form-password -->
-                    <p class="form-password">
+                    </div><!-- .form-password -->
+                    <div class="form-password">
                         <label for="pass2"><?php esc_html_e('Repeat Password *', 'ns-basics'); ?></label>
                         <input class="text-input" name="pass2" type="password" id="pass2" />
-                    </p><!-- .form-password -->
+                    </div><!-- .form-password -->
                 </div>
 
                 <?php 
