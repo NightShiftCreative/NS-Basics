@@ -1,6 +1,7 @@
 <?php
     function ns_basics_add_page_layout_meta_box() {
         $post_types = array('page');
+        $post_types = apply_filters('ns_basics_page_settings_post_types', $post_types);
         add_meta_box( 'page-layout-meta-box', 'Page Settings', 'ns_basics_page_layout_meta_box', $post_types, 'normal', 'low' );
     }
     add_action( 'add_meta_boxes', 'ns_basics_add_page_layout_meta_box' );
