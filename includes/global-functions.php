@@ -191,16 +191,4 @@ function ns_basics_admin_alert($type = 'info', $text = null, $action = null, $ac
     return $output;
 }
 
-/*-----------------------------------------------------------------------------------*/
-/* CHECK IF PAID ADD-ON PLUGIN IS ACTIVE
-/*-----------------------------------------------------------------------------------*/
-function ns_basics_is_paid_plugin_active($add_on_slug) {
-    include_once( ABSPATH . 'wp-admin/includes/plugin.php' );
-    if(is_plugin_active($add_on_slug.'/'.$add_on_slug.'.php')) { 
-        return true; 
-    } else { 
-        return false;
-    }
-}
-
 ?>
