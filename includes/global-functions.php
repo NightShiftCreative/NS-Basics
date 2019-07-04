@@ -59,95 +59,9 @@ if(!function_exists('ns_core_get_icon')) {
 }
 
 /*-----------------------------------------------------------------------------------*/
-/*  Image Upload (used for front end avatar upload)
+/*  Sort an array by order
 /*-----------------------------------------------------------------------------------*/
-function ns_basics_upload_user_file( $file = array() ) {
-        
-    require_once( ABSPATH . 'wp-admin/includes/admin.php' );
-                            
-    $file_return = wp_handle_upload( $file, array('test_form' => false ) );
-                            
-    if( isset( $file_return['error'] ) || isset( $file_return['upload_error_handler'] ) ) {
-        return false;
-    } else {
-                                
-        $filename = $file_return['file'];
-                                
-        $attachment = array(
-            'post_mime_type' => $file_return['type'],
-            'post_title' => preg_replace( '/\.[^.]+$/', '', basename( $filename ) ),
-            'post_content' => '',
-            'post_status' => 'inherit',
-            'guid' => $file_return['url']
-        );
-
-        $attachment_id = wp_insert_attachment( $attachment, $file_return['url'] );
-                                
-        require_once (ABSPATH . 'wp-admin/includes/image.php' );
-        $attachment_data = wp_generate_attachment_metadata( $attachment_id, $filename );
-        wp_update_attachment_metadata( $attachment_id, $attachment_data );
-                                    
-        if( 0 < intval( $attachment_id ) ) {
-            return $attachment_id;
-        }
-                                
-    }
-                            
-    return false;
-}
-
-/*-----------------------------------------------------------------------------------*/
-/*  Generate admin gallery upload
-/*-----------------------------------------------------------------------------------*/
-function ns_basics_get_image_id($image_url) {
-    global $wpdb;
-    $attachment = $wpdb->get_col($wpdb->prepare("SELECT ID FROM $wpdb->posts WHERE guid='%s';", $image_url )); 
-    return $attachment[0]; 
-}
-
-function ns_basics_generate_gallery($additional_images, $field_name = 'ns_additional_img') { ?>
-    <div class="admin-module no-border no-padding gallery-container">
-        <?php
-        if(!empty($additional_images) && !empty($additional_images[0])) { ?>
-
-            <?php
-            $additional_images = explode(",", $additional_images[0]);
-            $additional_images = array_filter($additional_images);
-
-            foreach ($additional_images as $additional_image) {
-                if(!empty($additional_image)) {
-                    $image_id = ns_basics_get_image_id($additional_image);
-
-                    if(!empty($image_id)) {
-                        $image_thumb = wp_get_attachment_image_src($image_id, 'thumbnail');
-                        if(!empty($image_thumb)) { 
-                            $image_thumb_html = '<img src="'. $image_thumb[0] .'" alt="" />'; 
-                        } else {
-                           $image_thumb_html = '<img src="'. plugins_url('images/default-post-image.gif', dirname(__FILE__)) .'" alt="" />';  
-                        }
-                    } else {
-                        $image_thumb_html = '<img width="150" src="'.$additional_image.'" alt="" />';
-                    }
-
-                    echo '
-                        <div class="gallery-img-preview">
-                            '.$image_thumb_html.'
-                            <input type="hidden" name="'.$field_name.'[]" value="'. $additional_image .'" />
-                            <span class="action delete-additional-img" title="'. esc_html__('Delete', 'ns-basics'). '"><i class="fa fa-trash"></i></span>
-                            <a href="'.get_admin_url().'upload.php?item='.$image_id.'" class="action edit-additional-img" target="_blank" title="'.esc_html__('Edit', 'ns-basics').'"><i class="fa fa-pencil-alt"></i></a>
-                        </div>
-                    ';
-                }
-            }
-        } else { echo '<p class="admin-module-note no-gallery-img">'.esc_html__('No gallery media was found.', 'ns-basics').'</p>'; } ?>
-
-        <div class="clear"></div>
-        <span class="admin-button add-gallery-media">
-            <span class="hide gallery-field-name"><?php echo $field_name; ?></span>
-            <i class="fa fa-plus"></i> <?php echo esc_html_e('Add Media', 'ns-basics'); ?>
-        </span>
-    </div>
-<?php }
+function ns_basics_sort_by_order($a, $b) { return $a['order'] - $b['order']; }
 
 /*-----------------------------------------------------------------------------------*/
 /*  Check if key/value is in array
@@ -168,27 +82,6 @@ function ns_basics_in_array($array, $key, $key_value){
         }
     }
     return $within_array;
-}
-
-/*-----------------------------------------------------------------------------------*/
-/*  Admin Alerts
-/*-----------------------------------------------------------------------------------*/
-function ns_basics_admin_alert($type = 'info', $text = null, $action = null, $action_text = null, $dismissible = false, $class = null) {
-    ob_start(); ?>
-
-    <div class="admin-alert-box <?php if(!empty($type)) { ?>admin-<?php echo $type; ?><?php } ?> <?php if(!empty($class)) { echo $class; } ?>">
-        <?php if($type == 'success') { 
-            echo '<i class="fa fa-check"></i>';
-        } else {
-            echo '<i class="fa fa-exclamation-circle"></i>';
-        } ?>
-        <?php if(!empty($text)) { ?><strong><?php echo $text; ?></strong><?php } ?>
-        <?php if(!empty($action)) { ?><a href="<?php echo esc_url($action); ?>" target="_blank"><?php echo $action_text; ?></a><?php } ?>
-        <?php if($dismissible == true) { ?><i class="fa fa-close right admin-alert-close"></i><?php } ?>
-    </div> 
-
-    <?php $output = ob_get_clean();
-    return $output;
 }
 
 ?>

@@ -1,7 +1,31 @@
 <?php
+// Exit if accessed directly
+if (!defined( 'ABSPATH')) { exit; }
 
-function ns_basics_get_social_share($class = null, $toggle_text = null) {
-        global $post;
+/**
+ *	NS_Basics_Post_Sharing class
+ *
+ *  Adds social sharing tooltip below post titles.
+ */
+class NS_Basics_Post_Sharing {
+
+	/**
+	 *	Constructor
+	 */
+	public function __construct() {
+		add_action( 'ns_core_after_post_meta', array( $this, 'add_post_sharing' ));
+	}
+
+	/**
+	 * Build post sharing links
+	 *
+	 * @param string $class
+	 * @param string $toggle_text
+	 */
+	public function build_post_sharing_links($class = null, $toggle_text = null) { 
+		
+		//global settings
+		global $post;
         $icon_set = esc_attr(get_option('ns_core_icon_set', 'fa'));
         if(function_exists('ns_core_load_theme_options')) { $icon_set = ns_core_load_theme_options('ns_core_icon_set'); }
         $toggle = ns_core_get_icon($icon_set, 'share-alt', 'share2', 'forward');
@@ -27,14 +51,19 @@ function ns_basics_get_social_share($class = null, $toggle_text = null) {
         $content .= '<li><a href="mailto:?subject='.$subject.'&body='.$body.'">'.$mail_icon.'</a></li>';
         $content .= '</ul>';
 
-        echo ns_basics_tooltip($toggle, $content, 'post-share');
+        echo ns_basics_tooltip($toggle, $content, $class);
+
         $output = ob_get_clean();
         return $output;
-}
+	}
 
-function ns_basics_add_post_share() { ?> 
-    <li><?php echo ns_basics_get_social_share('blog-share', true); ?></li>
-<?php }
-add_action( 'ns_core_after_post_meta', 'ns_basics_add_post_share' );
+	/**
+	 * Add post sharing
+	 */
+	public function add_post_sharing() { 
+		echo '<li>'.$this->build_post_sharing_links('post-share', true).'</li>';
+	}
+
+}
 
 ?>

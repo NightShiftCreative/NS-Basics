@@ -38,6 +38,8 @@
 .admin-module.two-col .admin-module { width:48%; float:left; border:none; margin:0; padding:0; }
 .admin-module.two-col .admin-module:first-child { margin-right:2%; }
 
+.admin-module.child-field { display:none; }
+
 .two-col-list {
     -moz-column-count: 2;
     -moz-column-gap: 20px;

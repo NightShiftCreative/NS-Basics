@@ -79,20 +79,30 @@ jQuery(document).ready(function($) {
     });
 
     /** SELECTABLE ITEMS **/
+    $(".selectable-item").each(function( index ) {
+        if($(this).hasClass('active')) {
+            var childClass = $(this).find('input').val();
+            childClass = 'child-field-' + childClass;
+            $(".admin-module.child-field").each(function( index ) {
+                if($(this).hasClass(childClass)) {
+                    $(this).show();
+                }
+            });
+        }
+    });
+
     $('.selectable-item').click(function() {
         $( ".selectable-item" ).each(function( index ) {
           $(this).removeClass('active');
         });
         $(this).addClass('active');
 
-        var input  = $(this).find('input').val();
-        input = 'selectable-item-options-' + input;
-        
-        $(".selectable-item-settings").each(function( index ) {
-            if($(this).attr('id') == input) {
-                $(".selectable-item-settings").hide();
+        var childClass = $(this).find('input').val();
+        childClass = 'child-field-' + childClass;
+        $(".admin-module.child-field").each(function( index ) {
+            if($(this).hasClass(childClass)) {
                 $(this).show();
-            } else if($(this).attr('id') != input) {
+            } else {
                 $(this).hide();
             }
         });

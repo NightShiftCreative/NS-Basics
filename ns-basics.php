@@ -1,6 +1,6 @@
 <?php
 /**
-* Plugin Name: Nightshift Basics
+* Plugin Name: Nightshift Basics [NEW]
 * Plugin URI: http://nightshiftcreative.co/
 * Description: The framework essential for all themes and plugins built by Nightshift Creative.
 * Version: 1.0.0
@@ -9,471 +9,198 @@
 * Text Domain: ns-basics
 **/
 
-/*-----------------------------------------------------------------------------------*/
-/*  Load Text Domain
-/*-----------------------------------------------------------------------------------*/
-load_plugin_textdomain( 'ns-basics', false, dirname( plugin_basename( __FILE__ ) ) . '/languages' );
+// Exit if accessed directly
+if (!defined( 'ABSPATH')) { exit; }
 
-/*-----------------------------------------------------------------------------------*/
-/*  Define Global Variables
-/*-----------------------------------------------------------------------------------*/
-define('NS_SHOP_URL', 'https://studio.nightshiftcreative.co/');
-define('NS_BASICS_GITHUB', '/NightShiftCreative/NS-Basics/archive/1.0.0.zip');
+class NS_Basics {
 
-/*-----------------------------------------------------------------------------------*/
-/*  Automatic Update Checker (checks for new releases on github)
-/*-----------------------------------------------------------------------------------*/
-require 'plugin-update-checker/plugin-update-checker.php';
-$myUpdateChecker = Puc_v4_Factory::buildUpdateChecker(
-    'https://github.com'.constant('NS_BASICS_GITHUB'),
-    __FILE__,
-    'ns-basics'
-);
+	/**
+	 * Constructor - intialize the plugin
+	 */
+	public function __construct() {
+		
+		//Add actions & filters
+		add_action( 'admin_enqueue_scripts', array( $this, 'admin_scripts' ) );
+		add_action( 'wp_enqueue_scripts', array( $this, 'frontend_scripts' ) );
+		add_filter( 'script_loader_tag', array( $this, 'async' ), 10, 3 );
 
-/*-----------------------------------------------------------------------------------*/
-/*  Include Admin Scripts and Stylesheets
-/*-----------------------------------------------------------------------------------*/
-function ns_basics_load_stylesheets() {
-    if (is_admin()) {
+		//Functions
+		$this->load_plugin_textdomain();
+		$this->define_constants();
+		$this->update_checker();
+		$this->includes();
+	}
 
-        //include scripts
-        wp_enqueue_script('ns-admin-global-js', plugins_url('/js/ns-admin-global.js', __FILE__), array('jquery','media-upload','thickbox', 'wp-color-picker'), '', true);
-        wp_enqueue_script('ns-basics-admin-js', plugins_url('/js/ns-basics-admin.js', __FILE__), array('jquery','media-upload','thickbox'), '', true);
-        wp_enqueue_script('featherlight', plugins_url('/assets/featherlight/featherlight.js', __FILE__), array('jquery'), '', true);
-        wp_enqueue_script('chosen', plugins_url('/assets/chosen_v1.8.7/chosen.jquery.min.js', __FILE__), array('jquery'), '', true);
+	/**
+	 * Load the textdomain for translation
+	 */
+	public function load_plugin_textdomain() {
+		load_plugin_textdomain( 'ns-basics', false, dirname( plugin_basename( __FILE__ ) ) . '/languages' );
+	}
 
-        //include styles
-        wp_enqueue_style('featherlight',  plugins_url('/assets/featherlight/featherlight.css',  __FILE__), array(), '1.0', 'all');
-        wp_enqueue_style('chosen',  plugins_url('/assets/chosen_v1.8.7/chosen.min.css', __FILE__), array(), '', 'all');
-        wp_enqueue_style('ns-basics-admin-css',  plugins_url('/css/ns-basics-admin.css',  __FILE__), array(), '1.0', 'all');
-        wp_enqueue_style('ns-font-awesome',  plugins_url('/css/font-awesome/css/all.min.css', __FILE__), array(), '', 'all');
+	/**
+	 * Define constants
+	 */
+	public function define_constants() {
+		define('NS_BASICS_VERSION', '1.0.0');
+		define('NS_SHOP_URL', 'https://studio.nightshiftcreative.co/');
+		define('NS_BASICS_GITHUB', '/NightShiftCreative/NS-Basics/archive/1.0.0.zip');
+		define('NS_BASICS_PLUGIN_DIR', plugins_url('', __FILE__));
+	}
 
-        //wordpress pre-loaded scripts
-        if(function_exists( 'wp_enqueue_media' )) { wp_enqueue_media(); } else { wp_enqueue_script('media-upload'); }
-        wp_enqueue_script('thickbox');
-        wp_enqueue_style('thickbox');
-        wp_enqueue_script( 'jquery-form', array( 'jquery' ) );
-        wp_enqueue_script('jquery-ui-core');
-        wp_enqueue_script( 'jquery-ui-datepicker' );
-        wp_enqueue_style( 'wp-color-picker' );
+	/**
+	 * Update Checker
+	 *
+	 * Checks for new releases on github
+	 */
+	public function update_checker() {
+		require 'assets/plugin-update-checker/plugin-update-checker.php';
+		$myUpdateChecker = Puc_v4_Factory::buildUpdateChecker(
+		    'https://github.com'.constant('NS_BASICS_GITHUB'),
+		    __FILE__,
+		    'ns-basics'
+		);
+	}
 
-        /* localize scripts */
-        $translation_array = array(
-            'admin_url' => esc_url(get_admin_url()),
-            'plugins_url' => plugins_url('',  __FILE__),
-            'delete_text' => __( 'Delete', 'ns-basics' ),
-            'remove_text' => __( 'Remove', 'ns-basics' ),
-            'save_text' => __( 'Save', 'ns-basics' ),
-            'edit_text' => __( 'Edit', 'ns-basics' ),
-            'upload_img' => __( 'Upload Image', 'ns-basics' ),
-            'new_testimonial' => __( 'New Testimonial', 'ns-basics' ),
-            'testimonial' => __( 'Testimonial', 'ns-basics' ),
-            'position' => __( 'Position', 'ns-basics' ),
-            'image_url' => __( 'Image URL', 'ns-basics' ),
-            'name_text' => __( 'Name', 'ns-basics' ),
-        );
-        wp_localize_script( 'ns-basics-admin-js', 'ns_basics_local_script', $translation_array );
+	/**
+	 * Load front end scripts and styles
+	 */
+	public function frontend_scripts() {
+		if (!is_admin()) {
+	        wp_enqueue_style('ns-font-awesome',  plugins_url('/css/font-awesome/css/all.min.css', __FILE__), array(), '', 'all');
+	        wp_enqueue_script('ns-basics', plugins_url('/js/ns-basics.js', __FILE__), array('jquery', 'jquery-ui-core'), '', true);
 
-    }
-}
-add_action('admin_enqueue_scripts', 'ns_basics_load_stylesheets');
+	        //wordpress pre-loaded scripts
+	        wp_enqueue_script('jquery-ui-core');
+	        wp_enqueue_script('jquery-ui-accordion');
+	        wp_enqueue_script('jquery-ui-tabs');
+	    }
+	}
 
-/*-----------------------------------------------------------------------------------*/
-/*  Include Front-End Scripts and Styles
-/*-----------------------------------------------------------------------------------*/
-function ns_basics_front_end_scripts() {
-    if (!is_admin()) {
-        wp_enqueue_style('ns-font-awesome',  plugins_url('/css/font-awesome/css/all.min.css', __FILE__), array(), '', 'all');
-        wp_enqueue_script('ns-basics', plugins_url('/js/ns-basics.js', __FILE__), array('jquery', 'jquery-ui-core'), '', true);
+	/**
+	 * Load admin scripts and styles
+	 */
+	public function admin_scripts() {
+		if (is_admin()) {
 
-        //wordpress pre-loaded scripts
-        wp_enqueue_script('jquery-ui-core');
-        wp_enqueue_script('jquery-ui-accordion');
-        wp_enqueue_script('jquery-ui-tabs');
-    }
-}
-add_action('wp_enqueue_scripts', 'ns_basics_front_end_scripts');
+			//include scripts
+        	wp_enqueue_script('ns-admin-global-js', plugins_url('/js/ns-admin-global.js', __FILE__), array('jquery','media-upload','thickbox', 'wp-color-picker'), '', true);
+        	wp_enqueue_script('ns-basics-admin-js', plugins_url('/js/ns-basics-admin.js', __FILE__), array('jquery','media-upload','thickbox'), '', true);
+        	wp_enqueue_script('featherlight', plugins_url('/assets/featherlight/featherlight.js', __FILE__), array('jquery'), '', true);
+        	wp_enqueue_script('chosen', plugins_url('/assets/chosen_v1.8.7/chosen.jquery.min.js', __FILE__), array('jquery'), '', true);
 
-/*-----------------------------------------------------------------------------------*/
-/* Adds async/defer attributes to non-critical scripts/styles
-/*-----------------------------------------------------------------------------------*/
-add_filter( 'script_loader_tag', 'ns_basics_add_async_to_script', 10, 3 );
-function ns_basics_add_async_to_script( $tag, $handle, $src ) {
-    if (!is_admin()) {
-        $script_array = array('ns-basics-post-likes-js');
-        if (in_array($handle, $script_array)) {
-            $tag = '<script async type="text/javascript" src="' . esc_url( $src ) . '"></script>';
-        }
-    }
-    return $tag;
-}
+        	//include styles
+	        wp_enqueue_style('featherlight',  plugins_url('/assets/featherlight/featherlight.css',  __FILE__), array(), '1.0', 'all');
+	        wp_enqueue_style('chosen',  plugins_url('/assets/chosen_v1.8.7/chosen.min.css', __FILE__), array(), '', 'all');
+	        wp_enqueue_style('ns-basics-admin-css',  plugins_url('/css/ns-basics-admin.css',  __FILE__), array(), '1.0', 'all');
+	        wp_enqueue_style('ns-font-awesome',  plugins_url('/css/font-awesome/css/all.min.css', __FILE__), array(), '', 'all');
 
-/*-----------------------------------------------------------------------------------*/
-/*  GLOBAL FUNCTIONS
-/*-----------------------------------------------------------------------------------*/
-/* set add-ons data */
-function ns_basics_get_add_ons() {
+        	//wordpress pre-loaded scripts
+	        if(function_exists( 'wp_enqueue_media' )) { wp_enqueue_media(); } else { wp_enqueue_script('media-upload'); }
+	        wp_enqueue_script('thickbox');
+	        wp_enqueue_style('thickbox');
+	        wp_enqueue_script( 'jquery-form', array( 'jquery' ) );
+	        wp_enqueue_script('jquery-ui-core');
+	        wp_enqueue_script( 'jquery-ui-datepicker' );
+	        wp_enqueue_style( 'wp-color-picker' );
 
-    $add_ons = array(
-        1 => array(
-            'name' => 'Post Sharing',
-            'slug' => 'ns_basics_post_share',
-            'icon' => plugins_url('/ns-basics/images/icon-post-sharing.svg'),
-            'note' => esc_html__('Allow your users to share your posts on popular social media sites.', 'ns-basics'),
-            'group' => 'basic',
-            'required_theme_support' => '',
-            'link' => constant('NS_SHOP_URL').'docs/ns-basics/post-sharing/',
-            'active' => 'true',
-        ),
-        2 => array(
-            'name' => 'Post Likes',
-            'slug' => 'ns_basics_post_likes',
-            'icon' => plugins_url('/ns-basics/images/icon-post-likes.svg'),
-            'note' => esc_html__('Allow your users to like your posts and save them for later viewing.', 'ns-basics'),
-            'group' => 'basic',
-            'required_theme_support' => '',
-            'link' => constant('NS_SHOP_URL').'docs/ns-basics/post-likes/',
-            'active' => 'true',
-        ),
-        3 => array(
-            'name' => 'Page Settings',
-            'slug' => 'ns_basics_page_settings',
-            'icon' => plugins_url('/ns-basics/images/icon-page-settings.svg'),
-            'note' => esc_html__('Add advanced options to pages & posts, allowing further control over banners, page layout and more.', 'ns-basics'),
-            'group' => 'basic',
-            'required_theme_support' => '',
-            'link' => constant('NS_SHOP_URL').'docs/ns-basics/page-settings/',
-            'active' => 'true',
-        ),
-        4 => array(
-            'name' => 'Slides',
-            'slug' => 'ns_basics_slides',
-            'icon' => plugins_url('/ns-basics/images/icon-slides.svg'),
-            'note' => esc_html__('Add slides custom post type', 'ns-basics'),
-            'group' => 'basic',
-            'required_theme_support' => '',
-            'link' => constant('NS_SHOP_URL').'docs/ns-basics/slides/',
-            'active' => 'true',
-        ),
-        5 => array(
-            'name' => 'Basic Shortcodes',
-            'slug' => 'ns_basics_shortcodes',
-            'icon' => plugins_url('/ns-basics/images/icon-basic-shortcodes.svg'),
-            'note' => esc_html__('Add helpful shortcodes, including buttons, videos, testimonials, accordions, and more.', 'ns-basics'),
-            'group' => 'basic',
-            'required_theme_support' => '',
-            'link' => constant('NS_SHOP_URL').'docs/ns-basics/shortcodes/',
-            'active' => 'true',
-        ),
-        6 => array(
-            'name' => 'Basic Widgets',
-            'slug' => 'ns_basics_widgets',
-            'icon' => plugins_url('/ns-basics/images/icon-basic-widgets.svg'),
-            'note' => esc_html__('Add helpful widgets, including social sharing, testimonials, contact info, and more.', 'ns-basics'),
-            'group' => 'basic',
-            'required_theme_support' => '',
-            'link' => constant('NS_SHOP_URL').'docs/ns-basics/widgets/',
-            'active' => 'true',
-        ),
-    );
+	        /* localize scripts */
+	        $translation_array = array(
+	            'admin_url' => esc_url(get_admin_url()),
+	            'plugins_url' => plugins_url('',  __FILE__),
+	            'delete_text' => __( 'Delete', 'ns-basics' ),
+	            'remove_text' => __( 'Remove', 'ns-basics' ),
+	            'save_text' => __( 'Save', 'ns-basics' ),
+	            'edit_text' => __( 'Edit', 'ns-basics' ),
+	            'upload_img' => __( 'Upload Image', 'ns-basics' ),
+	            'new_testimonial' => __( 'New Testimonial', 'ns-basics' ),
+	            'testimonial' => __( 'Testimonial', 'ns-basics' ),
+	            'position' => __( 'Position', 'ns-basics' ),
+	            'image_url' => __( 'Image URL', 'ns-basics' ),
+	            'name_text' => __( 'Name', 'ns-basics' ),
+	        );
+	        wp_localize_script( 'ns-basics-admin-js', 'ns_basics_local_script', $translation_array );
 
-    //update active add-ons
-    $active_add_ons = get_option('ns_basics_active_add_ons');
-    if(!empty($active_add_ons)) {
-        foreach($add_ons as $key => $value) {
-            if (in_array($add_ons[$key]['slug'], $active_add_ons)) {
-                $add_ons[$key]['active'] = 'true';
-            } else {
-                $add_ons[$key]['active'] = 'false';
-            }
-        }
-    }
- 
-    return $add_ons;
-}
+		}
+	}
 
-/** loop through add-ons **/
-function ns_basics_display_add_ons($group = null) {
-    $add_ons = ns_basics_get_add_ons();
-    $current_theme = wp_get_theme();
-    $output = '';
+	/**
+	 * Async 
+	 *
+	 * Adds async/defer attributes to non-critical scripts/styles
+	 */
+	public function async($tag, $handle, $src) {
+		if (!is_admin()) {
+	        $script_array = array('ns-basics-post-likes-js');
+	        if (in_array($handle, $script_array)) {
+	            $tag = '<script async type="text/javascript" src="' . esc_url( $src ) . '"></script>';
+	        }
+	    }
+		return $tag;
+	}
 
-    ob_start(); ?>
+	/**
+	 * Load includes
+	 */
+	public function includes() {
 
-    <div class="ns-module-group ns-module-group-basic">
-        <?php $count = 1;
-        foreach($add_ons as $add_on) { 
-            if(!empty($group) && $add_on['group'] == $group) { 
-                if(isset($add_on['active']) && $add_on['active'] == 'true') { $active = 'true'; } else { $active = 'false'; } ?>
-                <div class="admin-module <?php if($active == 'true') { echo 'active-add-on'; } ?>">
-                    
-                    <div class="ns-module-header">
-                        <?php if(!empty($add_on['icon'])) { ?><div class="ns-module-icon"><img src="<?php echo $add_on['icon']; ?>" alt="" /></div><?php } ?>
-                        <?php if(!empty($add_on['name'])) { ?><h4><?php echo $add_on['name']; ?></h4><?php } ?>
-                        
-                        <?php if(!empty($add_on['required_theme_support']) && !current_theme_supports($add_on['required_theme_support'])) { ?>    
-                            <div class="admin-alert-box admin-info theme-message">
-                                <?php esc_html_e('Incompatible theme.', 'ns-basics'); ?>
-                                <a href="http://nightshiftcreative.co/project-types/themes/" target="_blank"><?php esc_html_e('Get a Compatible Theme', 'ns-basics'); ?></a>
-                            </div>
-                        <?php } else { ?>
-                            <div class="toggle-switch" title="<?php if($active == 'true') { esc_html_e('Active', 'ns-basics'); } else { esc_html_e('Disabled', 'ns-basics'); } ?>">
-                                <input type="checkbox" id="<?php echo $add_on['slug']; ?>" name="ns_basics_active_add_ons[]" value="<?php echo $add_on['slug']; ?>" class="toggle-switch-checkbox" <?php checked('true', $active, true) ?> />
-                                <label class="toggle-switch-label" for="<?php echo $add_on['slug']; ?>"><?php if($active == 'true') { echo '<span class="on">'.esc_html__('On', 'ns-basics').'</span>'; } else { echo '<span>'.esc_html__('Off', 'ns-basics').'</span>'; } ?></label>
-                            </div>
-                        <?php } ?>
-                    </div>    
+		// Include functions
+		include( plugin_dir_path( __FILE__ ) . 'includes/global-functions.php');
+		include( plugin_dir_path( __FILE__ ) . 'includes/templates/templates.php');
 
-                    <div class="ns-module-content">
-                        <?php if(!empty($add_on['note'])) { ?><span class="admin-module-note"><?php echo $add_on['note']; ?></span><?php } ?>
-                        <?php if(!empty($add_on['paid'])) { ?><a href="<?php echo $add_on['paid']['link']; ?>" target="_blank" class="ns-meta-item"><?php esc_html_e('Premium', 'ns-basics'); ?> </a><?php } ?>
-                        <?php if(!empty($add_on['link'])) { ?><a href="<?php echo $add_on['link']; ?>" target="_blank" class="view-details ns-meta-item"><i class="fa fa-arrow-right icon"></i> <?php esc_html_e('View Docs', 'ns-basics'); ?> </a><?php } ?>
-                    </div>
-                </div>
-                <?php $count++; 
-            }
-        } ?>
-        <div class="clear"></div>
-    </div>
+		// Include classes
+		include( plugin_dir_path( __FILE__ ) . 'includes/classes/class-ns-basics-admin.php');
+		if(is_admin()) { $this->admin = new NS_Basics_Admin(); }
+		
+		include( plugin_dir_path( __FILE__ ) . 'includes/classes/class-ns-basics-modules.php');
+		$this->modules = new NS_Basics_Modules();
+		
+		include( plugin_dir_path( __FILE__ ) . 'includes/classes/class-ns-basics-members.php');
+		$this->members = new NS_Basics_Members();
+		
+		if($this->modules->is_module_active('ns_basics_page_settings')) { 
+			include( plugin_dir_path( __FILE__ ) . 'includes/classes/class-ns-basics-page-settings.php');
+			$this->page_settings = new NS_Basics_Page_Settings(); 
+		}
 
-    <?php $output = ob_get_clean();
-    return $output;
+		if($this->modules->is_module_active('ns_basics_post_share')) { 
+			include( plugin_dir_path( __FILE__ ) . 'includes/classes/class-ns-basics-post-sharing.php');
+			$this->post_sharing = new NS_Basics_Post_Sharing(); 
+		}
+
+		if($this->modules->is_module_active('ns_basics_post_likes')) { 
+			include( plugin_dir_path( __FILE__ ) . 'includes/classes/class-ns-basics-post-likes.php');
+			$this->post_likes = new NS_Basics_Post_Likes(); 
+		}
+
+		if($this->modules->is_module_active('ns_basics_slides')) { 
+			include( plugin_dir_path( __FILE__ ) . 'includes/classes/class-ns-basics-slides.php');
+			$this->slides = new NS_Basics_Slides(); 
+		}
+
+		if($this->modules->is_module_active('ns_basics_shortcodes')) { 
+			include( plugin_dir_path( __FILE__ ) . 'includes/classes/class-ns-basics-shortcodes.php');
+			$this->shortcodes = new NS_Basics_Shortcodes(); 
+		}
+
+		if($this->modules->is_module_active('ns_basics_widgets')) { 
+			include( plugin_dir_path( __FILE__ ) . 'includes/classes/widgets/contact_info_widget.php');
+			include( plugin_dir_path( __FILE__ ) . 'includes/classes/widgets/list_posts_widget.php');
+			include( plugin_dir_path( __FILE__ ) . 'includes/classes/widgets/social_links_widget.php');
+			include( plugin_dir_path( __FILE__ ) . 'includes/classes/widgets/testimonials_widget.php');
+		}
+	}
+
 }
 
-/* check if add-on is active */
-function ns_basics_is_active($add_on_slug) {
-    $add_ons = ns_basics_get_add_ons();
-    $is_active = false;
-
-    foreach($add_ons as $add_on) {
-        if($add_on_slug == $add_on['slug'] && (isset($add_on['active']) && $add_on['active'] == 'true')) { 
-            $is_active = true; 
-        }
-    }
-    return $is_active;
+/**
+ *  Load the main class
+ */
+function ns_basics() {
+	global $ns_basics;
+	if(!isset($ns_basics)) { $ns_basics = new NS_Basics(); }
+	return $ns_basics;
 }
+ns_basics();
 
-/*-----------------------------------------------------------------------------------*/
-/*  ADD ADMIN MENU ITEMS
-/*-----------------------------------------------------------------------------------*/
-add_action('admin_menu', 'ns_basics_plugin_menu');
-function ns_basics_plugin_menu() {
-    add_menu_page('NS Basics', 'NS Basics', 'administrator', 'ns-basics-settings', 'ns_basics_settings_page', plugins_url('/images/icon.png', __FILE__));
-    add_submenu_page('ns-basics-settings', 'Settings', 'Settings', 'administrator', 'ns-basics-settings');
-    add_submenu_page('ns-basics-settings', 'Resources', 'Resources', 'administrator', 'ns-basics-resources', 'ns_basics_resources_page');
-    add_action( 'admin_init', 'ns_basics_register_options' );
-}
-
-/*-----------------------------------------------------------------------------------*/
-/*  REGISTER SETTINGS
-/*-----------------------------------------------------------------------------------*/
-function ns_basics_register_options() {
-    register_setting( 'ns-basics-settings-group', 'ns_basics_active_add_ons');
-}
-
-/*-----------------------------------------------------------------------------------*/
-/*  BUILD ADMIN PAGE TEMPLATE
-/*  Note: this template is used for all plugins that require NS Basics
-/*-----------------------------------------------------------------------------------*/
-function ns_basics_admin_page($page_name = null, $settings_group = null, $pages = null, $display_actions = null, $content = null, $content_class = null, $content_nav = null, $alerts = null, $ajax = true, $icon = null) { ?>
-    <div class="wrap">
-        <?php if(!empty($page_name)) { ?><h1><?php echo $page_name; ?></h1><?php } ?>
-
-        <form method="post" action="options.php" class="ns-settings <?php if($ajax == true) { echo 'ns-settings-ajax'; } ?>">
-            <?php if(!empty($settings_group)) { 
-                settings_errors();
-                settings_fields($settings_group);
-                do_settings_sections($settings_group); 
-            } ?>
-
-            <div class="ns-settings-menu-bar ns-settings-header">
-                <?php if(!empty($icon)) { ?><img class="ns-settings-icon" src="<?php echo $icon; ?>" alt="" /><?php } ?>
-                <?php if(!empty($pages)) { ?>
-                <div class="ns-settings-nav">
-                    <ul>
-                        <?php $current_page = $_GET['page']; ?>
-                        <?php foreach($pages as $page) { ?>
-                        <li <?php if($page['slug'] == $current_page) { echo 'class="active"'; } ?>><a href="<?php echo admin_url('admin.php?page='.$page['slug']); ?>"><?php echo $page['name']; ?></a></li>
-                        <?php } ?>
-                    </ul>
-                </div>
-                <?php } ?>
-                <?php if($display_actions != 'false') { ?>
-                    <div class="ns-settings-actions">
-                        <div class="loader"><img src="<?php echo esc_url(home_url('/')); ?>wp-admin/images/spinner.gif" alt="" /></div> 
-                        <?php submit_button(esc_html__('Save Changes', 'ns-basics'), 'admin-button', 'submit', false); ?>
-                    </div>
-                <?php } ?>
-                <div class="clear"></div>
-            </div>
-
-            <div class="ns-settings-content <?php if(!empty($content_class)) { echo $content_class; } ?>">
-
-                <?php echo ns_basics_admin_alert('success', esc_html__('Settings Saved Successfully', 'ns-basics'), null, null, true, 'settings-saved'); ?>
-
-                <?php if(!empty($alerts)) {
-                    foreach($alerts as $alert) { echo $alert; }
-                } ?>
-
-                <div class="ns-tabs">
-                    <?php if(!empty($content_nav)) { ?>
-                    <div class="ns-settings-content-nav">
-                        <div class="ns-settings-content-nav-filler"></div>
-                        <ul class="ns-tabs-nav">
-                            <?php foreach($content_nav as $nav_item) { ?>
-                                <li><a href="<?php echo $nav_item['link']; ?>"><?php if(!empty($nav_item['icon'])) { echo '<i class="fa '.$nav_item['icon'].'"></i>'; } ?><?php echo $nav_item['name']; ?></a></li>
-                            <?php } ?>
-                        </ul>
-                    </div>
-                    <?php } ?>
-
-                    <div class="ns-tabs-content content-wrap <?php if(!empty($content_nav)) { echo 'content-has-nav'; } ?>">
-                        <?php if(!empty($content_nav)) { ?><div class="tab-loader"><img src="<?php echo esc_url(home_url('/')); ?>wp-admin/images/spinner.gif" alt="" /> <?php esc_html_e('Loading...', 'ns-basics'); ?></div><?php } ?>
-                        <?php if(!empty($content)) { echo $content; } ?>
-                    </div>
-                </div>
-
-                <div class="clear"></div>
-                <?php echo ns_basics_admin_alert('success', esc_html__('Settings Saved Successfully', 'ns-basics'), null, null, true, 'settings-saved'); ?>
-            </div>
-
-            <div class="ns-settings-menu-bar ns-settings-footer">
-                <?php
-                $plugin_data = get_plugin_data( __FILE__ );
-                $plugin_version = $plugin_data['Version']; 
-                ?>
-                <div class="ns-settings-version left"><?php esc_html_e('Version', 'ns-basics'); ?> <?php echo $plugin_version; ?> | <?php esc_html_e('Made by', 'ns-basics'); ?> <a href="<?php echo constant('NS_SHOP_URL'); ?>" target="_blank">Nightshift Studio</a> | <a href="<?php echo constant('NS_SHOP_URL').'support-package/'; ?>" target="_blank"><?php esc_html_e('Get Support', 'ns-basics'); ?></a></div>
-                <?php if($display_actions != 'false') { ?>
-                    <div class="ns-settings-actions">
-                        <div class="loader"><img src="<?php echo esc_url(home_url('/')); ?>wp-admin/images/spinner.gif" alt="" /></div> 
-                        <?php submit_button(esc_html__('Save Changes', 'ns-basics'), 'admin-button', 'submit', false); ?>      
-                    </div>
-                <?php } ?>
-                <div class="clear"></div>
-            </div>
-
-        </form>
-    </div>
-<?php }
-
-/*-----------------------------------------------------------------------------------*/
-/*  OUTPUT SETTINGS PAGE
-/*-----------------------------------------------------------------------------------*/
-function ns_basics_settings_page() { 
-    $page_name = 'NightShift Basics';
-    $settings_group = 'ns-basics-settings-group';
-    $pages = array();
-    $pages[] = array('slug' => 'ns-basics-settings', 'name' => 'Settings');
-    $pages[] = array('slug' => 'ns-basics-resources', 'name' => 'Resources');
-    $display_actions = 'true';
-    $content = ns_basics_settings_page_content();
-    $content_class = 'ns-modules';
-    $content_nav = null;
-    $alerts = array();
-    $ajax = true;
-    $icon = plugins_url('/ns-basics/images/icon-settings.svg');
-    if(!current_theme_supports('ns-basics')) {
-        $current_theme = wp_get_theme();
-        $incompatible_theme_alert = ns_basics_admin_alert('info', esc_html__('The active theme ('.$current_theme->name.') does not support NightShift Basics.', 'ns-basics'), $action = '#', $action_text = esc_html__('Get a compatible theme', 'ns-basics'), true); 
-        $alerts[] = $incompatible_theme_alert; 
-    }
-
-    echo ns_basics_admin_page($page_name, $settings_group, $pages, $display_actions, $content, $content_class, $content_nav, $alerts, $ajax, $icon);
-}
-
-function ns_basics_settings_page_content() {
-    ob_start(); 
-    echo ns_basics_display_add_ons('basic');
-    $output = ob_get_clean();
-    return $output;
-}
-
-/*-----------------------------------------------------------------------------------*/
-/*  OUTPUT RESOURCES PAGE
-/*-----------------------------------------------------------------------------------*/
-function ns_basics_resources_page() { 
-    $page_name = 'NightShift Basics';
-    $settings_group = null;
-    $pages = array();
-    $pages[] = array('slug' => 'ns-basics-settings', 'name' => 'Settings');
-    $pages[] = array('slug' => 'ns-basics-resources', 'name' => 'Resources');
-    $display_actions = 'false';
-    $content = ns_basics_resources_page_content();
-    $content_class = null;
-    $content_nav = null;
-    $alerts = null;
-    $ajax = true;
-    $icon = plugins_url('/ns-basics/images/icon-settings.svg');
-    echo ns_basics_admin_page($page_name, $settings_group, $pages, $display_actions, $content, $content_class, $content_nav, $alerts, $ajax, $icon);
-}
-
-function ns_basics_resources_page_content() {
-    ob_start(); ?>
-    
-    <p><?php esc_html_e('NightShift Basics provides the framework essential for all themes and plugins built by NightShift Creative.', 'ns-basics'); ?></p>
-    <p><?php esc_html_e('For questions and/or support, you can email us directly at support@nightshiftcreative.co.', 'ns-basics'); ?></p>
-    <a href="<?php echo constant('NS_SHOP_URL').'support'; ?>" target="_blank" class="resource-item"><i class="fa fa-envelope icon"></i><?php esc_html_e('Contact Us', 'ns-basics'); ?></a>
-    <a href="<?php echo constant('NS_SHOP_URL').'docs/ns-basics/'; ?>" target="_blank" class="resource-item"><i class="fa fa-book icon"></i><?php esc_html_e('View Documentation', 'ns-basics'); ?></a>
-    <a href="<?php echo constant('NS_SHOP_URL').'themes/'; ?>" target="_blank" class="resource-item"><i class="fa fa-tint icon"></i><?php esc_html_e('Our Themes', 'ns-basics'); ?></a>
-    <a href="<?php echo constant('NS_SHOP_URL').'plugins/'; ?>" target="_blank" class="resource-item"><i class="fa fa-plug icon"></i><?php esc_html_e('Our Plugins', 'ns-basics'); ?></a>
-    <a href="#" target="_blank" class="resource-item"><i class="fa fa-share-alt icon"></i><?php esc_html_e('Follow Us', 'ns-basics'); ?></a>
-    <a href="#" target="_blank" class="resource-item"><i class="fa fa-pencil-alt icon"></i><?php esc_html_e('Our Blog', 'ns-basics'); ?></a>
-    <div class="clear"></div>
-
-    <?php $output = ob_get_clean();
-    return $output;
-}
-
-
-/*-----------------------------------------------------------------------------------*/
-/*  INCLUDES
-/*-----------------------------------------------------------------------------------*/
-/*--------------------------------------------*/
-/*  Global Functions */
-/*--------------------------------------------*/
-include( plugin_dir_path( __FILE__ ) . 'includes/global-functions.php');
-
-/*--------------------------------------------*/
-/*  Post Sharing */
-/*--------------------------------------------*/
-if(ns_basics_is_active('ns_basics_post_share')) { include( plugin_dir_path( __FILE__ ) . 'includes/post-sharing/post-sharing.php'); }
-
-/*--------------------------------------------*/
-/*  Post Likes */
-/*--------------------------------------------*/
-if(ns_basics_is_active('ns_basics_post_likes')) { include( plugin_dir_path( __FILE__ ) . 'includes/post-likes/post-likes.php'); }
-
-/*--------------------------------------------*/
-/* Page Settings */
-/*--------------------------------------------*/
-if(ns_basics_is_active('ns_basics_page_settings')) { include( plugin_dir_path( __FILE__ ) . 'includes/page-settings/page-settings.php'); }
-
-/*--------------------------------------------*/
-/*  Slides */
-/*--------------------------------------------*/
-if(ns_basics_is_active('ns_basics_slides')) { include( plugin_dir_path( __FILE__ ) . 'includes/slides/slides.php'); }
-
-/*--------------------------------------------*/
-/*  Basic Shortcodes */
-/*--------------------------------------------*/
-if(ns_basics_is_active('ns_basics_shortcodes')) { include( plugin_dir_path( __FILE__ ) . 'includes/basic-shortcodes/shortcodes.php'); }
-
-/*--------------------------------------------*/
-/*  Basic Widgets */
-/*--------------------------------------------*/
-if(ns_basics_is_active('ns_basics_widgets')) {
-    include('includes/basic-widgets/contact_info_widget.php');
-    include('includes//basic-widgets/social_links_widget.php');
-    include('includes/basic-widgets/list_posts_widget.php');
-    include('includes/basic-widgets/testimonials_widget.php');
-}
-
-/*--------------------------------------------*/
-/*  Members */
-/*--------------------------------------------*/
-include( plugin_dir_path( __FILE__ ) . 'includes/members/members.php');
-
-/*--------------------------------------------*/
-/*  Templates */
-/*--------------------------------------------*/
-include( plugin_dir_path( __FILE__ ) . 'includes/templates/templates.php');
+?>
