@@ -212,6 +212,7 @@ class NS_Basics_Admin {
                 		// IMAGE UPLOAD ?>
                 		<input type="text" name="<?php echo $field['name']; ?>" value="<?php echo $field['value']; ?>" />
                         <input class="ns_upload_image_button" type="button" value="<?php esc_html_e('Upload Image', 'ns-basics'); ?>" />
+                        <span class="button-secondary remove"><?php echo esc_html_e('Remove', 'ns-core'); ?></span>
 
                 	<?php } else if($field['type'] == 'switch') {
 
