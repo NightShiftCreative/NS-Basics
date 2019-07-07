@@ -79,34 +79,31 @@ jQuery(document).ready(function($) {
     });
 
     /** SELECTABLE ITEMS **/
-    $(".selectable-item").each(function( index ) {
-        if($(this).hasClass('active')) {
-            var childClass = $(this).find('input').val();
-            childClass = 'child-field-' + childClass;
-            $(".admin-module.child-field").each(function( index ) {
-                if($(this).hasClass(childClass)) {
-                    $(this).show();
-                }
-            });
-        }
-    });
-
     $('.selectable-item').click(function() {
         $( ".selectable-item" ).each(function( index ) {
           $(this).removeClass('active');
         });
         $(this).addClass('active');
-
-        var childClass = $(this).find('input').val();
-        childClass = 'child-field-' + childClass;
-        $(".admin-module.child-field").each(function( index ) {
-            if($(this).hasClass(childClass)) {
-                $(this).show();
-            } else {
-                $(this).hide();
-            }
-        });
     });
+
+    /** CHILD FIELDS **/
+    /*$( ".admin-module" ).each(function( index ) {
+        var children = $(this).data('children');
+        if(children != '' && children != null) {
+            var childrenArray = children.split(', ');
+            childrenArray = childrenArray.filter(function (el) { return el; }); 
+            $( ".admin-module.child-field" ).each(function( index ) {
+                var fieldName = $(this).find('input').attr('name');
+                if(jQuery.inArray(fieldName, childrenArray) !== -1) {
+                    $(this).show();
+                } else {
+                    $(this).hide();
+                }
+            });
+        }
+        
+    });*/
+
 
     /***************************************************************************/
     //ACTIVATE CHOSEN 

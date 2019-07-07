@@ -101,7 +101,6 @@ class NS_Basics_Page_Settings {
 				'name' => 'ns_basics_banner_title',
 				'type' => 'text',
 				'order' => 4,
-				'class' => 'child-field child-field-image_banner',
 			),
 			'banner_text' => array(
 				'group' => 'banner',
@@ -109,7 +108,6 @@ class NS_Basics_Page_Settings {
 				'name' => 'ns_basics_banner_text',
 				'type' => 'text',
 				'order' => 5,
-				'class' => 'child-field child-field-image_banner',
 			),
 			'banner_class' => array(
 				'group' => 'banner',
@@ -117,7 +115,6 @@ class NS_Basics_Page_Settings {
 				'name' => 'ns_basics_banner_class',
 				'type' => 'text',
 				'order' => 6,
-				'class' => 'child-field child-field-image_banner',
 			),
 			'banner_custom_settings' => array(
 				'group' => 'banner',
@@ -126,7 +123,6 @@ class NS_Basics_Page_Settings {
 				'description' => esc_html__('The banner global settings are configured in the theme options (Appearance > Theme Options)', 'ns-basics'),
 				'type' => 'switch',
 				'order' => 7,
-				'class' => 'child-field child-field-image_banner',
 			),
 			'banner_bg_img' => array(
 				'group' => 'banner',
@@ -135,7 +131,7 @@ class NS_Basics_Page_Settings {
 				'type' => 'image_upload',
 				'order' => 8,
 				'value' => $global_banner_settings['bg'],
-				'class' => 'child-field child-field-image_banner',
+				'class' => 'ns_basics_banner_custom_settings',
 			),
 			'banner_slider_layout' => array(
 				'group' => 'banner',
@@ -144,7 +140,6 @@ class NS_Basics_Page_Settings {
 				'type' => 'select',
 				'options' => array('Minimal' => 'minimal', 'Detailed' => 'detailed'),
 				'order' => 9,
-				'class' => 'child-field child-field-slides',
 			),
 			'page_layout' => array(
 				'group' => 'page_layout',

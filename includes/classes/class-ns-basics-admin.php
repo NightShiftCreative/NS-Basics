@@ -157,9 +157,18 @@ class NS_Basics_Admin {
 				'type' => 'text',
 				'options' => null,
 			);
-		} ?>
+		} 
 
-		<table class="admin-module <?php if(!empty($field['class'])) { echo $field['class']; } ?>">
+		//generate field class
+		$field_class = '';
+		if(!empty($field['class'])) { $field_class .= $field['class'].' '; }
+		if(!empty($field['parent_name'])) { 
+			$field_class .= 'child-field ';
+			$field_class .= 'child-field-'.$field['parent_name'].' ';
+		}
+		?>
+
+		<table class="admin-module <?php echo $field_class; ?>">
             <tr>
 
                 <td class="admin-module-label">
