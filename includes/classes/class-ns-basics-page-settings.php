@@ -83,10 +83,18 @@ class NS_Basics_Page_Settings {
 					esc_html__('Default Banner', 'ns-basics') => array(
 						'value' => 'image_banner', 
 						'icon' => NS_BASICS_PLUGIN_DIR.'/images/default-banner-icon.png',
+						'children' => array(
+							'ns_basics_banner_title', 
+							'ns_basics_banner_text', 
+							'ns_basics_banner_class', 
+							'ns_basics_banner_custom_settings', 
+							'ns_basics_banner_bg_img'
+						),
 					), 
 					esc_html__('Custom Slider', 'ns-basics') => array(
 						'value' => 'slides', 
 						'icon' => NS_BASICS_PLUGIN_DIR.'/images/slider-icon.png',
+						'children' => array('ns_basics_banner_slider_layout'),
 					),
 					esc_html__('Shortcode', 'ns-basics') => array(
 						'value' => 'shortcode', 
@@ -101,6 +109,7 @@ class NS_Basics_Page_Settings {
 				'name' => 'ns_basics_banner_title',
 				'type' => 'text',
 				'order' => 4,
+				'class' => 'child-field',
 			),
 			'banner_text' => array(
 				'group' => 'banner',
@@ -108,6 +117,7 @@ class NS_Basics_Page_Settings {
 				'name' => 'ns_basics_banner_text',
 				'type' => 'text',
 				'order' => 5,
+				'class' => 'child-field',
 			),
 			'banner_class' => array(
 				'group' => 'banner',
@@ -115,6 +125,7 @@ class NS_Basics_Page_Settings {
 				'name' => 'ns_basics_banner_class',
 				'type' => 'text',
 				'order' => 6,
+				'class' => 'child-field',
 			),
 			'banner_custom_settings' => array(
 				'group' => 'banner',
@@ -123,6 +134,7 @@ class NS_Basics_Page_Settings {
 				'description' => esc_html__('The banner global settings are configured in the theme options (Appearance > Theme Options)', 'ns-basics'),
 				'type' => 'switch',
 				'order' => 7,
+				'class' => 'child-field',
 			),
 			'banner_bg_img' => array(
 				'group' => 'banner',
@@ -131,7 +143,7 @@ class NS_Basics_Page_Settings {
 				'type' => 'image_upload',
 				'order' => 8,
 				'value' => $global_banner_settings['bg'],
-				'class' => 'ns_basics_banner_custom_settings',
+				'class' => 'child-field',
 			),
 			'banner_slider_layout' => array(
 				'group' => 'banner',
@@ -140,6 +152,7 @@ class NS_Basics_Page_Settings {
 				'type' => 'select',
 				'options' => array('Minimal' => 'minimal', 'Detailed' => 'detailed'),
 				'order' => 9,
+				'class' => 'child-field',
 			),
 			'page_layout' => array(
 				'group' => 'page_layout',

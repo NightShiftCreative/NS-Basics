@@ -161,11 +161,8 @@ class NS_Basics_Admin {
 
 		//generate field class
 		$field_class = '';
+		$field_class .= 'admin-module-'.$field['name'].' ';
 		if(!empty($field['class'])) { $field_class .= $field['class'].' '; }
-		if(!empty($field['parent_name'])) { 
-			$field_class .= 'child-field ';
-			$field_class .= 'child-field-'.$field['parent_name'].' ';
-		}
 		?>
 
 		<table class="admin-module <?php echo $field_class; ?>">
@@ -203,8 +200,17 @@ class NS_Basics_Admin {
                 		
                 		// RADIO IMAGE ?>
                 		<?php if(!empty($field['options'])) { ?>
-	                		<?php foreach($field['options'] as $option_name=>$option) { ?>
-	                			<label class="selectable-item <?php if($field['value'] == $option['value']) { echo 'active'; } ?>">
+	                		<?php foreach($field['options'] as $option_name=>$option) { 
+	                			
+	                			//generate child data
+								$option_child_data = '';
+								if(!empty($option['children'])) {
+									$option_child_data .= 'data-children="';
+									foreach($option['children'] as $child) { $option_child_data .= $child.', '; }
+									$option_child_data .= '"';
+								} ?>
+
+	                			<label class="selectable-item <?php if($field['value'] == $option['value']) { echo 'active'; } ?>" <?php echo $option_child_data; ?>>
 	                				<?php if(!empty($option['icon'])) { ?><div><img src="<?php echo $option['icon']; ?>" alt="" /></div><?php } ?>
 	                				<input type="radio" id="" name="<?php echo $field['name']; ?>" value="<?php echo $option['value']; ?>" <?php checked($option['value'], $field['value'], true) ?> /><?php echo $option_name; ?><br/>
 	                			</label>

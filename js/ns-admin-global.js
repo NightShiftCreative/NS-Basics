@@ -86,29 +86,29 @@ jQuery(document).ready(function($) {
         $(this).addClass('active');
     });
 
-    /** CHILD FIELDS **/
-    /*$( ".admin-module" ).each(function( index ) {
+    /** SELECTABLE ITEM - CHILD FIELDS **/
+    $( ".selectable-item" ).each(function( index ) {
+        if($(this).hasClass('active')) {
+            var children = $(this).data('children');
+            showChildFields(children);
+        }
+    });
+
+    $( ".admin-module .selectable-item" ).click(function() {
+        $( ".admin-module.child-field").hide();
         var children = $(this).data('children');
-        if(children != '' && children != null) {
-            var childrenArray = children.split(', ');
-            childrenArray = childrenArray.filter(function (el) { return el; }); 
-            $( ".admin-module.child-field" ).each(function( index ) {
-                var fieldName = $(this).find('input').attr('name');
-                if(jQuery.inArray(fieldName, childrenArray) !== -1) {
-                    $(this).show();
-                } else {
-                    $(this).hide();
-                }
+        showChildFields(children);
+    });
+
+    function showChildFields(children) {
+        if(children != null) {
+            children = children.split(', ');
+            children = children.filter(function(el) { return el; });
+            children.forEach(function(item) {
+                $( ".admin-module.admin-module-"+item).show();
             });
         }
-        
-    });*/
-
-
-    /***************************************************************************/
-    //ACTIVATE CHOSEN 
-    /***************************************************************************/
-    $(".admin-module select").chosen({disable_search_threshold: 5});
+    }
 
     /********************************************/
     /* TOGGLE SWITCH */
@@ -127,6 +127,11 @@ jQuery(document).ready(function($) {
             if(settingsClass) { $('.'+settingsClass).slideDown(); }
         }
     }); 
+
+    /***************************************************************************/
+    //ACTIVATE CHOSEN 
+    /***************************************************************************/
+    $(".admin-module select").chosen({disable_search_threshold: 5});
 
     /*****************************************************/
     /* Check for hashtag in url and display setting tab  */
