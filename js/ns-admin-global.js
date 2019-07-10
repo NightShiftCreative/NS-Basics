@@ -78,36 +78,21 @@ jQuery(document).ready(function($) {
         $(".tab-loader").hide();
     });
 
-    /** SELECTABLE ITEMS **/
+    /********************************************/
+    /* SELECTABLE ITEMS */
+    /********************************************/
     $('.selectable-item').click(function() {
-        $( ".selectable-item" ).each(function( index ) {
-          $(this).removeClass('active');
-        });
+        var parent = $(this).closest('.admin-module');
+        parent.find(".selectable-item").removeClass('active');
         $(this).addClass('active');
+        showSelectableItemFields($(this));
     });
 
-    /** SELECTABLE ITEM - CHILD FIELDS **/
-    $( ".selectable-item" ).each(function( index ) {
-        if($(this).hasClass('active')) {
-            var children = $(this).data('children');
-            showChildFields(children);
-        }
-    });
-
-    $( ".admin-module .selectable-item" ).click(function() {
-        $( ".admin-module.child-field").hide();
-        var children = $(this).data('children');
-        showChildFields(children);
-    });
-
-    function showChildFields(children) {
-        if(children != null) {
-            children = children.split(', ');
-            children = children.filter(function(el) { return el; });
-            children.forEach(function(item) {
-                $( ".admin-module.admin-module-"+item).show();
-            });
-        }
+    function showSelectableItemFields(thisObj) {
+        var input  = thisObj.find('input').val();
+        var parent = thisObj.closest('.admin-module');
+        parent.find(".selectable-item-settings").hide();
+        parent.find("#selectable-item-options-"+input).show();
     }
 
     /********************************************/
@@ -117,16 +102,25 @@ jQuery(document).ready(function($) {
         var settingsClass = $(this).data('settings');
         if($(this).parent().find('.toggle-switch-checkbox').is(':checked')) {
             $(this).parent().attr('title', 'Disabled');
+            $(this).parent().removeClass('active');
             $(this).find('span').text('Off');
             $(this).find('span').removeClass('on');
-            if(settingsClass) { $('.'+settingsClass).slideUp(); }
+            if(settingsClass) { $('#toggle-switch-settings-'+settingsClass).slideUp(); }
         } else {
             $(this).parent().attr('title', 'Active');
+            $(this).parent().addClass('active');
             $(this).find('span').text('On');
             $(this).find('span').addClass('on');
-            if(settingsClass) { $('.'+settingsClass).slideDown(); }
+            if(settingsClass) { $('#toggle-switch-settings-'+settingsClass).slideDown(); }
         }
     }); 
+ 
+
+    /***************************************************************************/
+    /* CHILD FIELDS */
+    /***************************************************************************/
+    
+
 
     /***************************************************************************/
     //ACTIVATE CHOSEN 

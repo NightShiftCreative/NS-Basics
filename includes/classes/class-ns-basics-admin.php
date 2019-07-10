@@ -165,7 +165,7 @@ class NS_Basics_Admin {
 		if(!empty($field['class'])) { $field_class .= $field['class'].' '; }
 		?>
 
-		<table class="admin-module <?php echo $field_class; ?>">
+		<table class="admin-module <?php echo $field_class; ?>" data-type="<?php echo $field['type']; ?>">
             <tr>
 
                 <td class="admin-module-label">
@@ -200,17 +200,8 @@ class NS_Basics_Admin {
                 		
                 		// RADIO IMAGE ?>
                 		<?php if(!empty($field['options'])) { ?>
-	                		<?php foreach($field['options'] as $option_name=>$option) { 
-	                			
-	                			//generate child data
-								$option_child_data = '';
-								if(!empty($option['children'])) {
-									$option_child_data .= 'data-children="';
-									foreach($option['children'] as $child) { $option_child_data .= $child.', '; }
-									$option_child_data .= '"';
-								} ?>
-
-	                			<label class="selectable-item <?php if($field['value'] == $option['value']) { echo 'active'; } ?>" <?php echo $option_child_data; ?>>
+	                		<?php foreach($field['options'] as $option_name=>$option) { ?>
+	                			<label class="selectable-item <?php if($field['value'] == $option['value']) { echo 'active'; } ?>">
 	                				<?php if(!empty($option['icon'])) { ?><div><img src="<?php echo $option['icon']; ?>" alt="" /></div><?php } ?>
 	                				<input type="radio" id="" name="<?php echo $field['name']; ?>" value="<?php echo $option['value']; ?>" <?php checked($option['value'], $field['value'], true) ?> /><?php echo $option_name; ?><br/>
 	                			</label>
@@ -231,10 +222,10 @@ class NS_Basics_Admin {
 
                 	<?php } else if($field['type'] == 'switch') {
 
-                		// SWITCH ?>
-                		<div class="toggle-switch" title="<?php if($field['value'] == 'true') { esc_html_e('Active', 'ns-basics'); } else { esc_html_e('Disabled', 'ns-basics'); } ?>">
+                		// SWITCH  ?>
+                		<div class="toggle-switch <?php if($field['value'] == 'true') { echo 'active'; } ?>" title="<?php if($field['value'] == 'true') { esc_html_e('Active', 'ns-basics'); } else { esc_html_e('Disabled', 'ns-basics'); } ?>">
                             <input type="checkbox" name="<?php echo $field['name']; ?>" value="true" class="toggle-switch-checkbox" id="<?php echo $field['name']; ?>" <?php checked('true', $field['value'], true) ?>>
-                            <label class="toggle-switch-label" data-settings="<?php echo $field['name']; ?>" for="<?php echo $field['name']; ?>"><?php if($field['value'] == 'true') { echo '<span class="on">'.esc_html__('On', 'ns-basics').'</span>'; } else { echo '<span>'.esc_html__('Off', 'ns-basics').'</span>'; } ?></label>
+                            <label class="toggle-switch-label" <?php if(!empty($field['children'])) { echo 'data-settings="'.$field['name'].'"'; } ?> for="<?php echo $field['name']; ?>"><?php if($field['value'] == 'true') { echo '<span class="on">'.esc_html__('On', 'ns-basics').'</span>'; } else { echo '<span>'.esc_html__('Off', 'ns-basics').'</span>'; } ?></label>
                         </div>
                 		
                 	<?php } else if($field['type'] == 'number') {
@@ -252,8 +243,41 @@ class NS_Basics_Admin {
                 		<input type="text" class="color-field" data-default-color="<?php echo esc_attr($field['value']); ?>" name="<?php echo $field['name']; ?>" <?php if(!empty($field['placeholder'])) { echo 'placeholder="'.$field['placeholder'].'"'; } ?> value="<?php echo esc_attr($field['value']); ?>" />
 
                 	<?php } ?>
+
+                	<?php if(!empty($field['postfix'])) { echo $field['postfix']; } ?>
+
                 </td>
             </tr>
+
+            <?php
+            // build selectable child fields
+            if($field['type'] == 'radio_image') {
+	            if(!empty($field['options'])) {
+		            foreach($field['options'] as $option_name=>$option) { ?>
+		                <tr id="selectable-item-options-<?php echo $option['value']; ?>" class="selectable-item-settings <?php if($field['value'] == $option['value']) { echo 'show-table'; } else { echo 'hide-soft'; } ?>">
+		                <?php echo '<td colspan="2">';
+		                if(!empty($field['children'])) {
+		                	foreach($field['children'] as $child_field) {
+		                		if($child_field['parent_val'] == $option['value']) {
+		                			$this->build_admin_field($child_field); 
+			                	}
+		                	}
+		                }
+		                echo '</td></tr>';
+		            }
+	            } 
+	        }
+
+	        // build switch child fields
+	        if($field['type'] == 'switch') {
+	        	if(!empty($field['children'])) { ?>
+	        		<tr id="toggle-switch-settings-<?php echo $field['name']; ?>" class="toggle-switch-settings <?php if($field['value'] == 'true') { echo 'show-table'; } else { echo 'hide-soft'; } ?>">
+	        		<td colspan="2">
+	        		<?php foreach($field['children'] as $child_field) { $this->build_admin_field($child_field); }
+		            echo '</td></tr>';
+	        	}
+	        } ?>
+
         </table>
 
 	<?php }
@@ -368,6 +392,19 @@ class NS_Basics_Admin {
 		        	update_post_meta( $post_id, $field['name'], wp_kses( $_POST[$field['name']], $allowed ) );
 		        }
 	        }
+
+	        //save child fields
+	        if(!empty($field['children'])) {
+	        	foreach($field['children'] as $child_field) {
+	        		update_post_meta( $post_id, $child_field['name'], wp_kses( $_POST[$child_field['name']], $allowed ) );
+	        		if(!empty($child_field['children'])) {
+	        			foreach($child_field['children'] as $nested_child_field) {
+	        				update_post_meta( $post_id, $nested_child_field['name'], wp_kses( $_POST[$nested_child_field['name']], $allowed ) );
+	        			}
+	        		}
+	        	}
+	        }
+
         }
     }
 

@@ -10,6 +10,7 @@
 .hide { display:none !important; }
 .hide-soft { display:none; }
 .show { display:block; }
+.show-table { display:table-row; }
 
 .right-bump { margin-right:25px; }
 .left-bump { margin-left:25px; }
@@ -35,10 +36,10 @@
 }
 .admin-module-bg h3 { padding-top:0; margin-top:0; }
 
+.child-fields { display:none; }
+
 .admin-module.two-col .admin-module { width:48%; float:left; border:none; margin:0; padding:0; }
 .admin-module.two-col .admin-module:first-child { margin-right:2%; }
-
-.admin-module.child-field { display:none; }
 
 .two-col-list {
     -moz-column-count: 2;

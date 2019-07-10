@@ -83,76 +83,104 @@ class NS_Basics_Page_Settings {
 					esc_html__('Default Banner', 'ns-basics') => array(
 						'value' => 'image_banner', 
 						'icon' => NS_BASICS_PLUGIN_DIR.'/images/default-banner-icon.png',
-						'children' => array(
-							'ns_basics_banner_title', 
-							'ns_basics_banner_text', 
-							'ns_basics_banner_class', 
-							'ns_basics_banner_custom_settings', 
-							'ns_basics_banner_bg_img'
-						),
 					), 
 					esc_html__('Custom Slider', 'ns-basics') => array(
 						'value' => 'slides', 
 						'icon' => NS_BASICS_PLUGIN_DIR.'/images/slider-icon.png',
-						'children' => array('ns_basics_banner_slider_layout'),
 					),
 					esc_html__('Shortcode', 'ns-basics') => array(
 						'value' => 'shortcode', 
-						'icon' => NS_BASICS_PLUGIN_DIR.'/images/slider-revolution-icon.png'
+						'icon' => NS_BASICS_PLUGIN_DIR.'/images/slider-revolution-icon.png',
 					),
 				),
 				'order' => 3,
-			),
-			'banner_title' => array(
-				'group' => 'banner',
-				'title' => esc_html__('Banner Title', 'ns-basics'),
-				'name' => 'ns_basics_banner_title',
-				'type' => 'text',
-				'order' => 4,
-				'class' => 'child-field',
-			),
-			'banner_text' => array(
-				'group' => 'banner',
-				'title' => esc_html__('Banner Text', 'ns-basics'),
-				'name' => 'ns_basics_banner_text',
-				'type' => 'text',
-				'order' => 5,
-				'class' => 'child-field',
-			),
-			'banner_class' => array(
-				'group' => 'banner',
-				'title' => esc_html__('Banner Class', 'ns-basics'),
-				'name' => 'ns_basics_banner_class',
-				'type' => 'text',
-				'order' => 6,
-				'class' => 'child-field',
-			),
-			'banner_custom_settings' => array(
-				'group' => 'banner',
-				'title' => esc_html__('Use Custom Banner Settings', 'ns-basics'),
-				'name' => 'ns_basics_banner_custom_settings',
-				'description' => esc_html__('The banner global settings are configured in the theme options (Appearance > Theme Options)', 'ns-basics'),
-				'type' => 'switch',
-				'order' => 7,
-				'class' => 'child-field',
-			),
-			'banner_bg_img' => array(
-				'group' => 'banner',
-				'title' => esc_html__('Banner Background Image', 'ns-basics'),
-				'name' => 'ns_basics_banner_bg_img',
-				'type' => 'image_upload',
-				'order' => 8,
-				'value' => $global_banner_settings['bg'],
-				'class' => 'child-field',
-			),
-			'banner_slider_layout' => array(
-				'group' => 'banner',
-				'title' => esc_html__('Slider Layout', 'ns-basics'),
-				'name' => 'ns_basics_banner_slider_layout',
-				'type' => 'select',
-				'options' => array('Minimal' => 'minimal', 'Detailed' => 'detailed'),
-				'order' => 9,
-				'class' => 'child-field',
+				'children' => array(
+					'banner_title' => array(
+						'title' => esc_html__('Banner Title', 'ns-basics'),
+						'name' => 'ns_basics_banner_title',
+						'type' => 'text',
+						'order' => 4,
+						'parent_val' => 'image_banner',
+					),
+					'banner_text' => array(
+						'title' => esc_html__('Banner Text', 'ns-basics'),
+						'name' => 'ns_basics_banner_text',
+						'type' => 'text',
+						'order' => 5,
+						'parent_val' => 'image_banner',
+					),
+					'banner_class' => array(
+						'title' => esc_html__('Banner Class', 'ns-basics'),
+						'name' => 'ns_basics_banner_class',
+						'type' => 'text',
+						'order' => 6,
+						'parent_val' => 'image_banner',
+					),
+					'banner_custom_settings' => array(
+						'title' => esc_html__('Use Custom Banner Settings', 'ns-basics'),
+						'name' => 'ns_basics_banner_custom_settings',
+						'description' => esc_html__('The banner global settings are configured in the theme options (Appearance > Theme Options)', 'ns-basics'),
+						'type' => 'switch',
+						'order' => 7,
+						'parent_val' => 'image_banner',
+						'children' => array(
+							'banner_bg_img' => array(
+								'title' => esc_html__('Banner Background Image', 'ns-basics'),
+								'name' => 'ns_basics_banner_bg_img',
+								'type' => 'image_upload',
+								'order' => 8,
+								'value' => $global_banner_settings['bg'],
+							),
+							'banner_bg_display' => array(
+								'title' => esc_html__('Banner Background Display', 'ns-basics'),
+								'name' => 'ns_basics_banner_bg_display',
+								'type' => 'select',
+								'order' => 9,
+								'value' => $global_banner_settings['bg_display'],
+								'options' => array('Cover' => 'cover', 'Fixed' => 'fixed', 'Tiled' => 'repeat'),
+							),
+							'banner_text_align' => array(
+								'title' => esc_html__('Text Alignment', 'ns-basics'),
+								'name' => 'ns_basics_banner_text_align',
+								'type' => 'select',
+								'order' => 10,
+								'value' => $global_banner_settings['title_align'],
+								'options' => array('Left' => 'left', 'Center' => 'center', 'Right' => 'right'),
+							),
+							'banner_padding_top' => array(
+								'title' => esc_html__('Banner Padding Top', 'ns-basics'),
+								'name' => 'ns_basics_banner_padding_top',
+								'type' => 'number',
+								'order' => 11,
+								'value' => $global_banner_settings['padding_top'],
+								'postfix' => 'Pixels',
+							),
+							'banner_padding_bottom' => array(
+								'title' => esc_html__('Banner Padding Bottom', 'ns-basics'),
+								'name' => 'ns_basics_banner_padding_bottom',
+								'type' => 'number',
+								'order' => 12,
+								'value' => $global_banner_settings['padding_bottom'],
+								'postfix' => 'Pixels',
+							),
+							'banner_overlay' => array(
+								'title' => esc_html__('Display Banner Overlay', 'ns-basics'),
+								'name' => 'ns_basics_banner_overlay',
+								'type' => 'switch',
+								'order' => 13,
+								'value' => $global_banner_settings['overlay'],
+							),
+						),
+					),
+					'banner_slider_layout' => array(
+						'title' => esc_html__('Slider Layout', 'ns-basics'),
+						'name' => 'ns_basics_banner_slider_layout',
+						'type' => 'select',
+						'options' => array('Minimal' => 'minimal', 'Detailed' => 'detailed'),
+						'order' => 10,
+						'parent_val' => 'slides',
+					),
+				),
 			),
 			'page_layout' => array(
 				'group' => 'page_layout',
@@ -241,7 +269,7 @@ class NS_Basics_Page_Settings {
 		);
 
 		$page_settings_init = apply_filters( 'ns_basics_page_settings_init_filter', $page_settings_init);
-		usort($page_settings_init, 'ns_basics_sort_by_order');
+		//usort($page_settings_init, 'ns_basics_sort_by_order');
 
 		// Return default page settings
 		if($return_defaults == true) {
@@ -255,6 +283,18 @@ class NS_Basics_Page_Settings {
 		    	$values = get_post_custom($post_id);
 		    	$page_settings[$key] = $field;
 		    	$page_settings[$key]['value'] = isset( $values[$field['name']] ) ? esc_attr( $values[$field['name']][0] ) : $field['value'];
+		    	
+		    	//get child values
+		    	if(!empty($field['children'])) {
+		    		foreach($field['children'] as $child_key=>$child_field) {
+		    			$page_settings[$key]['children'][$child_key]['value'] = isset( $values[$child_field['name']] ) ? esc_attr( $values[$child_field['name']][0] ) : $child_field['value'];
+		    			if(!empty($child_field['children'])) {
+		    				foreach($child_field['children'] as $nested_child_key=>$nested_child_field) {
+		    					$page_settings[$key]['children'][$child_key]['children'][$nested_child_key]['value'] = isset( $values[$nested_child_field['name']] ) ? esc_attr( $values[$nested_child_field['name']][0] ) : $nested_child_field['value'];
+		    				}
+		    			}
+		    		}
+		    	}
 		    }
 		    $page_settings = apply_filters( 'ns_basics_page_settings_filter', $page_settings);
 			return $page_settings;
