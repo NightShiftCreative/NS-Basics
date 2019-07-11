@@ -185,6 +185,20 @@ class NS_Basics_Page_Settings {
 								'order' => 15,
 								'value' => $global_banner_settings['overlay_color'],
 							),
+							'banner_display_breadcrumbs' => array(
+								'title' => esc_html__('Display Breadcrumbs', 'ns-basics'),
+								'name' => 'ns_basics_banner_breadcrumbs',
+								'type' => 'switch',
+								'order' => 16,
+								'value' => $global_banner_settings['display_breadcrumb'],
+							),
+							'banner_display_search' => array(
+								'title' => esc_html__('Display Search Form', 'ns-basics'),
+								'name' => 'ns_basics_banner_search',
+								'type' => 'switch',
+								'order' => 17,
+								'value' => $global_banner_settings['display_search'],
+							),
 						),
 					),
 					'banner_slider_layout' => array(
