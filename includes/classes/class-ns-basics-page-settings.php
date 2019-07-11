@@ -170,6 +170,21 @@ class NS_Basics_Page_Settings {
 								'order' => 13,
 								'value' => $global_banner_settings['overlay'],
 							),
+							'banner_overlay_opacity' => array(
+								'title' => esc_html__('Banner Overlay Opacity', 'ns-basics'),
+								'name' => 'ns_basics_banner_overlay_opacity',
+								'description' => esc_html__('Choose an opacity ranging from 0 to 1 (0 is fully transparent).', 'ns-basics'),
+								'type' => 'number',
+								'order' => 14,
+								'value' => $global_banner_settings['overlay_opacity'],
+							),
+							'banner_overlay_color' => array(
+								'title' => esc_html__('Banner Overlay Color', 'ns-basics'),
+								'name' => 'ns_basics_banner_overlay_color',
+								'type' => 'color',
+								'order' => 15,
+								'value' => $global_banner_settings['overlay_color'],
+							),
 						),
 					),
 					'banner_slider_layout' => array(
