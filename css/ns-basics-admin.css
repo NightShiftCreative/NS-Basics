@@ -293,7 +293,6 @@ input[type=checkbox].toggle-switch-checkbox { display: none; }
     border-radius:3px;
     padding:20px 10px;
     width:21%;
-    min-height:115px;
     display:inline-block;
     text-align:center;
     margin-right:1%;
