@@ -84,8 +84,7 @@ class NS_Basics {
 		if (is_admin()) {
 
 			//include scripts
-        	wp_enqueue_script('ns-admin-global-js', plugins_url('/js/ns-admin-global.js', __FILE__), array('jquery','media-upload','thickbox', 'wp-color-picker'), '', true);
-        	wp_enqueue_script('ns-basics-admin-js', plugins_url('/js/ns-basics-admin.js', __FILE__), array('jquery','media-upload','thickbox'), '', true);
+        	wp_enqueue_script('ns-basics-admin-js', plugins_url('/js/ns-basics-admin.js', __FILE__), array('jquery','media-upload','thickbox', 'wp-color-picker'), '', true);
         	wp_enqueue_script('featherlight', plugins_url('/assets/featherlight/featherlight.js', __FILE__), array('jquery'), '', true);
         	wp_enqueue_script('chosen', plugins_url('/assets/chosen_v1.8.7/chosen.jquery.min.js', __FILE__), array('jquery'), '', true);
 
