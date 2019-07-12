@@ -875,4 +875,16 @@ input[type=checkbox].toggle-switch-checkbox { display: none; }
 
     .admin-module-label { margin-bottom:10px; }
     .admin-module-label, .admin-module-field { width:100%; display:block; padding-right:0; }
+
+    .admin-module input,
+    .admin-module select,
+    .admin-module textarea,
+    .admin-module .chosen-container,
+    .admin-module .chosen-container .chosen-single { width:100%; }
+
+    .selectable-item,
+    .admin-module-header-style .selectable-item { width:100%; display:block; }
+
+    .ns_upload_image_button,
+    .button-secondary.remove { margin-top:5px; }
 }
