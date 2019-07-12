@@ -22,16 +22,31 @@ class NS_Basics_Page_Settings {
 	 */
 	public function load_global_settings() {
 		$global_banner_settings = array();
-		$global_banner_settings['bg'] = esc_attr(get_option('ns_core_page_banner_bg'));
-        $global_banner_settings['bg_display'] = esc_attr(get_option('ns_core_page_banner_bg_display'));
-        $global_banner_settings['title_align'] = esc_attr(get_option('ns_core_page_banner_title_align'));
-        $global_banner_settings['padding_top'] = esc_attr(get_option('ns_core_page_banner_padding_top'));
-        $global_banner_settings['padding_bottom'] = esc_attr(get_option('ns_core_page_banner_padding_bottom'));
-        $global_banner_settings['overlay'] = esc_attr(get_option('ns_core_page_banner_overlay_display'));
-        $global_banner_settings['overlay_opacity'] = esc_attr(get_option('ns_core_page_banner_overlay_opacity', '0.25'));
-        $global_banner_settings['overlay_color'] = esc_attr(get_option('ns_core_page_banner_overlay_color', '#000000'));
-        $global_banner_settings['display_breadcrumb'] = esc_attr(get_option('ns_core_page_banner_display_breadcrumb'));
-        $global_banner_settings['display_search'] = esc_attr(get_option('ns_core_page_banner_display_search'));
+
+		if(function_exists('ns_core_load_theme_options')) {
+			$theme_options = ns_core_load_theme_options();
+			$global_banner_settings['bg'] = $theme_options['ns_core_page_banner_bg'];
+			$global_banner_settings['bg_display'] = $theme_options['ns_core_page_banner_bg_display'];
+			$global_banner_settings['title_align'] = $theme_options['ns_core_page_banner_title_align'];
+			$global_banner_settings['padding_top'] = $theme_options['ns_core_page_banner_padding_top'];
+	        $global_banner_settings['padding_bottom'] = $theme_options['ns_core_page_banner_padding_bottom'];
+	        $global_banner_settings['overlay'] = $theme_options['ns_core_page_banner_overlay_display'];
+	        $global_banner_settings['overlay_opacity'] = $theme_options['ns_core_page_banner_overlay_opacity'];
+	        $global_banner_settings['overlay_color'] = $theme_options['ns_core_page_banner_overlay_color'];
+	        $global_banner_settings['display_breadcrumb'] = $theme_options['ns_core_page_banner_display_breadcrumb'];
+	        $global_banner_settings['display_search'] = $theme_options['ns_core_page_banner_display_search'];
+		} else {
+			$global_banner_settings['bg'] = esc_attr(get_option('ns_core_page_banner_bg'));
+	        $global_banner_settings['bg_display'] = esc_attr(get_option('ns_core_page_banner_bg_display'));
+	        $global_banner_settings['title_align'] = esc_attr(get_option('ns_core_page_banner_title_align'));
+	        $global_banner_settings['padding_top'] = esc_attr(get_option('ns_core_page_banner_padding_top'));
+	        $global_banner_settings['padding_bottom'] = esc_attr(get_option('ns_core_page_banner_padding_bottom'));
+	        $global_banner_settings['overlay'] = esc_attr(get_option('ns_core_page_banner_overlay_display'));
+	        $global_banner_settings['overlay_opacity'] = esc_attr(get_option('ns_core_page_banner_overlay_opacity', '0.25'));
+	        $global_banner_settings['overlay_color'] = esc_attr(get_option('ns_core_page_banner_overlay_color', '#000000'));
+	        $global_banner_settings['display_breadcrumb'] = esc_attr(get_option('ns_core_page_banner_display_breadcrumb'));
+	        $global_banner_settings['display_search'] = esc_attr(get_option('ns_core_page_banner_display_search'));
+		}
 
 		return $global_banner_settings;
 	}
