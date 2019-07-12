@@ -67,6 +67,16 @@ class NS_Basics_Page_Settings {
 			$sidebar_options[$sidebar['name']] = $sidebar['id'];
 		}
 
+		// Get slider categories
+		$slide_cats_array = array();
+		$slide_cats_array[__( 'All Categories', 'ns-basics' )] = '';
+		$slide_cats = get_terms('slide_category', array( 'hide_empty' => false, 'parent' => 0 )); 
+		if (!empty( $slide_cats ) && !is_wp_error($slide_cats)) {
+			foreach($slide_cats as $slide_cat) {
+				$slide_cats_array[esc_attr($slide_cat->name)] = esc_attr($slide_cat->slug);
+			}
+		}
+
 		// Set all fields
 		$page_settings_init = array(
 			'banner_header_style' => array(
@@ -223,6 +233,30 @@ class NS_Basics_Page_Settings {
 						'options' => array('Minimal' => 'minimal', 'Detailed' => 'detailed'),
 						'order' => 10,
 						'parent_val' => 'slides',
+					),
+					'banner_slider_cat' => array(
+						'title' => esc_html__('Display Slides from Category', 'ns-basics'),
+						'name' => 'ns_basics_banner_slider_cat',
+						'type' => 'select',
+						'options' => $slide_cats_array,
+						'order' => 11,
+						'parent_val' => 'slides',
+					),
+					'banner_slider_num' => array(
+						'title' => esc_html__('Number of Slides', 'ns-basics'),
+						'name' => 'ns_basics_banner_slider_num',
+						'type' => 'number',
+						'order' => 12,
+						'value' => 3,
+						'parent_val' => 'slides',
+					),
+					'banner_shortcode' => array(
+						'title' => esc_html__('Shortcode', 'ns-basics'),
+						'name' => 'ns_basics_banner_shortcode',
+						'description' => esc_html__('Copy and paste your shortcode to display content from other sources, such as a slider revolution.', 'ns-basics'),
+						'type' => 'text',
+						'order' => 13,
+						'parent_val' => 'shortcode',
 					),
 				),
 			),
