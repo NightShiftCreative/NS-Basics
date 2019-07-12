@@ -382,6 +382,32 @@ class NS_Basics_Admin {
 	}
 
 	/**
+	 *	Get meta box values
+	 */
+	public function get_meta_box_values($post_id, $settings_init) {
+
+		$settings = array();
+		foreach($settings_init as $key=>$field) {
+		    $values = get_post_custom($post_id);
+		    $settings[$key] = $field;
+		    $settings[$key]['value'] = isset( $values[$field['name']] ) ? esc_attr( $values[$field['name']][0] ) : $field['value'];
+		    	
+		    //get child values
+		    if(!empty($field['children'])) {
+		    	foreach($field['children'] as $child_key=>$child_field) {
+		    		$settings[$key]['children'][$child_key]['value'] = isset( $values[$child_field['name']] ) ? esc_attr( $values[$child_field['name']][0] ) : $child_field['value'];
+		    		if(!empty($child_field['children'])) {
+		    			foreach($child_field['children'] as $nested_child_key=>$nested_child_field) {
+		    				$settings[$key]['children'][$child_key]['children'][$nested_child_key]['value'] = isset( $values[$nested_child_field['name']] ) ? esc_attr( $values[$nested_child_field['name']][0] ) : $nested_child_field['value'];
+		    			}
+		    		}
+		    	}
+		    }
+		}
+		return $settings;
+	}
+
+	/**
 	 *	Save meta box
 	 */
 	public function save_meta_box($post_id, $settings, $allowed) {

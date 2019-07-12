@@ -109,13 +109,9 @@ class NS_Basics_Slides {
 		
 		// Return saved slide settings
 		} else {
-			$slide_settings = array();
-			foreach($slide_settings_init as $key=>$field) {
-		    	$values = get_post_custom($post_id);
-		    	$slide_settings[$key] = $field;
-		    	$slide_settings[$key]['value'] = isset( $values[$field['name']] ) ? esc_attr( $values[$field['name']][0] ) : $field['value'];
-		    }
-		    $slide_settings = apply_filters( 'ns_basics_slide_settings_filter', $slide_settings);
+			$admin_obj = new NS_Basics_Admin();
+			$slide_settings = $admin_obj->get_meta_box_values($post_id, $slide_settings_init);
+			$slide_settings = apply_filters( 'ns_basics_slide_settings_filter', $slide_settings);
 			return $slide_settings;
 		}
 	}
