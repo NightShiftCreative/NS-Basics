@@ -85,15 +85,20 @@ jQuery(document).ready(function($) {
         var parent = $(this).closest('.admin-module');
         parent.find(".selectable-item").removeClass('active');
         $(this).addClass('active');
-        showSelectableItemFields($(this));
-    });
 
-    function showSelectableItemFields(thisObj) {
-        var input  = thisObj.find('input').val();
-        var parent = thisObj.closest('.admin-module');
+        var input  = $(this).find('input').val();
+        var parent = $(this).closest('.admin-module');
         parent.find(".selectable-item-settings").hide();
         parent.find("#selectable-item-options-"+input).show();
-    }
+
+    });
+
+    $('.admin-module.has-children select').on('change', function() {
+        var input = this.value;
+        var parent = $(this).closest('.admin-module');
+        parent.find(".selectable-item-settings").hide();
+        parent.find("#selectable-item-options-"+input).show();
+    });
 
     /********************************************/
     /* TOGGLE SWITCH */

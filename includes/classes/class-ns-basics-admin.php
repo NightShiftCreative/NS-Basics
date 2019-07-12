@@ -163,6 +163,7 @@ class NS_Basics_Admin {
 		$field_class = '';
 		$field_class .= 'admin-module-'.$field['name'].' ';
 		if(!empty($field['class'])) { $field_class .= $field['class'].' '; }
+		if(!empty($field['children'])) { $field_class .= 'has-children '; }
 		?>
 
 		<table class="admin-module <?php echo $field_class; ?>" data-type="<?php echo $field['type']; ?>">
@@ -219,6 +220,7 @@ class NS_Basics_Admin {
                 		<input type="text" name="<?php echo $field['name']; ?>" value="<?php echo $field['value']; ?>" />
                         <input class="ns_upload_image_button" type="button" value="<?php esc_html_e('Upload Image', 'ns-basics'); ?>" />
                         <span class="button-secondary remove"><?php echo esc_html_e('Remove', 'ns-core'); ?></span>
+                        <?php if(!empty($field['display_img']) && !empty($field['value'])) { ?><div class="option-preview logo-preview"><img src="<?php echo $field['value']; ?>" alt="" /></div><?php } ?>
 
                 	<?php } else if($field['type'] == 'switch') {
 
@@ -250,20 +252,21 @@ class NS_Basics_Admin {
             </tr>
 
             <?php
-            // build selectable child fields
-            if($field['type'] == 'radio_image') {
+            // build radio image child fields
+            if($field['type'] == 'radio_image' || $field['type'] == 'select') {
 	            if(!empty($field['options'])) {
-		            foreach($field['options'] as $option_name=>$option) { ?>
-		                <tr id="selectable-item-options-<?php echo $option['value']; ?>" class="selectable-item-settings <?php if($field['value'] == $option['value']) { echo 'show-table'; } else { echo 'hide-soft'; } ?>">
-		                <?php echo '<td colspan="2">';
-		                if(!empty($field['children'])) {
+		            foreach($field['options'] as $option_name=>$option) { 
+		            	if($field['type'] == 'radio_image') { $option = $option['value']; }
+		            	if(!empty($field['children'])) { ?>
+		                	<tr id="selectable-item-options-<?php echo $option; ?>" class="selectable-item-settings <?php if($field['value'] == $option) { echo 'show-table'; } else { echo 'hide-soft'; } ?>">
+		                	<?php echo '<td colspan="2">';
 		                	foreach($field['children'] as $child_field) {
-		                		if($child_field['parent_val'] == $option['value']) {
+		                		if($child_field['parent_val'] == $option) {
 		                			$this->build_admin_field($child_field); 
 			                	}
 		                	}
-		                }
-		                echo '</td></tr>';
+		                	echo '</td></tr>';
+		            	}
 		            }
 	            } 
 	        }
