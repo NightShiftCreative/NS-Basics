@@ -241,8 +241,10 @@ class NS_Basics_Admin {
 
                 	<?php } else if($field['type'] == 'color') {
 
-                		// COLOR ?>
-                		<input type="text" class="color-field" data-default-color="<?php echo esc_attr($field['value']); ?>" name="<?php echo $field['name']; ?>" <?php if(!empty($field['placeholder'])) { echo 'placeholder="'.$field['placeholder'].'"'; } ?> value="<?php echo esc_attr($field['value']); ?>" />
+                		// COLOR 
+                		$default_color = $field['value'];
+                		if(!empty($field['default_color'])) { $default_color = $field['default_color']; } ?>
+                		<input type="text" class="color-field" data-default-color="<?php echo esc_attr($default_color); ?>" name="<?php echo $field['name']; ?>" <?php if(!empty($field['placeholder'])) { echo 'placeholder="'.$field['placeholder'].'"'; } ?> value="<?php echo esc_attr($field['value']); ?>" />
 
                 	<?php } ?>
 
