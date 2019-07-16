@@ -143,45 +143,62 @@ class NS_Basics {
 	 */
 	public function includes() {
 
+		/************************************************************************/
 		// Include functions
+		/************************************************************************/
 		include( plugin_dir_path( __FILE__ ) . 'includes/global-functions.php');
 		include( plugin_dir_path( __FILE__ ) . 'includes/templates/templates.php');
 
+		/************************************************************************/
 		// Include classes
-		include( plugin_dir_path( __FILE__ ) . 'includes/classes/class-ns-basics-admin.php');
-		if(is_admin()) { $this->admin = new NS_Basics_Admin(); }
+		/************************************************************************/
 		
+		// Setup the admin
+		include( plugin_dir_path( __FILE__ ) . 'includes/classes/class-ns-basics-admin.php');
+		if(is_admin()) { 
+			$this->admin = new NS_Basics_Admin();
+			$this->admin->init();
+		}
+		
+		// Load modules class
 		include( plugin_dir_path( __FILE__ ) . 'includes/classes/class-ns-basics-modules.php');
 		$this->modules = new NS_Basics_Modules();
 		
+		// Load members class
 		include( plugin_dir_path( __FILE__ ) . 'includes/classes/class-ns-basics-members.php');
 		$this->members = new NS_Basics_Members();
 		
+		// Load page settings class
 		if($this->modules->is_module_active('ns_basics_page_settings')) { 
 			include( plugin_dir_path( __FILE__ ) . 'includes/classes/class-ns-basics-page-settings.php');
 			$this->page_settings = new NS_Basics_Page_Settings(); 
 		}
 
+		// Load post share class
 		if($this->modules->is_module_active('ns_basics_post_share')) { 
 			include( plugin_dir_path( __FILE__ ) . 'includes/classes/class-ns-basics-post-sharing.php');
 			$this->post_sharing = new NS_Basics_Post_Sharing(); 
 		}
 
+		// Load post likes class
 		if($this->modules->is_module_active('ns_basics_post_likes')) { 
 			include( plugin_dir_path( __FILE__ ) . 'includes/classes/class-ns-basics-post-likes.php');
 			$this->post_likes = new NS_Basics_Post_Likes(); 
 		}
 
+		// Load slides class
 		if($this->modules->is_module_active('ns_basics_slides')) { 
 			include( plugin_dir_path( __FILE__ ) . 'includes/classes/class-ns-basics-slides.php');
 			$this->slides = new NS_Basics_Slides(); 
 		}
 
+		// Load shortcodes class
 		if($this->modules->is_module_active('ns_basics_shortcodes')) { 
 			include( plugin_dir_path( __FILE__ ) . 'includes/classes/class-ns-basics-shortcodes.php');
 			$this->shortcodes = new NS_Basics_Shortcodes(); 
 		}
 
+		// Load widget classes
 		if($this->modules->is_module_active('ns_basics_widgets')) { 
 			include( plugin_dir_path( __FILE__ ) . 'includes/classes/widgets/contact_info_widget.php');
 			include( plugin_dir_path( __FILE__ ) . 'includes/classes/widgets/list_posts_widget.php');
