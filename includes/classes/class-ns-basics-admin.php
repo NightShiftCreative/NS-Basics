@@ -247,6 +247,18 @@ class NS_Basics_Admin {
                 		if(!empty($field['default_color'])) { $default_color = $field['default_color']; } ?>
                 		<input type="text" class="color-field" data-default-color="<?php echo esc_attr($default_color); ?>" name="<?php echo $field['name']; ?>" <?php if(!empty($field['placeholder'])) { echo 'placeholder="'.$field['placeholder'].'"'; } ?> value="<?php echo esc_attr($field['value']); ?>" />
 
+                	<?php } else if($field['type'] == 'sortable') {
+
+                		$sortable_fields = $field['value'];
+
+                		// SORTABLE ?>
+                		<ul class="sortable-list">
+                			<?php if(!empty($sortable_fields)) { ?>
+                			<?php foreach($sortable_fields as $value) { ?>
+                				<li class="sortable-item"><?php print_r($value); ?></li>
+                			<?php } } ?>
+                		</ul>
+
                 	<?php } ?>
 
                 	<?php if(!empty($field['postfix'])) { echo $field['postfix']; } ?>
