@@ -9,10 +9,12 @@ if (!defined( 'ABSPATH')) { exit; }
  */
 class NS_Basics_Admin {
 
+	/************************************************************************/
+	// Initialize
+	/************************************************************************/
+
 	/**
-	 *	Initial the admin (adds admin menu, register settings, etc)
-	 *
-	 *  Called in main class: NS_Basics
+	 *	Init
 	 */
 	public function init() {
 		add_action('admin_menu', array( $this, 'admin_menu' ));
@@ -34,6 +36,10 @@ class NS_Basics_Admin {
 	public function register_settings() {
 		register_setting( 'ns-basics-settings-group', 'ns_basics_active_add_ons');
 	}
+
+	/************************************************************************/
+	// Interface Methods
+	/************************************************************************/
 
 	/**
 	 *	Build admin page
@@ -300,6 +306,10 @@ class NS_Basics_Admin {
 
 	<?php }
 
+	/************************************************************************/
+	// Output Pages
+	/************************************************************************/
+
 	/**
 	 *	Settings page
 	 */
@@ -368,31 +378,29 @@ class NS_Basics_Admin {
 	    return $output;
 	}
 
+	/************************************************************************/
+	// Settings Methods
+	/************************************************************************/
+
 	/**
-	 *	Admin Alert
-	 *
-	 *  Outputs an admin alert box
-	 *
-	 *  @param string $type
-	 *		
+	 *	Get settings
 	 */
-	public function admin_alert($type = 'info', $text = null, $action = null, $action_text = null, $dismissible = false, $class = null) {
-		ob_start(); ?>
-
-	    <div class="admin-alert-box <?php if(!empty($type)) { ?>admin-<?php echo $type; ?><?php } ?> <?php if(!empty($class)) { echo $class; } ?>">
-	        <?php if($type == 'success') { 
-	            echo '<i class="fa fa-check"></i>';
-	        } else {
-	            echo '<i class="fa fa-exclamation-circle"></i>';
-	        } ?>
-	        <?php if(!empty($text)) { ?><strong><?php echo $text; ?></strong><?php } ?>
-	        <?php if(!empty($action)) { ?><a href="<?php echo esc_url($action); ?>" target="_blank"><?php echo $action_text; ?></a><?php } ?>
-	        <?php if($dismissible == true) { ?><i class="fa fa-close right admin-alert-close"></i><?php } ?>
-	    </div> 
-
-	    <?php $output = ob_get_clean();
-	    return $output;
+	public function get_settings($settings_init) {
+		$settings = array();
+		foreach($settings_init as $key=>$field) { 
+			if(isset($field['esc']) && $field['esc'] == false) {
+				$settings[$key] = get_option($key, $field['value']); 
+			} else {
+				$settings[$key] = esc_attr(get_option($key, $field['value'])); 
+			}
+		}
+		return $settings;
 	}
+
+
+	/************************************************************************/
+	// Meta-Box Methods
+	/************************************************************************/
 
 	/**
 	 *	Get meta box values
@@ -451,6 +459,36 @@ class NS_Basics_Admin {
 
         }
     }
+
+    /************************************************************************/
+	// Misc Methods
+	/************************************************************************/
+
+	/**
+	 *	Admin Alert
+	 *
+	 *  Outputs an admin alert box
+	 *
+	 *  @param string $type
+	 *		
+	 */
+	public function admin_alert($type = 'info', $text = null, $action = null, $action_text = null, $dismissible = false, $class = null) {
+		ob_start(); ?>
+
+	    <div class="admin-alert-box <?php if(!empty($type)) { ?>admin-<?php echo $type; ?><?php } ?> <?php if(!empty($class)) { echo $class; } ?>">
+	        <?php if($type == 'success') { 
+	            echo '<i class="fa fa-check"></i>';
+	        } else {
+	            echo '<i class="fa fa-exclamation-circle"></i>';
+	        } ?>
+	        <?php if(!empty($text)) { ?><strong><?php echo $text; ?></strong><?php } ?>
+	        <?php if(!empty($action)) { ?><a href="<?php echo esc_url($action); ?>" target="_blank"><?php echo $action_text; ?></a><?php } ?>
+	        <?php if($dismissible == true) { ?><i class="fa fa-close right admin-alert-close"></i><?php } ?>
+	    </div> 
+
+	    <?php $output = ob_get_clean();
+	    return $output;
+	}
 
 }
 
