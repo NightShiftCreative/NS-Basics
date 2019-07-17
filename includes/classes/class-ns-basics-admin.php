@@ -183,6 +183,8 @@ class NS_Basics_Admin {
 
                 <td class="admin-module-field">
 
+                	<?php do_action('ns_basics_admin_before_field', $field); ?>
+
                 	<?php if($field['type'] == 'text') { 
                 		
                 		// TEXT ?>
@@ -310,9 +312,11 @@ class NS_Basics_Admin {
                 			<?php $count++; } } ?>
                 		</ul>
 
-                	<?php } ?>
+                	<?php }
 
-                	<?php if(!empty($field['postfix'])) { echo $field['postfix']; } ?>
+                	do_action('ns_basics_admin_after_field', $field);
+
+                	if(!empty($field['postfix'])) { echo $field['postfix']; } ?>
 
                 </td>
             </tr>
