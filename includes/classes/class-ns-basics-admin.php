@@ -256,13 +256,32 @@ class NS_Basics_Admin {
                 	<?php } else if($field['type'] == 'sortable') {
 
                 		$sortable_fields = $field['value'];
+                		$count = 0;
 
                 		// SORTABLE ?>
                 		<ul class="sortable-list">
                 			<?php if(!empty($sortable_fields)) { ?>
-                			<?php foreach($sortable_fields as $value) { ?>
-                				<li class="sortable-item"><?php print_r($value); ?></li>
-                			<?php } } ?>
+                			<?php foreach($sortable_fields as $value) { 
+
+                				if(isset($value['name'])) { $name = $value['name']; } 
+                				if(isset($value['label'])) { $label = $value['label']; }
+                                if(isset($value['slug'])) { $slug = $value['slug']; } 
+                                if(isset($value['active']) && $value['active'] == 'true') { $active = 'true'; } else { $active = 'false'; }
+                                if(isset($value['sidebar']) && $value['sidebar'] == 'true') { $sidebar = 'true'; } else { $sidebar = 'false'; } ?>
+
+                				<li class="sortable-item">
+                					<div class="sortable-item-header">
+	                                    <div class="sort-arrows"><i class="fa fa-bars"></i></div>
+	                                    <div class="toggle-switch" title="<?php if($active == 'true') { esc_html_e('Active', 'ns-basics'); } else { esc_html_e('Disabled', 'ns-basics'); } ?>">
+	                                        <input type="checkbox" name="<?php echo $field['name']; ?>[<?php echo $count; ?>][active]" value="true" class="toggle-switch-checkbox" id="<?php echo $field['name']; ?>_<?php echo esc_attr($slug); ?>" <?php checked('true', $active, true) ?>>
+	                                        <label class="toggle-switch-label" for="<?php echo $field['name']; ?>_<?php echo esc_attr($slug); ?>"><?php if($active == 'true') { echo '<span class="on">'.esc_html__('On', 'ns-basics').'</span>'; } else { echo '<span>'.esc_html__('Off', 'ns-basics').'</span>'; } ?></label>
+	                                    </div>
+	                                    <span class="sortable-item-title"><?php echo esc_attr($name); ?></span><div class="clear"></div>
+	                                    <input type="hidden" name="<?php echo $field['name']; ?>[<?php echo $count; ?>][name]" value="<?php echo $name; ?>" />
+                                    	<input type="hidden" name="<?php echo $field['name']; ?>[<?php echo $count; ?>][slug]" value="<?php echo $slug; ?>" />
+	                                </div>
+                				</li>
+                			<?php $count++; } } ?>
                 		</ul>
 
                 	<?php } ?>
