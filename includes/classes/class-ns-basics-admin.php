@@ -384,17 +384,41 @@ class NS_Basics_Admin {
 
 	/**
 	 *	Get settings
+	 *
+	 * @param array $settings_init
+	 * @param string $single_setting
+	 * @param boolean $single_esc
+	 *
 	 */
-	public function get_settings($settings_init) {
-		$settings = array();
-		foreach($settings_init as $key=>$field) { 
-			if(isset($field['esc']) && $field['esc'] == false) {
-				$settings[$key] = get_option($key, $field['value']); 
+	public function get_settings($settings_init, $single_setting = null, $single_esc = true) {
+		
+		// Return single setting
+		if(isset($single_setting)) {
+
+			if(array_key_exists($single_setting, $settings_init)) {
+				$default = $settings_init[$single_setting]['value'];
+				if($single_esc == false) {
+					$single_setting_value = get_option($single_setting, $default);
+				} else {
+					$single_setting_value = esc_attr(get_option($single_setting, $default));
+				}
+				return $single_setting_value;
 			} else {
-				$settings[$key] = esc_attr(get_option($key, $field['value'])); 
+				return false;
 			}
+
+		// Return all settings
+		} else {
+			$settings = array();
+			foreach($settings_init as $key=>$field) { 
+				if(isset($field['esc']) && $field['esc'] == false) {
+					$settings[$key] = get_option($key, $field['value']); 
+				} else {
+					$settings[$key] = esc_attr(get_option($key, $field['value'])); 
+				}
+			}
+			return $settings;
 		}
-		return $settings;
 	}
 
 
