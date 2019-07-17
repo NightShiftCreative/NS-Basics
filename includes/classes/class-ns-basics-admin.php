@@ -267,8 +267,16 @@ class NS_Basics_Admin {
                 				if(isset($value['label'])) { $label = $value['label']; }
                                 if(isset($value['slug'])) { $slug = $value['slug']; } 
                                 if(isset($value['active']) && $value['active'] == 'true') { $active = 'true'; } else { $active = 'false'; }
-                                if(isset($value['sidebar']) && $value['sidebar'] == 'true') { $sidebar = 'true'; } else { $sidebar = 'false'; } ?>
+                                if(isset($value['sidebar']) && $value['sidebar'] == 'true') { $sidebar = 'true'; } else { $sidebar = 'false'; }
 
+                                //If item is an add-on, check if it is active
+                                if(isset($value['add_on'])) { 
+                                    if(ns_basics_is_plugin_active($value['add_on'])) { $add_on = 'true'; } else { $add_on = 'false'; }
+                                } else {
+                                    $add_on = 'true'; 
+                                } ?>
+
+                                <?php if($add_on == 'true') { ?>
                 				<li class="sortable-item">
                 					<div class="sortable-item-header">
 	                                    <div class="sort-arrows"><i class="fa fa-bars"></i></div>
@@ -280,7 +288,25 @@ class NS_Basics_Admin {
 	                                    <input type="hidden" name="<?php echo $field['name']; ?>[<?php echo $count; ?>][name]" value="<?php echo $name; ?>" />
                                     	<input type="hidden" name="<?php echo $field['name']; ?>[<?php echo $count; ?>][slug]" value="<?php echo $slug; ?>" />
 	                                </div>
+	                                <a href="#advanced-options-content-<?php echo esc_attr($slug); ?>" class="sortable-item-action advanced-options-toggle right">
+	                                	<i class="fa fa-gear"></i> <?php echo esc_html_e('Additional Settings', 'ns-basics'); ?>
+	                                </a>
+	                                <div id="advanced-options-content-<?php echo esc_attr($slug); ?>" class="advanced-options-content hide-soft">
+	                                	<?php 
+	                                	$this->build_admin_field(array('title' => esc_html__('Label:', 'ns-basics'), 'name' => $field['name'].'['.$count.'][label]', 'value' => $label, 'type' => 'text')); 
+	                                	$this->build_admin_field(array('title' => esc_html__('Display in Sidebar', 'ns-basics'), 'name' => $field['name'].'['.$count.'][sidebar]', 'value' => $sidebar, 'type' => 'checkbox'));
+	                                	
+	                                	//build child fields
+	                                	if(!empty($field['children'])) {
+	                                		foreach($field['children'] as $child_field) {
+	                                			if($child_field['parent_val'] == $slug) { $this->build_admin_field($child_field); }
+	                                		}
+	                                	}
+	                                	?>
+	                                </div>
                 				</li>
+                				<?php } ?>
+
                 			<?php $count++; } } ?>
                 		</ul>
 

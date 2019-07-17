@@ -84,4 +84,16 @@ function ns_basics_in_array($array, $key, $key_value){
     return $within_array;
 }
 
+/*-----------------------------------------------------------------------------------*/
+/*  Check if plugin is active
+/*-----------------------------------------------------------------------------------*/
+function ns_basics_is_plugin_active($plugin_slug) {
+    include_once( ABSPATH . 'wp-admin/includes/plugin.php' );
+    if(is_plugin_active($plugin_slug.'/'.$plugin_slug.'.php')) { 
+        return true; 
+    } else { 
+        return false;
+    }
+}
+
 ?>
