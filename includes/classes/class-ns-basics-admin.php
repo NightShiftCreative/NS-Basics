@@ -262,7 +262,7 @@ class NS_Basics_Admin {
 
                 		// SORTABLE ?>
                 		<ul class="sortable-list">
-                			<?php if(!empty($sortable_fields)) { ?>
+                			<?php if(isset($sortable_fields) && !empty($sortable_fields)) { ?>
                 			<?php foreach($sortable_fields as $value) { 
 
                 				if(isset($value['name'])) { $name = $value['name']; } 
