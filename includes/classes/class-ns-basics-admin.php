@@ -206,6 +206,18 @@ class NS_Basics_Admin {
                 		// CHECKBOX ?>
                 		<input type="checkbox" name="<?php echo $field['name']; ?>" value="true" <?php if($field['value'] == 'true') { echo 'checked'; } ?>  />
                 	
+                	<?php } else if($field['type'] == 'checkbox_group') {
+
+                		// CHECKBOX GROUP ?>
+                		<?php if(!empty($field['options'])) { ?>
+                			<ul class="three-col-list">
+	                		<?php foreach($field['options'] as $option_name=>$option) { ?>
+	                			
+	                			<li><input <?php if(!empty($option['attributes'])) { foreach($option['attributes'] as $attr) { echo $attr.' '; } }?> type="checkbox" name="<?php echo $field['name']; ?>[]" value="<?php echo $option['value']; ?>" <?php if(in_array($option['value'], $field['value'])) { echo 'checked'; } ?> /><?php echo $option_name; ?></li>
+	                		<?php } ?>
+	                		</ul>
+	                	<?php } ?>
+
                 	<?php } else if($field['type'] == 'radio_image') { 
                 		
                 		// RADIO IMAGE ?>
@@ -213,7 +225,7 @@ class NS_Basics_Admin {
 	                		<?php foreach($field['options'] as $option_name=>$option) { ?>
 	                			<label class="selectable-item <?php if($field['value'] == $option['value']) { echo 'active'; } ?>">
 	                				<?php if(!empty($option['icon'])) { ?><div><img src="<?php echo $option['icon']; ?>" alt="" /></div><?php } ?>
-	                				<input type="radio" id="" name="<?php echo $field['name']; ?>" value="<?php echo $option['value']; ?>" <?php checked($option['value'], $field['value'], true) ?> /><?php echo $option_name; ?><br/>
+	                				<input type="radio" name="<?php echo $field['name']; ?>" value="<?php echo $option['value']; ?>" <?php checked($option['value'], $field['value'], true) ?> /><?php echo $option_name; ?><br/>
 	                			</label>
 	                		<?php } ?>
 	                	<?php }
