@@ -152,6 +152,7 @@ class NS_Basics_Admin {
 	 */
 	public function build_admin_field($field = null) { 
 
+		// initialize field args
 		if($field == null) {
 			$field = array (
 				'title' => 'New Field',
@@ -165,6 +166,22 @@ class NS_Basics_Admin {
 				'options' => null,
 			);
 		} 
+
+		//set and filter field types
+		$field_types = array(
+			'text' => array($this, 'build_admin_field_text'),
+			'select' => array($this, 'build_admin_field_select'), 
+			'checkbox' => array($this, 'build_admin_field_checkbox'),
+			'checkbox_group' => array($this, 'build_admin_field_checkbox_group'),
+			'switch' => array($this, 'build_admin_field_switch'),
+			'image_upload' => array($this, 'build_admin_field_image_upload'),
+			'radio_image' => array($this, 'build_admin_field_radio_image'),
+			'textarea' => array($this, 'build_admin_field_textarea'),
+			'number' => array($this, 'build_admin_field_number'),
+			'color' => array($this, 'build_admin_field_color'),
+			'sortable' => array($this, 'build_admin_field_sortable'),
+		);
+		$field_types = apply_filters( 'ns_basics_admin_field_types', $field_types);
 
 		//generate field class
 		$field_class = '';
@@ -183,150 +200,15 @@ class NS_Basics_Admin {
 
                 <td class="admin-module-field">
 
-                	<?php do_action('ns_basics_admin_before_field', $field); ?>
+                	<?php 
+                	do_action('ns_basics_admin_before_field', $field);
 
-                	<?php if($field['type'] == 'text') { 
-                		
-                		// TEXT ?>
-                		<input type="text" name="<?php echo $field['name']; ?>" <?php if(!empty($field['placeholder'])) { echo 'placeholder="'.$field['placeholder'].'"'; } ?> value="<?php echo esc_attr($field['value']); ?>" />
-                	
-                	<?php } else if($field['type'] == 'select') { 
-                		
-                		// SELECT ?>
-                		<select name="<?php echo $field['name']; ?>">
-                			<?php if(!empty($field['options'])) {
-                				foreach($field['options'] as $key=>$value) { ?>
-                					<option value="<?php echo $value; ?>" <?php if($field['value'] == $value) { echo 'selected'; } ?>><?php echo $key; ?></option>
-                				<?php }
-                			} ?>
-                		</select>
-                	
-                	<?php } else if($field['type'] == 'checkbox') { 
-                		
-                		// CHECKBOX ?>
-                		<input type="checkbox" name="<?php echo $field['name']; ?>" value="true" <?php if($field['value'] == 'true') { echo 'checked'; } ?>  />
-                	
-                	<?php } else if($field['type'] == 'checkbox_group') {
-                		
-                		// CHECKBOX GROUP ?>
-                		<?php if(!empty($field['options'])) { 
-                			echo '<ul class="three-col-list">';
-                			foreach($field['options'] as $key=>$option) { ?>
-                				<li>
-                					<input type="checkbox" <?php if(!empty($option['attributes'])) { foreach($option['attributes'] as $attr) { echo $attr.' '; } }?> name="<?php echo $field['name'].'['.$key.'][value]'; ?>" value="<?php echo $key; ?>" <?php if(isset($field['value'][$key]['value'])) { echo 'checked'; } ?> /><?php echo $option['value']; ?>
-                					<input type="hidden" name="<?php echo $field['name'].'['.$key.'][attributes]'; ?>" value="<?php echo $option['attributes']; ?>" />
-                				</li>
-                			<?php }
-                			echo '</ul>';
-                		} ?>
-
-                	<?php } else if($field['type'] == 'radio_image') { 
-                		
-                		// RADIO IMAGE ?>
-                		<?php if(!empty($field['options'])) { ?>
-	                		<?php foreach($field['options'] as $option_name=>$option) { ?>
-	                			<label class="selectable-item <?php if($field['value'] == $option['value']) { echo 'active'; } ?>">
-	                				<?php if(!empty($option['icon'])) { ?><div><img src="<?php echo $option['icon']; ?>" alt="" /></div><?php } ?>
-	                				<input type="radio" name="<?php echo $field['name']; ?>" value="<?php echo $option['value']; ?>" <?php checked($option['value'], $field['value'], true) ?> /><?php echo $option_name; ?><br/>
-	                			</label>
-	                		<?php } ?>
-	                	<?php }
-                	
-                	} else if($field['type'] == 'textarea') {
-                	
-                		// TEXTAREA ?>
-                		<textarea name="<?php echo $field['name']; ?>" <?php if(!empty($field['placeholder'])) { echo 'placeholder="'.$field['placeholder'].'"'; } ?>><?php echo esc_attr($field['value']); ?></textarea>
-                	
-                	<?php } else if($field['type'] == 'image_upload') { 
-
-                		// IMAGE UPLOAD ?>
-                		<input type="text" name="<?php echo $field['name']; ?>" value="<?php echo $field['value']; ?>" />
-                        <input class="ns_upload_image_button" type="button" value="<?php esc_html_e('Upload Image', 'ns-basics'); ?>" />
-                        <span class="button-secondary remove"><?php echo esc_html_e('Remove', 'ns-core'); ?></span>
-                        <?php if(!empty($field['display_img']) && !empty($field['value'])) { ?><div class="option-preview logo-preview"><img src="<?php echo $field['value']; ?>" alt="" /></div><?php } ?>
-
-                	<?php } else if($field['type'] == 'switch') {
-
-                		// SWITCH  ?>
-                		<div class="toggle-switch <?php if($field['value'] == 'true') { echo 'active'; } ?>" title="<?php if($field['value'] == 'true') { esc_html_e('Active', 'ns-basics'); } else { esc_html_e('Disabled', 'ns-basics'); } ?>">
-                            <input type="checkbox" name="<?php echo $field['name']; ?>" value="true" class="toggle-switch-checkbox" id="<?php echo $field['name']; ?>" <?php checked('true', $field['value'], true) ?>>
-                            <label class="toggle-switch-label" <?php if(!empty($field['children'])) { echo 'data-settings="'.$field['name'].'"'; } ?> for="<?php echo $field['name']; ?>"><?php if($field['value'] == 'true') { echo '<span class="on">'.esc_html__('On', 'ns-basics').'</span>'; } else { echo '<span>'.esc_html__('Off', 'ns-basics').'</span>'; } ?></label>
-                        </div>
-                		
-                	<?php } else if($field['type'] == 'number') {
-
-                		// NUMBER 
-                		if(isset($field['step'])) { $num_step = 'step="'.$field['step'].'"'; } else { $num_step = ''; }
-                		if(isset($field['min'])) { $num_min = 'min="'.$field['min'].'"'; } else { $num_min = ''; }
-                		if(isset($field['max'])) { $num_max = 'max="'.$field['max'].'"'; } else { $num_max = ''; }
-                		?>
-                		<input type="number" <?php echo $num_min; echo $num_max; echo $num_step; ?> name="<?php echo $field['name']; ?>" <?php if(!empty($field['placeholder'])) { echo 'placeholder="'.$field['placeholder'].'"'; } ?> value="<?php echo esc_attr($field['value']); ?>" />
-
-                	<?php } else if($field['type'] == 'color') {
-
-                		// COLOR 
-                		$default_color = $field['value'];
-                		if(!empty($field['default_color'])) { $default_color = $field['default_color']; } ?>
-                		<input type="text" class="color-field" data-default-color="<?php echo esc_attr($default_color); ?>" name="<?php echo $field['name']; ?>" <?php if(!empty($field['placeholder'])) { echo 'placeholder="'.$field['placeholder'].'"'; } ?> value="<?php echo esc_attr($field['value']); ?>" />
-
-                	<?php } else if($field['type'] == 'sortable') {
-
-                		$sortable_fields = $field['value'];
-                		$count = 0;
-
-                		// SORTABLE ?>
-                		<ul class="sortable-list">
-                			<?php if(isset($sortable_fields) && !empty($sortable_fields)) { ?>
-                			<?php foreach($sortable_fields as $value) { 
-
-                				if(isset($value['name'])) { $name = $value['name']; } 
-                				if(isset($value['label'])) { $label = $value['label']; }
-                                if(isset($value['slug'])) { $slug = $value['slug']; } 
-                                if(isset($value['active']) && $value['active'] == 'true') { $active = 'true'; } else { $active = 'false'; }
-                                if(isset($value['sidebar']) && $value['sidebar'] == 'true') { $sidebar = 'true'; } else { $sidebar = 'false'; }
-
-                                //If item is an add-on, check if it is active
-                                if(isset($value['add_on'])) { 
-                                    if(ns_basics_is_plugin_active($value['add_on'])) { $add_on = 'true'; } else { $add_on = 'false'; }
-                                } else {
-                                    $add_on = 'true'; 
-                                } ?>
-
-                                <?php if($add_on == 'true') { ?>
-                				<li class="sortable-item">
-                					<div class="sortable-item-header">
-	                                    <div class="sort-arrows"><i class="fa fa-bars"></i></div>
-	                                    <div class="toggle-switch" title="<?php if($active == 'true') { esc_html_e('Active', 'ns-basics'); } else { esc_html_e('Disabled', 'ns-basics'); } ?>">
-	                                        <input type="checkbox" name="<?php echo $field['name']; ?>[<?php echo $count; ?>][active]" value="true" class="toggle-switch-checkbox" id="<?php echo $field['name']; ?>_<?php echo esc_attr($slug); ?>" <?php checked('true', $active, true) ?>>
-	                                        <label class="toggle-switch-label" for="<?php echo $field['name']; ?>_<?php echo esc_attr($slug); ?>"><?php if($active == 'true') { echo '<span class="on">'.esc_html__('On', 'ns-basics').'</span>'; } else { echo '<span>'.esc_html__('Off', 'ns-basics').'</span>'; } ?></label>
-	                                    </div>
-	                                    <span class="sortable-item-title"><?php echo esc_attr($name); ?></span><div class="clear"></div>
-	                                    <input type="hidden" name="<?php echo $field['name']; ?>[<?php echo $count; ?>][name]" value="<?php echo $name; ?>" />
-                                    	<input type="hidden" name="<?php echo $field['name']; ?>[<?php echo $count; ?>][slug]" value="<?php echo $slug; ?>" />
-	                                </div>
-	                                <a href="#advanced-options-content-<?php echo esc_attr($slug); ?>" class="sortable-item-action advanced-options-toggle right">
-	                                	<i class="fa fa-gear"></i> <?php echo esc_html_e('Additional Settings', 'ns-basics'); ?>
-	                                </a>
-	                                <div id="advanced-options-content-<?php echo esc_attr($slug); ?>" class="advanced-options-content hide-soft">
-	                                	<?php 
-	                                	$this->build_admin_field(array('title' => esc_html__('Label:', 'ns-basics'), 'name' => $field['name'].'['.$count.'][label]', 'value' => $label, 'type' => 'text')); 
-	                                	$this->build_admin_field(array('title' => esc_html__('Display in Sidebar', 'ns-basics'), 'name' => $field['name'].'['.$count.'][sidebar]', 'value' => $sidebar, 'type' => 'checkbox'));
-	                                	
-	                                	//build child fields
-	                                	if(!empty($field['children'])) {
-	                                		foreach($field['children'] as $child_field) {
-	                                			if($child_field['parent_val'] == $slug) { $this->build_admin_field($child_field); }
-	                                		}
-	                                	}
-	                                	?>
-	                                </div>
-                				</li>
-                				<?php } ?>
-
-                			<?php $count++; } } ?>
-                		</ul>
-
-                	<?php }
+                	//loop through field types and call the correct method
+                	foreach($field_types as $key=>$field_method) {
+                		if($key == $field['type']) {
+                			call_user_func($field_method, $field);
+                		}
+                	}
 
                 	do_action('ns_basics_admin_after_field', $field);
 
@@ -368,6 +250,201 @@ class NS_Basics_Admin {
         </table>
 
 	<?php }
+
+	/**
+	 *	Build admin text field
+	 *
+	 *  @param array $field
+	 *		
+	 */
+	public function build_admin_field_text($field = null) { ?>
+		<input type="text" name="<?php echo $field['name']; ?>" <?php if(!empty($field['placeholder'])) { echo 'placeholder="'.$field['placeholder'].'"'; } ?> value="<?php echo esc_attr($field['value']); ?>" />
+	<?php }
+
+	/**
+	 *	Build admin select field
+	 *
+	 *  @param array $field
+	 *		
+	 */
+	public function build_admin_field_select($field = null) { ?>
+		<select name="<?php echo $field['name']; ?>">
+        	<?php if(!empty($field['options'])) {
+        		foreach($field['options'] as $key=>$value) { ?>
+        			<option value="<?php echo $value; ?>" <?php if($field['value'] == $value) { echo 'selected'; } ?>><?php echo $key; ?></option>
+        		<?php }
+        	} ?>
+        </select>
+	<?php }
+
+	/**
+	 *	Build admin checkbox field
+	 *
+	 *  @param array $field
+	 *		
+	 */
+	public function build_admin_field_checkbox($field = null) { ?>
+		<input type="checkbox" name="<?php echo $field['name']; ?>" value="true" <?php if($field['value'] == 'true') { echo 'checked'; } ?>  />	
+	<?php }
+
+	/**
+	 *	Build admin checkbox group field
+	 *
+	 *  @param array $field
+	 *		
+	 */
+	public function build_admin_field_checkbox_group($field = null) { ?>
+		<?php if(!empty($field['options'])) { 
+            echo '<ul class="three-col-list">';
+                foreach($field['options'] as $key=>$option) { ?>
+                	<li>
+                		<input type="checkbox" <?php if(!empty($option['attributes'])) { foreach($option['attributes'] as $attr) { echo $attr.' '; } }?> name="<?php echo $field['name'].'['.$key.'][value]'; ?>" value="<?php echo $key; ?>" <?php if(isset($field['value'][$key]['value'])) { echo 'checked'; } ?> /><?php echo $option['value']; ?>
+                		<input type="hidden" name="<?php echo $field['name'].'['.$key.'][attributes]'; ?>" value="<?php echo $option['attributes']; ?>" />
+                	</li>
+                <?php }
+            echo '</ul>';
+        } ?>
+	<?php }
+
+	/**
+	 *	Build admin switch field
+	 *
+	 *  @param array $field
+	 *		
+	 */
+	public function build_admin_field_switch($field = null) { ?>
+		<div class="toggle-switch <?php if($field['value'] == 'true') { echo 'active'; } ?>" title="<?php if($field['value'] == 'true') { esc_html_e('Active', 'ns-basics'); } else { esc_html_e('Disabled', 'ns-basics'); } ?>">
+            <input type="checkbox" name="<?php echo $field['name']; ?>" value="true" class="toggle-switch-checkbox" id="<?php echo $field['name']; ?>" <?php checked('true', $field['value'], true) ?>>
+            <label class="toggle-switch-label" <?php if(!empty($field['children'])) { echo 'data-settings="'.$field['name'].'"'; } ?> for="<?php echo $field['name']; ?>"><?php if($field['value'] == 'true') { echo '<span class="on">'.esc_html__('On', 'ns-basics').'</span>'; } else { echo '<span>'.esc_html__('Off', 'ns-basics').'</span>'; } ?></label>
+        </div>
+	<?php }
+
+	/**
+	 *	Build admin image upload field
+	 *
+	 *  @param array $field
+	 *		
+	 */
+	public function build_admin_field_image_upload($field = null) { ?>
+		<input type="text" name="<?php echo $field['name']; ?>" value="<?php echo $field['value']; ?>" />
+        <input class="ns_upload_image_button" type="button" value="<?php esc_html_e('Upload Image', 'ns-basics'); ?>" />
+        <span class="button-secondary remove"><?php echo esc_html_e('Remove', 'ns-core'); ?></span>
+        <?php if(!empty($field['display_img']) && !empty($field['value'])) { ?><div class="option-preview logo-preview"><img src="<?php echo $field['value']; ?>" alt="" /></div><?php } ?>
+	<?php }
+
+	/**
+	 *	Build admin radio field
+	 *
+	 *  @param array $field
+	 *		
+	 */
+	public function build_admin_field_radio_image($field = null) { ?>
+		<?php if(!empty($field['options'])) { ?>
+	        <?php foreach($field['options'] as $option_name=>$option) { ?>
+	            <label class="selectable-item <?php if($field['value'] == $option['value']) { echo 'active'; } ?>">
+	            	<?php if(!empty($option['icon'])) { ?><div><img src="<?php echo $option['icon']; ?>" alt="" /></div><?php } ?>
+	            	<input type="radio" name="<?php echo $field['name']; ?>" value="<?php echo $option['value']; ?>" <?php checked($option['value'], $field['value'], true) ?> /><?php echo $option_name; ?><br/>
+	            </label>
+	        <?php } ?>
+	    <?php }
+	}
+
+	/**
+	 *	Build admin textarea field
+	 *
+	 *  @param array $field
+	 *		
+	 */
+	public function build_admin_field_textarea($field = null) { ?>
+		<textarea name="<?php echo $field['name']; ?>" <?php if(!empty($field['placeholder'])) { echo 'placeholder="'.$field['placeholder'].'"'; } ?>><?php echo esc_attr($field['value']); ?></textarea>
+	<?php }
+
+	/**
+	 *	Build admin number field
+	 *
+	 *  @param array $field
+	 *		
+	 */
+	public function build_admin_field_number($field = null) {
+		if(isset($field['step'])) { $num_step = 'step="'.$field['step'].'"'; } else { $num_step = ''; }
+        if(isset($field['min'])) { $num_min = 'min="'.$field['min'].'"'; } else { $num_min = ''; }
+        if(isset($field['max'])) { $num_max = 'max="'.$field['max'].'"'; } else { $num_max = ''; } ?>
+        <input type="number" <?php echo $num_min; echo $num_max; echo $num_step; ?> name="<?php echo $field['name']; ?>" <?php if(!empty($field['placeholder'])) { echo 'placeholder="'.$field['placeholder'].'"'; } ?> value="<?php echo esc_attr($field['value']); ?>" />
+	<?php }
+
+	/**
+	 *	Build admin color field
+	 *
+	 *  @param array $field
+	 *		
+	 */
+	public function build_admin_field_color($field = null) {
+		$default_color = $field['value'];
+        if(!empty($field['default_color'])) { $default_color = $field['default_color']; } ?>
+        <input type="text" class="color-field" data-default-color="<?php echo esc_attr($default_color); ?>" name="<?php echo $field['name']; ?>" <?php if(!empty($field['placeholder'])) { echo 'placeholder="'.$field['placeholder'].'"'; } ?> value="<?php echo esc_attr($field['value']); ?>" />
+	<?php }
+
+	/**
+	 *	Build admin sortable field
+	 *
+	 *  @param array $field
+	 *		
+	 */
+	public function build_admin_field_sortable($field = null) {
+		$sortable_fields = $field['value'];
+        $count = 0; ?>
+
+        <ul class="sortable-list">
+            <?php if(isset($sortable_fields) && !empty($sortable_fields)) { ?>
+            <?php foreach($sortable_fields as $value) { 
+
+            if(isset($value['name'])) { $name = $value['name']; } 
+            if(isset($value['label'])) { $label = $value['label']; }
+            if(isset($value['slug'])) { $slug = $value['slug']; } 
+            if(isset($value['active']) && $value['active'] == 'true') { $active = 'true'; } else { $active = 'false'; }
+            if(isset($value['sidebar']) && $value['sidebar'] == 'true') { $sidebar = 'true'; } else { $sidebar = 'false'; }
+
+            //If item is an add-on, check if it is active
+            if(isset($value['add_on'])) { 
+                if(ns_basics_is_plugin_active($value['add_on'])) { $add_on = 'true'; } else { $add_on = 'false'; }
+            } else {
+                $add_on = 'true'; 
+            } ?>
+
+            <?php if($add_on == 'true') { ?>
+            <li class="sortable-item">
+                <div class="sortable-item-header">
+	                <div class="sort-arrows"><i class="fa fa-bars"></i></div>
+	                <div class="toggle-switch" title="<?php if($active == 'true') { esc_html_e('Active', 'ns-basics'); } else { esc_html_e('Disabled', 'ns-basics'); } ?>">
+	                    <input type="checkbox" name="<?php echo $field['name']; ?>[<?php echo $count; ?>][active]" value="true" class="toggle-switch-checkbox" id="<?php echo $field['name']; ?>_<?php echo esc_attr($slug); ?>" <?php checked('true', $active, true) ?>>
+	                    <label class="toggle-switch-label" for="<?php echo $field['name']; ?>_<?php echo esc_attr($slug); ?>"><?php if($active == 'true') { echo '<span class="on">'.esc_html__('On', 'ns-basics').'</span>'; } else { echo '<span>'.esc_html__('Off', 'ns-basics').'</span>'; } ?></label>
+	                </div>
+	                <span class="sortable-item-title"><?php echo esc_attr($name); ?></span><div class="clear"></div>
+	                <input type="hidden" name="<?php echo $field['name']; ?>[<?php echo $count; ?>][name]" value="<?php echo $name; ?>" />
+                    <input type="hidden" name="<?php echo $field['name']; ?>[<?php echo $count; ?>][slug]" value="<?php echo $slug; ?>" />
+	            </div>
+	            <a href="#advanced-options-content-<?php echo esc_attr($slug); ?>" class="sortable-item-action advanced-options-toggle right">
+	            	<i class="fa fa-gear"></i> <?php echo esc_html_e('Additional Settings', 'ns-basics'); ?>
+	            </a>
+	            <div id="advanced-options-content-<?php echo esc_attr($slug); ?>" class="advanced-options-content hide-soft">
+	                <?php 
+	                $this->build_admin_field(array('title' => esc_html__('Label:', 'ns-basics'), 'name' => $field['name'].'['.$count.'][label]', 'value' => $label, 'type' => 'text')); 
+	                $this->build_admin_field(array('title' => esc_html__('Display in Sidebar', 'ns-basics'), 'name' => $field['name'].'['.$count.'][sidebar]', 'value' => $sidebar, 'type' => 'checkbox'));
+	                                	
+	                //build child fields
+	                if(!empty($field['children'])) {
+	                    foreach($field['children'] as $child_field) {
+	                    	if($child_field['parent_val'] == $slug) { $this->build_admin_field($child_field); }
+	                    }
+	                } ?>
+	            </div>
+            </li>
+            <?php } ?>
+
+            <?php $count++; } } ?>
+        </ul>
+	<?php }
+
 
 	/************************************************************************/
 	// Output Pages
