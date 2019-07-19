@@ -207,16 +207,18 @@ class NS_Basics_Admin {
                 		<input type="checkbox" name="<?php echo $field['name']; ?>" value="true" <?php if($field['value'] == 'true') { echo 'checked'; } ?>  />
                 	
                 	<?php } else if($field['type'] == 'checkbox_group') {
-
+                		
                 		// CHECKBOX GROUP ?>
-                		<?php if(!empty($field['options'])) { ?>
-                			<ul class="three-col-list">
-	                		<?php foreach($field['options'] as $option_name=>$option) { ?>
-	                			
-	                			<li><input <?php if(!empty($option['attributes'])) { foreach($option['attributes'] as $attr) { echo $attr.' '; } }?> type="checkbox" name="<?php echo $field['name']; ?>[]" value="<?php echo $option['value']; ?>" <?php if(in_array($option['value'], $field['value'])) { echo 'checked'; } ?> /><?php echo $option_name; ?></li>
-	                		<?php } ?>
-	                		</ul>
-	                	<?php } ?>
+                		<?php if(!empty($field['options'])) { 
+                			echo '<ul class="three-col-list">';
+                			foreach($field['options'] as $key=>$option) { ?>
+                				<li>
+                					<input type="checkbox" <?php if(!empty($option['attributes'])) { foreach($option['attributes'] as $attr) { echo $attr.' '; } }?> name="<?php echo $field['name'].'['.$key.'][value]'; ?>" value="<?php echo $key; ?>" <?php if(isset($field['value'][$key]['value'])) { echo 'checked'; } ?> /><?php echo $option['value']; ?>
+                					<input type="hidden" name="<?php echo $field['name'].'['.$key.'][attributes]'; ?>" value="<?php echo $option['attributes']; ?>" />
+                				</li>
+                			<?php }
+                			echo '</ul>';
+                		} ?>
 
                 	<?php } else if($field['type'] == 'radio_image') { 
                 		
