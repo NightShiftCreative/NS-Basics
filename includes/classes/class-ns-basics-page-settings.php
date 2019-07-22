@@ -8,11 +8,22 @@ if (!defined( 'ABSPATH')) { exit; }
  */
 class NS_Basics_Page_Settings {
 
+	/************************************************************************/
+	// Initialize
+	/************************************************************************/
+
 	/**
 	 *	Constructor
 	 */
 	public function __construct() {
-		// Add actions & filters
+		// Load admin object
+		$this->admin_obj = new NS_Basics_Admin();
+	}
+
+	/**
+	 *	Init
+	 */
+	public function init() {
 		add_action( 'add_meta_boxes', array( $this, 'register_page_settings_meta_box' ));
 		add_action( 'save_post', array( $this, 'save_page_settings_meta_box' ));
 	}
@@ -356,8 +367,7 @@ class NS_Basics_Page_Settings {
 
 		// Return saved page settings
 		} else {
-			$admin_obj = new NS_Basics_Admin();
-			$page_settings = $admin_obj->get_meta_box_values($post_id, $page_settings_init);
+			$page_settings = $this->admin_obj->get_meta_box_values($post_id, $page_settings_init);
 			$page_settings = apply_filters( 'ns_basics_page_settings_filter', $page_settings);
 			return $page_settings;
 		}
@@ -379,7 +389,6 @@ class NS_Basics_Page_Settings {
 	public function output_page_settings_meta_box($post) {
 
 		$page_settings = $this->load_page_settings($post->ID);
-		$admin_obj = new NS_Basics_Admin();
 
 		wp_nonce_field( 'ns_basics_page_layout_meta_box_nonce', 'ns_basics_page_layout_meta_box_nonce' );
 
@@ -393,8 +402,7 @@ class NS_Basics_Page_Settings {
 
             	foreach($page_settings as $setting) {
             		if($setting['group'] == 'banner') {
-            			$field = $admin_obj->build_admin_field($setting);
-            			echo $field;
+            			$this->admin_obj->build_admin_field($setting);
             		}
             	} 
 
@@ -410,8 +418,7 @@ class NS_Basics_Page_Settings {
 
             	foreach($page_settings as $setting) {
             		if($setting['group'] == 'page_layout') {
-            			$field = $admin_obj->build_admin_field($setting);
-            			echo $field;
+            			$this->admin_obj->build_admin_field($setting);
             		}
             	} 
 
@@ -427,8 +434,7 @@ class NS_Basics_Page_Settings {
 
             	foreach($page_settings as $setting) {
             		if($setting['group'] == 'cta') {
-            			$field = $admin_obj->build_admin_field($setting);
-            			echo $field;
+            			$this->admin_obj->build_admin_field($setting);
             		}
             	} 
 
@@ -464,8 +470,7 @@ class NS_Basics_Page_Settings {
 
         // Load page settings and save
         $page_settings = $this->load_page_settings($post_id);
-        $admin_obj = new NS_Basics_Admin();
-        $admin_obj->save_meta_box($post_id, $page_settings, $allowed);
+        $this->admin_obj->save_meta_box($post_id, $page_settings, $allowed);
 	}
 
 }

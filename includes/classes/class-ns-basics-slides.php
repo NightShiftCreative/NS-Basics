@@ -17,10 +17,8 @@ class NS_Basics_Slides {
 	 *	Constructor
 	 */
 	public function __construct() {
-		
 		// Load admin object
 		$this->admin_obj = new NS_Basics_Admin();
-
 	}
 
 	/**

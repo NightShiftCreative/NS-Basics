@@ -176,7 +176,8 @@ class NS_Basics {
 		
 		// Load page settings class
 		if($this->modules->is_module_active('ns_basics_page_settings')) { 
-			$this->page_settings = new NS_Basics_Page_Settings(); 
+			$this->page_settings = new NS_Basics_Page_Settings();
+			$this->page_settings->init(); 
 		}
 
 		// Load post share class
