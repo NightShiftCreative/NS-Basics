@@ -471,9 +471,7 @@ class NS_Basics_Admin {
 			<?php $additional_images = $field['value'];
 			if(!empty($additional_images) && !empty($additional_images[0])) {
 
-				$additional_images = explode(",", $additional_images[0]);
-	            $additional_images = array_filter($additional_images);
-
+	            $additional_images = unserialize($additional_images[0]); 
 	            foreach ($additional_images as $additional_image) {
 	            	if(!empty($additional_image)) {
 
@@ -669,6 +667,7 @@ class NS_Basics_Admin {
 	 */
 	public function save_meta_box($post_id, $settings, $allowed) {
 		foreach($settings as $key=>$field) {
+
         	if($field['type'] == 'checkbox' || $field['type'] == 'switch') {
 	        	if(isset($_POST[$field['name']])) {
 			        update_post_meta( $post_id, $field['name'], wp_kses( $_POST[$field['name']], $allowed ) );
@@ -677,11 +676,9 @@ class NS_Basics_Admin {
 			    }
 	        } else if($field['type'] == 'gallery') {
 			    if (isset($_POST[$field['name']])) {
-			        $strAdditionalImgs = implode(",", $_POST[$field['name']]);
-			        update_post_meta( $post_id, $field['name'], $strAdditionalImgs );
+			        update_post_meta( $post_id, $field['name'], $_POST[$field['name']] );
 			    } else {
-			        $strAdditionalImgs = '';
-			        update_post_meta( $post_id, $field['name'], $strAdditionalImgs );
+			        update_post_meta( $post_id, $field['name'], '');
 			    }
 	        } else {
 	        	if(isset($_POST[$field['name']])) {
