@@ -192,6 +192,7 @@ class NS_Basics {
 		// Load slides class
 		if($this->modules->is_module_active('ns_basics_slides')) { 
 			$this->slides = new NS_Basics_Slides(); 
+			$this->slides->init();
 		}
 
 		// Load shortcodes class

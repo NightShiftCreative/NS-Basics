@@ -9,15 +9,33 @@ if (!defined( 'ABSPATH')) { exit; }
  */
 class NS_Basics_Slides {
 
+	/************************************************************************/
+	// Initialize
+	/************************************************************************/
+
 	/**
 	 *	Constructor
 	 */
 	public function __construct() {
+		
+		// Load admin object
+		$this->admin_obj = new NS_Basics_Admin();
+
+	}
+
+	/**
+	 *	Init
+	 */
+	public function init() {
 		add_action( 'init', array( $this, 'create_post_type' ));
 		add_action( 'init', array( $this, 'create_category' ));
 		add_action( 'add_meta_boxes', array( $this, 'add_meta_box' ));
 		add_action( 'save_post', array( $this, 'save_meta_box' ));
 	}
+
+	/************************************************************************/
+	// Slides Custom Post Type
+	/************************************************************************/
 
 	/**
 	 * Create Slides custom post type
@@ -94,7 +112,7 @@ class NS_Basics_Slides {
 				'name' => 'ns_basics_slide_overlay_color',
 				'description'=> esc_html__('Choose the color of the overlay.', 'ns-basics'),
 				'type' => 'color',
-				'value' => '#4f98a5',
+				'value' => '#000000',
 				'order' => 6,
 			),
 		);
@@ -109,8 +127,7 @@ class NS_Basics_Slides {
 		
 		// Return saved slide settings
 		} else {
-			$admin_obj = new NS_Basics_Admin();
-			$slide_settings = $admin_obj->get_meta_box_values($post_id, $slide_settings_init);
+			$slide_settings = $this->admin_obj->get_meta_box_values($post_id, $slide_settings_init);
 			$slide_settings = apply_filters( 'ns_basics_slide_settings_filter', $slide_settings);
 			return $slide_settings;
 		}
@@ -129,17 +146,11 @@ class NS_Basics_Slides {
 	public function output_meta_box($post) {
 
 		$slide_settings = $this->load_slide_settings($post->ID);
-		$admin_obj = new NS_Basics_Admin();
 
 		wp_nonce_field( 'ns_basics_slide_meta_box_nonce', 'ns_basics_slide_meta_box_nonce' );
 		
 		do_action( 'ns_basics_before_slide_settings', $slide_settings);
-
-        foreach($slide_settings as $setting) {
-        	$field = $admin_obj->build_admin_field($setting);
-        	echo $field;
-        } 
-
+        foreach($slide_settings as $setting) { $this->admin_obj->build_admin_field($setting); } 
         do_action( 'ns_basics_after_slide_settings', $slide_settings);
 	}
 
@@ -167,8 +178,7 @@ class NS_Basics_Slides {
 
         // Load page settings and save
         $slide_settings = $this->load_slide_settings($post_id);
-        $admin_obj = new NS_Basics_Admin();
-        $admin_obj->save_meta_box($post_id, $slide_settings, $allowed);
+        $this->admin_obj->save_meta_box($post_id, $slide_settings, $allowed);
 	}
 
 	/**
