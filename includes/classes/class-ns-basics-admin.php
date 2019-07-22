@@ -642,8 +642,13 @@ class NS_Basics_Admin {
 		foreach($settings_init as $key=>$field) {
 		    $values = get_post_custom($post_id);
 		    $settings[$key] = $field;
-		    $settings[$key]['value'] = isset( $values[$field['name']] ) ? esc_attr( $values[$field['name']][0] ) : $field['value'];
-		    	
+		    
+		    if($field['type'] == 'gallery') {
+		    	$settings[$key]['value'] = isset($values[$field['name']] ) ? $values[$field['name']] : '';
+		    } else {
+		    	$settings[$key]['value'] = isset( $values[$field['name']] ) ? esc_attr( $values[$field['name']][0] ) : $field['value'];
+		    }
+		    
 		    //get child values
 		    if(!empty($field['children'])) {
 		    	foreach($field['children'] as $child_key=>$child_field) {
@@ -671,7 +676,7 @@ class NS_Basics_Admin {
 			    	update_post_meta( $post_id, $field['name'], wp_kses( '', $allowed ) );
 			    }
 	        } else if($field['type'] == 'gallery') {
-	        	if (isset($_POST[$field['name']])) {
+			    if (isset($_POST[$field['name']])) {
 			        $strAdditionalImgs = implode(",", $_POST[$field['name']]);
 			        update_post_meta( $post_id, $field['name'], $strAdditionalImgs );
 			    } else {
