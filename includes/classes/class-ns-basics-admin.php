@@ -180,6 +180,8 @@ class NS_Basics_Admin {
 			'number' => array($this, 'build_admin_field_number'),
 			'color' => array($this, 'build_admin_field_color'),
 			'sortable' => array($this, 'build_admin_field_sortable'),
+			'editor' => array($this, 'build_admin_field_editor'),
+			'gallery' => array($this, 'build_admin_field_gallery'),
 		);
 		$field_types = apply_filters( 'ns_basics_admin_field_types', $field_types);
 
@@ -445,6 +447,71 @@ class NS_Basics_Admin {
         </ul>
 	<?php }
 
+	/**
+	 *	Build admin editor field
+	 *
+	 *  @param array $field
+	 *		
+	 */
+	public function build_admin_field_editor($field = null) {
+		$editor_id = $field['name'];
+        $settings = array('textarea_name' => $field['name'], 'editor_height' => 180);
+        wp_editor( $field['value'], $editor_id, $settings);
+	}
+
+	/**
+	 *	Build admin gallery field
+	 *
+	 *  @param array $field
+	 *		
+	 */
+	public function build_admin_field_gallery($field = null) { ?>
+		
+		<div class="gallery-container">
+			<?php $additional_images = $field['value'];
+			if(!empty($additional_images) && !empty($additional_images[0])) {
+
+				$additional_images = explode(",", $additional_images[0]);
+	            $additional_images = array_filter($additional_images);
+
+	            foreach ($additional_images as $additional_image) {
+	            	if(!empty($additional_image)) {
+
+	            		$image_id = ns_basics_get_image_id($additional_image);
+
+	            		if(!empty($image_id)) {
+	                        $image_thumb = wp_get_attachment_image_src($image_id, 'thumbnail');
+	                        if(!empty($image_thumb)) { 
+	                            $image_thumb_html = '<img src="'. $image_thumb[0] .'" alt="" />'; 
+	                        } else {
+	                           $image_thumb_html = '<img src="'. plugins_url('images/default-post-image.gif', dirname(__FILE__)) .'" alt="" />';  
+	                        }
+	                    } else {
+	                        $image_thumb_html = '<img width="150" src="'.$additional_image.'" alt="" />';
+	                    } ?>
+
+	                    <div class="gallery-img-preview">
+	                    	<?php echo $image_thumb_html; ?>
+	                    	<input type="hidden" name="<?php echo $field['name']; ?>[]" value="<?php echo $additional_image; ?>" />
+	                    	<span class="action delete-additional-img" title="<?php esc_html_e('Delete', 'ns-basics'); ?>"><i class="fa fa-trash"></i></span>
+	                    	<a href="<?php echo get_admin_url(); ?>upload.php?item=<?php echo $image_id; ?>" class="action edit-additional-img" target="_blank" title="<?php esc_html_e('Edit', 'ns-basics'); ?>"><i class="fa fa-pencil-alt"></i></a>
+	                    </div>
+	                    <?php 
+
+	            	}
+	            }
+
+			} else { echo '<p class="admin-module-note no-gallery-img">'.esc_html__('No gallery media was found.', 'ns-basics').'</p>'; } ?>
+				
+			<div class="clear"></div>
+		    <span class="admin-button add-gallery-media">
+		        <span class="hide gallery-field-name"><?php echo $field['name']; ?></span>
+		        <i class="fa fa-plus"></i> <?php echo esc_html_e('Add Media', 'ns-basics'); ?>
+		    </span>
+		</div>
+
+	<?php }
+
 
 	/************************************************************************/
 	// Output Pages
@@ -603,8 +670,16 @@ class NS_Basics_Admin {
 			    } else {
 			    	update_post_meta( $post_id, $field['name'], wp_kses( '', $allowed ) );
 			    }
+	        } else if($field['type'] == 'gallery') {
+	        	if (isset($_POST[$field['name']])) {
+			        $strAdditionalImgs = implode(",", $_POST[$field['name']]);
+			        update_post_meta( $post_id, $field['name'], $strAdditionalImgs );
+			    } else {
+			        $strAdditionalImgs = '';
+			        update_post_meta( $post_id, $field['name'], $strAdditionalImgs );
+			    }
 	        } else {
-	        	if(isset($field['name'])) {
+	        	if(isset($_POST[$field['name']])) {
 		        	update_post_meta( $post_id, $field['name'], wp_kses( $_POST[$field['name']], $allowed ) );
 		        }
 	        }
