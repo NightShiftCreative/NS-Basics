@@ -40,6 +40,12 @@
 .admin-module.two-col .admin-module { width:48%; float:left; border:none; margin:0; padding:0; }
 .admin-module.two-col .admin-module:first-child { margin-right:2%; }
 
+.admin-module.full-width td {
+    display:block;
+    width:100%;
+}
+.admin-module.full-width .admin-module-label { margin-bottom:10px; }
+
 .two-col-list {
     -moz-column-count: 2;
     -moz-column-gap: 20px;
