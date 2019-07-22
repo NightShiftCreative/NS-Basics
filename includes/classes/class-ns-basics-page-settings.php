@@ -28,6 +28,10 @@ class NS_Basics_Page_Settings {
 		add_action( 'save_post', array( $this, 'save_page_settings_meta_box' ));
 	}
 
+	/************************************************************************/
+	// Page Settings
+	/************************************************************************/
+
 	/**
 	 * Load global settings
 	 */
