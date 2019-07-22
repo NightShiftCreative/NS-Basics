@@ -116,7 +116,7 @@ class NS_Basics_Slides {
 		);
 
 		$slide_settings_init = apply_filters( 'ns_basics_slide_settings_init_filter', $slide_settings_init);
-		usort($slide_settings_init, 'ns_basics_sort_by_order');
+		uasort($slide_settings_init, 'ns_basics_sort_by_order');
 
 		// Return default slide settings
 		if($return_defaults == true) {
