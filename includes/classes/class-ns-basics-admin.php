@@ -641,7 +641,7 @@ class NS_Basics_Admin {
 		    $values = get_post_custom($post_id);
 		    $settings[$key] = $field;
 		    
-		    if($field['type'] == 'gallery') {
+		    if($field['serialized'] == true) {
 		    	$settings[$key]['value'] = isset($values[$field['name']] ) ? $values[$field['name']] : '';
 		    } else {
 		    	$settings[$key]['value'] = isset( $values[$field['name']] ) ? esc_attr( $values[$field['name']][0] ) : $field['value'];
@@ -674,7 +674,7 @@ class NS_Basics_Admin {
 			    } else {
 			    	update_post_meta( $post_id, $field['name'], wp_kses( '', $allowed ) );
 			    }
-	        } else if($field['type'] == 'gallery') {
+	        } else if($field['serialized'] == true) {
 			    if (isset($_POST[$field['name']])) {
 			        update_post_meta( $post_id, $field['name'], $_POST[$field['name']] );
 			    } else {
