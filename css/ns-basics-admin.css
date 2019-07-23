@@ -300,7 +300,7 @@ input[type=checkbox].toggle-switch-checkbox { display: none; }
     width:21%;
     display:inline-block;
     text-align:center;
-    margin-right:1%;
+    margin-right:0.5%;
     margin-top:10px;
 }
 .selectable-item.active, .home-source-item.active { border:1px solid #23a5e1; }
