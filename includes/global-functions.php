@@ -62,7 +62,7 @@ if(!function_exists('ns_core_get_icon')) {
 /*  Sort an array by order
 /*-----------------------------------------------------------------------------------*/
 function ns_basics_sort_by_order($a, $b) { 
-    return $a['order'] - $b['order'];    
+    return $a['order'] - $b['order'];   
 }
 
 /*-----------------------------------------------------------------------------------*/
