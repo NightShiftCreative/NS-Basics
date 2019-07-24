@@ -192,7 +192,7 @@ class NS_Basics_Admin {
 		if(!empty($field['children'])) { $field_class .= 'has-children '; }
 		?>
 
-		<table class="admin-module <?php echo $field_class; ?>" data-type="<?php echo $field['type']; ?>">
+		<table class="admin-module <?php echo $field_class; ?>" <?php if(!empty($field['id'])) { echo 'id="'.$field['id'].'"'; } ?> data-type="<?php echo $field['type']; ?>">
             <tr>
 
                 <td class="admin-module-label">
