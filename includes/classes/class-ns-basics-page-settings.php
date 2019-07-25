@@ -284,7 +284,7 @@ class NS_Basics_Page_Settings {
 				'group' => 'page_layout',
 				'title' => esc_html__('Sidebar Widget Area', 'ns-basics'),
 				'name' => 'ns_basics_page_layout_widget_area',
-				'value' => 'Page_sidebar',
+				'value' => 'page_sidebar',
 				'type' => 'select',
 				'options' => $sidebar_options,
 				'order' => 6,
