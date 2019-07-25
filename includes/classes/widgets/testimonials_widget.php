@@ -12,7 +12,7 @@ class ns_basics_testimonials_widget extends WP_Widget {
           'description'=> esc_html__('Display a testimonials slider.', 'ns-basics'),
           'panels_groups' => array('ns-basics')
         );
-        parent::__construct('ns_basics_testimonials_widget', esc_html__('(NightShift) Testimonials', 'ns-basics'), $widget_options);
+        parent::__construct('ns_basics_testimonials_widget', esc_html__('(Nightshift) Testimonials', 'ns-basics'), $widget_options);
     }
 
     /** @see WP_Widget::widget */

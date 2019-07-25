@@ -12,7 +12,7 @@ class ns_basics_list_posts_widget extends WP_Widget {
           'description'=> esc_html__('Display a list of blog posts.', 'ns-basics'),
           'panels_groups' => array('ns-basics')
         );
-		parent::__construct('ns_basics_list_posts_widget', esc_html__('(NightShift) List Posts', 'ns-basics'), $widget_options);
+		parent::__construct('ns_basics_list_posts_widget', esc_html__('(Nightshift) List Posts', 'ns-basics'), $widget_options);
     }
 
     /** @see WP_Widget::widget */

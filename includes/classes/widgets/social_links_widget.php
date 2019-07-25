@@ -12,7 +12,7 @@ class ns_basics_social_links_widget extends WP_Widget {
           'description'=> esc_html__('Display your social media links.', 'ns-basics'),
           'panels_groups' => array('ns-basics')
         );
-		parent::__construct('ns_basics_social_links_widget', esc_html__('(NightShift) Social Links', 'ns-basics'), $widget_options);
+		parent::__construct('ns_basics_social_links_widget', esc_html__('(Nightshift) Social Links', 'ns-basics'), $widget_options);
     }
 
     /** @see WP_Widget::widget */

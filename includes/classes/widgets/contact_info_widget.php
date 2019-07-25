@@ -12,7 +12,7 @@ class ns_basics_contact_info_widget extends WP_Widget {
           'description'=> esc_html__('Display your contact info.', 'ns-basics'),
           'panels_groups' => array('ns-basics')
         );
-		parent::__construct('ns_basics_contact_info_widget', esc_html__('(NightShift) Contact Info', 'ns-basics'), $widget_options);
+		parent::__construct('ns_basics_contact_info_widget', esc_html__('(Nightshift) Contact Info', 'ns-basics'), $widget_options);
     }
 
     /** @see WP_Widget::widget */
