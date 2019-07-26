@@ -643,6 +643,7 @@ class NS_Basics_Admin {
 		    
 		    if($field['serialized'] == true) {
 		    	$settings[$key]['value'] = isset($values[$field['name']] ) ? $values[$field['name']] : $field['value'];
+		    	if(is_serialized($settings[$key]['value'][0])) { $settings[$key]['value'] = unserialize($settings[$key]['value'][0]); }
 		    } else {
 		    	$settings[$key]['value'] = isset( $values[$field['name']] ) ? esc_attr( $values[$field['name']][0] ) : $field['value'];
 		    }
