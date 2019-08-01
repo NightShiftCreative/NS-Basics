@@ -48,15 +48,7 @@ class ns_basics_social_links_widget extends WP_Widget {
                             } else {
 
                                 if(function_exists('ns_core_load_theme_options')) {
-                                    $fb = ns_core_load_theme_options('ns_core_fb');
-                                    $twitter = ns_core_load_theme_options('ns_core_twitter');
-                                    $google = ns_core_load_theme_options('ns_core_google');
-                                    $linkedin = ns_core_load_theme_options('ns_core_linkedin');
-                                    $youtube = ns_core_load_theme_options('ns_core_youtube');
-                                    $vimeo = ns_core_load_theme_options('ns_core_vimeo');
-                                    $instagram = ns_core_load_theme_options('ns_core_instagram');
-                                    $flickr = ns_core_load_theme_options('ns_core_flickr');
-                                    $dribbble = ns_core_load_theme_options('ns_core_dribbble');
+                                    echo ns_core_get_social_icons('circle clean-list');
                                 } else {
                                     $fb = esc_attr(get_option('ns_core_fb'));
                                     $twitter = esc_attr(get_option('ns_core_twitter'));
