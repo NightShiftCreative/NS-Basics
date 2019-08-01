@@ -448,7 +448,7 @@ class NS_Basics_Page_Settings {
 
         // allow certain attributes
         $allowed = array(
-            'a' => array('href' => array()),
+            'a' => array('href' => array(), 'target' => array()),
             'b' => array(),
             'strong' => array(),
             'i' => array()
