@@ -43,7 +43,8 @@ class NS_Basics {
 	 */
 	public function define_constants() {
 		define('NS_BASICS_VERSION', '1.0.0');
-		define('NS_SHOP_URL', 'https://studio.nightshiftcreative.co/');
+		define('NS_SHOP_URL', 'https://products.nightshiftcreative.co/');
+		define('NS_BASICS_GITHUB_REPO', '/NightShiftCreative/NS-Basics/');
 		define('NS_BASICS_GITHUB', '/NightShiftCreative/NS-Basics/archive/1.0.0.zip');
 		define('NS_BASICS_PLUGIN_DIR', plugins_url('', __FILE__));
 	}
@@ -56,7 +57,7 @@ class NS_Basics {
 	public function update_checker() {
 		require 'assets/plugin-update-checker/plugin-update-checker.php';
 		$myUpdateChecker = Puc_v4_Factory::buildUpdateChecker(
-		    'https://github.com'.constant('NS_BASICS_GITHUB'),
+		    'https://github.com'.constant('NS_BASICS_GITHUB_REPO'),
 		    __FILE__,
 		    'ns-basics'
 		);
