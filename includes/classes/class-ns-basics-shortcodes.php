@@ -522,6 +522,7 @@ class NS_Basics_Shortcodes {
 	 */
 	public function add_shortcode_service($atts, $content=null) {
 		$icon_set = get_option('ns_core_icon_set', 'fa');
+		if(function_exists('ns_core_load_theme_options')) { $icon_set = ns_core_load_theme_options('ns_core_icon_set'); }
 
 	    $atts = shortcode_atts(
 	        array (
@@ -636,6 +637,7 @@ class NS_Basics_Shortcodes {
 	public function add_shortcode_tab($atts, $content=null) {
 		global $tabs_divs;
 	    $icon_set = get_option('ns_core_icon_set', 'fa');
+	    if(function_exists('ns_core_load_theme_options')) { $icon_set = ns_core_load_theme_options('ns_core_icon_set'); }
 
 	    $atts = shortcode_atts(
 	        array (

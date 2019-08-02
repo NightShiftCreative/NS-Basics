@@ -1,9 +1,13 @@
 <?php
 
-$default_email = get_option('admin_email');
+    $default_email = get_option('admin_email');
     $contact_form_email = esc_attr(get_option('ns_core_email', $default_email));
     $contact_form_success = esc_attr(get_option('ns_core_contact_form_success', esc_html__('Thanks! Your email has been delivered!', 'ns-basics')));
-    
+    if(function_exists('ns_core_load_theme_options')) { 
+      $contact_form_email = ns_core_load_theme_options('ns_core_email');
+      $contact_form_success = ns_core_load_theme_options('ns_core_contact_form_success'); 
+    }
+
     $nameError = '';
     $emailError= '';
     $commentError = '';
