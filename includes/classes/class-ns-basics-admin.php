@@ -401,10 +401,8 @@ class NS_Basics_Admin {
             <?php foreach($sortable_fields as $value) { 
 
             if(isset($value['name'])) { $name = $value['name']; } 
-            if(isset($value['label'])) { $label = $value['label']; }
             if(isset($value['slug'])) { $slug = $value['slug']; } 
             if(isset($value['active']) && $value['active'] == 'true') { $active = 'true'; } else { $active = 'false'; }
-            if(isset($value['sidebar']) && $value['sidebar'] == 'true') { $sidebar = 'true'; } else { $sidebar = 'false'; }
 
             //If item is an add-on, check if it is active
             if(isset($value['add_on'])) { 
@@ -415,6 +413,7 @@ class NS_Basics_Admin {
 
             <?php if($add_on == 'true') { ?>
             <li class="sortable-item">
+
                 <div class="sortable-item-header">
 	                <div class="sort-arrows"><i class="fa fa-bars"></i></div>
 	                <div class="toggle-switch" title="<?php if($active == 'true') { esc_html_e('Active', 'ns-basics'); } else { esc_html_e('Disabled', 'ns-basics'); } ?>">
@@ -425,14 +424,21 @@ class NS_Basics_Admin {
 	                <input type="hidden" name="<?php echo $field['name']; ?>[<?php echo $count; ?>][name]" value="<?php echo $name; ?>" />
                     <input type="hidden" name="<?php echo $field['name']; ?>[<?php echo $count; ?>][slug]" value="<?php echo $slug; ?>" />
 	            </div>
+
 	            <a href="#advanced-options-content-<?php echo esc_attr($slug); ?>" class="sortable-item-action advanced-options-toggle right">
 	            	<i class="fa fa-gear"></i> <?php echo esc_html_e('Additional Settings', 'ns-basics'); ?>
 	            </a>
+
 	            <div id="advanced-options-content-<?php echo esc_attr($slug); ?>" class="advanced-options-content hide-soft">
 	                <?php 
-	                $this->build_admin_field(array('title' => esc_html__('Label:', 'ns-basics'), 'name' => $field['name'].'['.$count.'][label]', 'value' => $label, 'type' => 'text')); 
-	                $this->build_admin_field(array('title' => esc_html__('Display in Sidebar', 'ns-basics'), 'name' => $field['name'].'['.$count.'][sidebar]', 'value' => $sidebar, 'type' => 'checkbox'));
-	                                	
+	                //build label field
+	                $this->build_admin_field(array('title' => 'Label', 'name' => $field['name'].'['.$count.'][label]', 'value' => $value['label'], 'type' => 'text',));
+
+	                //build sidebar field
+	                if($field['display_sidebar'] == true) {
+	                	$this->build_admin_field(array('title' => 'Display in Sidebar?', 'name' => $field['name'].'['.$count.'][sidebar]', 'value' => $value['sidebar'], 'type' => 'checkbox',));
+	                }  
+
 	                //build child fields
 	                if(!empty($field['children'])) {
 	                    foreach($field['children'] as $child_field) {
