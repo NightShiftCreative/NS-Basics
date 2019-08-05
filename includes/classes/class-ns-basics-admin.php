@@ -439,6 +439,16 @@ class NS_Basics_Admin {
 	                	$this->build_admin_field(array('title' => 'Display in Sidebar?', 'name' => $field['name'].'['.$count.'][sidebar]', 'value' => $value['sidebar'], 'type' => 'checkbox',));
 	                }  
 
+	                //build placeholder field
+	                if(isset($value['placeholder'])) {
+	                	$this->build_admin_field(array('title' => 'Placeholder', 'name' => $field['name'].'['.$count.'][placeholder]', 'value' => $value['placeholder'], 'type' => 'text',));
+	                }
+
+	                //build placeholder second field
+	                if(isset($value['placeholder_second'])) {
+	                	$this->build_admin_field(array('title' => 'Placeholder Second', 'name' => $field['name'].'['.$count.'][placeholder_second]', 'value' => $value['placeholder_second'], 'type' => 'text',));
+	                }
+
 	                //build child fields
 	                if(!empty($field['children'])) {
 	                    foreach($field['children'] as $child_field) {
