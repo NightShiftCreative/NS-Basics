@@ -260,7 +260,7 @@ class NS_Basics_Admin {
 	 *		
 	 */
 	public function build_admin_field_text($field = null) { ?>
-		<input type="text" name="<?php echo $field['name']; ?>" <?php if(!empty($field['placeholder'])) { echo 'placeholder="'.$field['placeholder'].'"'; } ?> value="<?php echo esc_attr($field['value']); ?>" />
+		<input <?php if($field['disabled']) { echo 'disabled'; } ?> type="text" name="<?php echo $field['name']; ?>" <?php if(!empty($field['placeholder'])) { echo 'placeholder="'.$field['placeholder'].'"'; } ?> value="<?php echo esc_attr($field['value']); ?>" />
 	<?php }
 
 	/**
