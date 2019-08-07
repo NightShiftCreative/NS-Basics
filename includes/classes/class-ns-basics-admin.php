@@ -630,35 +630,55 @@ class NS_Basics_Admin {
 	 * @param boolean $single_esc
 	 *
 	 */
-	public function get_settings($settings_init, $single_setting = null, $single_esc = true) {
+	public function get_settings($settings_init, $return_defaults = false, $single_setting = null, $single_esc = true) {
 		
-		// Return single setting
-		if(isset($single_setting)) {
 
-			if(array_key_exists($single_setting, $settings_init)) {
-				$default = $settings_init[$single_setting]['value'];
-				if($single_esc == false) {
-					$single_setting_value = get_option($single_setting, $default);
-				} else {
-					$single_setting_value = esc_attr(get_option($single_setting, $default));
-				}
-				return $single_setting_value;
+		/*******************************/
+		/* RETURN DEFAULT SETTINGS
+		/*******************************/
+		if($return_defaults == true) {
+
+			//return single setting
+			if(isset($single_setting)) {
+				return $settings_init[$single_setting]['value'];
+			//return all settings
 			} else {
-				return false;
+				return $settings_init;
 			}
 
-		// Return all settings
-		} else {
-			$settings = array();
-			foreach($settings_init as $key=>$field) { 
-				if(isset($field['esc']) && $field['esc'] == false) {
-					$settings[$key] = get_option($key, $field['value']); 
+		/*******************************/
+		/* RETURN SAVED SETTINGS
+		/*******************************/
+	    } else {
+
+	    	//return single setting
+			if(isset($single_setting)) {
+
+				if(array_key_exists($single_setting, $settings_init)) {
+					$default = $settings_init[$single_setting]['value'];
+					if($single_esc == false) {
+						$single_setting_value = get_option($single_setting, $default);
+					} else {
+						$single_setting_value = esc_attr(get_option($single_setting, $default));
+					}
+					return $single_setting_value;
 				} else {
-					$settings[$key] = esc_attr(get_option($key, $field['value'])); 
+					return false;
 				}
+
+			//return all settings
+			} else {
+				$settings = array();
+				foreach($settings_init as $key=>$field) { 
+					if(isset($field['esc']) && $field['esc'] == false) {
+						$settings[$key] = get_option($key, $field['value']); 
+					} else {
+						$settings[$key] = esc_attr(get_option($key, $field['value'])); 
+					}
+				}
+				return $settings;
 			}
-			return $settings;
-		}
+	    }
 	}
 
 
