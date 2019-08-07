@@ -58,7 +58,7 @@ class NS_Basics_Post_Sharing {
 	}
 
 	/**
-	 * Add post sharing
+	 * Add post sharing to blog posts
 	 */
 	public function add_post_sharing() { 
 		echo '<li>'.$this->build_post_sharing_links('post-share', true).'</li>';
