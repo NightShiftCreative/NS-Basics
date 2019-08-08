@@ -506,7 +506,6 @@ class NS_Basics_Admin {
 			<?php $additional_images = $field['value'];
 			if(!empty($additional_images) && !empty($additional_images[0])) {
 
-	            $additional_images = unserialize($additional_images[0]); 
 	            foreach ($additional_images as $additional_image) {
 	            	if(!empty($additional_image)) {
 
