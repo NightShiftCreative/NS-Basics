@@ -68,7 +68,7 @@ function ns_basics_sort_by_order($a, $b) {
 /*-----------------------------------------------------------------------------------*/
 /*  Check if key/value is in array
 /*-----------------------------------------------------------------------------------*/
-function ns_basics_in_array($array, $key, $key_value){
+function ns_basics_in_array($array, $key, $key_value) {
     $within_array = false;
     foreach( $array as $k=>$v ){
         if( is_array($v) ){
@@ -84,6 +84,18 @@ function ns_basics_in_array($array, $key, $key_value){
         }
     }
     return $within_array;
+}
+
+/*-----------------------------------------------------------------------------------*/
+/*  Check if key exists in multi-dimensional array
+/*-----------------------------------------------------------------------------------*/
+function ns_basics_in_array_key($needle, $haystack, $strict = false) {
+    foreach ($haystack as $item) {
+        if (($strict ? $item === $needle : $item == $needle) || (is_array($item) && ns_basics_in_array_key($needle, $item, $strict))) {
+            return true;
+        }
+    }
+    return false;
 }
 
 /*-----------------------------------------------------------------------------------*/
