@@ -625,13 +625,13 @@ class NS_Basics_Admin {
 	 *	Get settings
 	 *
 	 * @param array $settings_init
+	 * @param boolean $return_defaults
 	 * @param string $single_setting
 	 * @param boolean $single_esc
 	 *
 	 */
 	public function get_settings($settings_init, $return_defaults = false, $single_setting = null, $single_esc = true) {
 		
-
 		/*******************************/
 		/* RETURN DEFAULT SETTINGS
 		/*******************************/
