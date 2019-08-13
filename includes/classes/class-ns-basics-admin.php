@@ -406,13 +406,11 @@ class NS_Basics_Admin {
             if(isset($value['custom']) && $value['custom'] == 'true') { $custom = 'true'; } else { $custom = 'false'; }
 
             //If item is an add-on, check if it is active
-            if(isset($value['add_on'])) { 
-                if(ns_basics_is_plugin_active($value['add_on'])) { $add_on = 'true'; } else { $add_on = 'false'; }
-            } else {
-                $add_on = 'true'; 
-            } ?>
+            if(isset($value['add_on']) && !empty($value['add_on']) && !ns_basics_is_plugin_active($value['add_on'])) { 
+            	continue;
+            }
 
-            <?php if($custom == 'true' && !empty($field['custom_fields'])) {
+            if($custom == 'true' && !empty($field['custom_fields'])) {
             	$custom_fields = $field['custom_fields']; 
                 if(ns_basics_in_array($custom_fields, 'id', $slug)) { ?>
                     <li class="sortable-item custom-filter-field custom-filter-field-<?php echo $slug; ?>">
@@ -429,7 +427,7 @@ class NS_Basics_Admin {
                         </div>
                     </li>
                 <?php } ?>
-            <?php } else if($add_on == 'true') { ?>
+            <?php } else { ?>
             <li class="sortable-item">
 
                 <div class="sortable-item-header">
@@ -441,6 +439,7 @@ class NS_Basics_Admin {
 	                <span class="sortable-item-title"><?php echo esc_attr($name); ?></span><div class="clear"></div>
 	                <input type="hidden" name="<?php echo $field['name']; ?>[<?php echo $count; ?>][name]" value="<?php echo $name; ?>" />
                     <input type="hidden" name="<?php echo $field['name']; ?>[<?php echo $count; ?>][slug]" value="<?php echo $slug; ?>" />
+	            	<input type="hidden" name="<?php echo $field['name']; ?>[<?php echo $count; ?>][add_on]" value="<?php echo $value['add_on']; ?>" />
 	            </div>
 
 	            <a href="#advanced-options-content-<?php echo esc_attr($slug); ?>" class="sortable-item-action advanced-options-toggle right">
