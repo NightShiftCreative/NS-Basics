@@ -698,7 +698,8 @@ class NS_Basics_Admin {
 		    	$settings[$key]['value'] = isset($values[$field['name']] ) ? $values[$field['name']] : $field['value'];
 		    	if(is_serialized($settings[$key]['value'][0])) { $settings[$key]['value'] = unserialize($settings[$key]['value'][0]); }
 		    } else {
-		    	$settings[$key]['value'] = isset( $values[$field['name']] ) ? esc_attr( $values[$field['name']][0] ) : $field['value'];
+		    	if($field['esc'] == false) { $field_value = $values[$field['name']][0]; } else { $field_value = esc_attr($values[$field['name']][0]); }
+		    	$settings[$key]['value'] = isset( $values[$field['name']] ) ? $field_value : $field['value'];
 		    }
 		    
 		    //get child values
@@ -736,7 +737,8 @@ class NS_Basics_Admin {
 			    }
 	        } else {
 	        	if(isset($_POST[$field['name']])) {
-		        	update_post_meta( $post_id, $field['name'], wp_kses( $_POST[$field['name']], $allowed ) );
+	        		if($field['esc'] == false) { $field_value = $_POST[$field['name']]; } else { $field_value = wp_kses( $_POST[$field['name']], $allowed); }
+		        	update_post_meta( $post_id, $field['name'], $field_value);
 		        }
 	        }
 
