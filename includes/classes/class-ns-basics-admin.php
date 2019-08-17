@@ -410,6 +410,8 @@ class NS_Basics_Admin {
             	continue;
             }
 
+            do_action('ns_basics_before_sortable_field_'.$field['name'], $value);
+
             if($custom == 'true' && !empty($field['custom_fields'])) {
             	$custom_fields = $field['custom_fields']; 
                 if(ns_basics_in_array($custom_fields, 'id', $slug)) { ?>
@@ -478,7 +480,7 @@ class NS_Basics_Admin {
 
             <?php $count++; } } ?>
         </ul>
-        <?php do_action('ns_real_estate_after_sortable_fields_'.$field['name'], $field); ?>
+        <?php do_action('ns_basics_after_sortable_fields_'.$field['name'], $field); ?>
 	<?php }
 
 	/**
