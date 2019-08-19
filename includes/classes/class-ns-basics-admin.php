@@ -403,33 +403,16 @@ class NS_Basics_Admin {
             if(isset($value['name'])) { $name = $value['name']; } 
             if(isset($value['slug'])) { $slug = $value['slug']; } 
             if(isset($value['active']) && $value['active'] == 'true') { $active = 'true'; } else { $active = 'false'; }
-            if(isset($value['custom']) && $value['custom'] == 'true') { $custom = 'true'; } else { $custom = 'false'; }
 
             //If item is an add-on, check if it is active
             if(isset($value['add_on']) && !empty($value['add_on']) && !ns_basics_is_plugin_active($value['add_on'])) { 
             	continue;
             }
 
-            do_action('ns_basics_before_sortable_field_'.$field['name'], $value);
+            
 
-            if($custom == 'true' && !empty($field['custom_fields'])) {
-            	$custom_fields = $field['custom_fields']; 
-                if(ns_basics_in_array($custom_fields, 'id', $slug)) { ?>
-                    <li class="sortable-item custom-filter-field custom-filter-field-<?php echo $slug; ?>">
-                        <div class="sortable-item-header">
-                            <div class="sort-arrows"><i class="fa fa-bars"></i></div>
-                            <span class="sortable-item-action remove right"><i class="fa fa-times"></i> <?php esc_html_e('Remove', 'ns-real-estate'); ?></span>
-                            <span class="sortable-item-title custom-filter-field-label"><?php echo esc_attr($name); ?></span> 
-                            <span class="admin-module-note"><?php esc_html_e('(Custom Field)', 'ns-basics'); ?></span>
-                            <div class="clear"></div>
-                            <input type="hidden" name="<?php echo $field['name']; ?>[<?php echo $count; ?>][active]" value="true" />
-                            <input type="hidden" name="<?php echo $field['name']; ?>[<?php echo $count; ?>][name]" value="<?php echo $name; ?>" class="custom-filter-field-name" />
-                            <input type="hidden" name="<?php echo $field['name']; ?>[<?php echo $count; ?>][slug]" value="<?php echo $slug; ?>" class="custom-filter-field-slug" />
-                            <input type="hidden" name="<?php echo $field['name']; ?>[<?php echo $count; ?>][custom]" value="true" /> 
-                        </div>
-                    </li>
-                <?php } ?>
-            <?php } else { ?>
+            do_action('ns_basics_before_sortable_field_'.$field['name'], $value, $field); ?>
+
             <li class="sortable-item">
 
                 <div class="sortable-item-header">
@@ -476,7 +459,6 @@ class NS_Basics_Admin {
 	                } ?>
 	            </div>
             </li>
-            <?php } ?>
 
             <?php $count++; } } ?>
         </ul>
