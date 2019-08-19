@@ -404,12 +404,15 @@ class NS_Basics_Admin {
             if(isset($value['slug'])) { $slug = $value['slug']; } 
             if(isset($value['active']) && $value['active'] == 'true') { $active = 'true'; } else { $active = 'false'; }
 
-            do_action('ns_basics_before_sortable_field_'.$field['name'], $value, $field);
-
             //If item is an add-on, check if it is active
             if(isset($value['add_on']) && !empty($value['add_on']) && !ns_basics_is_plugin_active($value['add_on'])) { 
             	continue;
-            } ?>
+            }
+
+            //If custom field, ignore
+            if(isset($value['custom']) && $value['custom'] == 'true') { 
+            	do_action('ns_basics_sortable_custom_'.$field['name'], $count, $value); 
+            } else { ?>
 
             <li class="sortable-item">
 
@@ -457,6 +460,7 @@ class NS_Basics_Admin {
 	                } ?>
 	            </div>
             </li>
+        	<?php } ?>
 
             <?php $count++; } } ?>
         </ul>
