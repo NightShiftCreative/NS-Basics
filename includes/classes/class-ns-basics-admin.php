@@ -398,20 +398,18 @@ class NS_Basics_Admin {
 
         <ul class="sortable-list">
             <?php if(isset($sortable_fields) && !empty($sortable_fields)) { ?>
-            <?php foreach($sortable_fields as $value) { 
+            <?php foreach($sortable_fields as $key=>$value) { 
 
             if(isset($value['name'])) { $name = $value['name']; } 
             if(isset($value['slug'])) { $slug = $value['slug']; } 
             if(isset($value['active']) && $value['active'] == 'true') { $active = 'true'; } else { $active = 'false'; }
 
+            do_action('ns_basics_before_sortable_field_'.$field['name'], $value, $field);
+
             //If item is an add-on, check if it is active
             if(isset($value['add_on']) && !empty($value['add_on']) && !ns_basics_is_plugin_active($value['add_on'])) { 
             	continue;
-            }
-
-            
-
-            do_action('ns_basics_before_sortable_field_'.$field['name'], $value, $field); ?>
+            } ?>
 
             <li class="sortable-item">
 
