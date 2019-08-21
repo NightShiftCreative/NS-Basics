@@ -205,6 +205,9 @@ class NS_Basics_Page_Settings {
 								'name' => 'ns_basics_banner_overlay_opacity',
 								'description' => esc_html__('Choose an opacity ranging from 0 to 1 (0 is fully transparent).', 'ns-basics'),
 								'type' => 'number',
+								'step' => 0.05,
+								'min' => 0,
+								'max' => 1,
 								'value' => $global_banner_settings['overlay_opacity'],
 							),
 							'banner_overlay_color' => array(
