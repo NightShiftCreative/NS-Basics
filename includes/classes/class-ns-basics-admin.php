@@ -488,9 +488,8 @@ class NS_Basics_Admin {
 	public function build_admin_field_gallery($field = null) { ?>
 		
 		<div class="gallery-container">
-			<?php $additional_images = $field['value'];
-			if(!empty($additional_images) && !empty($additional_images[0])) {
-
+			<?php $additional_images = $field['value']; 
+			if(!empty($additional_images)) {
 	            foreach ($additional_images as $additional_image) {
 	            	if(!empty($additional_image)) {
 
