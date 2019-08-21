@@ -9,11 +9,26 @@ if (!defined( 'ABSPATH')) { exit; }
  */
 class NS_Basics_Post_Sharing {
 
+	/************************************************************************/
+	// Initialize
+	/************************************************************************/
+
 	/**
-	 *	Constructor
+	 *	Init
 	 */
-	public function __construct() {
+	public function init() {
 		add_action( 'ns_core_after_post_meta', array( $this, 'add_post_sharing' ));
+	}
+
+	/************************************************************************/
+	// Output Post Sharing
+	/************************************************************************/
+
+	/**
+	 * Add post sharing to blog posts
+	 */
+	public function add_post_sharing() { 
+		echo '<li>'.$this->build_post_sharing_links('post-share', true).'</li>';
 	}
 
 	/**
@@ -55,13 +70,6 @@ class NS_Basics_Post_Sharing {
 
         $output = ob_get_clean();
         return $output;
-	}
-
-	/**
-	 * Add post sharing to blog posts
-	 */
-	public function add_post_sharing() { 
-		echo '<li>'.$this->build_post_sharing_links('post-share', true).'</li>';
 	}
 
 }
