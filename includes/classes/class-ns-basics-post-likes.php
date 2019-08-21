@@ -10,9 +10,9 @@ if (!defined( 'ABSPATH')) { exit; }
 class NS_Basics_Post_Likes {
 
 	/**
-	 *	Constructor
+	 *	Init
 	 */
-	public function __construct() {
+	public function init() {
 		add_action( 'wp_enqueue_scripts', array( $this, 'frontend_scripts'));
 		add_action( 'wp_ajax_nopriv_process_simple_like', array( $this, 'process_post_like'));
 		add_action( 'wp_ajax_process_simple_like', array( $this, 'process_post_like'));

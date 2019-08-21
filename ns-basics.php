@@ -184,12 +184,13 @@ class NS_Basics {
 		// Load post share class
 		if($this->modules->is_module_active('ns_basics_post_share')) { 
 			$this->post_sharing = new NS_Basics_Post_Sharing(); 
-			$this->post_sharing ->init();
+			$this->post_sharing->init();
 		}
 
 		// Load post likes class
 		if($this->modules->is_module_active('ns_basics_post_likes')) { 
-			$this->post_likes = new NS_Basics_Post_Likes(); 
+			$this->post_likes = new NS_Basics_Post_Likes();
+			$this->post_likes->init(); 
 		}
 
 		// Load slides class
