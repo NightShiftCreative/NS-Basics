@@ -43,6 +43,7 @@ class NS_Basics {
 	 */
 	public function define_constants() {
 		define('NS_BASICS_VERSION', '1.0.0');
+		define('NS_URL', 'https://nightshiftcreative.co/');
 		define('NS_SHOP_URL', 'https://products.nightshiftcreative.co/');
 		define('NS_BASICS_GITHUB_REPO', '/NightShiftCreative/NS-Basics/');
 		define('NS_BASICS_GITHUB', '/NightShiftCreative/NS-Basics/archive/1.0.0.zip');
