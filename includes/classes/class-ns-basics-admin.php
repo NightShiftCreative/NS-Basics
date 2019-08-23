@@ -588,12 +588,48 @@ class NS_Basics_Admin {
 		ob_start(); ?>
   
 	    <div class="resource-items">
-		    <a href="https://nightshift.ticksy.com/" target="_blank" class="resource-item"><i class="fa fa-envelope icon"></i><?php esc_html_e('Open a Support Ticket', 'ns-basics'); ?></a>
-		    <a href="<?php echo constant('NS_SHOP_URL').'/docs/ns-basics/'; ?>" target="_blank" class="resource-item"><i class="fa fa-book icon"></i><?php esc_html_e('Knowledge Base', 'ns-basics'); ?></a>
-		    <a href="<?php echo constant('NS_SHOP_URL').'/themes/'; ?>" target="_blank" class="resource-item"><i class="fa fa-tint icon"></i><?php esc_html_e('Our Themes', 'ns-basics'); ?></a>
-		    <a href="<?php echo constant('NS_SHOP_URL').'/plugins/'; ?>" target="_blank" class="resource-item"><i class="fa fa-plug icon"></i><?php esc_html_e('Our Plugins', 'ns-basics'); ?></a>
-		    <a href="https://www.instagram.com/nightshiftcreative/" target="_blank" class="resource-item"><i class="fa fa-share-alt icon"></i><?php esc_html_e('Follow Us', 'ns-basics'); ?></a>
-		    <a href="<?php echo constant('NS_SHOP_URL').'/blog/'; ?>" target="_blank" class="resource-item"><i class="fa fa-pencil-alt icon"></i><?php esc_html_e('Our Blog', 'ns-basics'); ?></a>
+		    
+		    <a href="https://nightshift.ticksy.com/" target="_blank" class="resource-item">
+		    	<i class="fa fa-envelope icon"></i>
+		    	<h3><?php esc_html_e('Get Support', 'ns-basics'); ?></h3>
+		    	<p><?php esc_html_e('Get one on one support with a developer.', 'ns-basics'); ?></p>
+		 		<div class="button"><?php esc_html_e('Open a Ticket', 'ns-basics'); ?></div>
+		    </a>
+		    
+		    <a href="<?php echo constant('NS_SHOP_URL').'/docs/ns-basics/'; ?>" target="_blank" class="resource-item">
+		    	<i class="fa fa-book icon"></i>
+		    	<h3><?php esc_html_e('Knowledge Base', 'ns-basics'); ?></h3>
+		    	<p><?php esc_html_e('Docs, configuration, tutorials, and more.', 'ns-basics'); ?></p>
+		 		<div class="button"><?php esc_html_e('View Knowledge Base', 'ns-basics'); ?></div>
+		    </a>
+
+		    <a href="<?php echo constant('NS_URL').'/contact/'; ?>" target="_blank" class="resource-item">
+		    	<i class="fa fa-cog icon"></i>
+		    	<h3><?php esc_html_e('Custom Services', 'ns-basics'); ?></h3>
+		    	<p><?php esc_html_e('Need help with configuration, custom web design, and more?', 'ns-basics'); ?></p>
+		 		<div class="button"><?php esc_html_e('Request Service', 'ns-basics'); ?></div>
+		    </a>
+
+		    <a href="<?php echo constant('NS_SHOP_URL').'/themes/'; ?>" target="_blank" class="resource-item">
+		    	<i class="fa fa-tint icon"></i>
+		    	<h3><?php esc_html_e('Our Themes', 'ns-basics'); ?></h3>
+		    	<p><?php esc_html_e('Beautiful & Functional WordPress themes.', 'ns-basics'); ?></p>
+		 		<div class="button"><?php esc_html_e('Browse Themes', 'ns-basics'); ?></div>
+		    </a>
+
+		    <a href="<?php echo constant('NS_SHOP_URL').'/plugins/'; ?>" target="_blank" class="resource-item">
+		    	<i class="fa fa-plug icon"></i>
+		    	<h3><?php esc_html_e('Our Plugins', 'ns-basics'); ?></h3>
+		    	<p><?php esc_html_e('Robust & intuitive WordPress plugins.', 'ns-basics'); ?></p>
+		 		<div class="button"><?php esc_html_e('Browse Plugins', 'ns-basics'); ?></div>
+		    </a>
+
+		    <a href="<?php echo constant('NS_SHOP_URL').'/blog/'; ?>" target="_blank" class="resource-item">
+		    	<i class="fa fa-pencil-alt icon"></i>
+		    	<h3><?php esc_html_e('Our Blog', 'ns-basics'); ?></h3>
+		    	<p><?php esc_html_e('News, tips & tricks, tutorials.', 'ns-basics'); ?></p>
+		 		<div class="button"><?php esc_html_e('Read the Blog', 'ns-basics'); ?></div>
+		    </a>
 		    <div class="clear"></div>
 		</div>
 

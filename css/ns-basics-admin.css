@@ -658,6 +658,7 @@ input[type=checkbox].toggle-switch-checkbox { display: none; }
 .resource-item:visited { color:#5c59ed; }
 .resource-item:hover { color:#5c59ed; background:#e8e8f3; }
 
+.resource-item h3 { margin-bottom:0; }
 .resource-item p { color:#888995; font-weight:400; }
 
 .resource-item .icon {
@@ -859,6 +860,9 @@ input[type=checkbox].toggle-switch-checkbox { display: none; }
 
     .meta-box-form .admin-module-label { width:100%; display:block; }
     .meta-box-form .admin-module-field { width:100%; display:block; }
+
+    .resource-items { padding:3%; }
+    .resource-item { width:100%; float:none; padding-left:0; padding-right:0; margin:0; margin-bottom:20px; }
 }
 
 @media only screen and (max-width: 550px) {
@@ -884,4 +888,5 @@ input[type=checkbox].toggle-switch-checkbox { display: none; }
 
     .ns_upload_image_button,
     .button-secondary.remove { margin-top:5px; }
+
 }
