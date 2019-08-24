@@ -25,7 +25,7 @@ class NS_Basics_Admin {
 	 *	Add admin menu
 	 */
 	public function admin_menu() {
-		add_menu_page('NS Basics', 'NS Basics', 'administrator', 'ns-basics-settings', array( $this, 'settings_page' ), NS_BASICS_PLUGIN_DIR.'/images/icon.png');
+		add_menu_page('NS Basics', 'NS Basics', 'administrator', 'ns-basics-settings', array( $this, 'settings_page' ), NS_BASICS_PLUGIN_DIR.'/images/icon.png', 25);
     	add_submenu_page('ns-basics-settings', 'Settings', 'Settings', 'administrator', 'ns-basics-settings');
     	add_submenu_page('ns-basics-settings', 'Resources', 'Resources', 'administrator', 'ns-basics-resources', array( $this, 'resources_page' ));
 	}
