@@ -11,7 +11,7 @@ if(isset($template_args)) {
 <div class="user-dashboard">
 	<?php if(is_user_logged_in()) { 
 
-        do_action( 'ns_basics_before_edit_profile'); 
+        do_action( 'ns_basics_before_edit_profile', $current_user); 
 
 		$error = array();
 
@@ -114,28 +114,44 @@ if(isset($template_args)) {
                     <div class="col-lg-7 col-md-7">
                         <div class="row">
                             <div class="col-lg-6 col-md-6">
-                                <div class="form-username">
-                                    <label for="first-name"><?php esc_html_e('First Name', 'ns-basics'); ?></label>
-                                    <input class="text-input" name="first-name" type="text" id="first-name" value="<?php the_author_meta( 'first_name', $current_user->ID ); ?>" />
-                                </div>
+                                <table class="form-table form-firstname">
+                                <tr>
+                                    <td>
+                                        <label><?php esc_html_e('First Name', 'ns-basics'); ?></label>
+                                        <input name="first-name" type="text" value="<?php the_author_meta( 'first_name', $current_user->ID ); ?>" />
+                                    </td>
+                                </tr>
+                                </table>
                             </div>
                             <div class="col-lg-6 col-md-6">
-                                <div class="form-username">
-                                    <label for="last-name"><?php esc_html_e('Last Name', 'ns-basics'); ?></label>
-                                    <input class="text-input" name="last-name" type="text" id="last-name" value="<?php the_author_meta( 'last_name', $current_user->ID ); ?>" />
-                                </div>
+                                <table class="form-table form-lastname">
+                                <tr>
+                                    <td>
+                                        <label><?php esc_html_e('Last Name', 'ns-basics'); ?></label>
+                                        <input name="last-name" type="text" value="<?php the_author_meta( 'last_name', $current_user->ID ); ?>" />
+                                    </td>
+                                </tr>
+                                </table>
                             </div>
                         </div>
                         
-                        <div class="form-email">
-                            <label for="email"><?php esc_html_e('E-mail *', 'ns-basics'); ?></label>
-                            <input class="text-input" name="email" type="text" id="email" value="<?php the_author_meta( 'user_email', $current_user->ID ); ?>" />
-                        </div><!-- .form-email -->
+                        <table class="form-table form-email">
+                        <tr>
+                            <td>
+                                <label><?php esc_html_e('E-mail *', 'ns-basics'); ?></label>
+                                <input name="email" type="text" value="<?php the_author_meta( 'user_email', $current_user->ID ); ?>" />
+                            </td>
+                        </tr>
+                        </table>
 
-                        <div class="form-url">
-                            <label for="url"><?php esc_html_e('Website', 'ns-basics'); ?></label>
-                            <input class="text-input" name="url" type="text" id="url" value="<?php the_author_meta( 'user_url', $current_user->ID ); ?>" />
-                        </div><!-- .form-url -->
+                        <table class="form-table form-url">
+                        <tr>
+                            <td>
+                                <label><?php esc_html_e('Website', 'ns-basics'); ?></label>
+                                <input name="url" type="text" value="<?php the_author_meta( 'user_url', $current_user->ID ); ?>" />
+                            </td>
+                        </tr>
+                        </table>
                     </div>
 
                 </div><!-- end row -->
@@ -169,7 +185,7 @@ if(isset($template_args)) {
             </form>
         </div><!-- end user profile form -->
 
-    	<?php do_action( 'ns_basics_after_edit_profile'); 
+    	<?php do_action( 'ns_basics_after_edit_profile', $current_user); 
 
 	} else {
 		ns_basics_template_loader('alert_not_logged_in.php');
