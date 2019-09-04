@@ -175,6 +175,7 @@ class NS_Basics {
 		
 		// Load members class
 		$this->members = new NS_Basics_Members();
+		$this->members->init();
 		
 		// Load page settings class
 		if($this->modules->is_module_active('ns_basics_page_settings')) { 

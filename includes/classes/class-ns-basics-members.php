@@ -10,10 +10,14 @@ if (!defined( 'ABSPATH')) { exit; }
 class NS_Basics_Members {
 
 	/**
-	 *	Constructor
+	 *	Init
 	 */
-	public function __construct() {
+	public function init() {
 		$this->register_dashboard_sidebar();
+		add_action( 'show_user_profile', array($this, 'create_user_fields'));
+        add_action( 'edit_user_profile', array($this, 'create_user_fields'));
+        add_action( 'personal_options_update', array($this, 'save_user_fields'));
+        add_action( 'edit_user_profile_update', array($this, 'save_user_fields'));
 	}
 
 	/**
@@ -29,6 +33,31 @@ class NS_Basics_Members {
 		    'after_title' => '</h4>',
 		));
 	}
+
+	/**
+     *  Create User Fields
+     */
+    public function create_user_fields($user) { ?>
+        <h3><?php _e("Extra profile information", "ns-basics"); ?></h3>
+
+        <table class="form-table">
+        <tr>
+            <th><label><?php esc_html_e('User Avatar', 'ns-basics'); ?></label></th>
+            <td>
+                <input type="text" name="avatar" value="<?php echo get_the_author_meta('avatar', $user->ID); ?>" class="regular-text" /><br/>
+                <span class="description"><?php esc_html_e("The attachment id for the user avatar image.", 'ns-basics'); ?></span>
+            </td>
+        </tr>
+        </table>
+    <?php }
+
+     /**
+     *  Save User Fields
+     */
+    public function save_user_fields($user_id) {
+        if ( !current_user_can( 'edit_user', $user_id ) ) { return false; }
+        update_user_meta( $user_id, 'avatar', $_POST['avatar'] );
+    }
 
 }
 
