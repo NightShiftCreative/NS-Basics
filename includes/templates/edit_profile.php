@@ -116,20 +116,16 @@ if(isset($template_args)) {
                             <div class="col-lg-6 col-md-6">
                                 <table class="form-table form-firstname">
                                 <tr>
-                                    <td>
-                                        <label><?php esc_html_e('First Name', 'ns-basics'); ?></label>
-                                        <input name="first-name" type="text" value="<?php the_author_meta( 'first_name', $current_user->ID ); ?>" />
-                                    </td>
+                                    <th><label><?php esc_html_e('First Name', 'ns-basics'); ?></label></th>
+                                    <td><input name="first-name" type="text" value="<?php the_author_meta( 'first_name', $current_user->ID ); ?>" /></td>
                                 </tr>
                                 </table>
                             </div>
                             <div class="col-lg-6 col-md-6">
                                 <table class="form-table form-lastname">
                                 <tr>
-                                    <td>
-                                        <label><?php esc_html_e('Last Name', 'ns-basics'); ?></label>
-                                        <input name="last-name" type="text" value="<?php the_author_meta( 'last_name', $current_user->ID ); ?>" />
-                                    </td>
+                                    <th><label><?php esc_html_e('Last Name', 'ns-basics'); ?></label></th>
+                                    <td><input name="last-name" type="text" value="<?php the_author_meta( 'last_name', $current_user->ID ); ?>" /></td>
                                 </tr>
                                 </table>
                             </div>
@@ -137,19 +133,15 @@ if(isset($template_args)) {
                         
                         <table class="form-table form-email">
                         <tr>
-                            <td>
-                                <label><?php esc_html_e('E-mail *', 'ns-basics'); ?></label>
-                                <input name="email" type="text" value="<?php the_author_meta( 'user_email', $current_user->ID ); ?>" />
-                            </td>
+                            <th><label><?php esc_html_e('E-mail *', 'ns-basics'); ?></label></th>
+                            <td><input name="email" type="text" value="<?php the_author_meta( 'user_email', $current_user->ID ); ?>" /></td>
                         </tr>
                         </table>
 
                         <table class="form-table form-url">
                         <tr>
-                            <td>
-                                <label><?php esc_html_e('Website', 'ns-basics'); ?></label>
-                                <input name="url" type="text" value="<?php the_author_meta( 'user_url', $current_user->ID ); ?>" />
-                            </td>
+                            <th><label><?php esc_html_e('Website', 'ns-basics'); ?></label></th>
+                            <td><input name="url" type="text" value="<?php the_author_meta( 'user_url', $current_user->ID ); ?>" /></td>
                         </tr>
                         </table>
                     </div>
