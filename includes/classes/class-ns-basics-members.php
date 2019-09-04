@@ -44,7 +44,7 @@ class NS_Basics_Members {
         <tr>
             <th><label><?php esc_html_e('User Avatar', 'ns-basics'); ?></label></th>
             <td>
-                <input type="text" name="avatar" value="<?php echo get_the_author_meta('avatar', $user->ID); ?>" class="regular-text" /><br/>
+                <input type="number" name="avatar" value="<?php echo get_the_author_meta('avatar', $user->ID); ?>" class="regular-text" /><br/>
                 <span class="description"><?php esc_html_e("The attachment id for the user avatar image.", 'ns-basics'); ?></span>
             </td>
         </tr>
