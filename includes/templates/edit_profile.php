@@ -60,6 +60,8 @@ if(isset($template_args)) {
 	        if ( !empty( $_POST['description'] ) )
 	            update_user_meta( $current_user->ID, 'description', esc_attr( $_POST['description'] ) );
 
+            do_action( 'ns_basics_edit_profile_save', $current_user->ID);
+
 	        /* Redirect so the page will show updated info.*/
 	        if ( count($error) == 0 ) {
 	            do_action('edit_user_profile_update', $current_user->ID);
@@ -156,6 +158,8 @@ if(isset($template_args)) {
                         <input class="text-input" name="pass2" type="password" id="pass2" />
                     </div><!-- .form-password -->
                 </div>
+
+                <?php do_action( 'ns_basics_edit_profile_fields', $current_user);  ?>
 
                 <p class="form-submit">
                     <input name="updateuser" type="submit" id="updateuser" class="submit button" value="<?php esc_html_e('Update Profile', 'ns-basics'); ?>" />
