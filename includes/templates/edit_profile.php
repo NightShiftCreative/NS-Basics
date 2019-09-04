@@ -85,7 +85,7 @@ if(isset($template_args)) {
             <form method="post" id="adduser" action="<?php the_permalink(); ?>" enctype="multipart/form-data">
 
                 <div class="module-header module-header-left">
-                    <h4><strong><?php esc_html_e('General Info', 'ns-basics'); ?></strong></h4>
+                    <h3><strong><?php esc_html_e('General Info', 'ns-basics'); ?></strong></h3>
                 </div>
 
                 <div class="row">
@@ -156,23 +156,31 @@ if(isset($template_args)) {
 
                 </div><!-- end row -->
 
-                <div class="form-textarea">
-                    <label for="description"><?php esc_html_e('Biographical Information', 'ns-basics') ?></label>
-                    <textarea name="description" id="description" rows="3" cols="50"><?php the_author_meta( 'description', $current_user->ID ); ?></textarea>
-                </div><!-- .form-textarea -->
+                <table class="form-table form-description">
+                    <tr>
+                        <th><label><?php esc_html_e('Biographical Information', 'ns-basics'); ?></label></th>
+                        <td><textarea name="description" rows="3" cols="50"><?php the_author_meta( 'description', $current_user->ID ); ?></textarea></td>
+                    </tr>
+                </table>
                 
                 <div class="update-password">
                     <div class="module-header module-header-left">
-                        <h4><strong><?php esc_html_e('Change Password', 'ns-basics'); ?></strong></h4>
+                        <h3><strong><?php esc_html_e('Change Password', 'ns-basics'); ?></strong></h3>
                     </div>
-                    <div class="form-password">
-                        <label for="pass1"><?php esc_html_e('Password *', 'ns-basics'); ?> </label>
-                        <input class="text-input" name="pass1" type="password" id="pass1" />
-                    </div><!-- .form-password -->
-                    <div class="form-password">
-                        <label for="pass2"><?php esc_html_e('Repeat Password *', 'ns-basics'); ?></label>
-                        <input class="text-input" name="pass2" type="password" id="pass2" />
-                    </div><!-- .form-password -->
+
+                    <table class="form-table form-password">
+                    <tr>
+                        <th><label><?php esc_html_e('Password *', 'ns-basics'); ?></label></th>
+                        <td><input class="text-input" name="pass1" type="password" id="pass1" /></td>
+                    </tr>
+                    </table>
+
+                    <table class="form-table form-password">
+                    <tr>
+                        <th><label><?php esc_html_e('Repeat Password *', 'ns-basics'); ?></label></th>
+                        <td><input class="text-input" name="pass2" type="password" id="pass2" /></td>
+                    </tr>
+                    </table>
                 </div>
 
                 <?php do_action( 'ns_basics_edit_profile_fields', $current_user);  ?>

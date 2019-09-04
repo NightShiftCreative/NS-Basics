@@ -70,6 +70,7 @@ class NS_Basics {
 	public function frontend_scripts() {
 		if (!is_admin()) {
 	        wp_enqueue_style('ns-font-awesome',  plugins_url('/css/font-awesome/css/all.min.css', __FILE__), array(), '', 'all');
+	        wp_enqueue_style('ns-basics-css',  plugins_url('/css/ns-basics.css', __FILE__), array(), '', 'all');
 	        wp_enqueue_script('ns-basics', plugins_url('/js/ns-basics.js', __FILE__), array('jquery', 'jquery-ui-core'), '', true);
 
 	        //wordpress pre-loaded scripts

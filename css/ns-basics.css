@@ -1,0 +1,19 @@
+/** FORMS **/
+.form-table, .form-table td, .form-table th {
+	border:none;
+	vertical-align:top;
+	text-align:left;
+	padding:0;
+	word-break: keep-all;
+}
+
+.form-table th { width:25%; }
+
+.form-table input,
+.form-table select,
+.form-table textarea { width:100%; }
+
+.form-table input[type="radio"],
+.form-table input[type="checkbox"] { width:auto; margin-right:4px; }
+
+.form-table .description { font-size:13px; font-style:italic; }
