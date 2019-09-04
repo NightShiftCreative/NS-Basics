@@ -157,11 +157,6 @@ if(isset($template_args)) {
                     </div><!-- .form-password -->
                 </div>
 
-                <?php 
-                    //action hook for plugin and extra fields
-                    do_action('edit_user_profile',$current_user); 
-                ?>
-
                 <p class="form-submit">
                     <input name="updateuser" type="submit" id="updateuser" class="submit button" value="<?php esc_html_e('Update Profile', 'ns-basics'); ?>" />
                     <?php wp_nonce_field( 'update-user' ) ?>
