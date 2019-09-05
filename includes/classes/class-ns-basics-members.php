@@ -55,8 +55,8 @@ class NS_Basics_Members {
      *  Save User Fields
      */
     public function save_user_fields($user_id) {
-        if ( !current_user_can( 'edit_user', $user_id ) ) { return false; }
-        update_user_meta( $user_id, 'avatar', $_POST['avatar'] );
+        if(!current_user_can( 'edit_user', $user_id )) { return false; }
+        if(isset($_POST['avatar'])) { update_user_meta( $user_id, 'avatar', $_POST['avatar'] ); }
     }
 
 }
