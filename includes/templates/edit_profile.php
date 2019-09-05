@@ -85,7 +85,7 @@ if(isset($template_args)) {
             <form method="post" id="adduser" action="<?php the_permalink(); ?>" enctype="multipart/form-data">
 
                 <div class="module-header module-header-left">
-                    <h3><strong><?php esc_html_e('General Info', 'ns-basics'); ?></strong></h3>
+                    <h3><?php esc_html_e('General Info', 'ns-basics'); ?></h3>
                 </div>
 
                 <div class="row">
@@ -157,7 +157,7 @@ if(isset($template_args)) {
                 
                 <div class="update-password">
                     <div class="module-header module-header-left">
-                        <h3><strong><?php esc_html_e('Change Password', 'ns-basics'); ?></strong></h3>
+                        <h3><?php esc_html_e('Change Password', 'ns-basics'); ?></h3>
                     </div>
 
                     <table class="form-table form-password">
