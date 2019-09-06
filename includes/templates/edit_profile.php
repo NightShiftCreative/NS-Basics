@@ -84,9 +84,7 @@ if(isset($template_args)) {
             ?>
             <form method="post" id="adduser" action="<?php the_permalink(); ?>" enctype="multipart/form-data">
 
-                <div class="module-header module-header-left">
-                    <h3><?php esc_html_e('General Info', 'ns-basics'); ?></h3>
-                </div>
+                <h3><?php esc_html_e('General Info', 'ns-basics'); ?></h3>
 
                 <div class="row">
 
