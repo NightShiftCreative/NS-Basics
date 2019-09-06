@@ -84,93 +84,95 @@ if(isset($template_args)) {
             ?>
             <form method="post" id="adduser" action="<?php the_permalink(); ?>" enctype="multipart/form-data">
 
-                <h3><?php esc_html_e('General Info', 'ns-basics'); ?></h3>
+                <div class="form-section">
+                    <h3><?php esc_html_e('General Info', 'ns-basics'); ?></h3>
+                    <div class="row">
 
-                <div class="row">
-
-                    <div class="col-lg-5 col-md-5">
-                        <div class="avatar-upload">
-                            <label><?php esc_html_e('Change Avatar', 'ns-basics'); ?></label>
-                            <div class="avatar-img">
-                                <?php 
-                                    $avatar_id = get_user_meta( $current_user->ID, 'avatar', true ); 
-                                    if(!empty($avatar_id)) {
-                                        echo wp_get_attachment_image($avatar_id, array('96', '96'));
-                                    } else {
-                                        echo '<img src="'.plugins_url('/ns-basics/images/avatar-default.png').'" />';
-                                    }
-                                ?>
-                            </div>
-                            <div class="avatar-img-controls">
-                                <input name="avatar" type="file" />
-                                <span class="button small avatar-remove"><?php esc_html_e('Remove', 'ns-basics'); ?></span>
-                                <div class="clear"></div>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="col-lg-7 col-md-7">
-                        <div class="row">
-                            <div class="col-lg-6 col-md-6">
-                                <table class="form-table form-firstname">
-                                <tr>
-                                    <th><label><?php esc_html_e('First Name', 'ns-basics'); ?></label></th>
-                                    <td><input name="first-name" type="text" value="<?php the_author_meta( 'first_name', $current_user->ID ); ?>" /></td>
-                                </tr>
-                                </table>
-                            </div>
-                            <div class="col-lg-6 col-md-6">
-                                <table class="form-table form-lastname">
-                                <tr>
-                                    <th><label><?php esc_html_e('Last Name', 'ns-basics'); ?></label></th>
-                                    <td><input name="last-name" type="text" value="<?php the_author_meta( 'last_name', $current_user->ID ); ?>" /></td>
-                                </tr>
-                                </table>
+                        <div class="col-lg-5 col-md-5">
+                            <div class="avatar-upload">
+                                <label><?php esc_html_e('Change Avatar', 'ns-basics'); ?></label>
+                                <div class="avatar-img">
+                                    <?php 
+                                        $avatar_id = get_user_meta( $current_user->ID, 'avatar', true ); 
+                                        if(!empty($avatar_id)) {
+                                            echo wp_get_attachment_image($avatar_id, array('96', '96'));
+                                        } else {
+                                            echo '<img src="'.plugins_url('/ns-basics/images/avatar-default.png').'" />';
+                                        }
+                                    ?>
+                                </div>
+                                <div class="avatar-img-controls">
+                                    <input name="avatar" type="file" />
+                                    <span class="button small avatar-remove"><?php esc_html_e('Remove', 'ns-basics'); ?></span>
+                                    <div class="clear"></div>
+                                </div>
                             </div>
                         </div>
                         
-                        <table class="form-table form-email">
+                        <div class="col-lg-7 col-md-7">
+                            <div class="row">
+                                <div class="col-lg-6 col-md-6">
+                                    <table class="form-table form-firstname">
+                                    <tr>
+                                        <th><label><?php esc_html_e('First Name', 'ns-basics'); ?></label></th>
+                                        <td><input name="first-name" type="text" value="<?php the_author_meta( 'first_name', $current_user->ID ); ?>" /></td>
+                                    </tr>
+                                    </table>
+                                </div>
+                                <div class="col-lg-6 col-md-6">
+                                    <table class="form-table form-lastname">
+                                    <tr>
+                                        <th><label><?php esc_html_e('Last Name', 'ns-basics'); ?></label></th>
+                                        <td><input name="last-name" type="text" value="<?php the_author_meta( 'last_name', $current_user->ID ); ?>" /></td>
+                                    </tr>
+                                    </table>
+                                </div>
+                            </div>
+                            
+                            <table class="form-table form-email">
+                            <tr>
+                                <th><label><?php esc_html_e('E-mail *', 'ns-basics'); ?></label></th>
+                                <td><input name="email" type="text" value="<?php the_author_meta( 'user_email', $current_user->ID ); ?>" /></td>
+                            </tr>
+                            </table>
+
+                            <table class="form-table form-url">
+                            <tr>
+                                <th><label><?php esc_html_e('Website', 'ns-basics'); ?></label></th>
+                                <td><input name="url" type="text" value="<?php the_author_meta( 'user_url', $current_user->ID ); ?>" /></td>
+                            </tr>
+                            </table>
+                        </div>
+                    </div><!-- end row -->
+
+                    <table class="form-table form-description">
                         <tr>
-                            <th><label><?php esc_html_e('E-mail *', 'ns-basics'); ?></label></th>
-                            <td><input name="email" type="text" value="<?php the_author_meta( 'user_email', $current_user->ID ); ?>" /></td>
+                            <th><label><?php esc_html_e('Biographical Information', 'ns-basics'); ?></label></th>
+                            <td><textarea name="description" rows="3" cols="50"><?php the_author_meta( 'description', $current_user->ID ); ?></textarea></td>
                         </tr>
-                        </table>
-
-                        <table class="form-table form-url">
-                        <tr>
-                            <th><label><?php esc_html_e('Website', 'ns-basics'); ?></label></th>
-                            <td><input name="url" type="text" value="<?php the_author_meta( 'user_url', $current_user->ID ); ?>" /></td>
-                        </tr>
-                        </table>
-                    </div>
-
-                </div><!-- end row -->
-
-                <table class="form-table form-description">
-                    <tr>
-                        <th><label><?php esc_html_e('Biographical Information', 'ns-basics'); ?></label></th>
-                        <td><textarea name="description" rows="3" cols="50"><?php the_author_meta( 'description', $current_user->ID ); ?></textarea></td>
-                    </tr>
-                </table>
+                    </table>
+                </div><!-- end form section -->
                 
-                <div class="update-password">
-                    <div class="module-header module-header-left">
-                        <h3><?php esc_html_e('Change Password', 'ns-basics'); ?></h3>
+                <div class="form-section">
+                    <div class="update-password">
+                        <div class="module-header module-header-left">
+                            <h3><?php esc_html_e('Change Password', 'ns-basics'); ?></h3>
+                        </div>
+
+                        <table class="form-table form-password">
+                        <tr>
+                            <th><label><?php esc_html_e('Password *', 'ns-basics'); ?></label></th>
+                            <td><input class="text-input" name="pass1" type="password" id="pass1" /></td>
+                        </tr>
+                        </table>
+
+                        <table class="form-table form-password">
+                        <tr>
+                            <th><label><?php esc_html_e('Repeat Password *', 'ns-basics'); ?></label></th>
+                            <td><input class="text-input" name="pass2" type="password" id="pass2" /></td>
+                        </tr>
+                        </table>
                     </div>
-
-                    <table class="form-table form-password">
-                    <tr>
-                        <th><label><?php esc_html_e('Password *', 'ns-basics'); ?></label></th>
-                        <td><input class="text-input" name="pass1" type="password" id="pass1" /></td>
-                    </tr>
-                    </table>
-
-                    <table class="form-table form-password">
-                    <tr>
-                        <th><label><?php esc_html_e('Repeat Password *', 'ns-basics'); ?></label></th>
-                        <td><input class="text-input" name="pass2" type="password" id="pass2" /></td>
-                    </tr>
-                    </table>
                 </div>
 
                 <?php do_action( 'ns_basics_edit_profile_fields', $current_user);  ?>
