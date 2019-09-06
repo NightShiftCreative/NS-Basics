@@ -42,10 +42,10 @@ class NS_Basics_Members {
 
         <table class="form-table">
         <tr>
-            <th><label><?php esc_html_e('User Avatar', 'ns-basics'); ?></label></th>
+            <th><label><?php esc_html_e('User Image', 'ns-basics'); ?></label></th>
             <td>
                 <input type="number" name="avatar" value="<?php echo get_the_author_meta('avatar', $user->ID); ?>" class="regular-text" /><br/>
-                <span class="description"><?php esc_html_e("The attachment id for the user avatar image.", 'ns-basics'); ?></span>
+                <span class="description"><?php esc_html_e("The attachment id for the user's image.", 'ns-basics'); ?></span>
             </td>
         </tr>
         </table>
