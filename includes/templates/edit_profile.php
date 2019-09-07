@@ -41,9 +41,8 @@ if(isset($template_args)) {
 	        }
 
 	        /* Update user information. */
-	        if ( !empty( $_POST['url'] ) )
-	            wp_update_user( array( 'ID' => $current_user->ID, 'user_url' => esc_url( $_POST['url'] ) ) );
-	        if ( !empty( $_POST['email'] ) ){
+	        
+            if ( !empty( $_POST['email'] ) ){
 	            if (!is_email(esc_attr( $_POST['email'] )))
 	                $error[] = esc_html__('The Email you entered is not valid.  please try again.', 'ns-basics');
 	            elseif(email_exists(esc_attr( $_POST['email'] )) && email_exists(esc_attr( $_POST['email'] )) != $current_user->ID)
@@ -53,12 +52,15 @@ if(isset($template_args)) {
 	            }
 	        }
 
-	        if ( !empty( $_POST['first-name'] ) )
-	            update_user_meta( $current_user->ID, 'first_name', esc_attr( $_POST['first-name'] ) );
-	        if ( !empty( $_POST['last-name'] ) )
-	            update_user_meta($current_user->ID, 'last_name', esc_attr( $_POST['last-name'] ) );
-	        if ( !empty( $_POST['description'] ) )
-	            update_user_meta( $current_user->ID, 'description', esc_attr( $_POST['description'] ) );
+            $userdata = array(
+                'ID'            => $current_user->ID,
+                'first_name'    => esc_attr($_POST['first-name']),
+                'last_name'     => esc_attr($_POST['last-name']),
+                'display_name'  => esc_attr($_POST['display_name']),
+                'user_url'      => esc_attr($_POST['url']),
+                'description'   => esc_attr($_POST['description']),
+            );
+            wp_update_user($userdata);
 
             do_action( 'ns_basics_edit_profile_save', $current_user->ID);
 
@@ -128,6 +130,36 @@ if(isset($template_args)) {
                                     </table>
                                 </div>
                             </div>
+
+                            <table class="form-table form-display-name">
+                            <tr>
+                                <th><label><?php esc_html_e('Display Name', 'ns-basics'); ?></label></th>
+                                <td>
+                                    <select name="display_name" id="display_name">
+                                    <?php
+                                    $public_display = array();
+                                    $public_display['display_username']  = $current_user->user_login;             
+                                    if(!empty($current_user->first_name)) { $public_display['display_firstname'] = $current_user->first_name; }
+                                    if(!empty($current_user->last_name)) { $public_display['display_lastname'] = $current_user->last_name; }
+                                                
+                                    if(!empty($current_user->first_name) && !empty($current_user->last_name) ) {
+                                        $public_display['display_firstlast'] = $current_user->first_name . ' ' . $current_user->last_name;
+                                        $public_display['display_lastfirst'] = $current_user->last_name . ' ' . $current_user->first_name;
+                                    }
+                                                
+                                    if(!in_array( $current_user->display_name, $public_display)) {
+                                        $public_display = array( 'display_displayname' => $current_user->display_name ) + $public_display;
+                                        $public_display = array_map( 'trim', $public_display );
+                                        $public_display = array_unique( $public_display );
+                                    }
+
+                                    foreach ($public_display as $id => $item) { ?>
+                                        <option id="<?php echo $id; ?>" value="<?php echo esc_attr($item); ?>"<?php selected( $current_user->display_name, $item ); ?>><?php echo $item; ?></option>
+                                    <?php } ?>
+                                    </select>
+                                </td>
+                            </tr>
+                            </table>
                             
                             <table class="form-table form-email">
                             <tr>
@@ -135,15 +167,16 @@ if(isset($template_args)) {
                                 <td><input name="email" type="text" value="<?php the_author_meta( 'user_email', $current_user->ID ); ?>" /></td>
                             </tr>
                             </table>
-
-                            <table class="form-table form-url">
-                            <tr>
-                                <th><label><?php esc_html_e('Website', 'ns-basics'); ?></label></th>
-                                <td><input name="url" type="text" value="<?php the_author_meta( 'user_url', $current_user->ID ); ?>" /></td>
-                            </tr>
-                            </table>
+                            
                         </div>
                     </div><!-- end row -->
+
+                    <table class="form-table form-url">
+                    <tr>
+                        <th><label><?php esc_html_e('Website', 'ns-basics'); ?></label></th>
+                        <td><input name="url" type="text" value="<?php the_author_meta( 'user_url', $current_user->ID ); ?>" /></td>
+                    </tr>
+                    </table>
 
                     <table class="form-table form-description">
                         <tr>
