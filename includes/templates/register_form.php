@@ -112,6 +112,9 @@ if(isset($template_args)) {
                         <label for="register_email"><?php esc_html_e( 'Email', 'ns-basics' ); ?></label>
                         <input type="email" name="register_email" id="register_email" value="<?php if(isset($_POST['register_email'])) { echo esc_attr($email); } ?>" />
                     </div>
+
+                    <?php do_action( 'ns_basics_after_register_form_fields');  ?>
+
                     <input type="submit" class="button" value="<?php esc_html_e( 'Create Account', 'ns-basics' ); ?>" />
                 </form>
             </div>
