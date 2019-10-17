@@ -25,6 +25,8 @@ if(isset($template_args)) {
 
     if (!empty($_POST)) {
 
+        do_action( 'ns_basics_register_submitted');
+
         if($_POST['register_username'] == '') {
             $usernameError = esc_html__('Please enter a username', 'ns-basics');
             $hasError = true;
@@ -113,7 +115,7 @@ if(isset($template_args)) {
                         <input type="email" name="register_email" id="register_email" value="<?php if(isset($_POST['register_email'])) { echo esc_attr($email); } ?>" />
                     </div>
 
-                    <?php do_action( 'ns_basics_after_register_form_fields');  ?>
+                    <?php do_action( 'ns_basics_after_register_form_fields'); ?>
 
                     <input type="submit" class="button" value="<?php esc_html_e( 'Create Account', 'ns-basics' ); ?>" />
                 </form>
