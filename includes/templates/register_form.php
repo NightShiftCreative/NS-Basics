@@ -5,9 +5,10 @@ if(function_exists('ns_core_load_theme_options')) { $members_login_page = ns_cor
 
 //Get template args
 if(isset($template_args)) {
-    $role = $template_args['role'];
-    if(empty($role)) { $role = 'subscriber'; }
-} 
+    $default_role = $template_args['default_role'];
+    if(empty($default_role)) { $default_role = 'subscriber'; }
+    $roles_dropdown = $template_args['roles'];
+}
 ?>
 
 <?php
@@ -27,6 +28,7 @@ if(isset($template_args)) {
 
         do_action( 'ns_basics_register_submitted');
 
+        //Check for username
         if($_POST['register_username'] == '') {
             $usernameError = esc_html__('Please enter a username', 'ns-basics');
             $hasError = true;
@@ -34,6 +36,7 @@ if(isset($template_args)) {
             $username = $_POST['register_username'];
         }
 
+        //Check for password
         if($_POST['register_pass'] == '') {
             $passError = esc_html__('Please enter a password', 'ns-basics');
             $hasError = true;
@@ -41,6 +44,7 @@ if(isset($template_args)) {
             $password = $_POST['register_pass'];
         }
 
+        //Check for email
         if($_POST['register_email'] == '') {
             $emailError = esc_html__('Please enter an email', 'ns-basics');
             $hasError = true;
@@ -48,18 +52,25 @@ if(isset($template_args)) {
             $email = $_POST['register_email'];
         }
 
+        //Check for role
+        $register_role = $default_role;
+        if(isset($_POST['register_role']) && !empty($_POST['register_role'])) {
+            $register_role = $_POST['register_role'];
+        }
+
+        //If no errors, register user
         if(!isset($hasError)) {
 
             $userdata = array(
                 'user_login'  =>  $username,
                 'user_pass'    =>  $password,
                 'user_email'   =>  $email,
-                'role' => $role
+                'role' => $register_role
             );
 
             $user_id = wp_insert_user( $userdata );
 
-            //If no errors, log the user in
+            //Show success message
             if( !is_wp_error($user_id) ) {
                 $success = esc_html__('Your account has been created.', 'ns-basics') .' <a href="'. $members_login_page .'">'. esc_html__('Login here.', 'ns-basics') .'</a>';
             } else {
@@ -114,6 +125,22 @@ if(isset($template_args)) {
                         <label for="register_email"><?php esc_html_e( 'Email', 'ns-basics' ); ?></label>
                         <input type="email" name="register_email" id="register_email" value="<?php if(isset($_POST['register_email'])) { echo esc_attr($email); } ?>" />
                     </div>
+
+                    <?php
+                    if(isset($roles_dropdown) && !empty($roles_dropdown)) { 
+                        global $wp_roles;
+                        $wp_roles = new WP_Roles(); ?>
+                        <div class="form-block">
+                            <label for="register_role"><?php esc_html_e( 'Role', 'ns-basics' ); ?></label>
+                            <select name="register_role" id="register_role">
+                                <?php foreach($wp_roles->get_names() as $key=>$value) { 
+                                    if(in_array($key, $roles_dropdown)) { ?>
+                                        <option value="<?php echo $key; ?>" <?php if($key == $default_role) { echo 'selected'; } ?>><?php echo $value; ?></option>
+                                    <?php }
+                                } ?>
+                            </select>
+                        </div>
+                    <?php } ?>
 
                     <?php do_action( 'ns_basics_after_register_form_fields'); ?>
 

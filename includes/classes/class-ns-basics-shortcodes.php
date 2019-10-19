@@ -821,15 +821,24 @@ class NS_Basics_Shortcodes {
 	public function add_shortcode_register_form($atts, $content=null) {
 		$atts = shortcode_atts(
 	        array (
-	        'role' => 'subscriber',
+	        'default_role' => 'subscriber',
+	        'roles' => '',
 	    ), $atts);
 
 	    ob_start();
 	    if(function_exists('ns_basics_template_loader')) { 
 	        
+	    	//Get roles
+	    	$roles = array();
+	    	if(!empty($atts['roles'])) { 
+	    		$roles = preg_replace('/\s+/', '', $atts['roles']);
+	    		$roles = explode(',', $roles); 
+	    	}
+
 	        //Set template args
 	        $template_args = array();
-	        $template_args['role'] = $atts['role'];
+	        $template_args['default_role'] = $atts['default_role'];
+	        $template_args['roles'] = $roles;
 	        
 	        //Load template
 	        ns_basics_template_loader('register_form.php', $template_args);
