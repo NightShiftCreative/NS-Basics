@@ -182,6 +182,7 @@ class NS_Basics_Admin {
 			'sortable' => array($this, 'build_admin_field_sortable'),
 			'editor' => array($this, 'build_admin_field_editor'),
 			'gallery' => array($this, 'build_admin_field_gallery'),
+			'custom' => array($this, 'build_admin_field_custom'),
 		);
 		$field_types = apply_filters( 'ns_basics_admin_field_types', $field_types);
 
@@ -527,6 +528,16 @@ class NS_Basics_Admin {
 		</div>
 
 	<?php }
+
+	/**
+	 *	Build admin custom field
+	 *
+	 *  @param array $field
+	 *		
+	 */
+	public function build_admin_field_custom($field = null) {
+		echo $field['value'];
+	}
 
 
 	/************************************************************************/
