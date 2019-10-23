@@ -33,6 +33,7 @@ class NS_Basics_Shortcodes {
 		add_shortcode('ns_testimonials', array( $this, 'add_shortcode_testimonials'));
 		add_shortcode('ns_testimonial', array( $this, 'add_shortcode_testimonial'));
 		add_shortcode('ns_list_posts', array( $this, 'add_shortcode_list_posts'));
+		add_shortcode('ns_widget_area', array( $this, 'add_shortcode_widget_area'));
 		add_shortcode('ns_login_form', array( $this, 'add_shortcode_login_form'));
 		add_shortcode('ns_register_form', array( $this, 'add_shortcode_register_form'));
 		add_shortcode('ns_dashboard', array( $this, 'add_shortcode_dashboard'));
@@ -781,6 +782,26 @@ class NS_Basics_Shortcodes {
 
 	    echo '</div>';
 
+	    $output = ob_get_clean();
+	    return $output;
+	}
+
+	/**
+	 * Widget Area shortcode
+	 *
+	 * @param array $atts
+	 * @param string $content
+	 */
+	public function add_shortcode_widget_area($atts, $content=null) {
+		$atts = shortcode_atts(
+	        array (
+	        'id' => '',
+	    ), $atts);
+
+		ob_start();
+	    if(is_active_sidebar($atts['id'])) { 
+	    	dynamic_sidebar($atts['id']); 
+	    } 
 	    $output = ob_get_clean();
 	    return $output;
 	}
