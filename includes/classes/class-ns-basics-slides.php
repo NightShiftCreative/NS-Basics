@@ -50,6 +50,7 @@ class NS_Basics_Slides {
                 ),
             'public' => true,
             'show_in_menu' => true,
+            'menu_position' => 27,
             'menu_icon' => 'dashicons-format-gallery',
             'has_archive' => true,
             'supports' => array('title', 'editor', 'thumbnail', 'page_attributes')
