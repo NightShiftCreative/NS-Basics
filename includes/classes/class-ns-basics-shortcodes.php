@@ -23,6 +23,7 @@ class NS_Basics_Shortcodes {
 		add_shortcode('ns_button_alt', array( $this, 'add_shortcode_button_alt'));
 		add_shortcode('ns_quote', array( $this, 'add_shortcode_quote'));
 		add_shortcode('ns_alert_box', array( $this, 'add_shortcode_alert_box'));
+		add_shortcode('ns_social', array( $this, 'add_shortcode_social'));
 		add_shortcode('ns_service', array( $this, 'add_shortcode_service'));
 		add_shortcode('ns_team_member', array( $this, 'add_shortcode_team_member'));
 		add_shortcode('ns_video', array( $this, 'add_shortcode_video'));
@@ -47,7 +48,7 @@ class NS_Basics_Shortcodes {
 	 * Remove <p> and <br/> tags from shortcode content
 	 */
 	public function content_filter($content) {
-		$block = join("|",array('ns_module', 'ns_module_header', 'ns_row', 'ns_col', 'ns_button', 'ns_button_alt', 'ns_quote', 'ns_alert_box', 'ns_service', 'ns_team_member', 'ns_testimonials', 'ns_testimonial', 'ns_tabs', 'ns_tab', 'ns_accordions', 'ns_accordion', 'ns_login_form', 'ns_register_form', 'ns_dashboard', 'ns_favorites', 'ns_edit_profile'));
+		$block = join("|",array('ns_module', 'ns_module_header', 'ns_row', 'ns_col', 'ns_button', 'ns_button_alt', 'ns_quote', 'ns_alert_box', 'ns_social', 'ns_service', 'ns_team_member', 'ns_testimonials', 'ns_testimonial', 'ns_tabs', 'ns_tab', 'ns_accordions', 'ns_accordion', 'ns_login_form', 'ns_register_form', 'ns_dashboard', 'ns_favorites', 'ns_edit_profile'));
     	$rep = preg_replace("/(<p>)?\[($block)(\s[^\]]+)?\](<\/p>|<br \/>)?/","[$2$3]",$content);
     	$rep = preg_replace("/(<p>)?\[\/($block)](<\/p>|<br \/>)?/","[/$2]",$rep);
 		return $rep;
@@ -513,6 +514,25 @@ class NS_Basics_Shortcodes {
 	        <h4>'. wp_kses_post($content) .'</h4>
 	    </div>
 		';
+	}
+
+	/**
+	 * Social shortcode
+	 *
+	 * @param array $atts
+	 * @param string $content
+	 */
+	public function add_shortcode_social($atts, $content=null) {
+		$atts = shortcode_atts(
+			array (
+				'class' => '',
+			), $atts);
+
+		if(function_exists('ns_core_load_theme_options')) {
+			return ns_core_get_social_icons($atts['class']);
+		} else {
+			return false;
+		}
 	}
 
 	/**
