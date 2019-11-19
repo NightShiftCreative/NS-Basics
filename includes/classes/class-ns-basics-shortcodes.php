@@ -667,9 +667,16 @@ class NS_Basics_Shortcodes {
 	            'icon' => '',
 	            'icon_line' => '',
 	            'dripicon' => '',
+	            'custom_icon' => false,
 	        ), $atts);
 
-	    if(!empty($atts['icon'])) { $icon = ns_core_get_icon($icon_set, $atts['icon'], $atts['icon_line'], $atts['dripicon']); } else { $icon = ''; }
+	    if(!empty($atts['icon'])) { 
+	    	if($atts['custom_icon'] == true) {
+	    		$icon = '<img src="'.$atts['icon'].'" alt="" />';
+	    	} else {
+	    		$icon = ns_core_get_icon($icon_set, $atts['icon'], $atts['icon_line'], $atts['dripicon']); 
+	    	}
+	    } else { $icon = ''; }
 
 	    $tabs_divs.= '<div id="tab'. $atts['id'] .'">'.$content.'</div>';
 
