@@ -672,7 +672,7 @@ class NS_Basics_Shortcodes {
 
 	    if(!empty($atts['icon'])) { 
 	    	if($atts['custom_icon'] == true) {
-	    		$icon = '<img src="'.$atts['icon'].'" alt="" />';
+	    		$icon = '<img class="custom-icon" src="'.$atts['icon'].'" alt="" />';
 	    	} else {
 	    		$icon = ns_core_get_icon($icon_set, $atts['icon'], $atts['icon_line'], $atts['dripicon']); 
 	    	}
