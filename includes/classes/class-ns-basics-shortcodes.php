@@ -680,7 +680,7 @@ class NS_Basics_Shortcodes {
 
 	    $tabs_divs.= '<div id="tab'. $atts['id'] .'">'.$content.'</div>';
 
-	    return '<li><a href="#tab'. $atts['id'] .'">'. $icon . $atts['title'] .'</a></li>';
+	    return '<li><a href="#tab'. $atts['id'] .'">'. $icon . '<span class="tab-title">'.$atts['title'].'</span></a></li>';
 	}
 
 	/**
