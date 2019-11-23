@@ -768,16 +768,25 @@ class NS_Basics_Shortcodes {
 	        array (
 	        'num' => 3,
 	        'excerpt' => 20,
+	        'show_pagination' => false,
 	    ), $atts);
 
 	    ob_start();
 
 	    echo '<div class="row ns-list-posts">';
 
+	    //SET PAGED VARIABLE
+	    if(is_front_page()) {  
+	        $paged = (get_query_var('page')) ? get_query_var('page') : 1;
+	    } else {  
+	        $paged = get_query_var('paged') ? (int) get_query_var('paged') : 1;
+	    }
+
 	    $post_listing_args = array(
 	        'post_type' => 'post',
 	        'post_status' => 'publish',
 	        'showposts' => $atts['num'],
+	        'paged' => $paged,
 	    );
 
 	    $post_listing_query = new WP_Query( $post_listing_args );
@@ -803,7 +812,36 @@ class NS_Basics_Shortcodes {
 	        echo '</div>';
 
 	    endwhile; 
+	    
 	    wp_reset_postdata();
+	    $big = 999999999; // need an unlikely integer
+
+	    $args = array(
+	        'base'         => str_replace( $big, '%#%', esc_url( get_pagenum_link( $big ) ) ),
+	        'format'       => '/page/%#%',
+	        'total'        => $post_listing_query->max_num_pages,
+	        'current' => $paged,
+	        'show_all'     => False,
+	        'end_size'     => 1,
+	        'mid_size'     => 2,
+	        'prev_next'    => True,
+	        'prev_text'    => esc_html__('&raquo; Previous', 'ns-core'),
+	        'next_text'    => esc_html__('Next &raquo;', 'ns-core'),
+	        'type'         => 'plain',
+	        'add_args'     => False,
+	        'add_fragment' => '',
+	        'before_page_number' => '',
+	        'after_page_number' => ''
+	    ); ?>
+
+	    </div>
+	    <?php if($atts['show_pagination'] == 'true') { ?>
+	    	<div class="page-list">
+		    <?php echo paginate_links( $args ); ?> 
+		    </div>
+	    <?php } ?>
+		    
+		<?php 
 	    else:
 	    endif; 
 
