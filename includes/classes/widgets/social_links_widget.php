@@ -32,7 +32,7 @@ class ns_basics_social_links_widget extends WP_Widget {
 
                         <div class="socil-links-widget">
 
-                            <?php if($text_before) { echo '<div class="social-links-before-text">'. wp_kses_post($text_before) .'</div><div class="divider"></div>'; } ?>
+                            <?php if($text_before) { echo '<div class="social-links-before-text">'. apply_filters( 'the_content', $text_before) .'</div><div class="divider"></div>'; } ?>
 
                             <?php
                             if($source == 'custom') {
@@ -75,7 +75,7 @@ class ns_basics_social_links_widget extends WP_Widget {
                                 <?php if(!empty($dribbble)) { ?><li class="dribbble"><a href="<?php echo esc_url($dribbble); ?>" target="_blank"><i class="fab fa-dribbble"></i></a></li><?php } ?>
                             </ul>
 
-                            <?php if($text_after) { echo '<div class="divider"></div><div class="social-links-after-text">'. wp_kses_post($text_after) .'</div>'; } ?>
+                            <?php if($text_after) { echo '<div class="divider"></div><div class="social-links-after-text">'. apply_filters( 'the_content', $text_after) .'</div>'; } ?>
                         </div>
 
               <?php echo wp_kses_post($after_widget); ?>
