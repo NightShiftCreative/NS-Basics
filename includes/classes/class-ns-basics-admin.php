@@ -440,7 +440,7 @@ class NS_Basics_Admin {
 
 	                //build sidebar field
 	                if($field['display_sidebar'] == true) {
-	                	$this->build_admin_field(array('title' => 'Display in Sidebar?', 'name' => $field['name'].'['.$count.'][sidebar]', 'value' => $value['sidebar'], 'type' => 'checkbox',));
+	                	$this->build_admin_field(array('title' => 'Display in Sidebar?', 'name' => $field['name'].'['.$count.'][sidebar]', 'description' => esc_html__('Supported theme required', 'ns-basics'), 'value' => $value['sidebar'], 'type' => 'checkbox',));
 	                }  
 
 	                //build placeholder field
