@@ -29,7 +29,7 @@ class NS_Basics_Members {
 		    'id' => 'dashboard_sidebar',
 		    'before_widget' => '<div class="widget widget-sidebar %2$s">',
 		    'after_widget' => '</div>',
-		    'before_title' => '<h4>',
+		    'before_title' => '<h4 class="widget-header">',
 		    'after_title' => '</h4>',
 		));
 	}
