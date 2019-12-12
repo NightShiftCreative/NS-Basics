@@ -40,12 +40,20 @@ class NS_Basics_Members {
     public function create_user_fields($user) { ?>
         <h3><?php _e("Extra profile information", "ns-basics"); ?></h3>
 
-        <table class="form-table">
+        <table class="form-table admin-module admin-module-user-image">
         <tr>
             <th><label><?php esc_html_e('User Image', 'ns-basics'); ?></label></th>
             <td>
-                <input type="number" name="avatar" value="<?php echo get_the_author_meta('avatar', $user->ID); ?>" class="regular-text" /><br/>
-                <span class="description"><?php esc_html_e("The attachment id for the user's image.", 'ns-basics'); ?></span>
+                <?php
+                $avatar = get_the_author_meta('avatar', $user->ID);
+                if(!empty($avatar)) { echo '<div class="option-preview">'.wp_get_attachment_image($avatar, array('96', '96')).'</div>'; }
+                ?>
+                <div>
+                <input type="text" name="avatar" value="<?php echo $avatar; ?>" class="regular-text" />
+                <input class="ns_upload_image_button attachment_id" type="button" value="<?php esc_html_e('Upload Image', 'ns-basics'); ?>" />
+                <span class="button-secondary remove"><?php echo esc_html_e('Remove', 'ns-core'); ?></span><br/>
+                <span class="description"><?php esc_html_e("Upload an image or enter the attachment ID.", 'ns-basics'); ?></span>
+                </div>
             </td>
         </tr>
         </table>

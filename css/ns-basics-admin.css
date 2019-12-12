@@ -94,6 +94,10 @@
     border-radius: 4px;
 }
 
+.admin-module-user-image { border:none; }
+.admin-module-user-image input { background:white; padding:7px; width:auto; }
+.admin-module-user-image .option-preview { width:auto; display:inline-block; margin-bottom:10px; line-height:0;  }
+
 .admin-module .chosen-container-single { width:auto !important; min-width:250px; }
 .admin-module .chosen-container-single .chosen-single { width:100%; }
 .admin-module .chosen-container-single .chosen-single div { margin-top:10px; }

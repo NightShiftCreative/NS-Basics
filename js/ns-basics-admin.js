@@ -15,6 +15,7 @@ jQuery(document).ready(function($) {
     $('.admin-module').on('click', '.ns_upload_image_button', function(e) {
         e.preventDefault();
         formfield = jQuery(this).prev('input');
+        button = $(this);
 
         // If the uploader object has already been created, reopen the dialog
         if (mediaUploader) {
@@ -31,7 +32,7 @@ jQuery(document).ready(function($) {
         // When a file is selected, grab the URL and set it as the text field's value
         mediaUploader.on('select', function() {
           attachment = mediaUploader.state().get('selection').first().toJSON();
-          $(formfield).val(attachment.url);
+          if(button.hasClass('attachment_id')) { $(formfield).val(attachment.id); } else { $(formfield).val(attachment.url); }
         });
         // Open the uploader dialog
         mediaUploader.open();
