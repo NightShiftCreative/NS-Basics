@@ -3,7 +3,7 @@
 * Plugin Name: Nightshift Basics
 * Plugin URI: http://nightshiftcreative.co/
 * Description: The framework essential for all themes and plugins built by Nightshift Creative.
-* Version: 1.0.1
+* Version: 1.0.0
 * Author: Nightshift Creative
 * Author URI: http://nightshiftcreative.co/
 * Text Domain: ns-basics
