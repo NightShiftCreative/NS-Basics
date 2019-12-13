@@ -36,6 +36,47 @@ function ns_basics_vc_map() {
 		),
 	));
 
+	/** LOGIN FORM **/
+	vc_map(array(
+		'name' => esc_html__( 'Login Form', 'ns-basics' ),
+		'base' => 'ns_login_form',
+		'description' => esc_html__( 'Display a user login form', 'ns-basics' ),
+		'icon' => PROPERTYSHIFT_DIR.'/images/icon-real-estate.svg',
+		'class' => '',
+		'category' => 'NS Basics',
+		'params' => array(
+			array(
+				'type' => 'textfield',
+				'heading' => esc_html__( 'Redirect URL', 'ns-basics' ),
+				'param_name' => 'redirect',
+				'description' => esc_html__( 'After successful login, users will be redirected to this URL.', 'ns-basics' ),
+			),
+		),
+	));
+
+	/** REGISTER FORM **/
+	vc_map(array(
+		'name' => esc_html__( 'Register Form', 'ns-basics' ),
+		'base' => 'ns_register_form',
+		'description' => esc_html__( 'Display a user register form', 'ns-basics' ),
+		'icon' => PROPERTYSHIFT_DIR.'/images/icon-real-estate.svg',
+		'class' => '',
+		'category' => 'NS Basics',
+		'params' => array(
+			array(
+				'type' => 'textfield',
+				'heading' => esc_html__( 'Default Role', 'ns-basics' ),
+				'param_name' => 'default_role',
+				'description' => esc_html__( 'Enter the user role assigned on registration. Defaults to Subscriber.', 'ns-basics' ),
+			),
+			array(
+				'type' => 'textfield',
+				'heading' => esc_html__( 'Roles Dropdown', 'ns-basics' ),
+				'param_name' => 'roles',
+				'description' => esc_html__( 'Allow users to choose role on registration. Enter a comma-separated list of user roles.', 'ns-basics' ),
+			),
+		),
+	));
 
 }
 ?>

@@ -85,8 +85,7 @@ if(isset($template_args)) {
 
     <?php do_action( 'ns_basics_before_register_form'); ?>
 
-    <div class="row">
-        <div class="col-lg-4 col-lg-offset-4">
+    <div class="form-container form-container-register">
 
             <?php if(!empty($members_login_page)) { ?>
             <p class="center">
@@ -149,8 +148,7 @@ if(isset($template_args)) {
             </div>
             <!-- end register form -->
 
-        </div><!-- end col -->
-    </div><!-- end row -->
+    </div><!-- end form container -->
 
     <?php do_action( 'ns_basics_after_register_form'); ?>
 
