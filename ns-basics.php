@@ -151,6 +151,7 @@ class NS_Basics {
 		/************************************************************************/
 		include( plugin_dir_path( __FILE__ ) . 'includes/global-functions.php');
 		include( plugin_dir_path( __FILE__ ) . 'includes/templates/templates.php');
+		include( plugin_dir_path( __FILE__ ) . 'includes/wp-bakery.php');
 
 		/************************************************************************/
 		// Include classes
