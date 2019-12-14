@@ -193,6 +193,7 @@ class NS_Basics_Admin {
 		if(!empty($field['children'])) { $field_class .= 'has-children '; }
 		?>
 
+		<?php do_action('ns_basics_before_admin_field', $field); ?>
 		<table class="admin-module <?php echo $field_class; ?>" <?php if(!empty($field['id'])) { echo 'id="'.$field['id'].'"'; } ?> data-type="<?php echo $field['type']; ?>">
             <tr>
 
@@ -204,7 +205,7 @@ class NS_Basics_Admin {
                 <td class="admin-module-field">
 
                 	<?php 
-                	do_action('ns_basics_admin_before_field', $field);
+                	do_action('ns_basics_before_admin_field_inner', $field);
 
                 	//loop through field types and call the correct method
                 	foreach($field_types as $key=>$field_method) {
@@ -213,7 +214,7 @@ class NS_Basics_Admin {
                 		}
                 	}
 
-                	do_action('ns_basics_admin_after_field', $field);
+                	do_action('ns_basics_after_admin_field_inner', $field);
 
                 	if(!empty($field['postfix'])) { echo $field['postfix']; } ?>
 
@@ -251,6 +252,7 @@ class NS_Basics_Admin {
 	        } ?>
 
         </table>
+        <?php do_action('ns_basics_after_admin_field', $field); ?>
 
 	<?php }
 
