@@ -60,9 +60,9 @@ class ns_basics_social_links_widget extends WP_Widget {
                                     $flickr = esc_attr(get_option('ns_core_flickr'));
                                     $dribbble = esc_attr(get_option('ns_core_dribbble'));
                                 }
-                            }
-                            ?>
+                            } ?>
 
+                            <?php if($source == 'custom' || !function_exists('ns_core_load_theme_options')) { ?>
                             <ul class="social-icons circle clean-list">
                                 <?php if(!empty($fb)) { ?><li class="facebook"><a href="<?php echo esc_url($fb); ?>" target="_blank"><i class="fab fa-facebook-f"></i></a></li><?php } ?>
                                 <?php if(!empty($twitter)) { ?><li class="twitter"><a href="<?php echo esc_url($twitter); ?>" target="_blank"><i class="fab fa-twitter"></i></a></li><?php } ?>
@@ -74,6 +74,7 @@ class ns_basics_social_links_widget extends WP_Widget {
                                 <?php if(!empty($flickr)) { ?><li class="flickr"><a href="<?php echo esc_url($flickr); ?>" target="_blank"><i class="fab fa-flickr"></i></a></li><?php } ?>
                                 <?php if(!empty($dribbble)) { ?><li class="dribbble"><a href="<?php echo esc_url($dribbble); ?>" target="_blank"><i class="fab fa-dribbble"></i></a></li><?php } ?>
                             </ul>
+                            <?php } ?>
 
                             <?php if($text_after) { echo '<div class="divider"></div><div class="social-links-after-text">'. apply_filters( 'the_content', $text_after) .'</div>'; } ?>
                         </div>
