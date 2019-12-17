@@ -65,7 +65,8 @@ class NS_Basics_Admin {
 				'icon' => null,
 			);
 		}
-		?>
+		$args = apply_filters('ns_basics_admin_page_args', $args); ?>
+		
 		<div class="wrap">
 			<?php if(!empty($args['page_name'])) { ?><h1><?php echo $args['page_name']; ?></h1><?php } ?>
 			<form method="post" action="options.php" class="ns-settings <?php if($args['ajax'] == true) { echo 'ns-settings-ajax'; } ?>">
