@@ -152,6 +152,16 @@
 
 .loader { margin-right:10px; margin-top:38px; float:right; display:none; }
 
+/** IMAGE PREVIEWS **/
+.option-preview { 
+    width:250px; 
+    border:1px solid rgba(0, 0, 0, 0.08); 
+    padding:10px; 
+    margin-top:5px;
+    background:rgba(0, 0, 0, 0.03);
+}
+.option-preview img { max-width:100%; height:auto; }
+
 /** TABLES **/
 .admin-table { width:100%; text-align:left; }
 .admin-table th { background:#4c5a67; padding:8px 8px; color:white; }
