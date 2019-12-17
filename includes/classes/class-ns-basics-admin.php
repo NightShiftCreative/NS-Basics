@@ -153,7 +153,7 @@ class NS_Basics_Admin {
 	 */
 	public function build_admin_field($field = null) { 
 
-		// initialize field args
+		// initialize and filter field args
 		if($field == null) {
 			$field = array (
 				'title' => 'New Field',
@@ -167,6 +167,7 @@ class NS_Basics_Admin {
 				'options' => null,
 			);
 		} 
+		$field = apply_filters('ns_basics_admin_field_args', $field); 
 
 		//set and filter field types
 		$field_types = array(
