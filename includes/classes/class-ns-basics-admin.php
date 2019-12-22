@@ -303,9 +303,13 @@ class NS_Basics_Admin {
 	public function build_admin_field_checkbox_group($field = null) { ?>
 		<?php if(!empty($field['options'])) { 
             echo '<ul class="three-col-list">';
-                foreach($field['options'] as $key=>$option) { ?>
+                foreach($field['options'] as $key=>$option) { 
+                	$currentVal = $field['value'][$key]['value']; 
+                	$attributes = '';
+                	if(!empty($option['attributes'])) { foreach($option['attributes'] as $attr) { $attributes .= $attr.' '; } }
+                	?>
                 	<li>
-                		<input type="checkbox" <?php if(!empty($option['attributes'])) { foreach($option['attributes'] as $attr) { echo $attr.' '; } }?> name="<?php echo $field['name'].'['.$key.'][value]'; ?>" value="<?php echo $key; ?>" <?php if(isset($field['value'][$key]['value'])) { echo 'checked'; } ?> /><?php echo $option['value']; ?>
+                		<input type="checkbox" <?php echo $attributes; ?> name="<?php echo $field['name'].'['.$key.'][value]'; ?>" value="<?php echo $option['value']; ?>" <?php if(isset($currentVal)) { echo 'checked'; } ?> /><?php echo $option['value']; ?>
                 		<input type="hidden" name="<?php echo $field['name'].'['.$key.'][attributes]'; ?>" value="<?php echo $option['attributes']; ?>" />
                 	</li>
                 <?php }
