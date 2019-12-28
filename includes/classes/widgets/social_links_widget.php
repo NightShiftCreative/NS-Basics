@@ -107,19 +107,18 @@ class ns_basics_social_links_widget extends WP_Widget {
 
         $instance = wp_parse_args( (array) $instance, array( 'title' => '', 'text_before' => null, 'text_after' => null) );
         $title = esc_attr($instance['title']);
-        $source = esc_attr($instance['source']);
-        $facebook = esc_attr($instance['facebook']);
-        $twitter = esc_attr($instance['twitter']);
-        $google = esc_attr($instance['google']);
-        $linkedin = esc_attr($instance['linkedin']);
-        $youtube = esc_attr($instance['youtube']);
-        $vimeo = esc_attr($instance['vimeo']);
-        $instagram = esc_attr($instance['instagram']);
-        $flickr = esc_attr($instance['flickr']);
-        $dribbble = esc_attr($instance['dribbble']);
-        $text_before = esc_attr($instance['text_before']);
-        $text_after = esc_attr($instance['text_after']);
-
+        $source = isset($instance['source']) ? esc_attr($instance['source']) : '';
+        $facebook = isset($instance['facebook']) ? esc_attr($instance['facebook']) : '';
+        $twitter = isset($instance['twitter']) ? esc_attr($instance['twitter']) : '';
+        $google = isset($instance['google']) ? esc_attr($instance['google']) : '';
+        $linkedin = isset($instance['linkedin']) ? esc_attr($instance['linkedin']) : '';
+        $youtube = isset($instance['youtube']) ? esc_attr($instance['youtube']) : '';
+        $vimeo = isset($instance['vimeo']) ? esc_attr($instance['vimeo']) : '';
+        $instagram = isset($instance['instagram']) ? esc_attr($instance['instagram']) : '';
+        $flickr = isset($instance['flickr']) ? esc_attr($instance['flickr']) : '';
+        $dribbble = isset($instance['dribbble']) ? esc_attr($instance['dribbble']) : '';
+        $text_before = isset($instance['text_before']) ? esc_attr($instance['text_before']) : '';
+        $text_after = isset($instance['text_after']) ? esc_attr($instance['text_after']) : '';
         ?>
 
         <p>
