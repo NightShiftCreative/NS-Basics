@@ -411,7 +411,8 @@ class NS_Basics_Admin {
             <?php foreach($sortable_fields as $key=>$value) { 
 
             if(isset($value['name'])) { $name = $value['name']; } 
-            if(isset($value['slug'])) { $slug = $value['slug']; } 
+            if(isset($value['slug'])) { $slug = $value['slug']; }
+            if(isset($value['sidebar'])) { $sidebar = $value['sidebar']; } else { $sidebar = null; }
             if(isset($value['active']) && $value['active'] == 'true') { $active = 'true'; } else { $active = 'false'; }
 
             //If item is an add-on, check if it is active
@@ -435,7 +436,7 @@ class NS_Basics_Admin {
 	                <span class="sortable-item-title"><?php echo esc_attr($name); ?></span><div class="clear"></div>
 	                <input type="hidden" name="<?php echo $field['name']; ?>[<?php echo $count; ?>][name]" value="<?php echo $name; ?>" />
                     <input type="hidden" name="<?php echo $field['name']; ?>[<?php echo $count; ?>][slug]" value="<?php echo $slug; ?>" />
-	            	<input type="hidden" name="<?php echo $field['name']; ?>[<?php echo $count; ?>][add_on]" value="<?php echo $value['add_on']; ?>" />
+	            	<input type="hidden" name="<?php echo $field['name']; ?>[<?php echo $count; ?>][add_on]" value="<?php if(isset($value['add_on'])) { echo $value['add_on']; } ?>" />
 	            </div>
 
 	            <a href="#advanced-options-content-<?php echo esc_attr($slug); ?>" class="sortable-item-action advanced-options-toggle right">
@@ -449,7 +450,7 @@ class NS_Basics_Admin {
 
 	                //build sidebar field
 	                if(isset($field['display_sidebar']) && $field['display_sidebar'] == true) {
-	                	$this->build_admin_field(array('title' => 'Display in Sidebar?', 'name' => $field['name'].'['.$count.'][sidebar]', 'description' => esc_html__('Supported theme required', 'ns-basics'), 'value' => $value['sidebar'], 'type' => 'checkbox',));
+	                	$this->build_admin_field(array('title' => 'Display in Sidebar?', 'name' => $field['name'].'['.$count.'][sidebar]', 'description' => esc_html__('Supported theme required', 'ns-basics'), 'value' => $sidebar, 'type' => 'checkbox',));
 	                }  
 
 	                //build placeholder field
