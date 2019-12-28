@@ -157,7 +157,11 @@ class ns_basics_list_posts_widget extends WP_Widget {
         <?php
     }
 
-} // class utopian_recent_posts
-add_action('widgets_init', create_function('', 'return register_widget("ns_basics_list_posts_widget");'));
+}
+
+add_action('widgets_init', 'ns_basics_list_posts_widget_init');
+function ns_basics_list_posts_widget_init() { 
+    return register_widget('ns_basics_list_posts_widget'); 
+}
 
 ?>
