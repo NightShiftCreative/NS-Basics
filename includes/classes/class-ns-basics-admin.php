@@ -69,7 +69,7 @@ class NS_Basics_Admin {
 		
 		<div class="wrap">
 			<?php if(!empty($args['page_name'])) { ?><h1><?php echo $args['page_name']; ?></h1><?php } ?>
-			<form method="post" action="options.php" class="ns-settings <?php if($args['ajax'] == true) { echo 'ns-settings-ajax'; } ?>">
+			<form method="post" action="options.php" class="ns-settings <?php if(isset($args['ajax']) && $args['ajax'] == true) { echo 'ns-settings-ajax'; } ?>">
 
 				<?php if(!empty($args['settings_group'])) { 
 	                settings_errors();
@@ -89,7 +89,7 @@ class NS_Basics_Admin {
 	                    </ul>
 	                </div>
 	                <?php } ?>
-	                <?php if($args['display_actions'] != 'false') { ?>
+	                <?php if(isset($args['display_actions']) && $args['display_actions'] != 'false') { ?>
 	                    <div class="ns-settings-actions">
 	                        <div class="loader"><img src="<?php echo esc_url(home_url('/')); ?>wp-admin/images/spinner.gif" alt="" /></div> 
 	                        <?php submit_button(esc_html__('Save Changes', 'ns-basics'), 'admin-button', 'submit', false); ?>
@@ -130,7 +130,7 @@ class NS_Basics_Admin {
 
 	            <div class="ns-settings-menu-bar ns-settings-footer">
 	                <div class="ns-settings-version left"><?php esc_html_e('Version', 'ns-basics'); ?> <?php echo NS_BASICS_VERSION; ?> | <?php esc_html_e('Made by', 'ns-basics'); ?> <a href="<?php echo constant('NS_SHOP_URL'); ?>" target="_blank">Nightshift Creative</a> | <a href="<?php echo constant('NS_SHOP_URL').'get-support/'; ?>" target="_blank"><?php esc_html_e('Get Support', 'ns-basics'); ?></a></div>
-	                <?php if($args['display_actions'] != 'false') { ?>
+	                <?php if(isset($args['display_actions']) && $args['display_actions'] != 'false') { ?>
 	                    <div class="ns-settings-actions">
 	                        <div class="loader"><img src="<?php echo esc_url(home_url('/')); ?>wp-admin/images/spinner.gif" alt="" /></div> 
 	                        <?php submit_button(esc_html__('Save Changes', 'ns-basics'), 'admin-button', 'submit', false); ?>      
@@ -265,7 +265,7 @@ class NS_Basics_Admin {
 	 *		
 	 */
 	public function build_admin_field_text($field = null) { ?>
-		<input <?php if($field['disabled']) { echo 'disabled'; } ?> type="text" name="<?php echo $field['name']; ?>" <?php if(!empty($field['placeholder'])) { echo 'placeholder="'.$field['placeholder'].'"'; } ?> value="<?php echo esc_attr($field['value']); ?>" />
+		<input <?php if(isset($field['disabled']) && $field['disabled']) { echo 'disabled'; } ?> type="text" name="<?php echo $field['name']; ?>" <?php if(!empty($field['placeholder'])) { echo 'placeholder="'.$field['placeholder'].'"'; } ?> value="<?php echo esc_attr($field['value']); ?>" />
 	<?php }
 
 	/**
@@ -447,7 +447,7 @@ class NS_Basics_Admin {
 	                $this->build_admin_field(array('title' => 'Label', 'name' => $field['name'].'['.$count.'][label]', 'value' => $value['label'], 'type' => 'text',));
 
 	                //build sidebar field
-	                if($field['display_sidebar'] == true) {
+	                if(isset($field['display_sidebar']) && $field['display_sidebar'] == true) {
 	                	$this->build_admin_field(array('title' => 'Display in Sidebar?', 'name' => $field['name'].'['.$count.'][sidebar]', 'description' => esc_html__('Supported theme required', 'ns-basics'), 'value' => $value['sidebar'], 'type' => 'checkbox',));
 	                }  
 
