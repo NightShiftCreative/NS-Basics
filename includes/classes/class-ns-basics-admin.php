@@ -787,9 +787,9 @@ class NS_Basics_Admin {
 	        }
 
 	        //save child fields
-	        if(!empty($field['children'])) {
-	        	foreach($field['children'] as $child_field) {
-	        		update_post_meta( $post_id, $child_field['name'], wp_kses( $_POST[$child_field['name']], $allowed ) );
+	        if(isset($field['children']) && !empty($field['children'])) {
+	        	foreach($field['children'] as $child_field) { 
+	        		update_post_meta( $post_id, $child_field['name'], wp_kses( $_POST[$child_field['name']], $allowed ) ); 
 	        		if(!empty($child_field['children'])) {
 	        			foreach($child_field['children'] as $nested_child_field) {
 	        				update_post_meta( $post_id, $nested_child_field['name'], wp_kses( $_POST[$nested_child_field['name']], $allowed ) );
