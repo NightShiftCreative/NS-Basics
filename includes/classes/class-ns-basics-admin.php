@@ -733,6 +733,8 @@ class NS_Basics_Admin {
 		$settings = array();
 		foreach($settings_init as $key=>$field) {
 		    $values = get_post_custom($post_id);
+		    if(!isset($field['name'])) { $field['name'] = ''; }
+		    if(!isset($field['value'])) { $field['value'] = null; }
 		    $settings[$key] = $field;
 		    
 		    if(isset($field['serialized']) && $field['serialized'] == true) {
