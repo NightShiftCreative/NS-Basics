@@ -200,7 +200,7 @@ class NS_Basics_Admin {
             <tr>
 
                 <td class="admin-module-label">
-                    <label><?php echo $field['title']; ?></label>
+                    <?php if(!empty($field['title'])) { ?><label><?php echo $field['title']; ?></label><?php } ?>
                     <?php if(!empty($field['description'])) { ?><span class="admin-module-note"><?php echo $field['description']; ?></span><?php } ?>
                 </td>
 
@@ -773,7 +773,7 @@ class NS_Basics_Admin {
 			    } else {
 			    	update_post_meta( $post_id, $field['name'], wp_kses( '', $allowed ) );
 			    }
-	        } else if($field['serialized'] == true) {
+	        } else if(isset($field['serialized']) && $field['serialized'] == true) {
 			    if (isset($_POST[$field['name']])) {
 			        update_post_meta( $post_id, $field['name'], $_POST[$field['name']] );
 			    } else {
@@ -781,7 +781,7 @@ class NS_Basics_Admin {
 			    }
 	        } else {
 	        	if(isset($_POST[$field['name']])) {
-	        		if($field['esc'] == false) { $field_value = $_POST[$field['name']]; } else { $field_value = wp_kses( $_POST[$field['name']], $allowed); }
+	        		if(isset($field['esc']) && $field['esc'] == false) { $field_value = $_POST[$field['name']]; } else { $field_value = wp_kses( $_POST[$field['name']], $allowed); }
 		        	update_post_meta( $post_id, $field['name'], $field_value);
 		        }
 	        }
