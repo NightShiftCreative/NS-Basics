@@ -167,6 +167,7 @@ class NS_Basics_Admin {
 				'options' => null,
 			);
 		} 
+		if(!isset($field['name'])) { $field['name'] = ''; }
 		$field = apply_filters('ns_basics_admin_field_args', $field); 
 
 		//set and filter field types
@@ -190,7 +191,7 @@ class NS_Basics_Admin {
 
 		//generate field class
 		$field_class = '';
-		$field_class .= 'admin-module-'.$field['name'].' ';
+		if(!empty($field['name'])) { $field_class .= 'admin-module-'.$field['name'].' '; }
 		if(!empty($field['class'])) { $field_class .= $field['class'].' '; }
 		if(!empty($field['children'])) { $field_class .= 'has-children '; }
 		?>
