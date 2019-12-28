@@ -752,6 +752,7 @@ class NS_Basics_Admin {
 		    //get child values
 		    if(!empty($field['children'])) {
 		    	foreach($field['children'] as $child_key=>$child_field) {
+		    		if(!isset($child_field['value'])) { $child_field['value'] = null; }
 		    		$settings[$key]['children'][$child_key]['value'] = isset( $values[$child_field['name']] ) ? esc_attr( $values[$child_field['name']][0] ) : $child_field['value'];
 		    		if(!empty($child_field['children'])) {
 		    			foreach($child_field['children'] as $nested_child_key=>$nested_child_field) {
