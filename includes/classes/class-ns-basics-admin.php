@@ -734,11 +734,11 @@ class NS_Basics_Admin {
 		    $values = get_post_custom($post_id);
 		    $settings[$key] = $field;
 		    
-		    if($field['serialized'] == true) {
+		    if(isset($field['serialized']) && $field['serialized'] == true) {
 		    	$settings[$key]['value'] = isset($values[$field['name']] ) ? $values[$field['name']] : $field['value'];
 		    	if(is_serialized($settings[$key]['value'][0])) { $settings[$key]['value'] = unserialize($settings[$key]['value'][0]); }
 		    } else {
-		    	if($field['esc'] == false) { $field_value = $values[$field['name']][0]; } else { $field_value = esc_attr($values[$field['name']][0]); }
+		    	if(isset($field['esc']) && $field['esc'] == false) { $field_value = $values[$field['name']][0]; } else { $field_value = esc_attr($values[$field['name']][0]); }
 		    	$settings[$key]['value'] = isset( $values[$field['name']] ) ? $field_value : $field['value'];
 		    }
 		    
