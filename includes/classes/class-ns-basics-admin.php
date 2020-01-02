@@ -129,7 +129,7 @@ class NS_Basics_Admin {
 	            </div>
 
 	            <div class="ns-settings-menu-bar ns-settings-footer">
-	                <div class="ns-settings-version left"><?php esc_html_e('Version', 'ns-basics'); ?> <?php echo NS_BASICS_VERSION; ?> | <?php esc_html_e('Made by', 'ns-basics'); ?> <a href="<?php echo constant('NS_SHOP_URL'); ?>" target="_blank">Nightshift Creative</a> | <a href="<?php echo constant('NS_SHOP_URL').'get-support/'; ?>" target="_blank"><?php esc_html_e('Get Support', 'ns-basics'); ?></a></div>
+	                <div class="ns-settings-version left"><?php esc_html_e('Version', 'ns-basics'); ?> <?php echo NS_BASICS_VERSION; ?> | <?php esc_html_e('Made by', 'ns-basics'); ?> <a href="<?php echo constant('NS_BASICS_SHOP_URL'); ?>" target="_blank">Nightshift Creative</a> | <a href="<?php echo constant('NS_BASICS_SHOP_URL').'get-support/'; ?>" target="_blank"><?php esc_html_e('Get Support', 'ns-basics'); ?></a></div>
 	                <?php if(isset($args['display_actions']) && $args['display_actions'] != 'false') { ?>
 	                    <div class="ns-settings-actions">
 	                        <div class="loader"><img src="<?php echo esc_url(home_url('/')); ?>wp-admin/images/spinner.gif" alt="" /></div> 
@@ -577,7 +577,7 @@ class NS_Basics_Admin {
 
 		if(!current_theme_supports('ns-basics')) {
 	        $current_theme = wp_get_theme();
-	        $incompatible_theme_alert = $this->admin_alert('info', esc_html__('The active theme ('.$current_theme->name.') does not support NightShift Basics.', 'ns-basics'), $action = NS_SHOP_URL, $action_text = esc_html__('Get a compatible theme', 'ns-basics'), true); 
+	        $incompatible_theme_alert = $this->admin_alert('info', esc_html__('The active theme ('.$current_theme->name.') does not support NightShift Basics.', 'ns-basics'), $action = NS_BASICS_SHOP_URL, $action_text = esc_html__('Get a compatible theme', 'ns-basics'), true); 
 	        $args['alerts'] = array($incompatible_theme_alert); 
 	    }
 
@@ -617,7 +617,7 @@ class NS_Basics_Admin {
 		 		<div class="button"><?php esc_html_e('Open a Ticket', 'ns-basics'); ?></div>
 		    </a>
 		    
-		    <a href="<?php echo constant('NS_SHOP_URL').'/docs/ns-basics/'; ?>" target="_blank" class="resource-item">
+		    <a href="<?php echo constant('NS_BASICS_SHOP_URL').'/docs/ns-basics/'; ?>" target="_blank" class="resource-item">
 		    	<i class="fa fa-book icon"></i>
 		    	<h3><?php esc_html_e('Knowledge Base', 'ns-basics'); ?></h3>
 		    	<p><?php esc_html_e('Docs, configuration, tutorials, and more.', 'ns-basics'); ?></p>
@@ -631,21 +631,21 @@ class NS_Basics_Admin {
 		 		<div class="button"><?php esc_html_e('Request Service', 'ns-basics'); ?></div>
 		    </a>
 
-		    <a href="<?php echo constant('NS_SHOP_URL').'/themes/'; ?>" target="_blank" class="resource-item">
+		    <a href="<?php echo constant('NS_BASICS_SHOP_URL').'/themes/'; ?>" target="_blank" class="resource-item">
 		    	<i class="fa fa-tint icon"></i>
 		    	<h3><?php esc_html_e('Our Themes', 'ns-basics'); ?></h3>
 		    	<p><?php esc_html_e('Beautiful & Functional WordPress themes.', 'ns-basics'); ?></p>
 		 		<div class="button"><?php esc_html_e('Browse Themes', 'ns-basics'); ?></div>
 		    </a>
 
-		    <a href="<?php echo constant('NS_SHOP_URL').'/plugins/'; ?>" target="_blank" class="resource-item">
+		    <a href="<?php echo constant('NS_BASICS_SHOP_URL').'/plugins/'; ?>" target="_blank" class="resource-item">
 		    	<i class="fa fa-plug icon"></i>
 		    	<h3><?php esc_html_e('Our Plugins', 'ns-basics'); ?></h3>
 		    	<p><?php esc_html_e('Robust & intuitive WordPress plugins.', 'ns-basics'); ?></p>
 		 		<div class="button"><?php esc_html_e('Browse Plugins', 'ns-basics'); ?></div>
 		    </a>
 
-		    <a href="<?php echo constant('NS_SHOP_URL').'/blog/'; ?>" target="_blank" class="resource-item">
+		    <a href="<?php echo constant('NS_BASICS_SHOP_URL').'/blog/'; ?>" target="_blank" class="resource-item">
 		    	<i class="fa fa-pencil-alt icon"></i>
 		    	<h3><?php esc_html_e('Our Blog', 'ns-basics'); ?></h3>
 		    	<p><?php esc_html_e('News, tips & tricks, tutorials.', 'ns-basics'); ?></p>

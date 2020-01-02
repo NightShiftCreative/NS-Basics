@@ -28,7 +28,7 @@ class NS_Basics_Modules {
 	            'note' => esc_html__('Allow your users to share your posts on popular social media sites.', 'ns-basics'),
 	            'group' => 'basic',
 	            'required_theme_support' => '',
-	            'link' => constant('NS_SHOP_URL').'docs/ns-basics/post-sharing/',
+	            'link' => constant('NS_BASICS_SHOP_URL').'docs/ns-basics/post-sharing/',
 	            'active' => 'true',
 	        ),
 	        2 => array(
@@ -38,7 +38,7 @@ class NS_Basics_Modules {
 	            'note' => esc_html__('Allow your users to like your posts and save them for later viewing.', 'ns-basics'),
 	            'group' => 'basic',
 	            'required_theme_support' => '',
-	            'link' => constant('NS_SHOP_URL').'docs/ns-basics/post-likes/',
+	            'link' => constant('NS_BASICS_SHOP_URL').'docs/ns-basics/post-likes/',
 	            'active' => 'true',
 	        ),
 	        3 => array(
@@ -48,7 +48,7 @@ class NS_Basics_Modules {
 	            'note' => esc_html__('Add advanced options to pages & posts, allowing further control over banners, page layout and more.', 'ns-basics'),
 	            'group' => 'basic',
 	            'required_theme_support' => '',
-	            'link' => constant('NS_SHOP_URL').'docs/ns-basics/page-settings/',
+	            'link' => constant('NS_BASICS_SHOP_URL').'docs/ns-basics/page-settings/',
 	            'active' => 'true',
 	        ),
 	        4 => array(
@@ -58,7 +58,7 @@ class NS_Basics_Modules {
 	            'note' => esc_html__('Add slides custom post type', 'ns-basics'),
 	            'group' => 'basic',
 	            'required_theme_support' => '',
-	            'link' => constant('NS_SHOP_URL').'docs/ns-basics/slides/',
+	            'link' => constant('NS_BASICS_SHOP_URL').'docs/ns-basics/slides/',
 	            'active' => 'true',
 	        ),
 	        5 => array(
@@ -68,7 +68,7 @@ class NS_Basics_Modules {
 	            'note' => esc_html__('Add helpful shortcodes, including buttons, videos, testimonials, accordions, and more.', 'ns-basics'),
 	            'group' => 'basic',
 	            'required_theme_support' => '',
-	            'link' => constant('NS_SHOP_URL').'docs/ns-basics/shortcodes/',
+	            'link' => constant('NS_BASICS_SHOP_URL').'docs/ns-basics/shortcodes/',
 	            'active' => 'true',
 	        ),
 	        6 => array(
@@ -78,7 +78,7 @@ class NS_Basics_Modules {
 	            'note' => esc_html__('Add helpful widgets, including social sharing, testimonials, contact info, and more.', 'ns-basics'),
 	            'group' => 'basic',
 	            'required_theme_support' => '',
-	            'link' => constant('NS_SHOP_URL').'docs/ns-basics/widgets/',
+	            'link' => constant('NS_BASICS_SHOP_URL').'docs/ns-basics/widgets/',
 	            'active' => 'true',
 	        ),
 	    );
@@ -124,7 +124,7 @@ class NS_Basics_Modules {
 	                        <?php if(!empty($module['required_theme_support']) && !current_theme_supports($module['required_theme_support'])) { ?>    
 	                            <div class="admin-alert-box admin-info theme-message">
 	                                <?php esc_html_e('Incompatible theme.', 'ns-basics'); ?>
-	                                <a href="<?php echo NS_SHOP_URL; ?>" target="_blank"><?php esc_html_e('Get a Compatible Theme', 'ns-basics'); ?></a>
+	                                <a href="<?php echo NS_BASICS_SHOP_URL; ?>" target="_blank"><?php esc_html_e('Get a Compatible Theme', 'ns-basics'); ?></a>
 	                            </div>
 	                        <?php } else { ?>
 	                            <div class="toggle-switch" title="<?php if($active == 'true') { esc_html_e('Active', 'ns-basics'); } else { esc_html_e('Disabled', 'ns-basics'); } ?>">
