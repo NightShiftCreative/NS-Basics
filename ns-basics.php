@@ -43,7 +43,7 @@ class NS_Basics {
 	 */
 	public function define_constants() {
 		if(!defined('NS_BASICS_VERSION')) { define('NS_BASICS_VERSION', '1.0.0'); }
-		if(!defined('NS_URL')) { define('NS_URL', 'https://nightshiftcreative.co/'); }
+		if(!defined('NS_BASICS_URL')) { define('NS_BASICS_URL', 'https://nightshiftcreative.co/'); }
 		if(!defined('NS_BASICS_SHOP_URL')) { define('NS_BASICS_SHOP_URL', 'https://products.nightshiftcreative.co/'); }
 		if(!defined('NS_BASICS_GITHUB_REPO')) { define('NS_BASICS_GITHUB_REPO', '/NightShiftCreative/NS-Basics/'); }
 		if(!defined('NS_BASICS_GITHUB')) { define('NS_BASICS_GITHUB', '/NightShiftCreative/NS-Basics/archive/1.0.0.zip'); }

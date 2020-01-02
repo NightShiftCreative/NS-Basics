@@ -624,7 +624,7 @@ class NS_Basics_Admin {
 		 		<div class="button"><?php esc_html_e('View Knowledge Base', 'ns-basics'); ?></div>
 		    </a>
 
-		    <a href="<?php echo constant('NS_URL').'/contact/'; ?>" target="_blank" class="resource-item">
+		    <a href="<?php echo constant('NS_BASICS_URL').'/contact/'; ?>" target="_blank" class="resource-item">
 		    	<i class="fa fa-cog icon"></i>
 		    	<h3><?php esc_html_e('Custom Services', 'ns-basics'); ?></h3>
 		    	<p><?php esc_html_e('Need help with configuration, custom web design, and more?', 'ns-basics'); ?></p>
