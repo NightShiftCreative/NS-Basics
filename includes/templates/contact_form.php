@@ -21,32 +21,32 @@
         $nameError =  esc_html__('Forgot your name!', 'ns-basics'); 
         $hasError = true;
       } else {
-        $contact_name = trim($_POST['contact-name']);
+        $contact_name = sanitize_text_field($_POST['contact-name']);
       }
       
       // need valid email
       if(trim($_POST['contact-email']) === '')  {
         $emailError = esc_html__('Forgot to enter in your e-mail address.', 'ns-basics');
         $hasError = true;
-      } else if (!preg_match("/^[[:alnum:]][a-z0-9_.-]*@[a-z0-9.-]+\.[a-z]{2,4}$/i", trim($_POST['contact-email']))) {
+      } else if(!is_email(trim($_POST['contact-email']))) {
         $emailError = esc_html__('You entered an invalid email address.', 'ns-basics');
         $hasError = true;
       } else {
-        $contact_email = trim($_POST['contact-email']);
+        $contact_email = sanitize_email($_POST['contact-email']);
       }
 
       // get phone
       if(trim($_POST['contact-phone']) === '') {
         // do nothing
       } else {
-        $contact_phone = trim($_POST['contact-phone']);
+        $contact_phone = sanitize_text_field($_POST['contact-phone']);
       }
 
       // get subject
       if(trim($_POST['contact-subject']) === '') {
         // do nothing
       } else {
-        $contact_subject = trim($_POST['contact-subject']);
+        $contact_subject = sanitize_text_field($_POST['contact-subject']);
       }
         
       // we need at least some content
@@ -55,9 +55,9 @@
         $hasError = true;
       } else {
         if(function_exists('stripslashes')) {
-          $contact_message = stripslashes(trim($_POST['contact-message']));
+          $contact_message = stripslashes(sanitize_text_field($_POST['contact-message']));
         } else {
-          $contact_message = trim($_POST['contact-message']);
+          $contact_message = sanitize_text_field($_POST['contact-message']);
         }
       }
         
@@ -69,7 +69,6 @@
         /*---------------------------------------------------------*/
         $emailTo = $contact_form_email;
         $subject = 'Submitted message from '.$contact_name;
-        $sendCopy = trim($_POST['sendCopy']);
         $body = "Subject:$contact_subject \n\nName: $contact_name \n\nEmail: $contact_email \n\nPhone: $contact_phone \n\nMessage: $contact_message";
         $headers = 'From: ' .' <'.$emailTo.'>' . "\r\n" . 'Reply-To: ' . $contact_email;
 
