@@ -157,4 +157,37 @@ function ns_basics_upload_user_file( $file = array() ) {
     return false;
 }
 
+/*-----------------------------------------------------------------------------------*/
+/* Adds async/defer attributes to scripts/styles
+/*-----------------------------------------------------------------------------------*/
+add_filter( 'script_loader_tag', 'ns_basics_add_async_to_script', 10, 3 );
+function ns_basics_add_async_to_script( $tag, $handle, $src ) {
+    if (!is_admin()) {
+
+        $script_array = array();
+        $script_array = apply_filters( 'ns_basics_async_scripts', $script_array);
+
+        if (in_array($handle, $script_array)) {
+            $tag = '<script async type="text/javascript" src="' . esc_url( $src ) . '"></script>';
+        }
+    }
+    return $tag;
+}
+
+add_filter( 'style_loader_tag', 'ns_basics_add_async_to_style', 10, 3 );
+function ns_basics_add_async_to_style($html, $handle) {
+    if (!is_admin()) {
+
+        $style_array = array();
+        $style_array = apply_filters( 'ns_basics_async_styles', $style_array);
+
+        $onload = "if(media!='all')media='all'";
+        $media = 'media="none" onload="'.$onload.'"';
+        if(in_array($handle, $style_array)) {
+            return str_replace( "media='all'", $media, $html );
+        }
+    }
+    return $html;
+}
+
 ?>
