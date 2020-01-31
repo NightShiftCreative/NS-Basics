@@ -420,7 +420,7 @@ class NS_Basics_Shortcodes {
 	        $widget_divider = '<table class="widget-divider"><tr><td><div class="bar"></div></td><td><div class="widget-divider-icon"></div></td><td><div class="bar bar-second"></div></td></tr></table>';
 	    } 
 
-	    return '<div class="module-header '.$position.'">'.$title . $widget_divider . $text.'</div>';
+	    return '<div class="module-header '.$position.'">'.$title . $widget_divider . $text.'<div class="clear"></div></div>';
 	}
 
 	/**
