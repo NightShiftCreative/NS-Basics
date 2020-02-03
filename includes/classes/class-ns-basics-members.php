@@ -57,6 +57,9 @@ class NS_Basics_Members {
             </td>
         </tr>
         </table>
+
+        <?php do_action('ns_basics_after_user_fields', $user->ID); ?>
+
     <?php }
 
      /**
