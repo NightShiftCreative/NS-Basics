@@ -791,7 +791,7 @@ class NS_Basics_Admin {
 		        }
 	        }
 
-	        //save child fields
+	        // Save child fields
 	        if(isset($field['children']) && !empty($field['children'])) {
 	        	foreach($field['children'] as $child_field) { 
 	        		
@@ -809,7 +809,7 @@ class NS_Basics_Admin {
 	        	}
 	        }
 
-	        //dynamic hook
+	        // Dynamic hook
 	        $post_type = get_post_type($post_id);
 	        do_action('ns_basics_save_meta_box_'.$post_type, $post_id);
 
