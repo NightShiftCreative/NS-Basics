@@ -772,38 +772,17 @@ class NS_Basics_Admin {
 	public function save_meta_box($post_id, $settings, $allowed) {
 		foreach($settings as $key=>$field) {
 
-        	if($field['type'] == 'checkbox' || $field['type'] == 'switch') {
-	        	if(isset($_POST[$field['name']])) {
-			        update_post_meta( $post_id, $field['name'], wp_kses( $_POST[$field['name']], $allowed ) );
-			    } else {
-			    	update_post_meta( $post_id, $field['name'], wp_kses( '', $allowed ) );
-			    }
-	        } else if(isset($field['serialized']) && $field['serialized'] == true) {
-			    if (isset($_POST[$field['name']])) {
-			        update_post_meta( $post_id, $field['name'], $_POST[$field['name']] );
-			    } else {
-			        update_post_meta( $post_id, $field['name'], '');
-			    }
-	        } else {
-	        	if(isset($_POST[$field['name']])) {
-	        		if(isset($field['esc']) && $field['esc'] == false) { $field_value = $_POST[$field['name']]; } else { $field_value = wp_kses( $_POST[$field['name']], $allowed); }
-		        	update_post_meta( $post_id, $field['name'], $field_value);
-		        }
-	        }
+			$this->save_meta_box_field($post_id, $field, $allowed);
 
 	        // Save child fields
 	        if(isset($field['children']) && !empty($field['children'])) {
 	        	foreach($field['children'] as $child_field) { 
 	        		
-	        		if(isset($_POST[$child_field['name']])) {
-	        			update_post_meta( $post_id, $child_field['name'], wp_kses( $_POST[$child_field['name']], $allowed ) ); 
-	        		}
+	        		$this->save_meta_box_field($post_id, $child_field, $allowed);
 	        		
 	        		if(!empty($child_field['children'])) {
 	        			foreach($child_field['children'] as $nested_child_field) {
-	        				if(isset($_POST[$nested_child_field['name']])) {
-	        					update_post_meta( $post_id, $nested_child_field['name'], wp_kses( $_POST[$nested_child_field['name']], $allowed ) );
-	        				}
+	        				$this->save_meta_box_field($post_id, $nested_child_field, $allowed);
 	        			}
 	        		}
 	        	}
@@ -814,6 +793,37 @@ class NS_Basics_Admin {
 	        do_action('ns_basics_save_meta_box_'.$post_type, $post_id);
 
         }
+    }
+
+    /**
+	 *	Saves a meta box field
+	 */
+    public function save_meta_box_field($post_id, $field, $allowed = null) {
+
+    	$name = isset($field['name']) ? $field['name'] : null;
+    	$type = isset($field['type']) ? $field['type'] : null;
+    	$serialized = isset($field['serialized']) ? $field['serialized'] : null;
+    	$esc = isset($field['esc']) ? $field['esc'] : null;
+
+    	if($type == 'checkbox' || $type == 'switch') {
+    		if(isset($_POST[$name])) {
+			    update_post_meta( $post_id, $name, wp_kses($_POST[$name], $allowed));
+			} else {
+				update_post_meta( $post_id, $name, '');
+			}
+    	} else if($serialized == true) {
+    		if(isset($_POST[$name])) {
+			    update_post_meta( $post_id, $name, $_POST[$name] );
+			} else {
+			    update_post_meta( $post_id, $name, '');
+			}
+    	} else {
+    		if(isset($_POST[$name])) {
+	        	if($esc == false) { $field_value = $_POST[$name]; } else { $field_value = wp_kses( $_POST[$name], $allowed); }
+		        update_post_meta( $post_id, $name, $field_value);
+		    }
+    	}
+
     }
 
     /************************************************************************/
