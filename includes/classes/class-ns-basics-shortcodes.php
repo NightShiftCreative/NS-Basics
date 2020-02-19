@@ -578,6 +578,8 @@ class NS_Basics_Shortcodes {
 	            'img' => '',
 	            'name' => '',
 	            'title' => '',
+	            'email' => '',
+	            'phone' => '',
 	            'bio' => '',
 	            'facebook' => '',
 	            'twitter' => '',
@@ -596,6 +598,8 @@ class NS_Basics_Shortcodes {
 	        $output .= '<div class="team-member-img" style="background-image:url('.$atts['img'].');"><p>'.$atts['bio'].'</p><div class="img-overlay"></div><div class="img-fade"></div></div>'; 
 	    }
 	    $output .= '<div class="team-member-content"><h4>'.$atts['name'].'</h4><p>'.$atts['title'].'</p>';
+	    if(!empty($atts['email'])) { $output .= '<a class="team-member-email" href="mailto:'.$atts['email'].'"><i class="fa fa-envelope icon"></i>'.$atts['email'].'</a>'; }
+	    if(!empty($atts['phone'])) { $output .= '<a class="team-member-phone" href="tel:'.$atts['phone'].'"><i class="fa fa-phone icon"></i>'.$atts['phone'].'</a>'; }
 	    $output .= '<ul class="social-icons circle">';
 	    if(!empty($atts['facebook'])) { $output .= '<li><a target="_blank" href="'.$atts['facebook'].'"><i class="fab fa-facebook-f"></i></a></li>'; }
 	    if(!empty($atts['twitter'])) { $output .= '<li><a target="_blank" href="'.$atts['twitter'].'"><i class="fab fa-twitter"></i></a></li>'; }
