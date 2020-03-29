@@ -46,7 +46,7 @@ class NS_Basics {
 		if(!defined('NS_BASICS_URL')) { define('NS_BASICS_URL', 'https://nightshiftcreative.co/'); }
 		if(!defined('NS_BASICS_SHOP_URL')) { define('NS_BASICS_SHOP_URL', 'https://products.nightshiftcreative.co/'); }
 		if(!defined('NS_BASICS_GITHUB_REPO')) { define('NS_BASICS_GITHUB_REPO', '/NightShiftCreative/NS-Basics/'); }
-		//if(!defined('NS_BASICS_GITHUB')) { define('NS_BASICS_GITHUB', '/NightShiftCreative/NS-Basics/archive/1.0.0.zip'); }
+		if(!defined('NS_BASICS_GITHUB')) { define('NS_BASICS_GITHUB', '/NightShiftCreative/NS-Basics/archive/1.0.2.zip'); }
 		if(!defined('NS_BASICS_PLUGIN_DIR')) { define('NS_BASICS_PLUGIN_DIR', plugins_url('', __FILE__)); } 
 	}
 
