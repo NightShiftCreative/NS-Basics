@@ -27,6 +27,8 @@ class NS_Basics_Shortcodes {
 		add_shortcode('ns_service', array( $this, 'add_shortcode_service'));
 		add_shortcode('ns_team_member', array( $this, 'add_shortcode_team_member'));
 		add_shortcode('ns_video', array( $this, 'add_shortcode_video'));
+		add_shortcode('ns_slider', array( $this, 'add_shortcode_slider'));
+		add_shortcode('ns_slide', array( $this, 'add_shortcode_slide'));
 		add_shortcode('ns_tabs', array( $this, 'add_shortcode_tabs'));
 		add_shortcode('ns_tab', array( $this, 'add_shortcode_tab'));
 		add_shortcode('ns_accordions', array( $this, 'add_shortcode_accordions'));
@@ -48,7 +50,7 @@ class NS_Basics_Shortcodes {
 	 * Remove <p> and <br/> tags from shortcode content
 	 */
 	public function content_filter($content) {
-		$block = join("|",array('ns_module', 'ns_module_header', 'ns_row', 'ns_col', 'ns_button', 'ns_button_alt', 'ns_quote', 'ns_alert_box', 'ns_social', 'ns_service', 'ns_team_member', 'ns_testimonials', 'ns_testimonial', 'ns_tabs', 'ns_tab', 'ns_accordions', 'ns_accordion', 'ns_login_form', 'ns_register_form', 'ns_dashboard', 'ns_favorites', 'ns_edit_profile'));
+		$block = join("|",array('ns_module', 'ns_module_header', 'ns_row', 'ns_col', 'ns_button', 'ns_button_alt', 'ns_quote', 'ns_alert_box', 'ns_social', 'ns_service', 'ns_team_member', 'ns_slider', 'ns_slide', 'ns_testimonials', 'ns_testimonial', 'ns_tabs', 'ns_tab', 'ns_accordions', 'ns_accordion', 'ns_login_form', 'ns_register_form', 'ns_dashboard', 'ns_favorites', 'ns_edit_profile'));
     	$rep = preg_replace("/(<p>)?\[($block)(\s[^\]]+)?\](<\/p>|<br \/>)?/","[$2$3]",$content);
     	$rep = preg_replace("/(<p>)?\[\/($block)](<\/p>|<br \/>)?/","[/$2]",$rep);
 		return $rep;
@@ -638,6 +640,69 @@ class NS_Basics_Shortcodes {
 	    $output .= '</a>';
 
 	    return $output;
+	}
+
+	/**
+	 * Slider shortcode
+	 *
+	 * @param array $atts
+	 * @param string $content
+	 */
+	public function add_shortcode_slider($atts, $content=null) {
+		
+		$atts = shortcode_atts(
+	        array (
+	            'class' => '',
+	            'slides_to_show' => 1,
+	            'slides_to_scroll' => 1,
+	            'transition' => 'slide',
+	            'autoplay' => 'false',
+	            'autoplay_speed' => 5000,
+	            'adaptive_height' => 'true',
+	    ), $atts);
+
+		$data = '';
+		$data .= 'data-slides-to-show='.$atts['slides_to_show'].' ';
+		$data .= 'data-slides-to-scroll='.$atts['slides_to_scroll'].' ';
+		$data .= 'data-transition='.$atts['transition'].' ';
+		$data .= 'data-autoplay='.$atts['autoplay'].' ';
+		$data .= 'data-autoplay-speed='.$atts['autoplay_speed'].' ';
+		$data .= 'data-adaptive-height='.$atts['adaptive_height'].' ';
+
+		ob_start(); ?>
+
+		<div class="slider-wrap slider-wrap-dynamic <?php echo $atts['class']; ?>" <?php echo $data; ?>>
+			<div class="slider-nav slider-nav-dynamic">
+		  		<span class="slider-prev"><i class="fa fa-angle-left"></i></span>
+		  		<span class="slider-next"><i class="fa fa-angle-right"></i></span>
+		  	</div>
+		  	<div class="slider slider-dynamic"><?php echo do_shortcode($content); ?></div>
+		</div>
+
+    	<?php $output = ob_get_clean();
+		return $output;
+	}
+
+	/**
+	 * Slide shortcode
+	 *
+	 * @param array $atts
+	 * @param string $content
+	 */
+	public function add_shortcode_slide($atts, $content=null) {
+	    
+	    $atts = shortcode_atts(
+	        array (
+	            'content' => '',
+	            'class' => '',
+	    ), $atts);
+
+	    ob_start(); ?>
+
+		<div class="slide <?php echo $atts['class']; ?>"><?php echo $atts['content']; echo do_shortcode($content); ?></div>
+
+	    <?php $output = ob_get_clean();
+		return $output;
 	}
 
 	/**

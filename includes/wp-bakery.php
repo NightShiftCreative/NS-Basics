@@ -12,7 +12,7 @@ function ns_basics_vc_map() {
 		'name' => esc_html__( 'Module Header', 'ns-basics' ),
 		'base' => 'ns_module_header',
 		'description' => esc_html__( 'Display a module header', 'ns-basics' ),
-		'icon' => PROPERTYSHIFT_DIR.'/images/icon-real-estate.svg',
+		'icon' => NS_BASICS_PLUGIN_DIR.'/images/icon-basic-widgets.svg',
 		'class' => '',
 		'category' => 'NS Basics',
 		'params' => array(
@@ -36,12 +36,117 @@ function ns_basics_vc_map() {
 		),
 	));
 
+	/** SLIDER **/
+	vc_map( array(
+		"name" => __("Slider", "ns-basics"),
+		"base" => "ns_slider",
+		'icon' => NS_BASICS_PLUGIN_DIR.'/images/icon-slides.svg',
+		'category' => 'NS Basics',
+		"as_parent" => array('only' => 'ns_slide'),
+		"content_element" => true,
+		"show_settings_on_create" => true,
+		"is_container" => true,
+		"params" => array(
+			array(
+		  		"type" => "textfield",
+		  		"heading" => __("Class", "ns-basics"),
+		  		"param_name" => "class",
+		  		"description" => __("Add a CSS class for styling.", "ns-basics")
+			),
+			array(
+		  		"type" => "dropdown",
+		  		"heading" => __("Slides to Show", "ns-basics"),
+		  		"param_name" => "slides_to_show",
+		  		"description" => __("Number of slides to show.", "ns-basics"),
+		  		'value' => array(
+		  			__( '1',  "ns-basics" ) => '1',
+    				__( '2',  "ns-basics" ) => '2',
+    				__( '3',  "ns-basics" ) => '3',
+    				__( '4',  "ns-basics" ) => '4',
+    				__( '5',  "ns-basics" ) => '5',
+    				__( '6',  "ns-basics" ) => '6',
+		  		),
+			),
+			array(
+		  		"type" => "dropdown",
+		  		"heading" => __("Slides to Scroll", "ns-basics"),
+		  		"param_name" => "slides_to_scroll",
+		  		"description" => __("Number of slides to scroll.", "ns-basics"),
+		  		'value' => array(
+		  			__( '1',  "ns-basics" ) => '1',
+    				__( '2',  "ns-basics" ) => '2',
+    				__( '3',  "ns-basics" ) => '3',
+    				__( '4',  "ns-basics" ) => '4',
+    				__( '5',  "ns-basics" ) => '5',
+    				__( '6',  "ns-basics" ) => '6',
+		  		),
+			),
+			array(
+		  		"type" => "dropdown",
+		  		"heading" => __("Transition", "ns-basics"),
+		  		"param_name" => "transition",
+		  		"description" => __("The transition between slides.", "ns-basics"),
+		  		'value' => array(
+		  			__( 'Slide',  "ns-basics" ) => 'slide',
+    				__( 'Fade',  "ns-basics" ) => 'fade',
+		  		),
+			),
+			array(
+		  		"type" => "dropdown",
+		  		"heading" => __("Autoplay", "ns-basics"),
+		  		"param_name" => "autoplay",
+		  		"description" => __("If enabled, the slider will start scrolling automatically.", "ns-basics"),
+		  		'value' => array(
+		  			__( 'No',  "ns-basics" ) => 'false',
+    				__( 'Yes',  "ns-basics" ) => 'true',
+		  		),
+			),
+			array(
+		  		"type" => "textfield",
+		  		"heading" => __("Autoplay Speed (MS)", "ns-basics"),
+		  		"param_name" => "autoplay_speed",
+		  		"description" => __("Enter the slider speed in MS.", "ns-basics"),
+		  		'value' => 5000,
+			)
+		),
+		"js_view" => 'VcColumnView'
+	));
+
+	vc_map( array(
+		"name" => __("Slide", "my-text-domain"),
+		"base" => "ns_slide",
+		'icon' => NS_BASICS_PLUGIN_DIR.'/images/icon-slides.svg',
+		'category' => 'NS Basics',
+		"content_element" => true,
+		"as_child" => array('only' => 'ns_slider'),
+		"params" => array(
+			array(
+		  		"type" => "textfield",
+		  		"heading" => __("Class", "ns-basics"),
+		  		"param_name" => "class",
+			),
+			array(
+		  		"type" => "textarea_html",
+		  		"heading" => __("Slide Content", "ns-basics"),
+		  		"param_name" => "content",
+			),
+		)
+	));
+
+	if (class_exists('WPBakeryShortCodesContainer')) {
+	  	class WPBakeryShortCode_ns_slider extends WPBakeryShortCodesContainer {}
+	}
+	if ( class_exists( 'WPBakeryShortCode' ) ) {
+		class WPBakeryShortCode_ns_slide extends WPBakeryShortCode {}
+	}
+
+
 	/** LIST POSTS **/
 	vc_map(array(
 		'name' => esc_html__( 'List Posts', 'ns-basics' ),
 		'base' => 'ns_list_posts',
 		'description' => esc_html__( 'Display a list a posts', 'ns-basics' ),
-		'icon' => PROPERTYSHIFT_DIR.'/images/icon-real-estate.svg',
+		'icon' => NS_BASICS_PLUGIN_DIR.'/images/icon-basic-widgets.svg',
 		'class' => '',
 		'category' => 'NS Basics',
 		'params' => array(
@@ -73,7 +178,7 @@ function ns_basics_vc_map() {
 		'name' => esc_html__( 'Login Form', 'ns-basics' ),
 		'base' => 'ns_login_form',
 		'description' => esc_html__( 'Display a user login form', 'ns-basics' ),
-		'icon' => PROPERTYSHIFT_DIR.'/images/icon-real-estate.svg',
+		'icon' => NS_BASICS_PLUGIN_DIR.'/images/icon-basic-widgets.svg',
 		'class' => '',
 		'category' => 'NS Basics',
 		'params' => array(
@@ -91,7 +196,7 @@ function ns_basics_vc_map() {
 		'name' => esc_html__( 'Register Form', 'ns-basics' ),
 		'base' => 'ns_register_form',
 		'description' => esc_html__( 'Display a user register form', 'ns-basics' ),
-		'icon' => PROPERTYSHIFT_DIR.'/images/icon-real-estate.svg',
+		'icon' => NS_BASICS_PLUGIN_DIR.'/images/icon-basic-widgets.svg',
 		'class' => '',
 		'category' => 'NS Basics',
 		'params' => array(

@@ -30,3 +30,7 @@ Full documentation here: [Docs](https://products.nightshiftcreative.co/docs/ns-b
 = 1.0.1 =
 * FIX: Issues with saving meta box fields
 * ADDED: readme.txt file
+
+= 1.0.2 =
+* ADDED: Email and phone fields to team member shortcode
+* ADDED: Slider shortcode
