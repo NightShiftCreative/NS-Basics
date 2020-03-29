@@ -4,7 +4,7 @@ NS Basics is a WordPress framework used by all themes and plugins created by Nig
 
 ## Installation and Docs ##
 
-For detailed information on installing and using NS Basics, please see the [knowledge base](https://studio.nightshiftcreative.co/docs/ns-basics/) 
+For detailed information on installing and using NS Basics, please see the [knowledge base](https://products.nightshiftcreative.co/docs/ns-basics/) 
 
 ## Support ##
 
