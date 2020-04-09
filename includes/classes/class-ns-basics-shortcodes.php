@@ -658,6 +658,7 @@ class NS_Basics_Shortcodes {
 	            'transition' => 'slide',
 	            'autoplay' => 'false',
 	            'autoplay_speed' => 5000,
+	            'dots' => 'false',
 	            'adaptive_height' => 'true',
 	    ), $atts);
 
@@ -667,6 +668,7 @@ class NS_Basics_Shortcodes {
 		$data .= 'data-transition='.$atts['transition'].' ';
 		$data .= 'data-autoplay='.$atts['autoplay'].' ';
 		$data .= 'data-autoplay-speed='.$atts['autoplay_speed'].' ';
+		$data .= 'data-dots='.$atts['dots'].' ';
 		$data .= 'data-adaptive-height='.$atts['adaptive_height'].' ';
 
 		ob_start(); ?>
@@ -862,7 +864,7 @@ class NS_Basics_Shortcodes {
 	    if ( $post_listing_query->have_posts() ) : while ( $post_listing_query->have_posts() ) : $post_listing_query->the_post();
 
 	        echo '<div class="col-lg-4">';
-	        $theme_file = locate_template(array( 'template_parts/loop_blog_post.php'));
+	        $theme_file  = locate_template(array( 'template_parts/loop_blog_post.php'));
 	        $excerpt_length = $atts['excerpt'];
 	        $blog_thumb = true;
 
@@ -903,7 +905,7 @@ class NS_Basics_Shortcodes {
 	        'after_page_number' => ''
 	    ); ?>
 
-	    </div>
+	    
 	    <?php if($atts['show_pagination'] == 'true') { ?>
 	    	<div class="page-list">
 		    <?php echo paginate_links( $args ); ?> 

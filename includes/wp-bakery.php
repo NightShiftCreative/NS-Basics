@@ -107,7 +107,17 @@ function ns_basics_vc_map() {
 		  		"param_name" => "autoplay_speed",
 		  		"description" => __("Enter the slider speed in MS.", "ns-basics"),
 		  		'value' => 5000,
-			)
+			),
+			array(
+		  		"type" => "dropdown",
+		  		"heading" => __("Display Dots", "ns-basics"),
+		  		"param_name" => "dots",
+		  		"description" => __("If enabled, dots will be displayed for navigation.", "ns-basics"),
+		  		'value' => array(
+		  			__( 'No',  "ns-basics" ) => 'false',
+		  			__( 'Yes',  "ns-basics" ) => 'true',
+		  		),
+			),
 		),
 		"js_view" => 'VcColumnView'
 	));
@@ -214,6 +224,27 @@ function ns_basics_vc_map() {
 			),
 		),
 	));
+
+	/** GLOBAL BLOCK **/
+	$modules = new NS_Basics_Modules();
+	if($modules->is_module_active('ns_basics_global_blocks')) { 
+		vc_map(array(
+			'name' => esc_html__( 'Global Block', 'ns-basics' ),
+			'base' => 'ns_block',
+			'description' => esc_html__( 'Display a global content block', 'ns-basics' ),
+			'icon' => NS_BASICS_PLUGIN_DIR.'/images/icon-basic-widgets.svg',
+			'class' => '',
+			'category' => 'NS Basics',
+			'params' => array(
+				array(
+					'type' => 'textfield',
+					'heading' => esc_html__( 'ID', 'ns-basics' ),
+					'param_name' => 'id',
+					'description' => esc_html__( 'The global block id number.', 'ns-basics' ),
+				),
+			),
+		));
+	}
 
 }
 ?>

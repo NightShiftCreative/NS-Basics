@@ -165,6 +165,7 @@ class NS_Basics {
 		include( plugin_dir_path( __FILE__ ) . 'includes/classes/class-ns-basics-post-likes.php');
 		include( plugin_dir_path( __FILE__ ) . 'includes/classes/class-ns-basics-slides.php');
 		include( plugin_dir_path( __FILE__ ) . 'includes/classes/class-ns-basics-shortcodes.php');
+		include( plugin_dir_path( __FILE__ ) . 'includes/classes/class-ns-basics-global-blocks.php');
 
 		// Setup the admin
 		if(is_admin()) { 
@@ -214,6 +215,12 @@ class NS_Basics {
 			include( plugin_dir_path( __FILE__ ) . 'includes/classes/widgets/list_posts_widget.php');
 			include( plugin_dir_path( __FILE__ ) . 'includes/classes/widgets/social_links_widget.php');
 			include( plugin_dir_path( __FILE__ ) . 'includes/classes/widgets/testimonials_widget.php');
+		}
+
+		// Load global blocks class
+		if($this->modules->is_module_active('ns_basics_global_blocks')) { 
+			$this->global_blocks = new NS_Basics_Global_Blocks(); 
+			$this->global_blocks->init();
 		}
 	}
 

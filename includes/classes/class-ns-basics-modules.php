@@ -81,6 +81,16 @@ class NS_Basics_Modules {
 	            'link' => constant('NS_BASICS_SHOP_URL').'docs/ns-basics/widgets/',
 	            'active' => 'true',
 	        ),
+	        7 => array(
+	            'name' => 'Global Blocks',
+	            'slug' => 'ns_basics_global_blocks',
+	            'icon' => plugins_url('/ns-basics/images/icon-basic-widgets.svg'),
+	            'note' => esc_html__('Add global content blocks that can be displayed through out your site.', 'ns-basics'),
+	            'group' => 'basic',
+	            'required_theme_support' => '',
+	            //'link' => constant('NS_BASICS_SHOP_URL').'docs/ns-basics/widgets/',
+	            'active' => 'false',
+	        ),
 	    );
 
 	    //update active add-ons

@@ -292,57 +292,75 @@ class NS_Basics_Page_Settings {
 				'options' => $sidebar_options,
 				'order' => 6,
 			),
-			'cta_display' => array(
+			'cta_custom_settings' => array(
 				'group' => 'cta',
-				'title' => esc_html__('Display Call to Action', 'ns-basics'),
-				'name' => 'ns_basics_cta_display',
-				'value' => 'false',
-				'description' => 'If checked, a call to action box will display at the bottom of the page.',
-				'type' => 'checkbox',
+				'title' => esc_html__('Use Custom Call to Action Settings', 'ns-basics'),
+				'name' => 'ns_basics_cta_custom_settings',
+				'description' => esc_html__('The call to action global settings are configured in the theme options (Appearance > Theme Options)', 'ns-basics'),
+				'type' => 'switch',
 				'order' => 7,
-			),
-			'cta_title' => array(
-				'group' => 'cta',
-				'title' => esc_html__('Call to Action Title', 'ns-basics'),
-				'name' => 'ns_basics_cta_title',
-				'type' => 'text',
-				'order' => 8,
-			),
-			'cta_text' => array(
-				'group' => 'cta',
-				'title' => esc_html__('Call to Action Text', 'ns-basics'),
-				'name' => 'ns_basics_cta_text',
-				'type' => 'textarea',
-				'order' => 9,
-			),
-			'cta_button_text' => array(
-				'group' => 'cta',
-				'title' => esc_html__('Call to Action Button Text', 'ns-basics'),
-				'name' => 'ns_basics_cta_button_text',
-				'type' => 'text',
-				'order' => 10,
-			),
-			'cta_button_url' => array(
-				'group' => 'cta',
-				'title' => esc_html__('Call to Action Button URL', 'ns-basics'),
-				'name' => 'ns_basics_cta_button_url',
-				'type' => 'text',
-				'order' => 11,
-			),
-			'cta_bg_img' => array(
-				'group' => 'cta',
-				'title' => esc_html__('Call to Action Background Image', 'ns-basics'),
-				'name' => 'ns_basics_cta_bg_img',
-				'type' => 'image_upload',
-				'order' => 12,
-			),
-			'cta_bg_display' => array(
-				'group' => 'cta',
-				'title' => esc_html__('Call to Action Background Display', 'ns-basics'),
-				'name' => 'ns_basics_cta_bg_display',
-				'type' => 'select',
-				'options' => array('Cover' => 'cover', 'Fixed' => 'fixed', 'Tile' => 'repeat'),
-				'order' => 13,
+				'children' => array(
+					'cta_global_block' => array(
+						'group' => 'cta',
+						'title' => esc_html__('Global Block ID', 'ns-basics'),
+						'name' => 'ns_basics_cta_global_block',
+						'description' => 'Display a global content block.',
+						'type' => 'number',
+						'order' => 7,
+					),
+					'cta_display' => array(
+						'group' => 'cta',
+						'title' => esc_html__('Display Call to Action', 'ns-basics'),
+						'name' => 'ns_basics_cta_display',
+						'value' => 'false',
+						'description' => 'If checked, a call to action box will display at the bottom of the page.',
+						'type' => 'checkbox',
+						'order' => 7,
+					),
+					'cta_title' => array(
+						'group' => 'cta',
+						'title' => esc_html__('Call to Action Title', 'ns-basics'),
+						'name' => 'ns_basics_cta_title',
+						'type' => 'text',
+						'order' => 8,
+					),
+					'cta_text' => array(
+						'group' => 'cta',
+						'title' => esc_html__('Call to Action Text', 'ns-basics'),
+						'name' => 'ns_basics_cta_text',
+						'type' => 'textarea',
+						'order' => 9,
+					),
+					'cta_button_text' => array(
+						'group' => 'cta',
+						'title' => esc_html__('Call to Action Button Text', 'ns-basics'),
+						'name' => 'ns_basics_cta_button_text',
+						'type' => 'text',
+						'order' => 10,
+					),
+					'cta_button_url' => array(
+						'group' => 'cta',
+						'title' => esc_html__('Call to Action Button URL', 'ns-basics'),
+						'name' => 'ns_basics_cta_button_url',
+						'type' => 'text',
+						'order' => 11,
+					),
+					'cta_bg_img' => array(
+						'group' => 'cta',
+						'title' => esc_html__('Call to Action Background Image', 'ns-basics'),
+						'name' => 'ns_basics_cta_bg_img',
+						'type' => 'image_upload',
+						'order' => 12,
+					),
+					'cta_bg_display' => array(
+						'group' => 'cta',
+						'title' => esc_html__('Call to Action Background Display', 'ns-basics'),
+						'name' => 'ns_basics_cta_bg_display',
+						'type' => 'select',
+						'options' => array('Cover' => 'cover', 'Fixed' => 'fixed', 'Tile' => 'repeat'),
+						'order' => 13,
+					),
+				),
 			),
 		);
 
@@ -390,7 +408,7 @@ class NS_Basics_Page_Settings {
             	do_action( 'ns_basics_before_banner_settings', $page_settings);
 
             	foreach($page_settings as $setting) {
-            		if($setting['group'] == 'banner') {
+            		if(isset($setting['group']) && $setting['group'] == 'banner') {
             			$this->admin_obj->build_admin_field($setting);
             		}
             	} 
@@ -406,7 +424,7 @@ class NS_Basics_Page_Settings {
             	do_action( 'ns_basics_before_page_layout_settings', $page_settings);
 
             	foreach($page_settings as $setting) {
-            		if($setting['group'] == 'page_layout') {
+            		if(isset($setting['group']) && $setting['group'] == 'page_layout') {
             			$this->admin_obj->build_admin_field($setting);
             		}
             	} 
@@ -422,7 +440,7 @@ class NS_Basics_Page_Settings {
             	do_action( 'ns_basics_before_page_cta_settings', $page_settings);
 
             	foreach($page_settings as $setting) {
-            		if($setting['group'] == 'cta') {
+            		if(isset($setting['group']) && $setting['group'] == 'cta') {
             			$this->admin_obj->build_admin_field($setting);
             		}
             	} 

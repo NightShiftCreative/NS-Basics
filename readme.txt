@@ -24,13 +24,20 @@ Full documentation here: [Docs](https://products.nightshiftcreative.co/docs/ns-b
 
 == Changelog ==
 
-= 1.0.0 =
-* Initial release
+= 1.0.3 =
+* ADDED: Slider shortcode dots navigation parameter
+* FIXED: removed closing div from recent posts shortcode
+* ADDED: Global Call to Action fields
+* ADDED: Global blocks class
+
+= 1.0.2 =
+* ADDED: Email and phone fields to team member shortcode
+* ADDED: Slider shortcode
 
 = 1.0.1 =
 * FIX: Issues with saving meta box fields
 * ADDED: readme.txt file
 
-= 1.0.2 =
-* ADDED: Email and phone fields to team member shortcode
-* ADDED: Slider shortcode
+= 1.0.0 =
+* Initial release
+
