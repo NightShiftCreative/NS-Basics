@@ -302,10 +302,11 @@ class NS_Basics_Page_Settings {
 				'children' => array(
 					'cta_global_block' => array(
 						'group' => 'cta',
-						'title' => esc_html__('Global Block ID', 'ns-basics'),
+						'title' => esc_html__('Display a Global Block', 'ns-basics'),
 						'name' => 'ns_basics_cta_global_block',
-						'description' => 'Display a global content block.',
-						'type' => 'number',
+						'description' => esc_html__('Select a global content block to display it.', 'ns-basics'),
+						'type' => 'select',
+						'options' => NS_Basics_Global_Blocks::get_blocks(true),
 						'order' => 7,
 					),
 					'cta_display' => array(

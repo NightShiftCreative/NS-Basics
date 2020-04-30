@@ -60,6 +60,10 @@ class NS_Basics_Global_Blocks {
         );
 	}
 
+	/************************************************************************/
+	// Shortcode
+	/************************************************************************/
+
 	/**
 	 * Block shortcode
 	 *
@@ -100,6 +104,32 @@ class NS_Basics_Global_Blocks {
 	    return $output;
 	}
 
+
+	/************************************************************************/
+	// Utilities
+	/************************************************************************/
+
+	/**
+	 * Get all blocks
+	 *
+	 * @param array $atts
+	 * @param string $content
+	 */
+	public static function get_blocks($empty_default = false) {
+		$blocks = array();
+    	if($empty_default == true) { $blocks['Select a block...'] = ''; }
+    	
+    	$block_posts = get_posts(array(
+    		'post_type' => 'ns-global-blocks',
+    		'post_status' => 'publish',
+    		'showposts' => -1,
+    	));
+
+    	foreach($block_posts as $block) {
+			$blocks[$block->post_title] = $block->ID;
+		}
+		return $blocks;
+	}
 
 }
 

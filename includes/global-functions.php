@@ -22,7 +22,7 @@ add_action('wp_head', 'ns_basics_add_meta_tags');
 /*-----------------------------------------------------------------------------------*/
 add_action( 'wp_login_failed', 'ns_basics_login_fail' );  // hook failed login
 function ns_basics_login_fail( $username ) {
-   $referrer = $_SERVER['HTTP_REFERER'];
+   if(isset($_SERVER['HTTP_REFERER'])) { $referrer = $_SERVER['HTTP_REFERER']; } else { $referrer = ''; }
    if ( !empty($referrer) && !strstr($referrer,'wp-login') && !strstr($referrer,'wp-admin') ) {
       wp_redirect( add_query_arg('login', 'failed', $referrer) );
       exit;

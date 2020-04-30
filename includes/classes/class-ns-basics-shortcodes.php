@@ -840,6 +840,7 @@ class NS_Basics_Shortcodes {
 	        'num' => 3,
 	        'excerpt' => 20,
 	        'show_pagination' => false,
+	        'offset' => null,
 	    ), $atts);
 
 	    ob_start();
@@ -858,6 +859,7 @@ class NS_Basics_Shortcodes {
 	        'post_status' => 'publish',
 	        'showposts' => $atts['num'],
 	        'paged' => $paged,
+	        'offset' => $atts['offset'],
 	    );
 
 	    $post_listing_query = new WP_Query( $post_listing_args );

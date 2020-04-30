@@ -4,7 +4,7 @@ Donate link: https://products.nightshiftcreative.co/
 Tags: nightshift
 Requires at least: 4.0
 Tested up to: 5.3
-Stable tag: 1.0.3
+Stable tag: 1.0.4
 Requires PHP: 5.2.4
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -23,6 +23,11 @@ Full documentation here: [Docs](https://products.nightshiftcreative.co/docs/ns-b
 1. Activate the plugin through the 'Plugins' screen in WordPress
 
 == Changelog ==
+
+= 1.0.4 =
+* ADDED: Offset parameter to list posts shortcode
+* ADDED: Utilities to Global blocks class
+* ADDED: Slide shortcode custom view with WPBakery
 
 = 1.0.3 =
 * ADDED: Slider shortcode dots navigation parameter

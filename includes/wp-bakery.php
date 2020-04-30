@@ -132,6 +132,12 @@ function ns_basics_vc_map() {
 		"params" => array(
 			array(
 		  		"type" => "textfield",
+		  		"heading" => __("Title", "ns-basics"),
+		  		'description' => __("The title isn't displayed on the site.", "ns-basics"),
+		  		"param_name" => "title",
+			),
+			array(
+		  		"type" => "textfield",
 		  		"heading" => __("Class", "ns-basics"),
 		  		"param_name" => "class",
 			),
@@ -140,7 +146,9 @@ function ns_basics_vc_map() {
 		  		"heading" => __("Slide Content", "ns-basics"),
 		  		"param_name" => "content",
 			),
-		)
+		),
+		'js_view' => 'VcCustomElementView',
+		'custom_markup' => '<div class="vc_custom-element-container vc-custom-slide"><strong style="display:block;">{{ params.title }}</strong><br/> {{ params.content }}</div>',
 	));
 
 	if (class_exists('WPBakeryShortCodesContainer')) {
@@ -237,10 +245,10 @@ function ns_basics_vc_map() {
 			'category' => 'NS Basics',
 			'params' => array(
 				array(
-					'type' => 'textfield',
-					'heading' => esc_html__( 'ID', 'ns-basics' ),
+					'type' => 'dropdown',
+					'heading' => esc_html__( 'Select a Block', 'ns-basics' ),
 					'param_name' => 'id',
-					'description' => esc_html__( 'The global block id number.', 'ns-basics' ),
+					'value' => NS_Basics_Global_Blocks::get_blocks(true),
 				),
 			),
 		));
