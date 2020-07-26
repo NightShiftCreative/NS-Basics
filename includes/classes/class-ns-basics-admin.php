@@ -129,7 +129,7 @@ class NS_Basics_Admin {
 	            </div>
 
 	            <div class="ns-settings-menu-bar ns-settings-footer">
-	                <div class="ns-settings-version left"><?php esc_html_e('Version', 'ns-basics'); ?> <?php echo NS_BASICS_VERSION; ?> | <?php esc_html_e('Made by', 'ns-basics'); ?> <a href="<?php echo constant('NS_BASICS_SHOP_URL'); ?>" target="_blank">Nightshift Creative</a> | <a href="<?php echo constant('NS_BASICS_SHOP_URL').'get-support/'; ?>" target="_blank"><?php esc_html_e('Get Support', 'ns-basics'); ?></a></div>
+	                <div class="ns-settings-version left"><?php esc_html_e('Made by', 'ns-basics'); ?> <a href="<?php echo constant('NS_BASICS_SHOP_URL'); ?>" target="_blank">Nightshift Creative</a> | <a href="<?php echo constant('NS_BASICS_SHOP_URL').'get-support/'; ?>" target="_blank"><?php esc_html_e('Get Support', 'ns-basics'); ?></a></div>
 	                <?php if(isset($args['display_actions']) && $args['display_actions'] != 'false') { ?>
 	                    <div class="ns-settings-actions">
 	                        <div class="loader"><img src="<?php echo esc_url(home_url('/')); ?>wp-admin/images/spinner.gif" alt="" /></div> 
@@ -304,14 +304,14 @@ class NS_Basics_Admin {
 	public function build_admin_field_checkbox_group($field = null) { ?>
 		<?php if(!empty($field['options'])) { 
             echo '<ul class="three-col-list">';
-                foreach($field['options'] as $key=>$option) { 
-                	$currentVal = $field['value'][$key]['value']; 
+                foreach($field['options'] as $key=>$option) {
+                	$currentVal = $field['value'][$key]['value'];
                 	$attributes = '';
                 	if(!empty($option['attributes'])) { foreach($option['attributes'] as $attr) { $attributes .= $attr.' '; } }
                 	?>
                 	<li>
                 		<input type="checkbox" <?php echo $attributes; ?> name="<?php echo $field['name'].'['.$key.'][value]'; ?>" value="<?php echo $option['value']; ?>" <?php if(isset($currentVal)) { echo 'checked'; } ?> /><?php echo $option['value']; ?>
-                		<input type="hidden" name="<?php echo $field['name'].'['.$key.'][attributes]'; ?>" value="<?php echo $option['attributes']; ?>" />
+                		<input type="hidden" name="<?php echo $field['name'].'['.$key.'][attributes]'; ?>" value="<?php echo $attributes; ?>" />
                 	</li>
                 <?php }
             echo '</ul>';

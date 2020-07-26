@@ -24,6 +24,13 @@ Full documentation here: [Docs](https://products.nightshiftcreative.co/docs/ns-b
 
 == Changelog ==
 
+= 1.0.5 =
+* ADDED: Default custom post type support for WPBakery
+* MOD: Changed page setting metabox to tabbed layout and ability to override logo on a per page basis
+* REMOVED: Version number display on bottom of admin pages
+* FIXED: Replaced content filter with do_shortcode filter on social links widget
+* FIXED: Array to string conversion in admin checkbox group field
+
 = 1.0.4 =
 * ADDED: Offset parameter to list posts shortcode
 * ADDED: Utilities to Global blocks class

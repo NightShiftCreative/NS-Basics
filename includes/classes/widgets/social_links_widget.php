@@ -32,7 +32,7 @@ class ns_basics_social_links_widget extends WP_Widget {
 
                         <div class="socil-links-widget">
 
-                            <?php if($text_before) { echo '<div class="social-links-before-text">'. apply_filters( 'the_content', $text_before) .'</div><div class="divider"></div>'; } ?>
+                            <?php if($text_before) { echo '<div class="social-links-before-text">'. do_shortcode($text_before) .'</div><div class="divider"></div>'; } ?>
 
                             <?php
                             if($source == 'custom') {
@@ -76,7 +76,7 @@ class ns_basics_social_links_widget extends WP_Widget {
                             </ul>
                             <?php } ?>
 
-                            <?php if($text_after) { echo '<div class="divider"></div><div class="social-links-after-text">'. apply_filters( 'the_content', $text_after) .'</div>'; } ?>
+                            <?php if($text_after) { echo '<div class="divider"></div><div class="social-links-after-text">'. do_shortcode($text_after) .'</div>'; } ?>
                         </div>
 
               <?php echo wp_kses_post($after_widget); ?>

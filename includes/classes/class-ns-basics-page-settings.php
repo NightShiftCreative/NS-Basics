@@ -95,13 +95,31 @@ class NS_Basics_Page_Settings {
 		// Set all fields
 		$page_settings_init = array(
 			'banner_header_style' => array(
-				'group' => 'banner',
+				'group' => 'header',
 				'title' => esc_html__('Header Style', 'ns-basics'),
 				'name' => 'ns_basics_banner_header_style',
 				'value' => '',
-				'description' => esc_html__('Override the global header style set in the theme options.', 'ns-basics'),
+				'description' => esc_html__('Override the global header style (set in the theme options) for this page.', 'ns-basics'),
 				'type' => 'select',
 				'options' => array('User Global Header Style' => '', 'Classic' => 'classic', 'Transparent' => 'transparent', 'Menu Bar' => 'default'),
+				'order' => 1,
+			),
+			'header_logo' => array(
+				'group' => 'header',
+				'title' => esc_html__('Logo', 'ns-basics'),
+				'name' => 'ns_basics_banner_header_logo',
+				'value' => '',
+				'description' => esc_html__('Override the global logo (set in the theme options) for this page.', 'ns-basics'),
+				'type' => 'image_upload',
+				'order' => 1,
+			),
+			'header_logo_transparent' => array(
+				'group' => 'header',
+				'title' => esc_html__('Logo Transparent', 'ns-basics'),
+				'name' => 'ns_basics_banner_header_logo_transparent',
+				'value' => '',
+				'description' => esc_html__('Override the global transparent logo (set in the theme options) for this page.', 'ns-basics'),
+				'type' => 'image_upload',
 				'order' => 1,
 			),
 			'banner_display' => array(
@@ -402,53 +420,81 @@ class NS_Basics_Page_Settings {
 
 		do_action( 'ns_basics_before_page_settings', $page_settings); ?>
 
-		<div class="ns-accordion">
-            <div class="ns-accordion-header"><i class="fa fa-chevron-right"></i> <?php echo esc_html_e('Banner', 'ns-basics'); ?></div>
-            <div class="ns-accordion-content">
-            	<?php
-            	do_action( 'ns_basics_before_banner_settings', $page_settings);
+		<div class="ns-tabs meta-box-form meta-box-form-page-settings">
+			<ul class="ns-tabs-nav">
+	            <li><a href="#header" title="<?php esc_html_e('Header', 'ns-basics'); ?>"><i class="fa fa-window-maximize"></i> <span class="tab-text"><?php echo esc_html_e('Header', 'ns-basics'); ?></span></a></li>
+	            <li><a href="#banner" title="<?php esc_html_e('Banner', 'ns-basics'); ?>"><i class="fa fa-map"></i> <span class="tab-text"><?php echo esc_html_e('Banner', 'ns-basics'); ?></span></a></li>
+	            <li><a href="#page-layout" title="<?php esc_html_e('Page Layout', 'ns-basics'); ?>"><i class="fa fa-file"></i> <span class="tab-text"><?php echo esc_html_e('Page Layout', 'ns-basics'); ?></span></a></li>
+	            <li><a href="#cta" title="<?php esc_html_e('Call to Action', 'ns-basics'); ?>"><i class="fa fa-bullhorn"></i> <span class="tab-text"><?php echo esc_html_e('Call to Action', 'ns-basics'); ?></span></a></li>
+	            <?php do_action('ns_basics_after_page_settings_tabs'); ?>
+	        </ul>
 
-            	foreach($page_settings as $setting) {
+	        <div class="ns-tabs-content">
+        	<div class="tab-loader"><img src="<?php echo esc_url(home_url('/')); ?>wp-admin/images/spinner.gif" /> <?php echo esc_html_e('Loading...', 'ns-basics'); ?></div>
+
+        	<!--*************************************************-->
+	        <!-- HEADER SETTINGS -->
+	        <!--*************************************************-->
+	        <div id="header" class="tab-content">
+	            <h3><?php echo esc_html_e('Header', 'ns-basics'); ?></h3>
+	            <?php
+	            do_action( 'ns_basics_before_header_settings', $page_settings);
+	            foreach($page_settings as $setting) {
+            		if(isset($setting['group']) && $setting['group'] == 'header') {
+            			$this->admin_obj->build_admin_field($setting);
+            		}
+            	} 
+            	do_action( 'ns_basics_after_header_settings', $page_settings); ?>
+	        </div>
+
+        	<!--*************************************************-->
+	        <!-- BANNER SETTINGS -->
+	        <!--*************************************************-->
+	        <div id="banner" class="tab-content">
+	            <h3><?php echo esc_html_e('Banner', 'ns-basics'); ?></h3>
+	            <?php
+	            do_action( 'ns_basics_before_banner_settings', $page_settings);
+	            foreach($page_settings as $setting) {
             		if(isset($setting['group']) && $setting['group'] == 'banner') {
             			$this->admin_obj->build_admin_field($setting);
             		}
             	} 
+            	do_action( 'ns_basics_after_banner_settings', $page_settings); ?>
+	        </div>
 
-            	do_action( 'ns_basics_after_banner_settings', $page_settings); ?>	             
-            </div>
-        </div><!-- end banner accordion -->
-
-        <div class="ns-accordion">    
-            <div class="ns-accordion-header"><i class="fa fa-chevron-right icon"></i> <?php echo esc_html_e('Page Layout', 'ns-basics'); ?></div>
-            <div class="ns-accordion-content">
-            	<?php
-            	do_action( 'ns_basics_before_page_layout_settings', $page_settings);
-
-            	foreach($page_settings as $setting) {
+	        <!--*************************************************-->
+	        <!-- PAGE LAYOUT SETTINGS -->
+	        <!--*************************************************-->
+	        <div id="page-layout" class="tab-content">
+	            <h3><?php echo esc_html_e('Page Layout', 'ns-basics'); ?></h3>
+	            <?php
+	            do_action( 'ns_basics_before_page_layout_settings', $page_settings);
+	            foreach($page_settings as $setting) {
             		if(isset($setting['group']) && $setting['group'] == 'page_layout') {
             			$this->admin_obj->build_admin_field($setting);
             		}
-            	} 
-
+            	}
             	do_action( 'ns_basics_after_page_layout_settings', $page_settings); ?>
-            </div>
-        </div><!-- end page layout accordion -->
+	        </div>
 
-        <div class="ns-accordion">    
-            <div class="ns-accordion-header"><i class="fa fa-chevron-right icon"></i> <?php echo esc_html_e('Call to Action', 'ns-basics'); ?></div>
-            <div class="ns-accordion-content">
-            	<?php
-            	do_action( 'ns_basics_before_page_cta_settings', $page_settings);
-
-            	foreach($page_settings as $setting) {
+	        <!--*************************************************-->
+	        <!-- CTA SETTINGS -->
+	        <!--*************************************************-->
+	        <div id="cta" class="tab-content">
+	            <h3><?php echo esc_html_e('Call to Action', 'ns-basics'); ?></h3>
+	            <?php
+	            do_action( 'ns_basics_before_page_cta_settings', $page_settings);
+	            foreach($page_settings as $setting) {
             		if(isset($setting['group']) && $setting['group'] == 'cta') {
             			$this->admin_obj->build_admin_field($setting);
             		}
-            	} 
-
+            	}
             	do_action( 'ns_basics_after_page_cta_settings', $page_settings); ?>
-            </div>
-        </div><!-- end cta accordion -->
+	        </div>
+
+        	</div><!-- end ns-tabs-content -->
+        	<div class="clear"></div>
+        </div>
 
         <?php do_action( 'ns_basics_after_page_settings', $page_settings);
 	}

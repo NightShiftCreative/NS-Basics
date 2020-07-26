@@ -1,5 +1,19 @@
 <?php
 /*****************************************************************/
+/* Set default WPBakery post types */
+/*****************************************************************/
+add_action('vc_before_init', 'ns_basics_add_post_type_wpbakery');
+function ns_basics_add_post_type_wpbakery() {
+	$vc_post_types = array(
+		'page',
+		'ns-global-blocks',
+	);
+	$vc_post_types = apply_filters( 'ns_basics_vc_post_types', $vc_post_types);
+	vc_set_default_editor_post_types($vc_post_types);
+}
+
+
+/*****************************************************************/
 /** This file maps shortcodes to WPBakery Elements
 /** Shortcodes are located in /includes/classes/class-ns-basics-shortcodes.php
 /*****************************************************************/ 
