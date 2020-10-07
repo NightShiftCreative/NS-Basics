@@ -4,7 +4,7 @@ Donate link: https://products.nightshiftcreative.co/
 Tags: nightshift
 Requires at least: 4.0
 Tested up to: 5.3
-Stable tag: 1.0.4
+Stable tag: 1.0.6
 Requires PHP: 5.2.4
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -23,6 +23,9 @@ Full documentation here: [Docs](https://products.nightshiftcreative.co/docs/ns-b
 1. Activate the plugin through the 'Plugins' screen in WordPress
 
 == Changelog ==
+
+= 1.0.6 =
+* FIXED: Updated plugin update checker class to most recent version
 
 = 1.0.5 =
 * ADDED: Default custom post type support for WPBakery
