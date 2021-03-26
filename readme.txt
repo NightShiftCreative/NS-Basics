@@ -4,7 +4,7 @@ Donate link: https://products.nightshiftcreative.co/
 Tags: nightshift
 Requires at least: 4.0
 Tested up to: 5.3
-Stable tag: 1.0.6
+Stable tag: 1.0.7
 Requires PHP: 5.2.4
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -23,6 +23,16 @@ Full documentation here: [Docs](https://products.nightshiftcreative.co/docs/ns-b
 1. Activate the plugin through the 'Plugins' screen in WordPress
 
 == Changelog ==
+
+= 1.0.7 =
+* ADDED: Category filtering to list post shortcode
+* ADDED: cols parameter to list posts shortcode
+* ADDED: order, orderby, and post not in parameters to list posts shortcode
+* ADDED: web font preloading to increase performance
+* ADDED: AJAX function for auto adding image alt text on front-end
+* ADDED: action hooks before and after global blocks shortcode
+* ADDED: Center mode parameter to slider shortcode
+* FIXED: Check if Yoast plugin is active before adding meta description tag
 
 = 1.0.6 =
 * FIXED: Updated plugin update checker class to most recent version

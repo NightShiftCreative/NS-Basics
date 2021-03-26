@@ -3,7 +3,7 @@
 * Plugin Name: Nightshift Basics
 * Plugin URI: http://nightshiftcreative.co/
 * Description: The framework essential for all themes and plugins built by Nightshift Creative.
-* Version: 1.0.6
+* Version: 1.0.7
 * Author: Nightshift Creative
 * Author URI: http://nightshiftcreative.co/
 * Text Domain: ns-basics
@@ -23,6 +23,7 @@ class NS_Basics {
 		add_action( 'admin_enqueue_scripts', array( $this, 'admin_scripts' ) );
 		add_action( 'wp_enqueue_scripts', array( $this, 'frontend_scripts' ) );
 		add_filter( 'script_loader_tag', array( $this, 'async' ), 10, 3 );
+		add_filter('style_loader_tag', array( $this, 'web_font_preload' ), 10, 2);
 
 		//Functions
 		$this->load_plugin_textdomain();
@@ -42,11 +43,11 @@ class NS_Basics {
 	 * Define constants
 	 */
 	public function define_constants() {
-		if(!defined('NS_BASICS_VERSION')) { define('NS_BASICS_VERSION', '1.0.6'); }
+		if(!defined('NS_BASICS_VERSION')) { define('NS_BASICS_VERSION', '1.0.7'); }
 		if(!defined('NS_BASICS_URL')) { define('NS_BASICS_URL', 'https://nightshiftcreative.co/'); }
 		if(!defined('NS_BASICS_SHOP_URL')) { define('NS_BASICS_SHOP_URL', 'https://products.nightshiftcreative.co/'); }
 		if(!defined('NS_BASICS_GITHUB_REPO')) { define('NS_BASICS_GITHUB_REPO', '/NightShiftCreative/NS-Basics/'); }
-		if(!defined('NS_BASICS_GITHUB')) { define('NS_BASICS_GITHUB', '/NightShiftCreative/NS-Basics/archive/1.0.6.zip'); }
+		if(!defined('NS_BASICS_GITHUB')) { define('NS_BASICS_GITHUB', '/NightShiftCreative/NS-Basics/archive/1.0.7.zip'); }
 		if(!defined('NS_BASICS_PLUGIN_DIR')) { define('NS_BASICS_PLUGIN_DIR', plugins_url('', __FILE__)); } 
 	}
 
@@ -73,10 +74,18 @@ class NS_Basics {
 	        wp_enqueue_style('ns-basics-css',  plugins_url('/css/ns-basics.css', __FILE__), array(), '', 'all');
 	        wp_enqueue_script('ns-basics', plugins_url('/js/ns-basics.js', __FILE__), array('jquery', 'jquery-ui-core'), '', true);
 
+	        //pre-load web fonts
+	        wp_enqueue_style('ns-font-awesome-brands-400', plugins_url('/css/font-awesome/webfonts/fa-brands-400.woff2', __FILE__), array(), null);
+	        wp_enqueue_style('ns-font-awesome-solid-900', plugins_url('/css/font-awesome/webfonts/fa-solid-900.woff2', __FILE__), array(), null);
+
 	        //wordpress pre-loaded scripts
 	        wp_enqueue_script('jquery-ui-core');
 	        wp_enqueue_script('jquery-ui-accordion');
 	        wp_enqueue_script('jquery-ui-tabs');
+
+	        wp_localize_script('ns-basics', 'ns_basics_local_script', array(
+			    'ajaxurl' => admin_url('admin-ajax.php')
+			));
 	    }
 	}
 
@@ -124,6 +133,17 @@ class NS_Basics {
 	        wp_localize_script( 'ns-basics-admin-js', 'ns_basics_local_script', $translation_array );
 
 		}
+	}
+
+	/**
+	 * Web font pre-loader
+	 */
+	public function web_font_preload($html, $handle) {
+		if ($handle === 'ns-font-awesome-brands-400' || $handle === 'ns-font-awesome-solid-900') {
+	        return str_replace("rel='stylesheet'",
+	            "rel='preload' as='font' type='font/woff2' crossorigin='anonymous'", $html);
+	    }
+	    return $html;
 	}
 
 	/**

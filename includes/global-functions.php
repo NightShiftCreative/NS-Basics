@@ -5,17 +5,50 @@
 /*-----------------------------------------------------------------------------------*/
 function ns_basics_add_meta_tags() { 
     $output = '';
-    if(is_single()) {
-        global $post;
-        setup_postdata( $post );
-        $excerpt = wp_trim_words(get_the_excerpt(), 20);
-        $output .= '<meta name="description" content="'.get_the_title().' - '.$excerpt.'">';
+
+    //check that is Yoast is not active
+    include_once( ABSPATH . 'wp-admin/includes/plugin.php' );
+    if ( is_plugin_active( 'wordpress-seo/wp-seo.php' ) || is_plugin_active( 'wordpress-seo-premium/wp-seo-premium.php' ) ) {
+        //do nothing
     } else {
-        $output .= '<meta name="description" content="'.get_bloginfo('name').' - '.get_bloginfo('description').'">';
-    } 
+        if(is_single()) {
+            global $post;
+            setup_postdata( $post );
+            $excerpt = wp_trim_words(get_the_excerpt(), 20);
+            $output .= '<meta name="description" content="'.get_the_title().' - '.$excerpt.'">';
+        } else {
+            $output .= '<meta name="description" content="'.get_bloginfo('name').' - '.get_bloginfo('description').'">';
+        } 
+    }
+    
     echo $output;
 }
 add_action('wp_head', 'ns_basics_add_meta_tags');
+
+/*-----------------------------------------------------------------------------------*/
+/*  Auto Image Alt Text
+/*-----------------------------------------------------------------------------------*/
+add_action('wp_ajax_ns_basics_auto_img_alts', 'ns_basics_auto_img_alts');
+add_action('wp_ajax_nopriv_ns_basics_auto_img_alts', 'ns_basics_auto_img_alts' );
+function ns_basics_auto_img_alts() {
+    $image_url = $_REQUEST["image_url"];
+    $image_url_parsed = parse_url($image_url);
+
+    // if image url is not absolute
+    $site_url = home_url();
+    $site_url = parse_url($site_url);
+    if(empty($image_url_parsed['scheme'])) { $image_url = $site_url['scheme'].'://'.$site_url['host'].$image_url; }
+
+    //retrieve image alt text from database
+    if(!empty($image_url)) {
+        global $wpdb;
+        $attachment = $wpdb->get_col($wpdb->prepare("SELECT ID FROM $wpdb->posts WHERE guid='%s';", $image_url )); 
+        $image_id = $attachment[0];
+        $image_alt = get_post_meta($image_id, '_wp_attachment_image_alt', TRUE);
+        echo $image_alt;
+        die();
+    }
+}
 
 /*-----------------------------------------------------------------------------------*/
 /*  Login Form Failed

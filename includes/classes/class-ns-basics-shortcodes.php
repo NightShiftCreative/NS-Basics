@@ -660,6 +660,7 @@ class NS_Basics_Shortcodes {
 	            'autoplay_speed' => 5000,
 	            'dots' => 'false',
 	            'adaptive_height' => 'true',
+	            'center_mode' => 'false',
 	    ), $atts);
 
 		$data = '';
@@ -670,6 +671,7 @@ class NS_Basics_Shortcodes {
 		$data .= 'data-autoplay-speed='.$atts['autoplay_speed'].' ';
 		$data .= 'data-dots='.$atts['dots'].' ';
 		$data .= 'data-adaptive-height='.$atts['adaptive_height'].' ';
+		$data .= 'data-center-mode='.$atts['center_mode'].' ';
 
 		ob_start(); ?>
 
@@ -839,8 +841,13 @@ class NS_Basics_Shortcodes {
 	        array (
 	        'num' => 3,
 	        'excerpt' => 20,
+	        'cols' => 3,
 	        'show_pagination' => false,
 	        'offset' => null,
+	        'category' => null,
+	        'order' => 'DESC',
+	        'orderby' => 'date',
+	        'post__not_in' => null,
 	    ), $atts);
 
 	    ob_start();
@@ -854,18 +861,57 @@ class NS_Basics_Shortcodes {
 	        $paged = get_query_var('paged') ? (int) get_query_var('paged') : 1;
 	    }
 
+	    //SET COLS
+	    if(!function_exists('ns_posts_col_class')) {
+		    function ns_posts_col_class($cols = 3) {
+			    $class = '';
+			    switch($cols) {
+			        case 1:
+			            $class = 'col-lg-12';
+			            break;
+			        case 2:
+			            $class = 'col-lg-6'; 
+			            break;
+			        case 3:
+			            $class = 'col-lg-4'; 
+			            break;
+			        case 4:
+			            $class = 'col-lg-3';
+			            break;
+			        case 5:
+			            $class = 'col-lg-2';
+			            break;
+			        case 6:
+			            $class = 'col-lg-2';
+			            break;
+			    }
+			    return $class;
+			}
+		}
+		$post_col_class = ns_posts_col_class($atts['cols']);
+
+		//EXCLUDE POSTS
+		if(!empty($atts['post__not_in'])) {
+			$post_not_in = $atts['post__not_in'];
+			$post_not_in = explode(",", $post_not_in);
+		}
+
 	    $post_listing_args = array(
 	        'post_type' => 'post',
 	        'post_status' => 'publish',
 	        'showposts' => $atts['num'],
 	        'paged' => $paged,
 	        'offset' => $atts['offset'],
+	        'category_name' => $atts['category'],
+	        'order' => $atts['order'],
+	        'orderby' => $atts['orderby'],
+	        'post__not_in' => $post_not_in,
 	    );
 
 	    $post_listing_query = new WP_Query( $post_listing_args );
 	    if ( $post_listing_query->have_posts() ) : while ( $post_listing_query->have_posts() ) : $post_listing_query->the_post();
 
-	        echo '<div class="col-lg-4">';
+	        echo '<div class="'.$post_col_class.'">';
 	        $theme_file  = locate_template(array( 'template_parts/loop_blog_post.php'));
 	        $excerpt_length = $atts['excerpt'];
 	        $blog_thumb = true;
@@ -875,7 +921,7 @@ class NS_Basics_Shortcodes {
 	            <article <?php post_class(); ?>>
 	                <div class="blog-post shadow-hover">
 	                    <h3><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h3>
-	                    <?php echo wp_trim_words(get_the_excerpt(), $excerpt_length);?>
+	                    <div class="blog-post-excerpt"><?php echo wp_trim_words(get_the_excerpt(), $excerpt_length);?></div>
 	                </div>
 	            </article>
 
