@@ -33,6 +33,7 @@ Full documentation here: [Docs](https://products.nightshiftcreative.co/docs/ns-b
 * ADDED: action hooks before and after global blocks shortcode
 * ADDED: Center mode parameter to slider shortcode
 * FIXED: Check if Yoast plugin is active before adding meta description tag
+* FIXED: Execute shortcodes within tab shortcode
 
 = 1.0.6 =
 * FIXED: Updated plugin update checker class to most recent version

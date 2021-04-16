@@ -751,7 +751,7 @@ class NS_Basics_Shortcodes {
 	    	}
 	    } else { $icon = ''; }
 
-	    $tabs_divs.= '<div id="tab'. $atts['id'] .'">'.$content.'</div>';
+	    $tabs_divs.= '<div id="tab'. $atts['id'] .'">'.do_shortcode($content).'</div>';
 
 	    return '<li><a href="#tab'. $atts['id'] .'">'. $icon . '<span class="tab-title">'.$atts['title'].'</span></a></li>';
 	}
