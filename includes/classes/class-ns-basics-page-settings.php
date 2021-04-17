@@ -420,6 +420,12 @@ class NS_Basics_Page_Settings {
 
 		do_action( 'ns_basics_before_page_settings', $page_settings); ?>
 
+		<?php 
+		if(!current_theme_supports('ns-basics')) {
+			$theme_alert = NS_Basics_Admin::admin_alert('info', 'Your active theme does not support these settings.');
+			echo $theme_alert; 
+		} ?>
+
 		<div class="ns-tabs meta-box-form meta-box-form-page-settings">
 			<ul class="ns-tabs-nav">
 	            <li><a href="#header" title="<?php esc_html_e('Header', 'ns-basics'); ?>"><i class="fa fa-window-maximize"></i> <span class="tab-text"><?php echo esc_html_e('Header', 'ns-basics'); ?></span></a></li>
