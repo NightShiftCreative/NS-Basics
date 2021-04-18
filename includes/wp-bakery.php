@@ -54,6 +54,7 @@ function ns_basics_vc_map() {
 	vc_map( array(
 		"name" => __("Slider", "ns-basics"),
 		"base" => "ns_slider",
+		'description' => esc_html__( 'Display a content slider', 'ns-basics' ),
 		'icon' => NS_BASICS_PLUGIN_DIR.'/images/icon-slides.svg',
 		'category' => 'NS Basics',
 		"as_parent" => array('only' => 'ns_slide'),
@@ -137,7 +138,7 @@ function ns_basics_vc_map() {
 	));
 
 	vc_map( array(
-		"name" => __("Slide", "my-text-domain"),
+		"name" => __("Slide", "ns-basics"),
 		"base" => "ns_slide",
 		'icon' => NS_BASICS_PLUGIN_DIR.'/images/icon-slides.svg',
 		'category' => 'NS Basics',
@@ -170,6 +171,72 @@ function ns_basics_vc_map() {
 	}
 	if ( class_exists( 'WPBakeryShortCode' ) ) {
 		class WPBakeryShortCode_ns_slide extends WPBakeryShortCode {}
+	}
+
+	/** TESTIMONIALS **/
+	vc_map( array(
+		"name" => __("Testimonials", "ns-basics"),
+		"base" => "ns_testimonials",
+		'description' => esc_html__( 'Display a testimonials slider', 'ns-basics' ),
+		'icon' => NS_BASICS_PLUGIN_DIR.'/images/icon-slides.svg',
+		'category' => 'NS Basics',
+		"as_parent" => array('only' => 'ns_testimonial'),
+		"content_element" => true,
+		"show_settings_on_create" => true,
+		"is_container" => true,
+		/*"params" => array(
+			array(
+		  		"type" => "textfield",
+		  		"heading" => __("Class", "ns-basics"),
+		  		"param_name" => "class",
+		  		"description" => __("Add a CSS class for styling.", "ns-basics")
+			),
+		),*/
+		"js_view" => 'VcColumnView'
+	));
+
+	vc_map( array(
+		"name" => __("Testimonial", "ns-basics"),
+		"base" => "ns_testimonial",
+		'icon' => NS_BASICS_PLUGIN_DIR.'/images/icon-slides.svg',
+		'category' => 'NS Basics',
+		"content_element" => true,
+		"as_child" => array('ns_testimonials'),
+		"params" => array(
+			array(
+		  		"type" => "attach_image",
+		  		"heading" => __("Image", "ns-basics"),
+		  		'description' => __("The headshot or logo of the testimonial.", "ns-basics"),
+		  		"param_name" => "img",
+			),
+			array(
+		  		"type" => "textfield",
+		  		"heading" => __("Name", "ns-basics"),
+		  		'description' => __("The full name of the testimonial.", "ns-basics"),
+		  		"param_name" => "name",
+			),
+			array(
+		  		"type" => "textfield",
+		  		"heading" => __("Professional Title", "ns-basics"),
+		  		'description' => __("The professional title of the individual.", "ns-basics"),
+		  		"param_name" => "title",
+			),
+			array(
+		  		"type" => "textarea_html",
+		  		"heading" => __("Slide Content", "ns-basics"),
+		  		"param_name" => "content",
+			),
+		),
+		'js_view' => 'VcCustomElementView',
+		'custom_markup' => '<div class="vc_custom-element-container vc-custom-slide"><strong style="display:block;">{{ params.name }}</strong><br/> {{ params.content }}</div>',
+	));
+
+	if (class_exists('WPBakeryShortCodesContainer')) {
+	  	class WPBakeryShortCode_ns_testimonials extends WPBakeryShortCodesContainer {}
+	}
+
+	if ( class_exists( 'WPBakeryShortCode' ) ) {
+		class WPBakeryShortCode_ns_testimonial extends WPBakeryShortCode {}
 	}
 
 

@@ -817,16 +817,22 @@ class NS_Basics_Shortcodes {
 	        'title' => '',
 	    ), $atts);
 
-		$output = '';
-	    $output .= '<div class="testimonial slide">';
-	    $output .= '<h3>'. do_shortcode($content) .'</h3>';
-	    $output .= '<div class="testimonial-details">';
-	    if(!empty($atts['img']))  { $output .= '<img class="testimonial-img" src="'. $atts['img'] .'" alt="" />'; }
-	    if(!empty($atts['name']))  { $output .= '<span class="testimonial-name"><strong>'. $atts['name'] .'</strong></span>'; }
-	    if(!empty($atts['title']))  { $output .= '<span class="testiomnial-title"><em>'. $atts['title'] .'</em></span>'; }
-	    $output .= '</div>';
-	    $output .= '</div>';
+	    ob_start();
 
+	    echo '<div class="testimonial slide">';
+	    echo '<h3>'. do_shortcode($content) .'</h3>';
+	    echo '<div class="testimonial-details">';
+	    if(!empty($atts['img']))  {
+	    	$img_src =  $atts['img'];
+	    	if(is_numeric($atts['img'])) { $img_src =  wp_get_attachment_image_url($atts['img']); }
+	    	echo '<img class="testimonial-img" src="'. $img_src .'" alt="" />'; 
+	    }
+	    if(!empty($atts['name']))  { echo '<span class="testimonial-name"><strong>'. $atts['name'] .'</strong></span>'; }
+	    if(!empty($atts['title']))  { echo '<span class="testiomnial-title"><em>'. $atts['title'] .'</em></span>'; }
+	    echo '</div>';
+	    echo '</div>';
+
+	    $output = ob_get_clean();
 	    return $output;
 	}
 
