@@ -27,6 +27,7 @@ Full documentation here: [Docs](https://products.nightshiftcreative.co/docs/ns-b
 = 1.0.8 =
 * FIXED: Execute shortcodes within tab shortcode
 * ADDED: Theme support alert on page settings meta box
+* ADDED: Testimonials shortcode mapped to WP Bakery
 
 = 1.0.7 =
 * ADDED: Category filtering to list post shortcode
