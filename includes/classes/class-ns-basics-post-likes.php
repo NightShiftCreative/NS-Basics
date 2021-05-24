@@ -230,10 +230,11 @@ class NS_Basics_Post_Likes {
 		}
 
 	    if($button == 'true') {
-	        $output = '<div class="sl-wrapper sl-wrapper-button ns-tooltip"><a href="' . admin_url( 'admin-ajax.php?action=ns_basics_process_post_like' . '&post_id=' . $post_id . '&nonce=' . $nonce . '&is_comment=' . $is_comment . '&disabled=true&button=true' ) . '" class="button small outline sl-button' . $post_id_class . $class . $comment_class . '" data-nonce="' . $nonce . '" data-post-id="' . $post_id . '" data-iscomment="' . $is_comment . '" title="' . $title . '">' . $icon . $count .'</a>' .$loader . '</div>';
+	        $output = '<div class="sl-wrapper sl-wrapper-button ns-tooltip"><a href="#" class="button small outline sl-button' . $post_id_class . $class . $comment_class . '" data-nonce="' . $nonce . '" data-post-id="' . $post_id . '" data-iscomment="' . $is_comment . '" title="' . $title . '">' . $icon . $count .'</a>' .$loader . '</div>';
 	    } else {
-	        $output = '<div class="sl-wrapper ns-tooltip"><a href="'.admin_url( 'admin-ajax.php?action=ns_basics_process_post_like' . '&post_id=' . $post_id . '&nonce=' . $nonce . '&is_comment=' . $is_comment . '&disabled=true' ) . '" class="sl-button ns-tooltip-toggle' . $post_id_class . $class . $comment_class . '" data-nonce="' . $nonce . '" data-post-id="' . $post_id . '" data-iscomment="' . $is_comment . '" title="' . $title . '">' . $icon . $count . '</a>' . $loader . '</div>';
+	        $output = '<div class="sl-wrapper ns-tooltip"><a href="#" class="sl-button ns-tooltip-toggle' . $post_id_class . $class . $comment_class . '" data-nonce="' . $nonce . '" data-post-id="' . $post_id . '" data-iscomment="' . $is_comment . '" title="' . $title . '">' . $icon . $count . '</a>' . $loader . '</div>';
 	    }
+
 		return $output;
 	}
 

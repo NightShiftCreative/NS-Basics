@@ -28,6 +28,7 @@ Full documentation here: [Docs](https://products.nightshiftcreative.co/docs/ns-b
 * FIXED: Execute shortcodes within tab shortcode
 * ADDED: Theme support alert on page settings meta box
 * ADDED: Testimonials shortcode mapped to WP Bakery
+* FIXED: Post Likes button causing 400 error
 
 = 1.0.7 =
 * ADDED: Category filtering to list post shortcode
