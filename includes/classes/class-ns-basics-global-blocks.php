@@ -94,9 +94,9 @@ class NS_Basics_Global_Blocks {
 			//output block content
 	    	$content_post = get_post($atts['id']);
 			$content = $content_post->post_content;
-			$content = apply_filters('the_content', $content);
-			$content = str_replace(']]>', ']]&gt;', $content);
-			echo $content;
+			//$content = apply_filters('the_content', $content);
+			//$content = str_replace(']]>', ']]&gt;', $content);
+			echo do_shortcode($content);
 
 			do_action( 'ns_basics_after_global_block', $atts['id']); 
 

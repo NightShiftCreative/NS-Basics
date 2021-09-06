@@ -29,6 +29,7 @@ Full documentation here: [Docs](https://products.nightshiftcreative.co/docs/ns-b
 * ADDED: Theme support alert on page settings meta box
 * ADDED: Testimonials shortcode mapped to WP Bakery
 * FIXED: Post Likes button causing 400 error
+* FIXED: Elementor repeating content when used with global block shortcode
 
 = 1.0.7 =
 * ADDED: Category filtering to list post shortcode
