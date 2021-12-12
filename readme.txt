@@ -31,6 +31,7 @@ Full documentation here: [Docs](https://products.nightshiftcreative.co/docs/ns-b
 * FIXED: Post Likes button causing 400 error
 * FIXED: Elementor repeating content when used with global block shortcode
 * UPDATED: Updated to latest Font Awesome version 5.15.4
+* ADDED: Class field to slides custom post type
 
 = 1.0.7 =
 * ADDED: Category filtering to list post shortcode

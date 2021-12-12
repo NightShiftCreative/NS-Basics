@@ -114,6 +114,13 @@ class NS_Basics_Slides {
 				'value' => '#000000',
 				'order' => 6,
 			),
+			'slide_class' => array(
+				'title' => esc_html__('Class', 'ns-basics'),
+				'name' => 'ns_basics_slide_class',
+				'description'=> esc_html__('Provide the CSS Class for slide styling', 'ns-basics'),
+				'type' => 'text',
+				'order' => 7,
+			),
 		);
 
 		$slide_settings_init = apply_filters( 'ns_basics_slide_settings_init_filter', $slide_settings_init);
