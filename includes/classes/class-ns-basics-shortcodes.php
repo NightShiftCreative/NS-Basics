@@ -411,15 +411,14 @@ class NS_Basics_Shortcodes {
 	    if(!empty($atts['title'])) { $title = '<h2>'.$atts['title'].'</h2>'; } else { $title = ''; }
 	    if(!empty($atts['text'])) { $text = '<p>'.$atts['text'].'</p>'; } else { $text = ''; }
 	    
+	    $widget_divider = '<div class="widget-divider"><div class="bar"></div></div>'; 
+
 	    if($atts['position'] == 'left') { 
 	        $position = 'module-header-left';
-	        $widget_divider = '<table class="widget-divider"><tr><td><div class="widget-divider-icon"></div></td><td><div class="bar"></div></td></tr></table>'; 
 	    } else if($atts['position'] == 'right') { 
 	        $position = 'module-header-right'; 
-	        $widget_divider = '<table class="widget-divider"><tr><td><div class="bar"></div></td><td><div class="widget-divider-icon"></div></td></tr></table>';
 	    } else { 
-	        $position = ''; 
-	        $widget_divider = '<table class="widget-divider"><tr><td><div class="bar"></div></td><td><div class="widget-divider-icon"></div></td><td><div class="bar bar-second"></div></td></tr></table>';
+	        $position = 'module-header-center'; 
 	    } 
 
 	    return '<div class="module-header '.$position.'">'.$title . $widget_divider . $text.'<div class="clear"></div></div>';

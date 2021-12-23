@@ -32,6 +32,7 @@ Full documentation here: [Docs](https://products.nightshiftcreative.co/docs/ns-b
 * FIXED: Elementor repeating content when used with global block shortcode
 * UPDATED: Updated to latest Font Awesome version 5.15.4
 * ADDED: Class field to slides custom post type
+* UPDATED: Simplified [ns_module_header] shortcode HTML output
 
 = 1.0.7 =
 * ADDED: Category filtering to list post shortcode
